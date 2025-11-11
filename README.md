@@ -49,7 +49,7 @@ Built with **Next.js App Router**, **shadcn/ui**, **next-intl**, and **Supabase*
 ---
 
 ### Current Folder Tree
-
+``
 ├── README.md
 ├── src
 │ ├── app
@@ -75,7 +75,7 @@ Built with **Next.js App Router**, **shadcn/ui**, **next-intl**, and **Supabase*
 │ └── view
 │ └── homepageView.tsx
 └── tsconfig.json
-
+``
 ---
 
 ## Setup
