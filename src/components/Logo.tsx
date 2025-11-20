@@ -1,6 +1,6 @@
 "use client"
 
-import { Link } from "../i18n/navigation"
+import { Link } from "@/i18n/navigation"
 import Image from 'next/image'
 
 function Logo() {
@@ -11,6 +11,7 @@ function Logo() {
         width={333}
         height={357}
         alt="Mskth logo"
+        priority
         />
     </Link>
   )
