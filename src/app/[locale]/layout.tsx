@@ -6,6 +6,7 @@ import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/src/i18n/routing";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
+import Footer from "@/src/components/Footer";
 
 // Fonts
 const geistSans = Geist({
@@ -64,6 +65,7 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages} locale={locale}>
           <div className="min-h-screen flex flex-col">
             <main className="flex-1 pt-2">{children}</main>
+            <Footer />
           </div>
         </NextIntlClientProvider>
       </body>
