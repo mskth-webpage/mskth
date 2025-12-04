@@ -2,5 +2,22 @@
   "Home": {
     "title": "Välkommen till MSKTH",
     "description": "Din muslimska studentgemenskap på KTH."
+  },
+  "Footer": {
+    "text": "Att förena muslimska studenter på KTH — delta i evenemang, hitta resurser och bli en del av vår gemenskap.",
+    "quick-links": "Snabblänkar",
+    "links": {
+      "link1": "Hem",
+      "link2": "Evenemang",
+      "link3": "Om oss",
+      "link5": "Vanliga frågor"
+    },
+    "message": "Håll kontakten",
+    "policies": {
+      "link1": "Samarbete",
+      "link4": "Bönetider",
+      "link2": "Moskéer"
+    },
+    "reserved": "Alla rättigheter förbehålls."
   }
 }
