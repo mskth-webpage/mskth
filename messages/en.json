@@ -2,5 +2,22 @@
   "Home": {
     "title": "Welcome to MSKTH",
     "description": "Your Muslim student community at KTH."
+  },
+  "Footer": {
+    "text": "Connecting Muslim students at KTH — join events, find resources, and be part of our community.",
+    "quick-links": "Quick Links",
+    "links": {
+      "link1": "Home",
+      "link2": "Events",
+      "link3": "About Us",
+      "link5": "FAQ"
+    },
+    "message": "Stay connected",
+    "policies": {
+      "link1": "Collaboration",
+      "link4": "Prayer Times",
+      "link2": "Mosques"
+    },
+    "reserved": "All rights reserved."
   }
 }
