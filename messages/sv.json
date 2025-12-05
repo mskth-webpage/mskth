@@ -19,5 +19,12 @@
       "link2": "Moskéer"
     },
     "reserved": "Alla rättigheter förbehålls."
+  },
+  "Navbar": {
+    "home": "Hem",
+    "events": "Evenemang",
+    "collaboration": "Samarbete",
+    "aboutus": "Om oss",
+    "join": "Gå med"
   }
 }

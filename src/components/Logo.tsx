@@ -7,9 +7,9 @@ function Logo() {
   return (    
     <Link href="/">
     <Image
-        src="/logo.png"
-        width={333}
-        height={357}
+        src="/logga.png"
+        width={206}
+        height={193}
         alt="Mskth logo"
         priority
         />

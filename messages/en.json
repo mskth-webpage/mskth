@@ -19,5 +19,12 @@
       "link2": "Mosques"
     },
     "reserved": "All rights reserved."
+  },
+  "Navbar": {
+    "home": "Home",
+    "events": "Events",
+    "collaboration": "Collaboration",
+    "aboutus": "About Us",
+    "join": "Join"
   }
 }
