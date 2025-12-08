@@ -6,7 +6,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@
 
 export default function LocaleSwitcher() {
   const locale = useLocale();
-  const t = useTranslations("LocaleSwitcher");
+  const t = useTranslations("Home");
   const pathname = usePathname();
   const router = useRouter();
 

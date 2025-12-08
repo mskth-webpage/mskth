@@ -1,7 +1,7 @@
 {
   "Home": {
-    "title": "Välkommen till MSKTH",
-    "description": "Din muslimska studentgemenskap på KTH."
+    "en": "en",
+    "sv": "sv"
   },
   "Footer": {
     "text": "Att förena muslimska studenter på KTH — delta i evenemang, hitta resurser och bli en del av vår gemenskap.",
