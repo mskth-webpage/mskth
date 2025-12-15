@@ -114,4 +114,4 @@ npm run dev
 ```
 5. Open the app
 
-Visit http://localhost:3000
+Visit http://localhost:3000/en
