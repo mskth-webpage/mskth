@@ -3,10 +3,12 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { routing } from "@/src/i18n/routing";
+import { routing } from "@/i18n/routing";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider"
 import "../globals.css";
-import Footer from "@/src/components/Footer";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
 // Fonts
 const geistSans = Geist({
@@ -58,16 +60,24 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning={true}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
         <NextIntlClientProvider messages={messages} locale={locale}>
           <div className="min-h-screen flex flex-col">
+            <Navbar />
             <main className="flex-1 pt-2">{children}</main>
             <Footer />
           </div>
         </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
