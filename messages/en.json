@@ -26,5 +26,36 @@
     "collaboration": "Collaboration",
     "aboutus": "About Us",
     "join": "Join"
+  },
+  "Collaboration": {
+    "meta": {
+      "title": "For Companies",
+      "description": "Learn how MSKTH collaborates with organizations and how to get in touch."
+    },
+    "title": "For Companies",
+    "whoTitle": "Who are we?",
+    "whoText": "KTH Muslim Student Association is a vibrant and inclusive community of students dedicated to promoting diversity, understanding, unity, and equality. With a growing membership of enthusiastic individuals, we represent a pool of over 500 future talents and potential collaborators.",
+    "whyTitle": "Why collaborate with us?",
+    "whyIntro": "At MSKTH, we believe in the power of collaboration to drive innovation and positive change. By partnering with us, your organization gains access to:",
+    "talentedIndividuals": {
+      "title": "Talented Individuals:",
+      "text": "Our diverse membership base comprises students from various academic backgrounds, each with unique skills and perspectives. These are the individuals who could be your future colleagues or employees."
+    },
+    "communityEngagement": {
+      "title": "Community Engagement:",
+      "text": "Align your brand with a community that values inclusivity, cultural understanding, and social responsibility."
+    },
+    "monthlyEvents": {
+      "title": "Monthly Events:",
+      "text": "We host engaging events every month, drawing a diverse crowd of 25 to 100 male and female participants. Your partnership with us ensures that your brand is prominently featured at every event."
+    },
+    "onlinePresence": {
+      "title": "Online Presence:",
+      "text": "As a partner, your organization will be prominently showcased across our digital platforms, reaching a wide and engaged audience."
+    },
+    "contactIntro": "If you are interested in",
+    "contactHighlight": "collaborating",
+    "contactOutro": "with us, contact us on",
+    "email": "muslimstudentkth@gmail.com"
   }
 }
