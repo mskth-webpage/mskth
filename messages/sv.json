@@ -27,6 +27,46 @@
     "aboutus": "Om oss",
     "join": "Gå med"
   },
+  "Hero-section": {
+    "title": "Välkommen till MSKTH",
+    "subtitle": "Din gemenskap väntar",
+    "description": "På MSKTH stärker vi gemenskapen och den andliga utvecklingen bland studenter. Delta i våra evenemang och ta del av stöd som passar din resa.",
+    "joinTitle": "Gå med i vår gemenskap idag",
+    "emailPlaceholder": "Ange din e-post...",
+    "emailAria": "E-postadress",
+    "subscribe": "Prenumerera",
+    "helperText": "Prenumerera på vårt månatliga nyhetsbrev för att få veta när kommande evenemang släpps!"
+  },
+  "HomePage": {
+    "community": {
+      "title": "Din muslimska gemenskap på campus",
+      "text": "Muslim Students at KTH är en ideell studentförening som erbjuder en trygg och välkomnande plats för muslimska studenter på campus. Vi tror att universitetslivet inte bara handlar om studier, utan också om tillhörighet, tro och meningsfulla relationer. Genom att gå med i MSKTH blir du en del av en familj där tro och vänskap går hand i hand. Vi skapar möjligheter för studenter att samlas för bön, dela erfarenheter och delta i aktiviteter som stärker både personlig och akademisk utveckling.",
+      "button": "Bli medlem"
+    },
+    "events": {
+      "title": "Kommande evenemang",
+      "button": "Köp nu",
+      "card1": {
+        "title": "Titel",
+        "description": "Kort beskrivning"
+      },
+      "card2": {
+        "title": "Titel",
+        "description": "Kort beskrivning"
+      },
+      "card3": {
+        "title": "Titel",
+        "description": "Kort beskrivning"
+      }
+    },
+    "newsletter": {
+      "title": "Gå med i vår gemenskap idag",
+      "placeholder": "Ange din e-post...",
+      "aria": "E-postadress",
+      "button": "Prenumerera",
+      "helper": "Prenumerera på vårt månatliga nyhetsbrev för att få veta när kommande evenemang släpps!"
+    }
+  },
   "Collaboration": {
     "meta": {
       "title": "För företag",

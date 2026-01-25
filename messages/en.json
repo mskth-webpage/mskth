@@ -27,6 +27,46 @@
     "aboutus": "About Us",
     "join": "Join"
   },
+  "Hero-section": {
+    "title": "Welcome to MSKTH",
+    "subtitle": "Your Community Awaits",
+    "description": "At MSKTH, we foster a sense of brotherhood and spiritual growth among students. Join us for engaging events and valuable support tailored to your journey.",
+    "joinTitle": "Join Our Community Today",
+    "emailPlaceholder": "Enter your mail...",
+    "emailAria": "Email address",
+    "subscribe": "Subscribe",
+    "helperText": "Join your monthly newsletter to be notified when upcoming events come!"
+  },
+  "HomePage": {
+    "community": {
+      "title": "Your Muslim Community on Campus",
+      "text": "Muslim Students at KTH is a non-profit student association that provides a safe and welcoming space for Muslim students on campus. We believe university life is not only about academics, but also about belonging, faith, and meaningful connections. By joining MSKTH, you become part of a family where faith and friendship go hand in hand. We create opportunities for students to gather in prayer, share experiences, and participate in activities that strengthen both personal and academic growth.",
+      "button": "Join our membership"
+    },
+    "events": {
+      "title": "Upcoming events",
+      "button": "Buy now",
+      "card1": {
+        "title": "Title",
+        "description": "Short description"
+      },
+      "card2": {
+        "title": "Title",
+        "description": "Short description"
+      },
+      "card3": {
+        "title": "Title",
+        "description": "Short description"
+      }
+    },
+    "newsletter": {
+      "title": "Join our community today",
+      "placeholder": "Enter your mail...",
+      "aria": "Email address",
+      "button": "Subscribe",
+      "helper": "Join your monthly newsletter to be notified when upcoming events come!"
+    }
+  },
   "Collaboration": {
     "meta": {
       "title": "For Companies",

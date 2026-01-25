@@ -24,7 +24,7 @@ export default function CollaborationView() {
             <h2 className="font-serif text-[20px] font-semibold text-foreground sm:text-[22px] lg:text-[24px]">
               {t("whoTitle")}
             </h2>
-            <p className="text-[14px] leading-[1.85] text-muted-foreground sm:text-[15px]">
+            <p className="text-[14px] leading-[1.85] text-foreground sm:text-[15px]">
               {t("whoText")}
             </p>
           </div>
@@ -33,7 +33,7 @@ export default function CollaborationView() {
             <h2 className="font-serif text-[20px] font-semibold text-foreground sm:text-[22px] lg:text-[24px]">
               {t("whyTitle")}
             </h2>
-            <p className="text-[14px] leading-[1.85] text-muted-foreground sm:text-[15px]">
+            <p className="text-[14px] leading-[1.85] text-foreground sm:text-[15px]">
               {t("whyIntro")}
             </p>
             <ul className="space-y-6">
@@ -49,7 +49,7 @@ export default function CollaborationView() {
                     <p className="text-[14px] font-semibold text-foreground sm:text-[15px]">
                       {t(`${key}.title`)}
                     </p>
-                    <p className="text-[14px] leading-[1.85] text-muted-foreground sm:text-[15px]">
+                    <p className="text-[14px] leading-[1.85] text-foreground sm:text-[15px]">
                       {t(`${key}.text`)}
                     </p>
                   </div>

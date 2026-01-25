@@ -1,10 +1,11 @@
 'use client';
 
-import HomePageView from '../view/homepageView';
+import HeroSectionView from '@/view/HeroSectionView';
 
 export default function HomePagePresenter() {
   return (
-    <div><HomePageView /></div>
-  )
+    <div>
+      <HeroSectionView />
+    </div>
+  );
 }
-
