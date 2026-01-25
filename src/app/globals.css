@@ -145,7 +145,14 @@
     * {
       @apply border-border outline-ring/50;
     }
+    html {
+      height: 100%;
+      scrollbar-gutter: stable both-edges;
+      overflow-y: scroll;
+      padding-bottom: 1px;
+    }
     body {
+      min-height: 100%;
       @apply bg-background text-foreground;
     }
   }
