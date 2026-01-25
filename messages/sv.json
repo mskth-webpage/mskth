@@ -26,5 +26,76 @@
     "collaboration": "Samarbete",
     "aboutus": "Om oss",
     "join": "Gå med"
+  },
+  "Hero-section": {
+    "title": "Välkommen till MSKTH",
+    "subtitle": "Din gemenskap väntar",
+    "description": "På MSKTH stärker vi gemenskapen och den andliga utvecklingen bland studenter. Delta i våra evenemang och ta del av stöd som passar din resa.",
+    "joinTitle": "Gå med i vår gemenskap idag",
+    "emailPlaceholder": "Ange din e-post...",
+    "emailAria": "E-postadress",
+    "subscribe": "Prenumerera",
+    "helperText": "Prenumerera på vårt månatliga nyhetsbrev för att få veta när kommande evenemang släpps!"
+  },
+  "HomePage": {
+    "community": {
+      "title": "Din muslimska gemenskap på campus",
+      "text": "Muslim Students at KTH är en ideell studentförening som erbjuder en trygg och välkomnande plats för muslimska studenter på campus. Vi tror att universitetslivet inte bara handlar om studier, utan också om tillhörighet, tro och meningsfulla relationer. Genom att gå med i MSKTH blir du en del av en familj där tro och vänskap går hand i hand. Vi skapar möjligheter för studenter att samlas för bön, dela erfarenheter och delta i aktiviteter som stärker både personlig och akademisk utveckling.",
+      "button": "Bli medlem"
+    },
+    "events": {
+      "title": "Kommande evenemang",
+      "button": "Köp nu",
+      "card1": {
+        "title": "Titel",
+        "description": "Kort beskrivning"
+      },
+      "card2": {
+        "title": "Titel",
+        "description": "Kort beskrivning"
+      },
+      "card3": {
+        "title": "Titel",
+        "description": "Kort beskrivning"
+      }
+    },
+    "newsletter": {
+      "title": "Gå med i vår gemenskap idag",
+      "placeholder": "Ange din e-post...",
+      "aria": "E-postadress",
+      "button": "Prenumerera",
+      "helper": "Prenumerera på vårt månatliga nyhetsbrev för att få veta när kommande evenemang släpps!"
+    }
+  },
+  "Collaboration": {
+    "meta": {
+      "title": "För företag",
+      "description": "Läs om hur MSKTH samarbetar med organisationer och hur ni kontaktar oss."
+    },
+    "title": "För företag",
+    "whoTitle": "Vilka är vi?",
+    "whoText": "KTH Muslim Student Association är en livlig och inkluderande studentgemenskap som arbetar för att främja mångfald, förståelse, enighet och jämlikhet. Med ett växande medlemskap av engagerade personer representerar vi en pool på över 500 framtida talanger och potentiella samarbetspartner.",
+    "whyTitle": "Varför samarbeta med oss?",
+    "whyIntro": "På MSKTH tror vi på samarbetets kraft för att driva innovation och positiv förändring. Genom att samarbeta med oss får er organisation tillgång till:",
+    "talentedIndividuals": {
+      "title": "Talangfulla individer:",
+      "text": "Vår mångsidiga medlemsbas består av studenter från olika akademiska bakgrunder, var och en med unika färdigheter och perspektiv. Det här är individer som kan bli era framtida kollegor eller medarbetare."
+    },
+    "communityEngagement": {
+      "title": "Samhällsengagemang:",
+      "text": "Koppla ert varumärke till en gemenskap som värdesätter inkludering, kulturell förståelse och socialt ansvar."
+    },
+    "monthlyEvents": {
+      "title": "Månatliga evenemang:",
+      "text": "Vi anordnar engagerande evenemang varje månad och lockar en varierad grupp på 25 till 100 manliga och kvinnliga deltagare. Ert partnerskap med oss säkerställer att ert varumärke lyfts fram vid varje evenemang."
+    },
+    "onlinePresence": {
+      "title": "Närvaro online:",
+      "text": "Som partner kommer er organisation att synas tydligt på våra digitala plattformar och nå en bred och engagerad publik."
+    },
+    "contactIntro": "Om ni är intresserade av att",
+    "contactHighlight": "samarbeta",
+    "contactOutro": "med oss, kontakta oss på",
+    "email": "muslimstudentkth@gmail.com"
   }
 }
