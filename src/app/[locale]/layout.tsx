@@ -4,7 +4,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Nanum_Myeongjo } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider"
 import "../globals.css";
 import Footer from "@/components/Footer";
@@ -68,7 +68,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning={true}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${nanumMyeongjo.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${nanumMyeongjo.variable}`}
       >
         <ThemeProvider
             attribute="class"
