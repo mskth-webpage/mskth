@@ -93,6 +93,7 @@ export default function Navbar() {
         <button
           className="md:hidden flex items-center"
           onClick={() => setOpen(!open)}
+          aria-label={open ? "Close menu" : "Open menu"}
         >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -140,6 +141,7 @@ export default function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             >
               {theme === "dark" ? (
                 <Image src="/lightmode.png" width={28} height={28} alt="Switch to light mode" />
