@@ -7,8 +7,8 @@ export default function HomePageView() {
 
   return (
     <section className="relative overflow-hidden">
-     <div className="max-w-6xl pl-16 pr-6 pt-20 pb-32">
-        <div className="py-12 sm:py-16 lg:py-20">
+     <div className="max-w-6xl pl-18 pr-6 pt-2 pb-2">
+        <div className="py-12 sm:py-16 lg:py-10">
           <div className="space-y-2">
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-blue-brand leading-tight">
               {t("title")}
