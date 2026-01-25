@@ -1,4 +1,4 @@
-import HomePagePresenter from '@/src/presenter/HomePagePresenter';
+import HomePagePresenter from '@/presenter/HomePagePresenter';
  
 export default function HomePage() {
   return (

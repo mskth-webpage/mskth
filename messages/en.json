@@ -1,7 +1,7 @@
 {
   "Home": {
-    "title": "Welcome to MSKTH",
-    "description": "Your Muslim student community at KTH."
+    "en": "en",
+    "sv": "sv"
   },
   "Footer": {
     "text": "Connecting Muslim students at KTH — join events, find resources, and be part of our community.",
@@ -19,5 +19,98 @@
       "link2": "Mosques"
     },
     "reserved": "All rights reserved."
+  },
+  "Navbar": {
+    "home": "Home",
+    "events": "Events",
+    "collaboration": "Collaboration",
+    "aboutus": "About Us",
+    "join": "Join"
+  },
+  "Hero-section": {
+    "title": "Welcome to MSKTH",
+    "subtitle": "Your Community Awaits",
+    "description": "At MSKTH, we foster a sense of brotherhood and spiritual growth among students. Join us for engaging events and valuable support tailored to your journey.",
+    "joinTitle": "Join Our Community Today",
+    "emailPlaceholder": "Enter your mail...",
+    "emailAria": "Email address",
+    "subscribe": "Subscribe",
+    "helperText": "Join your monthly newsletter to be notified when upcoming events come!"
+  },
+  "HomePage": {
+    "community": {
+      "title": "Your Muslim Community on Campus",
+      "text": "Muslim Students at KTH is a non-profit student association that provides a safe and welcoming space for Muslim students on campus. We believe university life is not only about academics, but also about belonging, faith, and meaningful connections. By joining MSKTH, you become part of a family where faith and friendship go hand in hand. We create opportunities for students to gather in prayer, share experiences, and participate in activities that strengthen both personal and academic growth.",
+      "button": "Join our membership"
+    },
+    "events": {
+      "title": "Upcoming events",
+      "button": "Buy now",
+      "card1": {
+        "title": "Title",
+        "description": "Short description"
+      },
+      "card2": {
+        "title": "Title",
+        "description": "Short description"
+      },
+      "card3": {
+        "title": "Title",
+        "description": "Short description"
+      }
+    },
+    "newsletter": {
+      "title": "Join our community today",
+      "placeholder": "Enter your mail...",
+      "aria": "Email address",
+      "button": "Subscribe",
+      "helper": "Join your monthly newsletter to be notified when upcoming events come!"
+    }
+  },
+  "AboutUs": {
+    "meta": {
+      "title": "About Us",
+      "description": "Learn more about MSKTH, our mission, and our community."
+    },
+    "title": "About Us",
+    "description": "A space to grow in faith, knowledge, and community."
+  },
+  "Events": {
+    "meta": {
+      "title": "Events",
+      "description": "Explore upcoming MSKTH events and stay connected with the community."
+    },
+    "title": "Events"
+  },
+  "Collaboration": {
+    "meta": {
+      "title": "For Companies",
+      "description": "Learn how MSKTH collaborates with organizations and how to get in touch."
+    },
+    "title": "For Companies",
+    "whoTitle": "Who are we?",
+    "whoText": "KTH Muslim Student Association is a vibrant and inclusive community of students dedicated to promoting diversity, understanding, unity, and equality. With a growing membership of enthusiastic individuals, we represent a pool of over 500 future talents and potential collaborators.",
+    "whyTitle": "Why collaborate with us?",
+    "whyIntro": "At MSKTH, we believe in the power of collaboration to drive innovation and positive change. By partnering with us, your organization gains access to:",
+    "talentedIndividuals": {
+      "title": "Talented Individuals:",
+      "text": "Our diverse membership base comprises students from various academic backgrounds, each with unique skills and perspectives. These are the individuals who could be your future colleagues or employees."
+    },
+    "communityEngagement": {
+      "title": "Community Engagement:",
+      "text": "Align your brand with a community that values inclusivity, cultural understanding, and social responsibility."
+    },
+    "monthlyEvents": {
+      "title": "Monthly Events:",
+      "text": "We host engaging events every month, drawing a diverse crowd of 25 to 100 male and female participants. Your partnership with us ensures that your brand is prominently featured at every event."
+    },
+    "onlinePresence": {
+      "title": "Online Presence:",
+      "text": "As a partner, your organization will be prominently showcased across our digital platforms, reaching a wide and engaged audience."
+    },
+    "contactIntro": "If you are interested in",
+    "contactHighlight": "collaborating",
+    "contactOutro": "with us, contact us on",
+    "email": "muslimstudentkth@gmail.com"
   }
 }
