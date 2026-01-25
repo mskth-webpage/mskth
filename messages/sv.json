@@ -67,6 +67,20 @@
       "helper": "Prenumerera på vårt månatliga nyhetsbrev för att få veta när kommande evenemang släpps!"
     }
   },
+  "AboutUs": {
+    "meta": {
+      "title": "Om oss",
+      "description": "Lär känna MSKTH, vårt uppdrag och vår gemenskap."
+    },
+    "title": "Om oss"
+  },
+  "Events": {
+    "meta": {
+      "title": "Evenemang",
+      "description": "Upptäck kommande MSKTH-evenemang och håll kontakten med gemenskapen."
+    },
+    "title": "Evenemang"
+  },
   "Collaboration": {
     "meta": {
       "title": "För företag",

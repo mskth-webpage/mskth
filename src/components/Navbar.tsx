@@ -53,9 +53,9 @@ export default function Navbar() {
             <Button
               asChild
               variant="ghost"
-              className={`${noHoverButton} ${pathname === "/about" ? "font-semibold" : ""}`}
+              className={`${noHoverButton} ${pathname === "/aboutus" ? "font-semibold" : ""}`}
             >
-              <Link href="/about">{t("aboutus")}</Link>
+              <Link href="/aboutus">{t("aboutus")}</Link>
             </Button>
           </div>
         </nav>
