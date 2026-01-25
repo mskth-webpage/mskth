@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import AboutHeader from "@/components/AboutHeader";
 
 export default function AboutUsView() {
   const t = useTranslations("AboutUs");
@@ -10,6 +11,10 @@ export default function AboutUsView() {
       <h1 className="font-serif text-[28px] font-semibold uppercase tracking-wide text-foreground sm:text-[32px] lg:text-[36px]">
         {t("title")}
       </h1>
+      <AboutHeader
+        title={t("title")}
+        description={t("description")}
+      />
     </main>
   );
 }
