@@ -5,15 +5,10 @@ type TicketProps = {
   description: string
 }
 
-const Ticket: React.FC<TicketProps> = ({ title, description }) => {
-  const titleId = React.useId()
-  const descId = React.useId()
+export default function Ticket({ title, description }: TicketProps) {
 
   return (
-    <article
-      aria-labelledby={titleId}
-      aria-describedby={descId}
-      className="relative h-[560px] w-full max-w-[320px]"
+    <article className="relative h-[560px] w-full max-w-[320px]"
     >
       {/* Decorative background */}
       <div
@@ -24,19 +19,15 @@ const Ticket: React.FC<TicketProps> = ({ title, description }) => {
 
       {/* Content */}
       <div className="absolute inset-x-0 top-0 px-8 text-center">
-        <h3
-          id={titleId}
-          className="pt-[140px] text-5xl font-serif font-semibold text-neutral-black"
+        <h3 className="pt-[140px] text-5xl font-serif font-semibold text-neutral-black"
         >
           {title}
         </h3>
 
-        <p id={descId} className="mt-8 font-serif text-lg text-neutral-black/80">
+        <p className="mt-8 font-serif text-lg text-neutral-black/80">
           {description}
         </p>
       </div>
     </article>
   )
 }
-
-export default Ticket
