@@ -1,6 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const bulletKeys = [
   "talentedIndividuals",
@@ -36,43 +42,52 @@ export default function CollaborationView() {
             <p className="text-[14px] leading-[1.85] text-foreground sm:text-[15px]">
               {t("whyIntro")}
             </p>
-            <ul className="space-y-6">
+            <Accordion
+              type="multiple"
+              defaultValue={[...bulletKeys]}
+              className="w-full space-y-6"
+            >
               {bulletKeys.map((key) => (
-                <li key={key} className="flex gap-3">
-                  <span
-                    aria-hidden
-                    className="mt-1 text-[18px] font-semibold text-blue-brand"
-                  >
-                    &gt;
-                  </span>
-                  <div className="space-y-1">
-                    <p className="text-[14px] font-semibold text-foreground sm:text-[15px]">
-                      {t(`${key}.title`)}
-                    </p>
+                <AccordionItem key={key} value={key} className="border-0">
+                  <AccordionTrigger className="py-0 hover:no-underline focus-visible:ring-0 [&>svg]:hidden">
+                    <div className="flex items-start gap-3 text-left">
+                      <span
+                        aria-hidden
+                        className="mt-0.5 text-[24px] font-semibold text-foreground"
+                      >
+                        &gt;
+                      </span>
+                      <p className="text-[14px] font-semibold text-foreground sm:text-[15px]">
+                        {t(`${key}.title`)}
+                      </p>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pl-7 pt-1">
                     <p className="text-[14px] leading-[1.85] text-foreground sm:text-[15px]">
                       {t(`${key}.text`)}
                     </p>
-                  </div>
-                </li>
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </ul>
+            </Accordion>
           </div>
         </div>
 
-        <p className="mt-10 text-[14px] leading-[1.9] text-foreground sm:text-[15px]">
-          {t("contactIntro")}{" "}
-          <span className="font-semibold text-blue-brand">
-            {t("contactHighlight")}
-          </span>{" "}
-          {t("contactOutro")}{" "}
+        <div className="mt-10 mx-auto max-w-[1043px] text-center">
+          <p className="font-brandSerif text-[16px] leading-[1.6] text-foreground sm:text-[20px] sm:leading-[1.6] lg:text-[40px] lg:leading-10">
+            {t("contactIntro")}{" "}
+            <span className="font-semibold text-blue-brand">
+              {t("contactHighlight")}
+            </span>{" "}
+            {t("contactOutro")}
+          </p>
           <a
-            className="font-semibold underline decoration-[1.5px] underline-offset-4"
+            className="mt-2 inline-block font-brandSerif text-[16px] font-semibold leading-[1.6] text-foreground underline decoration-[1.75px] underline-offset-4 sm:text-[20px] sm:leading-[1.6] lg:text-[24px] lg:leading-[1.4]"
             href={`mailto:${t("email")}`}
           >
             {t("email")}
           </a>
-          .
-        </p>
+        </div>
       </div>
     </section>
   );
