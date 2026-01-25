@@ -1,7 +1,7 @@
 'use client';
 
-import HomePageView from '../view/homepageView';
-import Ticket from '@/src/components/Ticket';
+import HeroSectionView from '@/view/HeroSectionView';
+import Ticket from '@/components/Ticket';
 
 export default function HomePagePresenter() {
   return (
