@@ -67,6 +67,20 @@
       "helper": "Join your monthly newsletter to be notified when upcoming events come!"
     }
   },
+  "AboutUs": {
+    "meta": {
+      "title": "About Us",
+      "description": "Learn more about MSKTH, our mission, and our community."
+    },
+    "title": "About Us"
+  },
+  "Events": {
+    "meta": {
+      "title": "Events",
+      "description": "Explore upcoming MSKTH events and stay connected with the community."
+    },
+    "title": "Events"
+  },
   "Collaboration": {
     "meta": {
       "title": "For Companies",
