@@ -24,7 +24,7 @@ export default function Ticket({ title, description }: TicketProps) {
           {title}
         </h3>
 
-        <p className="mt-8font-serif text-lg text-black/80 dark:text-black/80">
+        <p className="mt-8 font-serif text-lg text-black/80 dark:text-black/80">
           {description}
         </p>
       </div>
