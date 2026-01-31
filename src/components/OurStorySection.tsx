@@ -8,7 +8,7 @@ export default function OurStorySection() {
 
   return (
     <section className="relative bg-blue-brand text-background pt-24 pb-40 overflow-hidden">
-      {/* ================= Desktop decorative images (ORÖRDA) ================= */}
+      {/* Desktop decorative images */}
       <Image
         src="/lightone.svg"
         alt=""
@@ -41,9 +41,9 @@ export default function OurStorySection() {
         "
       />
 
-      {/* ================= Content ================= */}
+      {/* Content */}
       <div className="relative mx-auto max-w-[1100px] px-6">
-        {/* -------- Mobile top image -------- */}
+        {/* Mobile top image */}
         <div className="mb-6 block md:hidden">
           <Image
             src="/lightone.svg"
@@ -73,7 +73,7 @@ export default function OurStorySection() {
           {t("story")}
         </p>
 
-        {/* -------- Mobile bottom image -------- */}
+        {/* Mobile bottom image */}
         <div className="mt-10 flex justify-end md:hidden">
           <Image
             src="/lightone.svg"
@@ -86,7 +86,7 @@ export default function OurStorySection() {
         </div>
       </div>
 
-      {/* ================= Wave bottom ================= */}
+      {/* Wave bottom */}
       <div className="absolute bottom-0 w-full overflow-hidden leading-none">
         <svg
           viewBox="0 0 1440 320"
