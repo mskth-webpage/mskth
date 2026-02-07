@@ -83,22 +83,10 @@
     },
     "team": {
       "heading": "Board members",
-      "members": {
-        "member1": {
-          "name": "Name Lastname",
-          "role": "Role",
-          "email": "email@example.com"
-        },
-        "member2": {
-          "name": "Name Lastname",
-          "role": "Role",
-          "email": "email@example.com"
-        },
-        "member3": {
-          "name": "Name Lastname",
-          "role": "Role",
-          "email": "email@example.com"
-        }
+      "member": {
+        "name": "Name Lastname",
+        "role": "Role",
+        "email": "email@example.com"
       }
     }
   },
