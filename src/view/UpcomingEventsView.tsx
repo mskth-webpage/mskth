@@ -13,9 +13,18 @@ export default function UpcomingEventsView() {
         {t("events.title")}
       </h2>
       <div className="flex items-center justify-center gap-6 px-4">
-        <Ticket title="TITLE 1" description="Short description for ticket 1." />
-        <Ticket title="TITLE 2" description="Short description for ticket 2." />
-        <Ticket title="TITLE 3" description="Short description for ticket 3." />
+      <Ticket
+          title={t("events.card1.title")}
+          description={t("events.card1.description")}
+        />
+        <Ticket
+          title={t("events.card2.title")}
+          description={t("events.card2.description")}
+        />
+        <Ticket
+          title={t("events.card3.title")}
+          description={t("events.card3.description")}
+        />
       </div>
 
       {/* Curved bottom edge */}
