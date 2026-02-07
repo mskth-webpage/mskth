@@ -1,5 +1,6 @@
 "use client";
 
+import EventsHeader from "@/components/EventsHeader";
 import { useTranslations } from "next-intl";
 
 export default function EventsView() {
@@ -7,9 +8,10 @@ export default function EventsView() {
 
   return (
     <main className="mx-auto max-w-[980px] px-5 pb-20 pt-10 sm:px-8 lg:pb-28 lg:pt-16">
-      <h1 className="font-serif text-[28px] font-semibold uppercase tracking-wide text-foreground sm:text-[32px] lg:text-[36px]">
-        {t("title")}
-      </h1>
+          <EventsHeader
+        title={t("title")}
+        description={t("description")}
+      />
     </main>
   );
 }
