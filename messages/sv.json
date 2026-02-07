@@ -95,7 +95,8 @@
       "title": "Evenemang",
       "description": "Upptäck kommande MSKTH-evenemang och håll kontakten med gemenskapen."
     },
-    "title": "Evenemang"
+    "title": "Evenemang",
+    "description": "Kort beskrivning"
   },
   "Collaboration": {
     "meta": {
