@@ -7,8 +7,9 @@ import { Link, usePathname } from "../i18n/navigation";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import LocaleSwitcher from "./LocaleSwitcher";
-import Image from "next/image";
+
 import { Menu, X } from "lucide-react";
+import ThemeToggleButton from "./ThemeToggle";
 
 const mobileMenuLinkClasses =
   "block rounded-md px-1 py-1 text-foreground hover:bg-transparent hover:text-foreground focus-visible:outline-none focus-visible:ring-0 transition-none";
@@ -24,7 +25,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full bg-background z-40 border-b">
+    <header className="w-full bg-background z-40">
       <div className="mx-auto max-w-[1800px] flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
 
         {/* LOGO */}
@@ -60,33 +61,19 @@ export default function Navbar() {
           </div>
         </nav>
 
-
         {/* ACTIONS (Desktop) */}
-        <div className="hidden md:flex shrink-0 items-center gap-2 ml-4">
-          <Button 
-            asChild 
-            variant="ghost" 
-            className="rounded-full bg-color-mskth-blue hover:bg-color-mskth-blue/90 shadow-[0_4px_14px_0_rgba(59,130,246,0.39)] hover:shadow-[0_6px_20px_rgba(59,130,246,0.23)] transition-all duration-200"
+        <div className="hidden md:flex shrink-0 items-center gap-4 ml-6">
+          <Button
+            asChild
+            variant="outline"
+            className="rounded-full px-8 py-2 uppercase tracking-wide text-sm font-medium border-color-mskth-blue text-color-mskth-blue hover:bg-color-mskth-blue/10 transition-all duration-200"
           >
             <Link href="/join">{t("join")}</Link>
           </Button>
 
-          {/* Dark mode toggle */}
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Toggle dark mode"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="relative w-10 h-10 shrink-0"
-          >
-            {theme === "dark" ? (
-              <Image src="/lightmode.png" width={28} height={28} alt="Switch to light mode" />
-            ) : (
-              <Image src="/darkmode.png" width={28} height={28} alt="Switch to dark mode" />
-            )}
-          </Button>
-
           <LocaleSwitcher />
+
+          <ThemeToggleButton theme={theme} setTheme={setTheme} />
         </div>
 
         {/* MOBILE MENU BUTTON */}
@@ -128,29 +115,21 @@ export default function Navbar() {
           </div>
 
           <div className="pt-4 border-t flex items-center gap-4">
-            <Button 
-              asChild 
+            <Button
+              asChild
               variant="ghost"
               className="rounded-full pt-4 bg-color-mskth-blue hover:bg-color-mskth-blue/90 shadow transition-all"
             >
               <Link href="/join">{t("join")}</Link>
             </Button>
 
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {theme === "dark" ? (
-                <Image src="/lightmode.png" width={28} height={28} alt="Switch to light mode" />
-              ) : (
-                <Image src="/darkmode.png" width={28} height={28} alt="Switch to dark mode" />
-              )}
-            </Button>
-
             <LocaleSwitcher />
+
+            <ThemeToggleButton
+              theme={theme}
+              setTheme={setTheme}
+              ariaLabel={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            />
           </div>
         </div>
       )}
