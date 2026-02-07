@@ -14,14 +14,10 @@ export default function AboutUsView() {
           {t("title")}
         </h1>
 
-        <AboutHeader
-          title={t("title")}
-          description={t("description")}
-        />
+        <AboutHeader title={t("title")} description={t("description")} />
       </main>
 
       <OurStorySection />
     </>
   );
 }
-
