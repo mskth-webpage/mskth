@@ -95,7 +95,8 @@
       "title": "Events",
       "description": "Explore upcoming MSKTH events and stay connected with the community."
     },
-    "title": "Events"
+    "title": "Events",
+    "description": "Short description"
   },
   "Collaboration": {
     "meta": {
