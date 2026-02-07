@@ -72,7 +72,15 @@
       "title": "Om oss",
       "description": "Lär känna MSKTH, vårt uppdrag och vår gemenskap."
     },
-    "title": "Om oss"
+    "title": "Om oss",
+    "description": "En plats för att växa i tro, kunskap och gemenskap.",
+
+    "ourStory": {
+      "intro": "Vi strävar efter att skapa en välkomnande plats där muslimska studenter kan knyta kontakter med varandra, stärka sin relation till Gud och bygga långvariga vänskaper på campus.",
+      "mission": "På Muslim Students KTH (MSKTH) vill vi skapa en plats på KTH där tro och kunskap möts. En plats som ger muslimska studenter möjlighet att växa andligt, akademiskt och socialt, där man kan känna sig både rotad i sin tro och hemma i gemenskapen.",
+      "heading": "Vår historia",
+      "story": "MSKTH grundades av studenter som såg ett behov av en stödjande gemenskap där muslimska studenter kunde finna styrka och gemenskap i sin vardag på universitetet. Med tiden har det som började som ett fåtal studenter som möttes för bön och samtal vuxit till en levande förening – en plats för vänskap, tillbedjan, lärande och engagemang. Vår resa fortsätter med samma syfte: att vara en trygg mötesplats för alla muslimska studenter på KTH."
+    }
   },
   "Events": {
     "meta": {

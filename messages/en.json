@@ -25,7 +25,7 @@
     "events": "Events",
     "collaboration": "Collaboration",
     "aboutus": "About Us",
-    "join": "Join"
+    "join": "Join Now"
   },
   "Hero-section": {
     "title": "Welcome to MSKTH",
@@ -72,7 +72,15 @@
       "title": "About Us",
       "description": "Learn more about MSKTH, our mission, and our community."
     },
-    "title": "About Us"
+    "title": "About Us",
+    "description": "A space to grow in faith, knowledge, and community.",
+    
+    "ourStory": {
+      "intro": "We strive to create a welcoming space where Muslim students can connect with each other, strengthen their relationship with God, and build lasting friendships on campus.",
+      "mission": "At Muslim Students KTH (MSKTH), we aim to create a space at KTH where faith and knowledge meet. A space that allows Muslim students to grow spiritually, academically, and socially, where one can feel both grounded in belief and at home in community.",
+      "heading": "Our story",
+      "story": "MSKTH was founded by students who saw a need for a supportive community where Muslim students could find strength and companionship in their daily life at university. Over time, what began as a few students meeting for prayer and discussion has grown into a vibrant association, a place for friendships, worship, learning, and service. Our journey continues with the same purpose: to be a trusted meeting point for all Muslim students at KTH."
+    }
   },
   "Events": {
     "meta": {
