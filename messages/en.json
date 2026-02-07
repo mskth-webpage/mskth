@@ -80,6 +80,26 @@
       "mission": "At Muslim Students KTH (MSKTH), we aim to create a space at KTH where faith and knowledge meet. A space that allows Muslim students to grow spiritually, academically, and socially, where one can feel both grounded in belief and at home in community.",
       "heading": "Our story",
       "story": "MSKTH was founded by students who saw a need for a supportive community where Muslim students could find strength and companionship in their daily life at university. Over time, what began as a few students meeting for prayer and discussion has grown into a vibrant association, a place for friendships, worship, learning, and service. Our journey continues with the same purpose: to be a trusted meeting point for all Muslim students at KTH."
+    },
+    "team": {
+      "heading": "Board members",
+      "members": {
+        "member1": {
+          "name": "Name Lastname",
+          "role": "Role",
+          "email": "email@example.com"
+        },
+        "member2": {
+          "name": "Name Lastname",
+          "role": "Role",
+          "email": "email@example.com"
+        },
+        "member3": {
+          "name": "Name Lastname",
+          "role": "Role",
+          "email": "email@example.com"
+        }
+      }
     }
   },
   "Events": {
