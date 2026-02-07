@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer className="w-full mt-20">
       <div className="w-full bg-footer-gradient pt-12 pb-16">
-        <div className="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
+        <div className="max-w-[1800px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
           
           {/* LEFT COLUMN — QUICK LINKS */}
           <div className="text-left">
