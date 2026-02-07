@@ -88,7 +88,7 @@
     --neutral-black: oklch(0 0 0);         
     --footer-gradient: linear-gradient(
       to bottom,
-      var(--blue-soft-1) 0%,
+      var(--blue-soft-2) 0%,
       var(--neutral) 100%
     );
 
@@ -134,7 +134,7 @@
     --neutral-black: oklch(0.985 0 0);   
     --footer-gradient: linear-gradient(
       to bottom,
-      var(--blue-soft-1) 0%,
+      var(--blue-soft-2) 0%,
       var(--neutral) 100%
     );
 
@@ -147,7 +147,7 @@
     }
     html {
       height: 100%;
-      scrollbar-gutter: stable both-edges;
+      scrollbar-gutter: stable;
       overflow-y: scroll;
       padding-bottom: 1px;
     }
@@ -160,5 +160,4 @@
   .bg-footer-gradient {
     background: var(--footer-gradient);
   }
-
 
