@@ -19,7 +19,7 @@ export default function LocaleSwitcher() {
       <SelectTrigger className="w-[90px]">
         <SelectValue />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="max-h-none overflow-hidden">
         <SelectItem value="en">🇬🇧 {t("en")}</SelectItem>
         <SelectItem value="sv">🇸🇪 {t("sv")}</SelectItem>
       </SelectContent>
