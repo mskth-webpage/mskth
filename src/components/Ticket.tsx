@@ -20,18 +20,18 @@ export default function Ticket({ title, description, buttonText = "BUY NOW", onB
       />
 
       {/* Content */}
-      <div className="relative inset-x-0 top-0 px-8 text-center flex flex-col items-center h-full">
-        <h3 className="pt-[140px] text-5xl font-serif font-semibold text-foreground">
+      <div className="relative inset-x-0 top-0 px-8 text-center flex flex-col items-center h-full text-(--neutral-black)">
+        <h3 className="pt-[140px] text-5xl font-serif font-semibold">
           {title}
         </h3>
 
-        <p className="mt-8 font-serif text-lg text-foreground/80">
+        <p className="mt-8 font-serif text-lg text-[color:color-mix(in oklch, var(--neutral-black) 70%, transparent)]">
           {description}
         </p>
 
         <button
           onClick={onBuy}
-          className="mt-auto mb-[140px] rounded-full border border-foreground/30 px-8 py-2 text-sm uppercase tracking-wide font-medium text-foreground hover:bg-foreground/5 transition-colors"
+          className="mt-auto mb-[140px] rounded-full border border-(--neutral-black)/30 px-8 py-2 text-sm uppercase tracking-wide font-medium hover:bg-[color:color-mix(in oklch, var(--neutral-black) 8%, transparent)] transition-colors"
         >
           {buttonText}
         </button>
