@@ -96,7 +96,12 @@
       "description": "Explore upcoming MSKTH events and stay connected with the community."
     },
     "title": "Events",
-    "description": "Short description"
+    "description": "Short description",
+    "previous": {
+      "title": "PREVIOUS EVENTS",
+      "description": "Short description",
+      "name": "EVENTNAME"
+    }
   },
   "Collaboration": {
     "meta": {
