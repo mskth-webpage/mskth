@@ -96,7 +96,12 @@
       "description": "Upptäck kommande MSKTH-evenemang och håll kontakten med gemenskapen."
     },
     "title": "Evenemang",
-    "description": "Kort beskrivning"
+    "description": "Kort beskrivning",
+    "previous": {
+      "title": "FÖREGÅENDE EVENT",
+      "description": "Kort beskrivning",
+      "name": "EVENTNAMN"
+    }
   },
   "Collaboration": {
     "meta": {
