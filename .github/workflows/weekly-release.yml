@@ -1,0 +1,63 @@
+name: Weekly Release to Main
+
+on:
+  schedule:
+    # Runs every Sunday at 18:00 UTC (20:00 Stockholm time)
+    - cron: '0 18 * * 0'
+  workflow_dispatch: # Allows manual trigger from Actions tab
+
+jobs:
+  create-release-pr:
+    name: "Create Release PR"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PROJECT_TOKEN }}
+
+      - name: Check if dev is ahead of main
+        id: check
+        run: |
+          git fetch origin main dev
+          COMMITS_AHEAD=$(git rev-list --count origin/main..origin/dev)
+          echo "commits_ahead=$COMMITS_AHEAD" >> $GITHUB_OUTPUT
+          echo "Dev is $COMMITS_AHEAD commits ahead of main"
+
+      - name: Create Pull Request
+        if: steps.check.outputs.commits_ahead > 0
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.PROJECT_TOKEN }}
+          script: |
+            const today = new Date().toISOString().split('T')[0];
+
+            // Check if a release PR already exists
+            const existingPRs = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              head: `${context.repo.owner}:dev`,
+              base: 'main',
+              state: 'open'
+            });
+
+            if (existingPRs.data.length > 0) {
+              console.log('A release PR already exists: #' + existingPRs.data[0].number);
+              return;
+            }
+
+            const pr = await github.rest.pulls.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Weekly Release ' + today,
+              head: 'dev',
+              base: 'main',
+              body: 'Automated weekly release from dev to main.\n\nDate: ' + today + '\n\nPlease review and merge.'
+            });
+
+            console.log('Created PR #' + pr.data.number);
+
+      - name: Skip if no changes
+        if: steps.check.outputs.commits_ahead == 0
+        run: echo "No new commits on dev. Skipping PR creation."
