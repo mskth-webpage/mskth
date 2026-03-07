@@ -23,7 +23,7 @@ export default function AboutUsView() {
 
       {/* Team section */}
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
-        <h2 className="mb-10 font-serif text-3xl font-semibold text-foreground">
+        <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {teamT("heading")}
         </h2>
 
