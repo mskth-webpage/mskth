@@ -91,9 +91,13 @@
     },
     "projects": {
       "heading": "MSKTH PROJEKT",
+      "labels": {
+        "project_group": "Projektgrupp"
+      },
       "project": {
         "name": "Projektnamn",
-        "project_members": "Projektgrupp"
+        "description": "Kort beskrivning av projekt",
+        "project_members": "Gruppmedlemmar"
       }
     }
   },

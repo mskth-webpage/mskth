@@ -5,12 +5,16 @@ import Image from "next/image";
 
 type ProjectCardProps = {
   name: string;
+  description: string;
+  project_group_label: string;
   project_members: string;
   imageUrl?: string;
 };
 
 export default function ProjectCard({
   name,
+  description,
+  project_group_label,
   project_members,
   imageUrl,
 }: ProjectCardProps) {
@@ -37,7 +41,11 @@ export default function ProjectCard({
         </h3>
 
         <p className="mt-1 text-sm text-muted-foreground">
-          {project_members}
+          {description}
+        </p>
+
+        <p className="mt-1 text-sm text-muted-foreground">
+          {project_group_label}: {project_members}
         </p>
       </div>
     </article>

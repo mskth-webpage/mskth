@@ -45,14 +45,20 @@ export default function AboutUsView() {
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-8 justify-items-center">
           <ProjectCard
             name={projectT("project.name")}
+            description={projectT("project.description")}
+            project_group_label={projectT("labels.project_group")}
             project_members={projectT("project.project_members")}
           />
           <ProjectCard
             name={projectT("project.name")}
+            description={projectT("project.description")}
+            project_group_label={projectT("labels.project_group")}
             project_members={projectT("project.project_members")}
           />
           <ProjectCard
             name={projectT("project.name")}
+            description={projectT("project.description")}
+            project_group_label={projectT("labels.project_group")}
             project_members={projectT("project.project_members")}
           />
         </div>

@@ -91,9 +91,13 @@
     },
     "projects": {
       "heading": "MSKTH PROJECTS",
+      "labels": {
+        "project_group": "Project Group"
+      },
       "project": {
         "name": "Project Name",
-        "project_members": "Project Group"
+        "description": "Short description",
+        "project_members": "Group members"
       }
     }
   },
