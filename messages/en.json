@@ -88,6 +88,13 @@
         "role": "Role",
         "email": "email@example.com"
       }
+    },
+    "projects": {
+      "heading": "MSKTH PROJECTS",
+      "project": {
+        "name": "Project Name",
+        "project_members": "Project Group"
+      }
     }
   },
   "Events": {

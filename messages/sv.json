@@ -88,6 +88,13 @@
         "role": "Roll",
         "email": "epost@exempel.se"
       }
+    },
+    "projects": {
+      "heading": "MSKTH PROJEKT",
+      "project": {
+        "name": "Projektnamn",
+        "project_members": "Projektgrupp"
+      }
     }
   },
   "Events": {
