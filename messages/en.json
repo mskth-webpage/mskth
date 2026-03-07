@@ -83,55 +83,10 @@
     },
     "team": {
       "heading": "Board members",
-      "president": {
-        "name": "Name Lastname",
+      "member": {
+        "name": "Firstname Lastname",
         "role": "Role",
-        "email": "email@example.com"
-      },
-      "vice_president": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
-      },
-      "business": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
-      },
-      "secretary": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
-      },
-      "events_sister": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
-      },
-      "events_brother": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
-      },
-      "treasurer": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
-      },
-      "pr": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
-      },
-      "media": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
-      },
-      "it": {
-        "name": "Name Lastname",
-        "role": "Role",
-        "email": "email@example.com"
+        "email": "email@mskth.se"
       }
     }
   },

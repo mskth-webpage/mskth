@@ -83,55 +83,10 @@
     },
     "team": {
       "heading": "Styrelsemedlemmar",
-      "president": {
+      "member": {
         "name": "Förnamn Efternamn",
         "role": "Roll",
-        "email": "epost@exempel.se"      
-      },
-      "vice_president": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
-      },
-      "business": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
-      },
-      "secretary": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
-      },
-      "events_sister": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
-      },
-      "events_brother": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
-      },
-      "treasurer": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
-      },
-      "pr": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
-      },
-      "media": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
-      },
-      "it": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@exempel.se"
+        "email": "epost@mskth.se"      
       }
     }
   },

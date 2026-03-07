@@ -27,68 +27,69 @@ export default function AboutUsView() {
           {teamT("heading")}
         </h2>
 
-        {/* 4x3 grid on medium/large screens, 2x5 on mobile and 3x4 on small screens */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
-        
+        {/* 4x3 grid on large screen, 3x4 on medium and 10x1 on mobile, chenge to 2x5 if too big */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
+
         <TeamMemberCard
-          name={teamT("president.name")}
-          role={teamT("president.role")}
-          email={teamT("president.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
 
         <TeamMemberCard
-          name={teamT("vice_president.name")}
-          role={teamT("vice_president.role")}
-          email={teamT("vice_president.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
 
         <TeamMemberCard
-          name={teamT("business.name")}
-          role={teamT("business.role")}
-          email={teamT("business.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
 
         <TeamMemberCard
-          name={teamT("secretary.name")}
-          role={teamT("secretary.role")}
-          email={teamT("secretary.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
 
         <TeamMemberCard
-          name={teamT("events_sister.name")}
-          role={teamT("events_sister.role")}
-          email={teamT("events_sister.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
 
         <TeamMemberCard
-          name={teamT("events_brother.name")}
-          role={teamT("events_brother.role")}
-          email={teamT("events_brother.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
 
         <TeamMemberCard
-          name={teamT("treasurer.name")}
-          role={teamT("treasurer.role")}
-          email={teamT("treasurer.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
 
         <TeamMemberCard
-          name={teamT("pr.name")}
-          role={teamT("pr.role")}
-          email={teamT("pr.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />   
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
 
         <TeamMemberCard
-          name={teamT("media.name")}
-          role={teamT("media.role")}
-          email={teamT("media.email")}
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
         />
-
-        <TeamMemberCard
-          name={teamT("it.name")}
-          role={teamT("it.role")}
-          email={teamT("it.email")}
-        />
+             
         </div>
       </section>
     </>
