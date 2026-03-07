@@ -68,7 +68,7 @@ export default function Navbar() {
             variant="outline"
             className="rounded-full px-8 py-2 uppercase tracking-wide text-sm font-medium border-color-mskth-blue text-color-mskth-blue hover:bg-color-mskth-blue/10 transition-all duration-200"
           >
-            <Link href="/join">{t("join")}</Link>
+            <Link href="https://hitract.se/">{t("join")}</Link>
           </Button>
 
           <LocaleSwitcher />
