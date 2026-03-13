@@ -100,7 +100,21 @@
     "previous": {
       "title": "PREVIOUS EVENTS",
       "description": "Short description",
-      "name": "EVENTNAME"
+      "card1": {
+        "name": "EVENTNAME",
+        "description": "Short description",
+        "img": "imgURL"
+      },
+      "card2": {
+        "name": "EVENTNAME",
+        "description": "Short description",
+        "img": "imgURL"
+      },
+      "card3": {
+        "name": "EVENTNAME",
+        "description": "Short description",
+        "img": "imgURL"
+      }
     }
   },
   "Collaboration": {
