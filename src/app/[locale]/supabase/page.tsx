@@ -1,18 +1,5 @@
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
+import SupabasePresenter from "@/presenter/SupabasePresenter";
 
-export default async function Page() {
-  const cookieStore = await cookies();
-  const supabase = await createClient(cookieStore);
-
-  const { data: subscriptions } = await supabase.from("subscriptions").select();
-
-  console.log(subscriptions);
-  return (
-    <ul>
-      {subscriptions?.map((subscription) => (
-        <li key={subscription.id}>{subscription.username}</li>
-      ))}
-    </ul>
-  );
+export default function SupabasePage() {
+  return <SupabasePresenter />;
 }
