@@ -1,5 +1,8 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
+
+
 interface Subscription {
   id: number;
   username: string;
@@ -31,7 +34,7 @@ export default function SupabaseView({
           placeholder="Add an email"
           required
         />
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
       <h1>Current subscriptions:</h1>
       <ul>
