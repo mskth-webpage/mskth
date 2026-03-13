@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 
-
 interface Subscription {
   id: number;
   username: string;
@@ -12,11 +11,13 @@ interface Subscription {
 interface SupabaseViewProps {
   subscriptions: Subscription[] | null;
   onAddSubscription: (formData: FormData) => Promise<void>;
+  onDeleteSubscription: (id: number) => Promise<void>;
 }
 
 export default function SupabaseView({
   subscriptions,
   onAddSubscription,
+  onDeleteSubscription,
 }: SupabaseViewProps) {
   return (
     <>
@@ -28,12 +29,7 @@ export default function SupabaseView({
           placeholder="Add a username"
           required
         />
-        <input
-          name="email"
-          type="email"
-          placeholder="Add an email"
-          required
-        />
+        <input name="email" type="email" placeholder="Add an email" required />
         <Button type="submit">Submit</Button>
       </form>
       <h1>Current subscriptions:</h1>
@@ -41,6 +37,12 @@ export default function SupabaseView({
         {subscriptions?.map((subscription) => (
           <li key={subscription.id}>
             {subscription.username} | {subscription.email}
+            <Button
+              onClick={() => onDeleteSubscription(subscription.id)}
+              type="button"
+            >
+              Delete
+            </Button>
           </li>
         ))}
       </ul>

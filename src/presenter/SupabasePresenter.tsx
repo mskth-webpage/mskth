@@ -27,10 +27,35 @@ export default async function SupabasePresenter() {
     revalidatePath("/(.*)/supabase", "page");
   }
 
+  async function deleteSubscription(id: number) {
+    "use server";
+
+    const cookieStore = await cookies();
+    const supabase = await createClient(cookieStore);
+
+    const { error } = await supabase
+      .from("subscriptions")
+      .delete()
+      .eq("id", id);
+
+    if (error) {
+      console.error("Failed to delete subscription:", error.message);
+      return;
+    }
+
+    revalidatePath("/(.*)/supabase", "page");
+  }
+
   const cookieStore = await cookies();
   const supabase = await createClient(cookieStore);
 
   const { data: subscriptions } = await supabase.from("subscriptions").select();
 
-  return <SupabaseView subscriptions={subscriptions} onAddSubscription={addSubscription} />;
+  return (
+    <SupabaseView
+      subscriptions={subscriptions}
+      onAddSubscription={addSubscription}
+      onDeleteSubscription={deleteSubscription}
+    />
+  );
 }
