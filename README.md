@@ -102,10 +102,7 @@ Then add your environment variables:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL="https://<your-project>.supabase.co"
-NEXT_PUBLIC_SUPABASE_ANON_KEY="<your-anon-key>"
-SUPABASE_SERVICE_ROLE_KEY="<your-service-key>"
-
-DEFAULT_LOCALE="en"
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY="<your-anon-key>"
 ```
 4. Run the development server
 ```bash
