@@ -93,7 +93,7 @@ git checkout -b feature/<your-feature-name>
 npm install
 ```
 
-<!--3. Create a .env file
+3. Create a .env file
 ```bash 
 cp .env.example .env.local
 ```
@@ -107,7 +107,6 @@ SUPABASE_SERVICE_ROLE_KEY="<your-service-key>"
 
 DEFAULT_LOCALE="en"
 ```
--->
 4. Run the development server
 ```bash
 npm run dev
