@@ -4,10 +4,12 @@ import { useTranslations } from "next-intl";
 import AboutHeader from "@/components/AboutHeader";
 import OurStorySection from "@/components/OurStorySection";
 import TeamMemberCard from "@/components/TeamMemberCard";
+import ProjectCard from "@/components/ProjectCard";
 
 export default function AboutUsView() {
   const t = useTranslations("AboutUs");
   const teamT = useTranslations("AboutUs.team");
+  const projectT = useTranslations("AboutUs.projects");
 
   return (
     <>
@@ -19,19 +21,106 @@ export default function AboutUsView() {
         <AboutHeader title={t("title")} description={t("description")} />
       </main>
 
-      <OurStorySection />
+      <OurStorySection/>
 
-      {/* Team section – testing TeamMemberCard */}
+      {/* Team section */}
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
-        <h2 className="mb-10 font-serif text-3xl font-semibold text-foreground">
+        <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {teamT("heading")}
         </h2>
+
+        {/* 4x3 grid on large screen, 3x4 on medium and 10x1 on mobile, chenge to 2x5 if too big */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
 
         <TeamMemberCard
           name={teamT("member.name")}
           role={teamT("member.role")}
           email={teamT("member.email")}
         />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />   
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+             
+        </div>
+      </section>
+
+      {/* Project section */}
+      <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
+        <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
+          {projectT("heading")}
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-8 justify-items-center">
+          <ProjectCard
+            name={projectT("project.name")}
+            description={projectT("project.description")}
+            project_group_label={projectT("labels.project_group")}
+            project_members={projectT("project.project_members")}
+          />
+          <ProjectCard
+            name={projectT("project.name")}
+            description={projectT("project.description")}
+            project_group_label={projectT("labels.project_group")}
+            project_members={projectT("project.project_members")}
+          />
+          <ProjectCard
+            name={projectT("project.name")}
+            description={projectT("project.description")}
+            project_group_label={projectT("labels.project_group")}
+            project_members={projectT("project.project_members")}
+          />
+        </div>
       </section>
     </>
   );

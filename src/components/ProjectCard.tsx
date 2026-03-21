@@ -1,22 +1,25 @@
-"use client";
+/** Following format for TeamMemberCard.tsx */
 
+"use client";
 import Image from "next/image";
 
-type TeamMemberCardProps = {
+type ProjectCardProps = {
   name: string;
-  role: string;
-  email: string;
+  description: string;
+  project_group_label: string;
+  project_members: string;
   imageUrl?: string;
 };
 
-export default function TeamMemberCard({
+export default function ProjectCard({
   name,
-  role,
-  email,
+  description,
+  project_group_label,
+  project_members,
   imageUrl,
-}: TeamMemberCardProps) {
+}: ProjectCardProps) {
   return (
-    <article className="mx-auto"> {/* Had to change from <article className="w-[260px]"> to <article className="mx-auto"> for centering purpose*/}
+    <article className="mx-auto">
       {/* Image */}
       <div className="relative mb-6 h-[180px] w-[180px] overflow-hidden bg-muted rounded-tr-lg">
         {imageUrl ? (
@@ -38,11 +41,11 @@ export default function TeamMemberCard({
         </h3>
 
         <p className="mt-1 text-sm text-muted-foreground">
-          {role}
+          {description}
         </p>
 
         <p className="mt-1 text-sm text-muted-foreground">
-          {email}
+          {project_group_label}: {project_members}
         </p>
       </div>
     </article>
