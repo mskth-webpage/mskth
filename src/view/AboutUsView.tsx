@@ -21,19 +21,78 @@ export default function AboutUsView() {
         <AboutHeader title={t("title")} description={t("description")} />
       </main>
 
-      <OurStorySection />
+      <OurStorySection/>
 
-      {/* Team section – testing TeamMemberCard */}
+      {/* Team section */}
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
-        <h2 className="mb-10 font-serif text-3xl font-semibold text-foreground">
+        <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {teamT("heading")}
         </h2>
+
+        {/* 4x3 grid on large screen, 3x4 on medium and 10x1 on mobile, chenge to 2x5 if too big */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
 
         <TeamMemberCard
           name={teamT("member.name")}
           role={teamT("member.role")}
           email={teamT("member.email")}
         />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />   
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+             
+        </div>
       </section>
 
       {/* Project section */}
