@@ -61,8 +61,10 @@
     },
     "newsletter": {
       "title": "Join our community today",
-      "placeholder": "Enter your mail...",
-      "aria": "Email address",
+      "namePlaceholder": "Enter your name...",
+      "nameAria": "Name",
+      "emailPlaceholder": "Enter your mail...",
+      "emailAria": "Email address",
       "button": "Subscribe",
       "helper": "Join your monthly newsletter to be notified when upcoming events come!"
     }

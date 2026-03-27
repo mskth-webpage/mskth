@@ -61,8 +61,10 @@
     },
     "newsletter": {
       "title": "Gå med i vår gemenskap idag",
-      "placeholder": "Ange din e-post...",
-      "aria": "E-postadress",
+      "namePlaceholder": "Ange ditt namn...",
+      "nameAria": "Namn",
+      "emailPlaceholder": "Ange din e-post...",
+      "emailAria": "E-postadress",
       "button": "Prenumerera",
       "helper": "Prenumerera på vårt månatliga nyhetsbrev för att få veta när kommande evenemang släpps!"
     }
