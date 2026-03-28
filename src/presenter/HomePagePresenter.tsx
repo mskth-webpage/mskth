@@ -18,7 +18,7 @@ export default function HomePagePresenter() {
     const cookieStore = await cookies();
     const supabase = await createClient(cookieStore);
 
-    await supabase.from("subscriptions").insert([{ name, email }]);
+    await supabase.from("subscriptions").insert({ name, email });
   }
 
   return (
