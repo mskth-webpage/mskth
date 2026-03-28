@@ -1,15 +1,32 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useState, useRef } from "react";
+
+type SubscriptionStatus = "idle" | "success" | "error";
 
 type NewsletterSubscriptionViewProps = {
-  addSubscription: (formData: FormData) => Promise<void>;
+  addSubscription: (
+    formData: FormData,
+  ) => Promise<{ status: SubscriptionStatus }>;
 };
 
 export default function NewsletterSubscriptionView({
   addSubscription,
 }: NewsletterSubscriptionViewProps) {
   const t = useTranslations("HomePage");
+  const [status, setStatus] = useState<SubscriptionStatus>("idle");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  async function handleSubmit(formData: FormData) {
+    setStatus("idle");
+    const result = await addSubscription(formData);
+    setStatus(result.status);
+
+    if (result.status === "success" && formRef.current) {
+      formRef.current.reset();
+    }
+  }
 
   return (
     <section className="relative w-full bg-background">
@@ -18,7 +35,8 @@ export default function NewsletterSubscriptionView({
           {t("newsletter.title")}
         </h2>
         <form
-          action={addSubscription}
+          ref={formRef}
+          action={handleSubmit}
           className="mx-auto mt-6 flex w-full max-w-130 items-stretch gap-2"
         >
           <input
@@ -44,9 +62,24 @@ export default function NewsletterSubscriptionView({
             {t("newsletter.button")}
           </button>
         </form>
-        <p className="mt-3 text-center text-[12px] text-foreground">
-          {t("newsletter.helper")}
-        </p>
+
+        <div className="mt-4 min-h-5">
+          {status === "idle" && (
+            <p className="text-center text-[12px] text-foreground/80">
+              {t("newsletter.helper")}
+            </p>
+          )}
+          {status === "success" && (
+            <p className="text-center text-[13px] font-medium text-foreground">
+              ✓ {t("newsletter.success")}
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-center text-[13px] font-medium text-foreground/80">
+              {t("newsletter.error")}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

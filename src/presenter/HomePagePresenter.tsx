@@ -12,13 +12,25 @@ export default function HomePagePresenter() {
     const email = formData.get("email")?.toString().trim();
 
     if (!name || !email) {
-      return;
+      return { status: "error" as const };
     }
 
     const cookieStore = await cookies();
     const supabase = await createClient(cookieStore);
 
-    await supabase.from("subscriptions").insert({ name, email });
+    const { error } = await supabase
+      .from("subscriptions")
+      .insert({ name, email });
+
+    if (error) {
+      // Postgres unique_violation error code
+      if (error.code === "23505") {
+        return { status: "success" as const }; // Return success to avoid data leakage
+      }
+      return { status: "error" as const };
+    }
+
+    return { status: "success" as const };
   }
 
   return (

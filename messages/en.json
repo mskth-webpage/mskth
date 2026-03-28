@@ -66,7 +66,9 @@
       "emailPlaceholder": "Enter your mail...",
       "emailAria": "Email address",
       "button": "Subscribe",
-      "helper": "Join your monthly newsletter to be notified when upcoming events come!"
+      "helper": "Join your monthly newsletter to be notified when upcoming events come!",
+      "success": "Thanks! You successfully subscribed to the newsletter.",
+      "error": "Something went wrong. Please try again later."
     }
   },
   "AboutUs": {
