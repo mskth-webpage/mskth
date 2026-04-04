@@ -65,6 +65,14 @@ export default function Navbar() {
         <div className="hidden md:flex shrink-0 items-center gap-4 ml-6">
           <Button
             asChild
+            variant="ghost"
+            className={`${noHoverButton} rounded-full px-5`}
+          >
+            <Link href="/admin/login">{t("login")}</Link>
+          </Button>
+
+          <Button
+            asChild
             variant="outline"
             className="rounded-full px-8 py-2 uppercase tracking-wide text-sm font-medium border-color-mskth-blue text-color-mskth-blue hover:bg-color-mskth-blue/10 transition-all duration-200"
           >
@@ -91,6 +99,13 @@ export default function Navbar() {
         <div className="md:hidden border-t bg-background px-4 py-4 space-y-4">
 
           <div className="flex flex-col space-y-3 text-lg">
+            <Link
+              className={mobileMenuLinkClasses}
+              href="/login"
+              onClick={() => setOpen(false)}
+            >
+              {t("login")}
+            </Link>
             <Link
               className={mobileMenuLinkClasses}
               href="/events"
