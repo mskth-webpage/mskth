@@ -25,7 +25,28 @@
     "events": "Evenemang",
     "collaboration": "Samarbete",
     "aboutus": "Om oss",
-    "join": "Gå med"
+    "join": "Gå med",
+    "login": "Logga in"
+  },
+  "LoginPage": {
+    "eyebrow": "Admininloggning",
+    "title": "Logga in på ditt MSKTH-adminkonto",
+    "description": "Använd din e-postadress och ditt lösenord för att få åtkomst till MSKTHs adminkonto.",
+    "emailLabel": "E-post",
+    "emailPlaceholder": "namn@kth.se",
+    "passwordLabel": "Lösenord",
+    "passwordPlaceholder": "Ange ditt lösenord",
+    "submit": "Logga in",
+    "submitting": "Loggar in...",
+    "success": "Inloggningen lyckades. Omdirigerar...",
+    "invalidCredentials": "Fel e-postadress eller lösenord.",
+    "genericError": "Något gick fel. Försök igen senare."
+  },
+  "AdminDashboard": {
+    "title": "Välkommen till adminpanelen",
+    "description": "Hantera MSKTHs admininnehåll, inställningar och interna arbetsflöden från den här panelen.",
+    "hint": "Dina adminverktyg kan läggas till här som kort, tabeller eller snabbåtgärder.",
+    "logout": "Logga ut"
   },
   "Hero-section": {
     "title": "Välkommen till MSKTH",
