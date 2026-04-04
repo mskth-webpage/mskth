@@ -1,13 +1,13 @@
+"use client";
+
 import HeroSectionView from "@/view/HeroSectionView";
 import NewsletterSubscriptionView from "@/view/NewsletterSubscriptionView";
 import UpcomingEventsView from "@/view/UpcomingEventsView";
-import { createClient } from "@/utils/supabase/server";
-import { cookies } from "next/headers";
 
 export default function HomePagePresenter() {
-  async function addSubscription(formData: FormData) {
-    "use server";
-
+  async function addSubscription(
+    formData: FormData,
+  ): Promise<{ status: "success" | "error" }> {
     const name = formData.get("name")?.toString().trim();
     const email = formData.get("email")?.toString().trim();
 
@@ -15,22 +15,23 @@ export default function HomePagePresenter() {
       return { status: "error" as const };
     }
 
-    const cookieStore = await cookies();
-    const supabase = await createClient(cookieStore);
+    const response = await fetch("/api/subscriptions", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ name, email }),
+    });
 
-    const { error } = await supabase
-      .from("subscriptions")
-      .insert({ name, email });
-
-    if (error) {
-      // Postgres unique_violation error code
-      if (error.code === "23505") {
-        return { status: "success" as const }; // Return success to avoid data leakage
-      }
+    if (!response.ok) {
       return { status: "error" as const };
     }
 
-    return { status: "success" as const };
+    const result = (await response.json()) as { status?: "success" | "error" };
+
+    return {
+      status: result.status === "success" ? "success" : "error",
+    };
   }
 
   return (
