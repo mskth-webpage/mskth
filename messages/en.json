@@ -25,7 +25,28 @@
     "events": "Events",
     "collaboration": "Collaboration",
     "aboutus": "About Us",
-    "join": "Join Now"
+    "join": "Join Now",
+    "login": "Login"
+  },
+  "LoginPage": {
+    "eyebrow": "Admin access",
+    "title": "Sign in to your MSKTH admin account",
+    "description": "Use your email and password to access the MSKTH admin account.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "name@kth.se",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submit": "Sign in",
+    "submitting": "Signing in...",
+    "success": "Login successful. Redirecting...",
+    "invalidCredentials": "Invalid email or password.",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "AdminDashboard": {
+    "title": "Welcome to the Admin Dashboard",
+    "description": "Manage MSKTH admin content, settings, and internal workflows from this dashboard.",
+    "hint": "Your admin tools can be added here as cards, tables, or quick actions.",
+    "logout": "Log out"
   },
   "Hero-section": {
     "title": "Welcome to MSKTH",
@@ -61,10 +82,14 @@
     },
     "newsletter": {
       "title": "Join our community today",
-      "placeholder": "Enter your mail...",
-      "aria": "Email address",
+      "namePlaceholder": "Enter your name...",
+      "nameAria": "Name",
+      "emailPlaceholder": "Enter your mail...",
+      "emailAria": "Email address",
       "button": "Subscribe",
-      "helper": "Join your monthly newsletter to be notified when upcoming events come!"
+      "helper": "Join your monthly newsletter to be notified when upcoming events come!",
+      "success": "Thanks! You successfully subscribed to the newsletter.",
+      "error": "Something went wrong. Please try again later."
     }
   },
   "AboutUs": {
