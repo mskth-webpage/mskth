@@ -48,6 +48,21 @@
     "hint": "Your admin tools can be added here as cards, tables, or quick actions.",
     "logout": "Log out"
   },
+  "Sidebar": {
+    "event": "Event",
+    "boardmembers": "Boardmembers",
+    "project": "Project",
+    "userManagement": "User management",
+    "calendar": "Calendar",
+    "resources": "Resources"
+  },
+  "AdminTopbar": {
+    "language": "Language",
+    "appearanceTitle": "Appearance",
+    "appearanceDescription": "Light or dark theme",
+    "switchToLightMode": "Switch to light mode",
+    "switchToDarkMode": "Switch to dark mode"
+  },
   "Hero-section": {
     "title": "Welcome to MSKTH",
     "subtitle": "Your Community Awaits",

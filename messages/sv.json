@@ -48,6 +48,21 @@
     "hint": "Dina adminverktyg kan läggas till här som kort, tabeller eller snabbåtgärder.",
     "logout": "Logga ut"
   },
+  "Sidebar": {
+    "event": "Event",
+    "boardmembers": "Styrelsemedlemmar",
+    "project": "Projekt",
+    "userManagement": "Användarhantering",
+    "calendar": "Kalender",
+    "resources": "Resurser"
+  },
+  "AdminTopbar": {
+    "language": "Språk",
+    "appearanceTitle": "Utseende",
+    "appearanceDescription": "Ljust eller mörkt tema",
+    "switchToLightMode": "Byt till ljust läge",
+    "switchToDarkMode": "Byt till mörkt läge"
+  },
   "Hero-section": {
     "title": "Välkommen till MSKTH",
     "subtitle": "Din gemenskap väntar",
