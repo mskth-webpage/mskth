@@ -7,7 +7,7 @@ function Logo() {
   return (
     <Link href="/" className="block">
       <Image
-        src="/logga.png"
+        src="/logga.svg"
         width={230}
         height={210}
         alt="Mskth logo"

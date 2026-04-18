@@ -1,9 +1,10 @@
+ "use client";
+
 import Image from "next/image";
-import { useRef, useState, PointerEvent } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 
 const DRAG_THRESHOLD = 18;
 const MAX_DRAG = 30;
-
 
 type ThemeToggleProps = {
   theme: string | undefined;
@@ -12,10 +13,19 @@ type ThemeToggleProps = {
 };
 
 export default function ThemeToggleButton({ theme, setTheme, ariaLabel }: ThemeToggleProps) {
+  const mounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false,
+  );
   const startYRef = useRef<number | null>(null);
   const [offset, setOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const didDragToggleRef = useRef(false);
+  const resolvedTheme = mounted ? theme : undefined;
+  const isDark = resolvedTheme === "dark";
+  const imageSrc = isDark ? "/lightmode.png" : "/darkmode.png";
+  const imageAlt = isDark ? "Switch to light mode" : "Switch to dark mode";
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -64,7 +74,7 @@ export default function ThemeToggleButton({ theme, setTheme, ariaLabel }: ThemeT
   return (
     <button
       type="button"
-      aria-label={ariaLabel ?? "Toggle dark mode"}
+      aria-label={mounted ? (ariaLabel ?? imageAlt) : "Toggle theme"}
       onClick={handleClick}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
@@ -77,25 +87,14 @@ export default function ThemeToggleButton({ theme, setTheme, ariaLabel }: ThemeT
         touchAction: "none",
       }}
     >
-      {theme === "dark" ? (
-        <Image
-          src="/lightmode.png"
-          width={28}
-          height={28}
-          alt="Switch to light mode"
-          draggable={false}
-          className="w-27 h-27 object-contain"
-        />
-      ) : (
-        <Image
-          src="/darkmode.png"
-          width={28}
-          height={28}
-          alt="Switch to dark mode"
-          draggable={false}
-          className="w-27 h-27 object-contain"
-        />
-      )}
+      <Image
+        src={imageSrc}
+        width={28}
+        height={28}
+        alt={imageAlt}
+        draggable={false}
+        className="w-27 h-27 object-contain"
+      />
     </button>
   );
 }
