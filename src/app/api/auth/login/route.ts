@@ -27,16 +27,23 @@ export async function POST(request: Request) {
     );
   }
 
-  const cookieStore = await cookies();
-  const supabase = await createClient(cookieStore);
-  const { error } = await supabase.auth.signInWithPassword({
-    email: trimmedEmail,
-    password: normalizedPassword,
-  });
+  try {
+    const cookieStore = await cookies();
+    const supabase = await createClient(cookieStore);
+    const { error } = await supabase.auth.signInWithPassword({
+      email: trimmedEmail,
+      password: normalizedPassword,
+    });
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 401 });
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 401 });
+    }
+
+    return NextResponse.json({ status: "success" });
+  } catch {
+    return NextResponse.json(
+      { error: "Unable to complete login." },
+      { status: 500 },
+    );
   }
-
-  return NextResponse.json({ status: "success" });
 }
