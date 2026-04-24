@@ -14,13 +14,18 @@ import { cookies } from "next/headers";
 
 import { routing } from "@/i18n/routing";
 import { createClient } from "@/utils/supabase/server";
+import AdminProjectsPresenter from "@/presenter/admin/AdminProjectsPresenter";
 
 export default async function Page({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { locale } = await params;
+  const resolvedSearchParams = await searchParams;
+  const section = resolvedSearchParams?.section as string | undefined;
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -39,29 +44,35 @@ export default async function Page({
   }
 
   return (
-    <section className="flex min-h-full w-full items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-2xl border-border/80 py-0 shadow-lg">
-        <CardHeader className="px-6 pt-6">
-          <CardAction>
-            <form action={logout}>
-              <Button type="submit" variant="outline" className="rounded-full">
-                {t("logout")}
-              </Button>
-            </form>
-          </CardAction>
-          <CardTitle className="font-serif text-3xl tracking-tight sm:text-4xl">
-            {t("title")}
-          </CardTitle>
-          <CardDescription className="text-base leading-7">
-            {t("description")}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="px-6 pb-6">
-          <div className="rounded-lg border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
-            {t("hint")}
-          </div>
-        </CardContent>
-      </Card>
-    </section>
+    <>
+      {section === "project" ? (
+        <AdminProjectsPresenter />
+      ) : (
+        <section className="flex min-h-full w-full items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
+          <Card className="w-full max-w-2xl border-border/80 py-0 shadow-lg">
+            <CardHeader className="px-6 pt-6">
+              <CardAction>
+                <form action={logout}>
+                  <Button type="submit" variant="outline" className="rounded-full">
+                    {t("logout")}
+                  </Button>
+                </form>
+              </CardAction>
+              <CardTitle className="font-serif text-3xl tracking-tight sm:text-4xl">
+                {t("title")}
+              </CardTitle>
+              <CardDescription className="text-base leading-7">
+                {t("description")}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="px-6 pb-6">
+              <div className="rounded-lg border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
+                {t("hint")}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+      )}
+    </>
   );
 }

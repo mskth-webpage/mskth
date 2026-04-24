@@ -19,7 +19,7 @@ export default function ProjectCard({
   imageUrl,
 }: ProjectCardProps) {
   return (
-    <article className="mx-auto">
+    <article className="mx-auto max-w-[180px]">
       {/* Image */}
       <div className="relative mb-6 h-[180px] w-[180px] overflow-hidden bg-muted rounded-tr-lg">
         {imageUrl ? (

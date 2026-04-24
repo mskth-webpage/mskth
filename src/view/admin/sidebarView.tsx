@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BookOpen, Calendar, LayoutDashboard, Loader2, Users } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
@@ -23,7 +23,7 @@ type SidebarProps = {
  * Sidebar component for the admin dashboard area. It includes navigation links and a logout button.
  * It is responsive and can be toggled open or closed.
  */
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+function SidebarContent({ isOpen, onClose }: SidebarProps) {
   const t = useTranslations('Sidebar');
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -126,5 +126,13 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       </aside>
     </>
+  );
+}
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+  return (
+    <Suspense fallback={null}>
+      <SidebarContent isOpen={isOpen} onClose={onClose} />
+    </Suspense>
   );
 }
