@@ -57,7 +57,7 @@ function SidebarContent({ isOpen, onClose }: SidebarProps) {
 
   React.useEffect(() => {
     setPendingHref(null);
-  }, [pathname]);
+  }, [pathname, searchParams]);
 
   const isNavigating = pendingHref !== null;
 
