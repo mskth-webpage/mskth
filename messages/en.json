@@ -56,6 +56,16 @@
     "calendar": "Calendar",
     "resources": "Resources"
   },
+  "AdminProjects": {
+    "title": "Create next project",
+    "addNew": "Add New",
+    "project": {
+      "name": "Project Name",
+      "description": "Projects lead by",
+      "groupLabel": "MSKTH Board",
+      "members": "Members and active members"
+    }
+  },
   "AdminTopbar": {
     "language": "Language",
     "appearanceTitle": "Appearance",

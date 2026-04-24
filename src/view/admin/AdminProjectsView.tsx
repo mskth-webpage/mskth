@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import ProjectCard from "@/components/ProjectCard";
+import { useTranslations } from "next-intl";
 
 export type Project = {
   id: string;
@@ -17,17 +18,19 @@ type Props = {
 };
 
 export default function AdminProjectsView({ projects }: Props) {
+  const t = useTranslations("AdminProjects");
+
   return (
     <section className="w-full p-6 sm:p-8 lg:p-12 lg:pt-10">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-12 gap-6">
         <h2 className="text-2xl font-serif font-medium text-foreground tracking-wide">
-          Create next project
+          {t("title")}
         </h2>
         <Button
           variant="outline"
           className="rounded-full px-6 py-2 text-xs font-semibold uppercase tracking-wider border-blue-400 text-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-colors shadow-sm"
         >
-          Add New
+          {t("addNew")}
         </Button>
       </div>
 

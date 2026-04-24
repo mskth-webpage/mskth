@@ -56,6 +56,16 @@
     "calendar": "Kalender",
     "resources": "Resurser"
   },
+  "AdminProjects": {
+    "title": "Skapa nästa projekt",
+    "addNew": "Lägg till nytt",
+    "project": {
+      "name": "Projektnamn",
+      "description": "Projekt leds av",
+      "groupLabel": "MSKTH Styrelse",
+      "members": "Medlemmar och aktiva medlemmar"
+    }
+  },
   "AdminTopbar": {
     "language": "Språk",
     "appearanceTitle": "Utseende",
