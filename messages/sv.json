@@ -58,7 +58,10 @@
   },
   "AdminProjects": {
     "title": "Skapa nästa projekt",
-    "addNew": "Lägg till nytt",
+    "titlePrevious": "Skapa tidigare projekt",
+    "addNew": "+ Lägg till nytt",
+    "save": "Spara",
+    "publish": "Publicera",
     "project": {
       "name": "Projektnamn",
       "description": "Projekt leds av",

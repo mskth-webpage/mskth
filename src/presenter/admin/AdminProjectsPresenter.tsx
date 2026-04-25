@@ -7,7 +7,7 @@ export default function AdminProjectsPresenter() {
   const t = useTranslations("AdminProjects.project");
 
   // Dummy data based on the MVP requirements
-  const dummyProjects: Project[] = [
+  const nextProjects: Project[] = [
     {
       id: "1",
       name: t("name"),
@@ -29,6 +29,9 @@ export default function AdminProjectsPresenter() {
       project_group_label: t("groupLabel"),
       project_members: t("members"),
     },
+  ];
+
+  const previousProjects: Project[] = [
     {
       id: "4",
       name: t("name"),
@@ -43,7 +46,14 @@ export default function AdminProjectsPresenter() {
       project_group_label: t("groupLabel"),
       project_members: t("members"),
     },
+    {
+      id: "6",
+      name: t("name"),
+      description: t("description"),
+      project_group_label: t("groupLabel"),
+      project_members: t("members"),
+    },
   ];
 
-  return <AdminProjectsView projects={dummyProjects} />;
+  return <AdminProjectsView nextProjects={nextProjects} previousProjects={previousProjects} />;
 }

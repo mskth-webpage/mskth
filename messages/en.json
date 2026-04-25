@@ -58,7 +58,10 @@
   },
   "AdminProjects": {
     "title": "Create next project",
-    "addNew": "Add New",
+    "titlePrevious": "Create previous project",
+    "addNew": "+ Add new",
+    "save": "Save",
+    "publish": "Publish",
     "project": {
       "name": "Project Name",
       "description": "Projects lead by",
