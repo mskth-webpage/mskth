@@ -1,65 +1,55 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import AdminProjectsView, { Project } from "@/view/admin/AdminProjectsView";
 import { useTranslations } from "next-intl";
 
 export default function AdminProjectsPresenter() {
   const t = useTranslations("AdminProjects.project");
+  
+  const [nextProjects, setNextProjects] = useState<Project[]>([]);
+  const [previousProjects, setPreviousProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Dummy data based on the MVP requirements
-  const nextProjects: Project[] = [
-    {
-      id: "1",
-      title: t("name"),
-      description: t("description"),
-      group_label: t("groupLabel"),
-      members: t("members"),
-      status: "draft"
-    },
-    {
-      id: "2",
-      title: t("name"),
-      description: t("description"),
-      group_label: t("groupLabel"),
-      members: t("members"),
-      status: "draft"
-    },
-    {
-      id: "3",
-      title: t("name"),
-      description: t("description"),
-      group_label: t("groupLabel"),
-      members: t("members"),
-      status: "draft"
-    },
-  ];
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const response = await fetch("/api/auth/project");
+        if (!response.ok) {
+          throw new Error("Failed to fetch projects");
+        }
+        const data = await response.json();
 
-  const previousProjects: Project[] = [
-    {
-      id: "4",
-      title: t("name"),
-      description: t("description"),
-      group_label: t("groupLabel"),
-      members: t("members"),
-      status: "archived"
-    },
-    {
-      id: "5",
-      title: t("name"),
-      description: t("description"),
-      group_label: t("groupLabel"),
-      members: t("members"),
-      status: "archived"
-    },
-    {
-      id: "6",
-      title: t("name"),
-      description: t("description"),
-      group_label: t("groupLabel"),
-      members: t("members"),
-      status: "archived"
-    },
-  ];
+        if (data.projects) {
+          // Filtrer les projets actifs (draft ou published)
+          const next = data.projects.filter(
+            (p: Project) => p.status === "draft" || p.status === "published"
+          );
+          // Filtrer les projets passés (archived)
+          const previous = data.projects.filter(
+            (p: Project) => p.status === "archived"
+          );
+
+          setNextProjects(next);
+          setPreviousProjects(previous);
+        }
+      } catch (error) {
+        console.error("Error loading projects:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchProjects();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex h-full min-h-[500px] w-full items-center justify-center p-12 text-xl font-medium text-muted-foreground">
+        Loading projects...
+      </div>
+    );
+  }
 
   return <AdminProjectsView nextProjects={nextProjects} previousProjects={previousProjects} />;
 }
