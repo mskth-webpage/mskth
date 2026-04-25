@@ -2,7 +2,7 @@
 
 import React, { Suspense } from 'react';
 import { BookOpen, Calendar, LayoutDashboard, Loader2, Users } from 'lucide-react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import LogoutButton from '@/components/admin/auth/LogoutButton';
 import clsx from 'clsx';
@@ -26,27 +26,23 @@ type SidebarProps = {
 function SidebarContent({ isOpen, onClose }: SidebarProps) {
   const t = useTranslations('Sidebar');
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const router = useRouter();
   const locale = useLocale();
   const [pendingHref, setPendingHref] = React.useState<string | null>(null);
-  const activeSection = searchParams.get('section') ?? 'event';
-  const baseHref = `/${locale}/admin/dashboard`;
 
   const MAIN_ITEMS: Item[] = [
-    { icon: BookOpen, labelKey: 'event', section: 'event', href: `${baseHref}?section=event` },
-    { icon: LayoutDashboard, labelKey: 'project', section: 'project', href: `${baseHref}?section=project` },
+    { icon: BookOpen, labelKey: 'event', section: 'event', href: `/${locale}/admin/event` },
+    { icon: LayoutDashboard, labelKey: 'project', section: 'project', href: `/${locale}/admin/project` },
     {
       icon: Users,
       labelKey: 'boardmembers',
       section: 'boardmembers',
-      href: `${baseHref}?section=boardmembers`,
+      href: `/${locale}/admin/boardmembers`,
     },
-    { icon: Calendar, labelKey: 'calendar', section: 'calendar', href: `${baseHref}?section=calendar` },
+    { icon: Calendar, labelKey: 'calendar', section: 'calendar', href: `/${locale}/admin/calendar` },
   ];
 
-  const isActive = (section: string) =>
-    pathname === baseHref && activeSection === section;
+  const isActive = (href: string) => pathname.startsWith(href);
 
   const handleClick = (href: string) => {
     if (pendingHref === href) return;
@@ -57,7 +53,7 @@ function SidebarContent({ isOpen, onClose }: SidebarProps) {
 
   React.useEffect(() => {
     setPendingHref(null);
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   const isNavigating = pendingHref !== null;
 
@@ -90,7 +86,7 @@ function SidebarContent({ isOpen, onClose }: SidebarProps) {
           )}
         >
           {MAIN_ITEMS.map(({ icon: Icon, labelKey, section, href }) => {
-            const active = isActive(section);
+            const active = isActive(href);
             const pending = pendingHref === href;
             return (
               <button
