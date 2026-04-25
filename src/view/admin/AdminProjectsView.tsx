@@ -6,11 +6,12 @@ import { useTranslations } from "next-intl";
 
 export type Project = {
   id: string;
-  name: string;
+  title: string;
   description: string;
-  project_group_label: string;
-  project_members: string;
-  imageUrl?: string;
+  group_label: string;
+  members: string;
+  image_url?: string;
+  status: "draft" | "published" | "archived";
 };
 
 type Props = {
@@ -41,11 +42,11 @@ export default function AdminProjectsView({ nextProjects, previousProjects }: Pr
           {nextProjects.map((project) => (
             <ProjectCard
               key={project.id}
-              name={project.name}
+              name={project.title}
               description={project.description}
-              project_group_label={project.project_group_label}
-              project_members={project.project_members}
-              imageUrl={project.imageUrl}
+              project_group_label={project.group_label}
+              project_members={project.members}
+              imageUrl={project.image_url}
             />
           ))}
         </div>
@@ -78,11 +79,11 @@ export default function AdminProjectsView({ nextProjects, previousProjects }: Pr
           {previousProjects.map((project) => (
             <ProjectCard
               key={project.id}
-              name={project.name}
+              name={project.title}
               description={project.description}
-              project_group_label={project.project_group_label}
-              project_members={project.project_members}
-              imageUrl={project.imageUrl}
+              project_group_label={project.group_label}
+              project_members={project.members}
+              imageUrl={project.image_url}
             />
           ))}
         </div>

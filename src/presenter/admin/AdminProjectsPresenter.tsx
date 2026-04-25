@@ -10,48 +10,54 @@ export default function AdminProjectsPresenter() {
   const nextProjects: Project[] = [
     {
       id: "1",
-      name: t("name"),
+      title: t("name"),
       description: t("description"),
-      project_group_label: t("groupLabel"),
-      project_members: t("members"),
+      group_label: t("groupLabel"),
+      members: t("members"),
+      status: "draft"
     },
     {
       id: "2",
-      name: t("name"),
+      title: t("name"),
       description: t("description"),
-      project_group_label: t("groupLabel"),
-      project_members: t("members"),
+      group_label: t("groupLabel"),
+      members: t("members"),
+      status: "draft"
     },
     {
       id: "3",
-      name: t("name"),
+      title: t("name"),
       description: t("description"),
-      project_group_label: t("groupLabel"),
-      project_members: t("members"),
+      group_label: t("groupLabel"),
+      members: t("members"),
+      status: "draft"
     },
   ];
 
   const previousProjects: Project[] = [
     {
       id: "4",
-      name: t("name"),
+      title: t("name"),
       description: t("description"),
-      project_group_label: t("groupLabel"),
-      project_members: t("members"),
+      group_label: t("groupLabel"),
+      members: t("members"),
+      status: "archived"
     },
     {
       id: "5",
-      name: t("name"),
+      title: t("name"),
       description: t("description"),
-      project_group_label: t("groupLabel"),
-      project_members: t("members"),
+      group_label: t("groupLabel"),
+      members: t("members"),
+      status: "archived"
     },
     {
       id: "6",
-      name: t("name"),
+      title: t("name"),
       description: t("description"),
-      project_group_label: t("groupLabel"),
-      project_members: t("members"),
+      group_label: t("groupLabel"),
+      members: t("members"),
+      status: "archived"
     },
   ];
 
