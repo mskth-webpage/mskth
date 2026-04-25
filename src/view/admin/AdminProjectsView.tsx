@@ -30,13 +30,13 @@ export default function AdminProjectsView({ nextProjects, previousProjects }: Pr
         </h2>
         <Button
           variant="outline"
-          className="rounded-xl px-4 py-2 text-sm font-medium border-blue-400 text-foreground hover:bg-blue-50 transition-colors shadow-sm"
+          className="rounded-xl px-4 py-2 text-sm font-medium border-[#1e325c] text-[#1e325c] hover:bg-[#6d9bc0]/10 transition-colors shadow-sm"
         >
           {t("addNew")}
         </Button>
       </div>
 
-      <div className="bg-[#759EBE] rounded-xl p-8 mb-6">
+      <div className="bg-[#6d9bc0] rounded-xl p-8 mb-6">
         <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start">
           {nextProjects.map((project) => (
             <ProjectCard
@@ -54,13 +54,13 @@ export default function AdminProjectsView({ nextProjects, previousProjects }: Pr
       <div className="flex justify-between mb-16">
         <Button
           variant="outline"
-          className="rounded-xl px-8 py-2 text-foreground border-blue-400 hover:bg-blue-50 transition-colors"
+          className="rounded-xl px-8 py-2 text-[#1e325c] border-[#1e325c] hover:bg-[#6d9bc0]/10 transition-colors"
         >
           {t("save")}
         </Button>
         <Button
           variant="outline"
-          className="rounded-xl px-8 py-2 text-foreground border-blue-400 hover:bg-blue-50 transition-colors"
+          className="rounded-xl px-8 py-2 text-[#1e325c] border-[#1e325c] hover:bg-[#6d9bc0]/10 transition-colors"
         >
           {t("publish")}
         </Button>
@@ -73,7 +73,7 @@ export default function AdminProjectsView({ nextProjects, previousProjects }: Pr
         </h2>
       </div>
 
-      <div className="bg-[#759EBE] rounded-xl p-8 mb-6">
+      <div className="bg-[#6d9bc0] rounded-xl p-8 mb-6">
         <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start">
           {previousProjects.map((project) => (
             <ProjectCard
@@ -91,13 +91,13 @@ export default function AdminProjectsView({ nextProjects, previousProjects }: Pr
       <div className="flex justify-between mb-16">
         <Button
           variant="outline"
-          className="rounded-xl px-8 py-2 text-foreground border-blue-400 hover:bg-blue-50 transition-colors"
+          className="rounded-xl px-8 py-2 text-[#1e325c] border-[#1e325c] hover:bg-[#6d9bc0]/10 transition-colors"
         >
           {t("save")}
         </Button>
         <Button
           variant="outline"
-          className="rounded-xl px-8 py-2 text-foreground border-blue-400 hover:bg-blue-50 transition-colors"
+          className="rounded-xl px-8 py-2 text-[#1e325c] border-[#1e325c] hover:bg-[#6d9bc0]/10 transition-colors"
         >
           {t("publish")}
         </Button>
