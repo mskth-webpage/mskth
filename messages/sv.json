@@ -62,6 +62,7 @@
     "addNew": "+ Lägg till nytt",
     "save": "Spara",
     "publish": "Publicera",
+    "noProjects": "Inga projekt tillgängliga",
     "project": {
       "name": "Projektnamn",
       "description": "Projekt leds av",

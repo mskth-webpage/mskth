@@ -62,6 +62,7 @@
     "addNew": "+ Add new",
     "save": "Save",
     "publish": "Publish",
+    "noProjects": "No projects available",
     "project": {
       "name": "Project Name",
       "description": "Projects lead by",

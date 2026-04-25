@@ -37,18 +37,22 @@ export default function AdminProjectsView({ nextProjects, previousProjects }: Pr
         </Button>
       </div>
 
-      <div className="bg-[#6d9bc0] rounded-xl p-8 mb-6">
-        <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start">
-          {nextProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              name={project.title}
-              description={project.description}
-              project_group_label={project.group_label}
-              project_members={project.members}
-              imageUrl={project.image_url}
-            />
-          ))}
+      <div className="bg-[#6d9bc0] rounded-xl p-8 mb-6 min-h-[150px] flex items-center">
+        <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start w-full">
+          {nextProjects.length > 0 ? (
+            nextProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                name={project.title}
+                description={project.description}
+                project_group_label={project.group_label}
+                project_members={project.members}
+                imageUrl={project.image_url}
+              />
+            ))
+          ) : (
+            <p className="text-white/80 italic w-full text-center">{t("noProjects")}</p>
+          )}
         </div>
       </div>
 
@@ -74,18 +78,22 @@ export default function AdminProjectsView({ nextProjects, previousProjects }: Pr
         </h2>
       </div>
 
-      <div className="bg-[#6d9bc0] rounded-xl p-8 mb-6">
-        <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start">
-          {previousProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              name={project.title}
-              description={project.description}
-              project_group_label={project.group_label}
-              project_members={project.members}
-              imageUrl={project.image_url}
-            />
-          ))}
+      <div className="bg-[#6d9bc0] rounded-xl p-8 mb-6 min-h-[150px] flex items-center">
+        <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start w-full">
+          {previousProjects.length > 0 ? (
+            previousProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                name={project.title}
+                description={project.description}
+                project_group_label={project.group_label}
+                project_members={project.members}
+                imageUrl={project.image_url}
+              />
+            ))
+          ) : (
+            <p className="text-white/80 italic w-full text-center">{t("noProjects")}</p>
+          )}
         </div>
       </div>
 
