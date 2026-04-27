@@ -27,6 +27,7 @@ export default function ProjectCard({
             src={imageUrl}
             alt={name}
             fill
+            sizes="180px"
             className="object-cover"
           />
         ) : (
