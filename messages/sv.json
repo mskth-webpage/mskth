@@ -65,9 +65,9 @@
     "noProjects": "Inga projekt tillgängliga",
     "project": {
       "name": "Projektnamn",
-      "description": "Projekt leds av",
-      "groupLabel": "MSKTH Styrelse",
-      "members": "Medlemmar och aktiva medlemmar"
+      "description": "Beskrivning",
+      "groupLabel": "Gruppetikett",
+      "members": "Medlemmar"
     }
   },
   "AdminTopbar": {

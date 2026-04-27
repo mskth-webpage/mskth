@@ -65,9 +65,9 @@
     "noProjects": "No projects available",
     "project": {
       "name": "Project Name",
-      "description": "Projects lead by",
-      "groupLabel": "MSKTH Board",
-      "members": "Members and active members"
+      "description": "Description",
+      "groupLabel": "Group Label",
+      "members": "Members"
     }
   },
   "AdminTopbar": {

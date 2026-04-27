@@ -24,3 +24,26 @@ export async function GET() {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }
+
+export async function POST(request: Request) {
+  try {
+    const { projects } = await request.json();
+    const cookieStore = await cookies();
+    const supabase = await createClient(cookieStore);
+
+    const { data, error } = await supabase
+      .from('projects')
+      .insert(projects)
+      .select();
+
+    if (error) {
+      console.error("Supabase POST Error:", error.message);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ projects: data }, { status: 201 });
+  } catch (error) {
+    console.error("Internal API Error:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+}
