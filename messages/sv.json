@@ -52,7 +52,12 @@
     "totalTicketsSold": "Totalt sålda biljetter",
     "ticketOut": "Biljetter kvar",
     "overviewCalendar": "Översiktskalender",
-    "today": "Idag"
+    "today": "Idag",
+    "upcomingEvents": "Kommande evenemang",
+    "noUpcomingEvents": "Inga kommande evenemang",
+    "previousEvents": "Tidigare evenemang",
+    "noPreviousEvents": "Inga tidigare evenemang",
+    "joinedMembers": "Anmälda medlemmar"
   },
   "Sidebar": {
     "dashboard": "Dashboard",
