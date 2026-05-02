@@ -22,7 +22,7 @@ export default function DashboardWelcomeView({
   const t = useTranslations("AdminDashboard");
 
   return (
-    <div className="space-y-8 p-6 lg:p-8">
+    <div className="space-y-8">
       {/* Page header */}
       <h1 className="text-3xl font-bold tracking-tight">
         {t("welcome")}{" "}

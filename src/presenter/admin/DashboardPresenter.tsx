@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { createClient } from "@/utils/supabase/client";
 import DashboardWelcomeView from "@/view/admin/dashboardWelcomeView";
+import DashboardCalendarView from "@/view/admin/dashboardCalendarView";
 
 type Stats = {
   totalMembers: number;
@@ -46,12 +47,15 @@ export default function DashboardPresenter() {
   }, []);
 
   return (
-    <DashboardWelcomeView
-      userName={userName}
-      isLoading={isLoading}
-      totalMembers={stats.totalMembers}
-      totalTicketsSold={stats.totalTicketsSold}
-      ticketOut={stats.ticketOut}
-    />
+    <div className="space-y-8 p-6 lg:p-8">
+      <DashboardWelcomeView
+        userName={userName}
+        isLoading={isLoading}
+        totalMembers={stats.totalMembers}
+        totalTicketsSold={stats.totalTicketsSold}
+        ticketOut={stats.ticketOut}
+      />
+      <DashboardCalendarView />
+    </div>
   );
 }
