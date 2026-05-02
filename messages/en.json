@@ -50,7 +50,14 @@
     "welcome": "Welcome to Admin Dashboard,",
     "totalMembers": "Total members",
     "totalTicketsSold": "Total ticket sold",
-    "ticketOut": "Ticket out"
+    "ticketOut": "Ticket out",
+    "overviewCalendar": "Overview calendar",
+    "today": "Today",
+    "upcomingEvents": "Upcoming events",
+    "noUpcomingEvents": "No upcoming events",
+    "previousEvents": "Previous events",
+    "noPreviousEvents": "No previous events",
+    "joinedMembers": "Joined members"
   },
   "Sidebar": {
     "dashboard": "Dashboard",

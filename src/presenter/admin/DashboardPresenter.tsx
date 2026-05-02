@@ -1,57 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 import { createClient } from "@/utils/supabase/client";
+import DashboardPanelsView from "@/view/admin/dashboardPanelsView";
 import DashboardWelcomeView from "@/view/admin/dashboardWelcomeView";
+import type { AdminStats, EventsResponse } from "@/types/adminDashboard";
+import type { User } from "@supabase/supabase-js";
 
-type Stats = {
-  totalMembers: number;
-  totalTicketsSold: number;
-  ticketOut: number;
+const jsonFetcher = (url: string) => fetch(url).then((r) => r.json());
+const userFetcher = async (): Promise<User | null> => {
+  const { data } = await createClient().auth.getUser();
+  return data.user;
 };
 
+const SWR_OPTS = { revalidateOnFocus: false, dedupingInterval: 300_000 } as const;
+
 export default function DashboardPresenter() {
-  const [userName, setUserName] = useState("");
-  const [stats, setStats] = useState<Stats>({
-    totalMembers: 0,
-    totalTicketsSold: 0,
-    ticketOut: 0,
-  });
-  const [isLoading, setIsLoading] = useState(true);
+  const { data: user } = useSWR("auth/user", userFetcher, SWR_OPTS);
+  const { data: stats, isLoading: statsLoading } = useSWR<AdminStats>("/api/admin/stats", jsonFetcher, SWR_OPTS);
+  const { data: events, isLoading: eventsLoading } = useSWR<EventsResponse>("/api/admin/events", jsonFetcher, SWR_OPTS);
 
-  useEffect(() => {
-    const supabase = createClient();
-
-    async function load() {
-      const [{ data }, statsRes] = await Promise.all([
-        supabase.auth.getUser(),
-        fetch("/api/admin/stats"),
-      ]);
-
-      if (data.user) {
-        const meta = data.user.user_metadata ?? {};
-        setUserName(meta.full_name ?? meta.name ?? data.user.email ?? "");
-      }
-
-      if (statsRes.ok) {
-        const json = (await statsRes.json()) as Stats;
-        setStats(json);
-      }
-
-      setIsLoading(false);
-    }
-
-    void load();
-  }, []);
+  const meta = user?.user_metadata ?? {};
+  const userName = meta.full_name ?? meta.name ?? user?.email ?? "";
 
   return (
-    <DashboardWelcomeView
-      userName={userName}
-      isLoading={isLoading}
-      totalMembers={stats.totalMembers}
-      totalTicketsSold={stats.totalTicketsSold}
-      ticketOut={stats.ticketOut}
-    />
+    <div className="space-y-8 p-6 lg:p-8">
+      <DashboardWelcomeView
+        userName={userName}
+        isLoading={statsLoading ?? true}
+        totalMembers={stats?.totalMembers ?? 0}
+        totalTicketsSold={stats?.totalTicketsSold ?? 0}
+        ticketOut={stats?.ticketOut ?? 0}
+      />
+      <DashboardPanelsView
+        upcoming={events?.upcoming ?? []}
+        previous={events?.previous ?? []}
+        isLoading={eventsLoading ?? true}
+      />
+    </div>
   );
 }
