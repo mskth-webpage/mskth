@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { BookOpen, Calendar, LayoutDashboard, Loader2, Users } from 'lucide-react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { BookOpen, Calendar, LayoutDashboard, Loader2, SquareKanban, Users } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import LogoutButton from '@/components/admin/auth/LogoutButton';
 import clsx from 'clsx';
@@ -10,7 +10,6 @@ import clsx from 'clsx';
 type Item = {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   labelKey: string;
-  section: string;
   href: string;
 };
 
@@ -19,34 +18,22 @@ type SidebarProps = {
   onClose: () => void;
 };
 
-/**
- * Sidebar component for the admin dashboard area. It includes navigation links and a logout button.
- * It is responsive and can be toggled open or closed.
- */
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
   const t = useTranslations('Sidebar');
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const router = useRouter();
   const locale = useLocale();
   const [pendingHref, setPendingHref] = React.useState<string | null>(null);
-  const activeSection = searchParams.get('section') ?? 'event';
-  const baseHref = `/${locale}/admin/dashboard`;
 
   const MAIN_ITEMS: Item[] = [
-    { icon: BookOpen, labelKey: 'event', section: 'event', href: `${baseHref}?section=event` },
-    { icon: LayoutDashboard, labelKey: 'project', section: 'project', href: `${baseHref}?section=project` },
-    {
-      icon: Users,
-      labelKey: 'boardmembers',
-      section: 'boardmembers',
-      href: `${baseHref}?section=boardmembers`,
-    },
-    { icon: Calendar, labelKey: 'calendar', section: 'calendar', href: `${baseHref}?section=calendar` },
+    { icon: SquareKanban, labelKey: 'dashboard', href: `/${locale}/admin/dashboard` },
+    { icon: BookOpen, labelKey: 'event', href: `/${locale}/admin/event` },
+    { icon: LayoutDashboard, labelKey: 'project', href: `/${locale}/admin/project` },
+    { icon: Users, labelKey: 'boardmembers', href: `/${locale}/admin/boardmember` },
+    { icon: Calendar, labelKey: 'calendar', href: `/${locale}/admin/schedule` },
   ];
 
-  const isActive = (section: string) =>
-    pathname === baseHref && activeSection === section;
+  const isActive = (href: string) => pathname === href;
 
   const handleClick = (href: string) => {
     if (pendingHref === href) return;
@@ -89,8 +76,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             'p-3 sm:p-4 space-y-1 sm:space-y-2'
           )}
         >
-          {MAIN_ITEMS.map(({ icon: Icon, labelKey, section, href }) => {
-            const active = isActive(section);
+          {MAIN_ITEMS.map(({ icon: Icon, labelKey, href }) => {
+            const active = isActive(href);
             const pending = pendingHref === href;
             return (
               <button
