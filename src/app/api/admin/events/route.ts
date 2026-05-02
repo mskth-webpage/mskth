@@ -2,19 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 import { createClient } from "@/utils/supabase/server";
-
-export type EventPreview = {
-  id: number;
-  title: string;
-  start_at: string;
-  location: string | null;
-  joined_count: number;
-};
-
-export type EventsResponse = {
-  upcoming: EventPreview[];
-  previous: EventPreview[];
-};
+import type { EventsResponse } from "@/types/adminDashboard";
 
 export async function GET() {
   const cookieStore = await cookies();
@@ -38,13 +26,13 @@ export async function GET() {
       .select("id, title, start_at, location, joined_count")
       .gte("start_at", tomorrow.toISOString())
       .order("start_at", { ascending: true })
-      .limit(10),
+      .limit(3),
     supabase
       .from("events")
       .select("id, title, start_at, location, joined_count")
       .lt("start_at", today.toISOString())
       .order("start_at", { ascending: false })
-      .limit(10),
+      .limit(3),
   ]);
 
   return NextResponse.json({

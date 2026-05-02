@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
 import { createClient } from "@/utils/supabase/server";
+import type { AdminStats } from "@/types/adminDashboard";
 
 export async function GET() {
   const cookieStore = await cookies();
@@ -22,5 +23,5 @@ export async function GET() {
     totalMembers: membersResult.count ?? 0,
     totalTicketsSold: soldResult.count ?? 0,
     ticketOut: outResult.count ?? 0,
-  });
+  } satisfies AdminStats);
 }
