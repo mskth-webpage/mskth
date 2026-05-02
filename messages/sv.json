@@ -46,7 +46,11 @@
     "title": "Välkommen till adminpanelen",
     "description": "Hantera MSKTHs admininnehåll, inställningar och interna arbetsflöden från den här panelen.",
     "hint": "Dina adminverktyg kan läggas till här som kort, tabeller eller snabbåtgärder.",
-    "logout": "Logga ut"
+    "logout": "Logga ut",
+    "welcome": "Välkommen till adminpanelen,",
+    "totalMembers": "Totalt antal medlemmar",
+    "totalTicketsSold": "Totalt sålda biljetter",
+    "ticketOut": "Biljetter kvar"
   },
   "Sidebar": {
     "dashboard": "Dashboard",
