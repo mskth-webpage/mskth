@@ -1,52 +1,63 @@
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Users, Ticket, TicketX } from "lucide-react";
+import StatCard from "@/components/admin/StatCard";
 
 type Props = {
-  title: string;
-  description: string;
-  hint: string;
-  logoutLabel: string;
-  logout: () => Promise<void>;
+  userName: string;
+  isLoading: boolean;
+  totalMembers: number;
+  totalTicketsSold: number;
+  ticketOut: number;
 };
 
 export default function DashboardWelcomeView({
-  title,
-  description,
-  hint,
-  logoutLabel,
-  logout,
+  userName,
+  isLoading,
+  totalMembers,
+  totalTicketsSold,
+  ticketOut,
 }: Props) {
+  const t = useTranslations("AdminDashboard");
+
   return (
-    <section className="flex min-h-full w-full items-center justify-center px-4 py-10 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-2xl border-border/80 py-0 shadow-lg">
-        <CardHeader className="px-6 pt-6">
-          <CardAction>
-            <form action={logout}>
-              <Button type="submit" variant="outline" className="rounded-full">
-                {logoutLabel}
-              </Button>
-            </form>
-          </CardAction>
-          <CardTitle className="font-serif text-3xl tracking-tight sm:text-4xl">
-            {title}
-          </CardTitle>
-          <CardDescription className="text-base leading-7">
-            {description}
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="px-6 pb-6">
-          <div className="rounded-lg border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
-            {hint}
-          </div>
-        </CardContent>
-      </Card>
-    </section>
+    <div className="space-y-8 p-6 lg:p-8">
+      {/* Page header */}
+      <h1 className="text-3xl font-bold tracking-tight">
+        {t("welcome")}{" "}
+        <span className="italic text-primary">
+          {isLoading ? "..." : userName || "Admin"}
+        </span>
+      </h1>
+
+      {/* Stats */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <StatCard
+          label={t("totalMembers")}
+          value={totalMembers}
+          isLoading={isLoading}
+          icon={Users}
+          iconClassName="text-primary"
+          iconBgClassName="bg-primary/10"
+        />
+        <StatCard
+          label={t("totalTicketsSold")}
+          value={totalTicketsSold}
+          isLoading={isLoading}
+          icon={Ticket}
+          iconClassName="text-emerald-500"
+          iconBgClassName="bg-emerald-500/10"
+        />
+        <StatCard
+          label={t("ticketOut")}
+          value={ticketOut}
+          isLoading={isLoading}
+          icon={TicketX}
+          iconClassName="text-orange-500"
+          iconBgClassName="bg-orange-500/10"
+        />
+      </div>
+    </div>
   );
 }

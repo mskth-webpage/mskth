@@ -1,34 +1,57 @@
-import { getTranslations } from "next-intl/server";
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+"use client";
 
-import { createClient } from "@/utils/supabase/server";
+import { useEffect, useState } from "react";
+
+import { createClient } from "@/utils/supabase/client";
 import DashboardWelcomeView from "@/view/admin/dashboardWelcomeView";
 
-export default async function DashboardPresenter({
-  locale,
-}: {
-  locale: string;
-}) {
-  const t = await getTranslations({ locale, namespace: "AdminDashboard" });
+type Stats = {
+  totalMembers: number;
+  totalTicketsSold: number;
+  ticketOut: number;
+};
 
-  async function logout() {
-    "use server";
+export default function DashboardPresenter() {
+  const [userName, setUserName] = useState("");
+  const [stats, setStats] = useState<Stats>({
+    totalMembers: 0,
+    totalTicketsSold: 0,
+    ticketOut: 0,
+  });
+  const [isLoading, setIsLoading] = useState(true);
 
-    const cookieStore = await cookies();
-    const supabase = await createClient(cookieStore);
+  useEffect(() => {
+    const supabase = createClient();
 
-    await supabase.auth.signOut();
-    redirect(`/${locale}/admin/login`);
-  }
+    async function load() {
+      const [{ data }, statsRes] = await Promise.all([
+        supabase.auth.getUser(),
+        fetch("/api/admin/stats"),
+      ]);
+
+      if (data.user) {
+        const meta = data.user.user_metadata ?? {};
+        setUserName(meta.full_name ?? meta.name ?? data.user.email ?? "");
+      }
+
+      if (statsRes.ok) {
+        const json = (await statsRes.json()) as Stats;
+        setStats(json);
+      }
+
+      setIsLoading(false);
+    }
+
+    void load();
+  }, []);
 
   return (
     <DashboardWelcomeView
-      title={t("title")}
-      description={t("description")}
-      hint={t("hint")}
-      logoutLabel={t("logout")}
-      logout={logout}
+      userName={userName}
+      isLoading={isLoading}
+      totalMembers={stats.totalMembers}
+      totalTicketsSold={stats.totalTicketsSold}
+      ticketOut={stats.ticketOut}
     />
   );
 }
