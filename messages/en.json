@@ -46,9 +46,14 @@
     "title": "Welcome to the Admin Dashboard",
     "description": "Manage MSKTH admin content, settings, and internal workflows from this dashboard.",
     "hint": "Your admin tools can be added here as cards, tables, or quick actions.",
-    "logout": "Log out"
+    "logout": "Log out",
+    "welcome": "Welcome to Admin Dashboard,",
+    "totalMembers": "Total members",
+    "totalTicketsSold": "Total ticket sold",
+    "ticketOut": "Ticket out"
   },
   "Sidebar": {
+    "dashboard": "Dashboard",
     "event": "Event",
     "boardmembers": "Boardmembers",
     "project": "Project",
