@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import EventPreviewCard from "@/components/admin/EventPreviewCard";
-import type { EventPreview } from "@/app/api/admin/events/route";
+import type { EventPreview } from "@/types/adminDashboard";
 
 type Props = {
   events: EventPreview[];
