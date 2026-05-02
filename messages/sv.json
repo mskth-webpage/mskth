@@ -50,7 +50,9 @@
     "welcome": "Välkommen till adminpanelen,",
     "totalMembers": "Totalt antal medlemmar",
     "totalTicketsSold": "Totalt sålda biljetter",
-    "ticketOut": "Biljetter kvar"
+    "ticketOut": "Biljetter kvar",
+    "overviewCalendar": "Översiktskalender",
+    "today": "Idag"
   },
   "Sidebar": {
     "dashboard": "Dashboard",
