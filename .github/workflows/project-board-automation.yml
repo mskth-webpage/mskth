@@ -35,7 +35,7 @@ jobs:
             );
             for (const match of bodyMatches) issueNumbers.add(parseInt(match[1]));
 
-            const branchMatches = prBranch.matchAll(/(?:^|[/-])(\d+)(?:[/-]|$)/g);
+            const branchMatches = prBranch.matchAll(/(?:^|[/#-])(\d+)(?:[/#-]|$)/g);
             for (const match of branchMatches) issueNumbers.add(parseInt(match[1]));
 
             const hashMatches = prBody.matchAll(/#(\d+)/g);
@@ -148,7 +148,7 @@ jobs:
               issueNumbers.add(parseInt(match[1]));
             }
 
-            const branchMatches = prBranch.matchAll(/(?:^|[/-])(\d+)(?:[/-]|$)/g);
+            const branchMatches = prBranch.matchAll(/(?:^|[/#-])(\d+)(?:[/#-]|$)/g);
             for (const match of branchMatches) {
               issueNumbers.add(parseInt(match[1]));
             }
