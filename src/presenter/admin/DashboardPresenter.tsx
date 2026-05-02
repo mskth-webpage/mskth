@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import DashboardWelcomeView from "@/view/admin/dashboardWelcomeView";
 import DashboardCalendarView from "@/view/admin/dashboardCalendarView";
+import DashboardEventsView from "@/view/admin/dashboardEventsView";
+import type { EventPreview, EventsResponse } from "@/app/api/admin/events/route";
 
 type Stats = {
   totalMembers: number;
@@ -19,15 +21,18 @@ export default function DashboardPresenter() {
     totalTicketsSold: 0,
     ticketOut: 0,
   });
+  const [upcoming, setUpcoming] = useState<EventPreview[]>([]);
+  const [previous, setPrevious] = useState<EventPreview[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const supabase = createClient();
 
     async function load() {
-      const [{ data }, statsRes] = await Promise.all([
+      const [{ data }, statsRes, eventsRes] = await Promise.all([
         supabase.auth.getUser(),
         fetch("/api/admin/stats"),
+        fetch("/api/admin/events"),
       ]);
 
       if (data.user) {
@@ -38,6 +43,12 @@ export default function DashboardPresenter() {
       if (statsRes.ok) {
         const json = (await statsRes.json()) as Stats;
         setStats(json);
+      }
+
+      if (eventsRes.ok) {
+        const json = (await eventsRes.json()) as EventsResponse;
+        setUpcoming(json.upcoming);
+        setPrevious(json.previous);
       }
 
       setIsLoading(false);
@@ -55,7 +66,14 @@ export default function DashboardPresenter() {
         totalTicketsSold={stats.totalTicketsSold}
         ticketOut={stats.ticketOut}
       />
-      <DashboardCalendarView />
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <DashboardCalendarView />
+        <DashboardEventsView
+          upcoming={upcoming}
+          previous={previous}
+          isLoading={isLoading}
+        />
+      </div>
     </div>
   );
 }
