@@ -62,10 +62,8 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning={true}>
-      <body
-        className={`${montserrat.variable} ${geistMono.variable}`}
-      >
+    <html lang={locale} suppressHydrationWarning={true} className={`${montserrat.variable} ${geistMono.variable}`}>
+      <body>
         <ThemeProvider
             attribute="class"
             defaultTheme="system"
