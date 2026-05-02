@@ -49,6 +49,7 @@
     "logout": "Log out"
   },
   "Sidebar": {
+    "dashboard": "Dashboard",
     "event": "Event",
     "boardmembers": "Boardmembers",
     "project": "Project",

@@ -49,6 +49,7 @@
     "logout": "Logga ut"
   },
   "Sidebar": {
+    "dashboard": "Dashboard",
     "event": "Event",
     "boardmembers": "Styrelsemedlemmar",
     "project": "Projekt",
