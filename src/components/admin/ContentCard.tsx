@@ -19,6 +19,7 @@ type DateHeader = {
   date: Date;
   statusLabel: string;
   statusVariant: "success" | "warning";
+  secondaryBadge?: { label: string; className: string };
 };
 
 type ImageHeader = {
@@ -72,16 +73,23 @@ export default function ContentCard({
             <p className="text-2xl font-bold text-primary">{header.date.getDate()}</p>
             <p className="text-[10px] font-medium text-primary/60">{header.date.getFullYear()}</p>
           </div>
-          <span
-            className={cn(
-              "rounded-full px-2.5 py-0.5 text-[11px] font-semibold",
-              header.statusVariant === "success"
-                ? "bg-success text-success-foreground"
-                : "bg-warning text-warning-foreground",
+          <div className="flex flex-col items-end gap-1">
+            <span
+              className={cn(
+                "rounded-full px-2.5 py-0.5 text-[11px] font-semibold",
+                header.statusVariant === "success"
+                  ? "bg-success text-success-foreground"
+                  : "bg-warning text-warning-foreground",
+              )}
+            >
+              {header.statusLabel}
+            </span>
+            {header.secondaryBadge && (
+              <span className={cn("rounded-full px-2.5 py-0.5 text-[11px] font-semibold", header.secondaryBadge.className)}>
+                {header.secondaryBadge.label}
+              </span>
             )}
-          >
-            {header.statusLabel}
-          </span>
+          </div>
         </div>
       )}
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, MapPin, Pencil } from "lucide-react";
+import { Clock, Globe, MapPin, MoreVertical } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import ContentCard from "@/components/admin/ContentCard";
@@ -24,9 +24,19 @@ export default function TicketCard({ event, onPublish, onEdit, onCardClick }: Pr
       ? ` – ${new Date(event.end_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false })}`
       : "");
 
+  const langBadge =
+    event.language === "en"
+      ? { label: t("langBadgeEn"), className: "bg-sky-100 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300" }
+      : event.language === "sv"
+      ? { label: t("langBadgeSv"), className: "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300" }
+      : event.language === "both"
+      ? { label: t("langBadgeBoth"), className: "bg-violet-100 text-violet-700 dark:bg-violet-900/30 dark:text-violet-300" }
+      : undefined;
+
   const meta = [
     { icon: <Clock className="h-3 w-3 shrink-0" />, label: timeLabel },
     ...(event.location ? [{ icon: <MapPin className="h-3 w-3 shrink-0" />, label: event.location }] : []),
+    ...(langBadge ? [{ icon: <Globe className="h-3 w-3 shrink-0" />, label: langBadge.label }] : []),
   ];
 
   return (
@@ -36,6 +46,7 @@ export default function TicketCard({ event, onPublish, onEdit, onCardClick }: Pr
         date: start,
         statusLabel: isPublished ? t("statusPublished") : t("statusDraft"),
         statusVariant: isPublished ? "success" : "warning",
+        secondaryBadge: langBadge,
       }}
       title={event.title}
       description={event.description ?? undefined}
@@ -46,12 +57,12 @@ export default function TicketCard({ event, onPublish, onEdit, onCardClick }: Pr
         <>
           <Button
             size="sm"
-            variant="ghost"
-            className="gap-1.5 text-xs text-muted-foreground hover:text-foreground"
-            onClick={() => onEdit(event)}
+            variant="outline"
+            className="gap-1.5 text-xs"
+            onClick={(e) => onCardClick(event, { x: e.clientX, y: e.clientY })}
           >
-            <Pencil className="h-3 w-3" />
-            {t("edit")}
+            <MoreVertical className="h-3 w-3" />
+            {t("options")}
           </Button>
           <Button
             size="sm"
