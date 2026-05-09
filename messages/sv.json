@@ -68,6 +68,24 @@
     "calendar": "Kalender",
     "resources": "Resurser"
   },
+  "AdminCalendar": {
+    "title": "Kalender",
+    "subtitle": "Översikt över alla schemalagda evenemang",
+    "addEvent": "Lägg till evenemang",
+    "today": "Idag",
+    "viewYear": "År",
+    "viewMonth": "Månad",
+    "viewWeek": "Vecka",
+    "viewDay": "Dag",
+    "detailParticipants": "deltagare anmälda",
+    "contextMenuShow": "Visa detaljer",
+    "contextMenuEdit": "Redigera",
+    "contextMenuDelete": "Radera",
+    "deleteTitle": "Radera evenemang",
+    "deleteDescription": "Är du säker på att du vill radera \"{title}\"? Denna åtgärd kan inte ångras.",
+    "deleteCancel": "Avbryt",
+    "deleteConfirm": "Radera"
+  },
   "AdminTopbar": {
     "language": "Språk",
     "appearanceTitle": "Utseende",
