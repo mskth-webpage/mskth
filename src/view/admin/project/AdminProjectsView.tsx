@@ -40,7 +40,7 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
   const [groupLabel, setGroupLabel] = useState("");
   const [members, setMembers] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [statusTarget, setStatusTarget] = useState<"draft" | "archived" | null>(null);
+  const [statusTarget, setStatusTarget] = useState<"draft" | "archived" | "published" | null>(null);
 
   const resetForm = () => {
     setTitle("");
@@ -116,7 +116,7 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
       </div>
 
       <div className="bg-[#6d9bc0] rounded-xl p-8 mb-6 min-h-[150px] flex items-center">
-        <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start w-full">
+        <div className="flex flex-wrap gap-10 md:gap-14 justify-center w-full">
           {nextProjects.length > 0 ? (
             nextProjects.map((project) => (
               <div key={project.id} className="relative group">
@@ -175,7 +175,7 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
       </div>
 
       <div className="bg-[#6d9bc0] rounded-xl p-8 mb-6 min-h-[150px] flex items-center">
-        <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start w-full">
+        <div className="flex flex-wrap gap-10 md:gap-14 justify-center w-full">
           {previousProjects.length > 0 ? (
             previousProjects.map((project) => (
               <div key={project.id} className="relative group">
