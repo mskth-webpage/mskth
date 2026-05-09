@@ -1,6 +1,5 @@
+import EventPresenter from "@/presenter/admin/EventPresenter";
 
-export default function event() {
-  return (
-    <div>event</div>
-  )
+export default function EventPage() {
+  return <EventPresenter />;
 }

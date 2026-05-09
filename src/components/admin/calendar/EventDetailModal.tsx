@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { X, MapPin, Clock, Users, CalendarDays } from "lucide-react";
+import { X, MapPin, Clock, Users } from "lucide-react";
+
+const MSKTH_LOGO = `${process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "")}/storage/v1/object/public/images/MSkth.png`;
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "@/components/ui/button";
 import type { CalendarEvent } from "@/types/adminCalendar";
@@ -49,18 +51,12 @@ export default function EventDetailModal({ event, onClose, onEdit, onDelete }: P
       >
         {/* Thumbnail */}
         <div className="relative h-48 w-full bg-muted">
-          {isValidUrl(event.image_url) ? (
-            <Image
-              src={event.image_url}
-              alt={event.title}
-              fill
-              className="object-cover"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center">
-              <CalendarDays className="h-16 w-16 text-muted-foreground/30" />
-            </div>
-          )}
+          <Image
+            src={isValidUrl(event.image_url) ? event.image_url : MSKTH_LOGO}
+            alt={event.title}
+            fill
+            className={isValidUrl(event.image_url) ? "object-cover" : "object-contain p-6 opacity-40"}
+          />
           <button
             onClick={onClose}
             className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm transition-colors hover:bg-black/60"
