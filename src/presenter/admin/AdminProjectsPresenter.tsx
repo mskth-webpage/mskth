@@ -83,6 +83,94 @@ export default function AdminProjectsPresenter() {
     }
   };
 
+  const handleUpdateProject = async (project: Project, file: File | null) => {
+    if (String(project.id).startsWith("local-")) {
+      const updatePendingList = (list: PendingProject[]) => 
+        list.map((p) => (p.id === project.id ? { ...project, file: file || p.file } as PendingProject : p));
+      
+      setPendingNextProjects(updatePendingList);
+      setPendingPreviousProjects(updatePendingList);
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      let publicImageUrl = project.image_url;
+      const supabase = createClient();
+
+      if (file) {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
+        
+        const { error: uploadError } = await supabase.storage
+          .from('images')
+          .upload(`projects/${fileName}`, file, {
+            cacheControl: '3600',
+            upsert: false,
+          });
+
+        if (uploadError) throw uploadError;
+
+        const { data } = supabase.storage
+          .from('images')
+          .getPublicUrl(`projects/${fileName}`);
+          
+        publicImageUrl = data.publicUrl;
+      }
+
+      const updatedProject = {
+        id: project.id,
+        title: project.title,
+        description: project.description,
+        group_label: project.group_label,
+        members: project.members,
+        status: project.status,
+        image_url: publicImageUrl,
+      };
+
+      const response = await fetch("/api/auth/project", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ project: updatedProject }),
+      });
+
+      if (!response.ok) throw new Error("Failed to update project");
+
+      await fetchProjects();
+    } catch (error) {
+      console.error(error);
+      alert("Erreur lors de la mise à jour");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleDeleteProject = async (id: string | number) => {
+    if (!confirm("Are you sure you want to delete this project?")) return;
+
+    if (String(id).startsWith("local-")) {
+      setPendingNextProjects((prev) => prev.filter(p => p.id !== id));
+      setPendingPreviousProjects((prev) => prev.filter(p => p.id !== id));
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch(`/api/auth/project?id=${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) throw new Error("Failed to delete project");
+
+      await fetchProjects();
+    } catch (error) {
+      console.error(error);
+      alert("Erreur lors de la suppression");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const handleSaveChanges = async (type: "next" | "previous", action: "save" | "publish") => {
     const supabase = createClient();
     const pendingList = type === "next" ? pendingNextProjects : pendingPreviousProjects;
@@ -178,6 +266,8 @@ export default function AdminProjectsPresenter() {
       nextProjects={[...pendingNextProjects, ...nextProjects]}
       previousProjects={[...pendingPreviousProjects, ...previousProjects]}
       onAddProject={handleAddProject}
+      onUpdateProject={handleUpdateProject}
+      onDeleteProject={handleDeleteProject}
       onSave={(type) => handleSaveChanges(type, "save")}
       onPublish={(type) => handleSaveChanges(type, "publish")}
     />

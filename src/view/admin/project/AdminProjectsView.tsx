@@ -7,6 +7,7 @@ import AdminModal from "@/components/admin/AdminModal";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import { Pencil, Trash } from "lucide-react";
 
 export type Project = {
   id: string;
@@ -22,13 +23,16 @@ type Props = {
   nextProjects: Project[];
   previousProjects: Project[];
   onAddProject: (project: Omit<Project, "id">, imageFile: File | null) => void;
+  onUpdateProject?: (project: Project, imageFile: File | null) => void;
+  onDeleteProject?: (id: string) => void;
   onSave: (target: "next" | "previous") => void;
   onPublish: (target: "next" | "previous") => void;
 };
 
-export default function AdminProjectsView({ nextProjects, previousProjects, onAddProject, onSave, onPublish }: Props) {
+export default function AdminProjectsView({ nextProjects, previousProjects, onAddProject, onUpdateProject, onDeleteProject, onSave, onPublish }: Props) {
   const t = useTranslations("AdminProjects");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingProject, setEditingProject] = useState<Project | null>(null);
 
   // Form states
   const [title, setTitle] = useState("");
@@ -44,6 +48,7 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
     setGroupLabel("");
     setMembers("");
     setImageFile(null);
+    setEditingProject(null);
   };
 
   const handleOpenModal = (targetStatus: "draft" | "archived") => {
@@ -52,22 +57,45 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
     setIsModalOpen(true);
   };
 
+  const handleEditProject = (project: Project) => {
+    setEditingProject(project);
+    setTitle(project.title);
+    setDescription(project.description);
+    setGroupLabel(project.group_label);
+    setMembers(project.members);
+    setImageFile(null);
+    setStatusTarget(project.status as "draft" | "archived" | "published");
+    setIsModalOpen(true);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!statusTarget) return;
 
-    onAddProject(
-      {
-        title,
-        description,
-        group_label: groupLabel,
-        members,
-        status: statusTarget,
-        // Wait for presenter to upload image and update with real url. 
-        // Presenter will attach a temporary local objectURL for preview.
-      },
-      imageFile
-    );
+    if (editingProject && onUpdateProject) {
+      onUpdateProject(
+        {
+          ...editingProject,
+          title,
+          description,
+          group_label: groupLabel,
+          members,
+          status: statusTarget,
+        },
+        imageFile
+      );
+    } else {
+      onAddProject(
+        {
+          title,
+          description,
+          group_label: groupLabel,
+          members,
+          status: statusTarget,
+        },
+        imageFile
+      );
+    }
     setIsModalOpen(false);
   };
 
@@ -91,14 +119,23 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
         <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start w-full">
           {nextProjects.length > 0 ? (
             nextProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                name={project.title}
-                description={project.description}
-                project_group_label={project.group_label}
-                project_members={project.members}
-                imageUrl={project.image_url}
-              />
+              <div key={project.id} className="relative group">
+                <ProjectCard
+                  name={project.title}
+                  description={project.description}
+                  project_group_label={project.group_label}
+                  project_members={project.members}
+                  imageUrl={project.image_url}
+                />
+                <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#1e325c]/80 p-1.5 rounded-lg backdrop-blur-sm">
+                  <button onClick={() => handleEditProject(project)} className="p-1.5 text-white/80 hover:text-white hover:bg-white/20 rounded-md transition-colors" title="Edit">
+                    <Pencil className="w-4 h-4" />
+                  </button>
+                  <button onClick={() => onDeleteProject && onDeleteProject(project.id)} className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-400/20 rounded-md transition-colors" title="Delete">
+                    <Trash className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
             ))
           ) : (
             <p className="text-white/80 italic w-full text-center">{t("noProjects")}</p>
@@ -141,14 +178,23 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
         <div className="flex flex-wrap gap-10 md:gap-14 justify-center sm:justify-start w-full">
           {previousProjects.length > 0 ? (
             previousProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                name={project.title}
-                description={project.description}
-                project_group_label={project.group_label}
-                project_members={project.members}
-                imageUrl={project.image_url}
-              />
+              <div key={project.id} className="relative group">
+                <ProjectCard
+                  name={project.title}
+                  description={project.description}
+                  project_group_label={project.group_label}
+                  project_members={project.members}
+                  imageUrl={project.image_url}
+                />
+                <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity bg-[#1e325c]/80 p-1.5 rounded-lg backdrop-blur-sm">
+                  <button onClick={() => handleEditProject(project)} className="p-1.5 text-white/80 hover:text-white hover:bg-white/20 rounded-md transition-colors" title="Edit">
+                    <Pencil className="w-4 h-4" />
+                  </button>
+                  <button onClick={() => onDeleteProject && onDeleteProject(project.id)} className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-400/20 rounded-md transition-colors" title="Delete">
+                    <Trash className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
             ))
           ) : (
             <p className="text-white/80 italic w-full text-center">{t("noProjects")}</p>
@@ -174,7 +220,7 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
       </div>
 
       <AdminModal
-        title={t("addNew")}
+        title={editingProject ? "Edit Project" : t("addNew")}
         isOpen={isModalOpen}
         onOpenChange={setIsModalOpen}
       >
@@ -242,7 +288,7 @@ export default function AdminProjectsView({ nextProjects, previousProjects, onAd
               type="submit"
               className="bg-[#6d9bc0] text-white hover:bg-[#6d9bc0]/80"
             >
-              Add Project
+              {editingProject ? "Update Project" : "Add Project"}
             </Button>
           </div>
         </form>
