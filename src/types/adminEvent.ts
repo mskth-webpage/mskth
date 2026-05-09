@@ -1,4 +1,5 @@
 export type Audience = "all" | "brothers" | "sisters";
+export type Language = "en" | "sv" | "both";
 
 export type AdminEvent = {
   id: number;
@@ -12,6 +13,7 @@ export type AdminEvent = {
   joined_count: number;
   max_participants: number | null;
   audience: Audience | null;
+  language: Language | null;
 };
 
 export type CreateEventInput = {
@@ -23,4 +25,5 @@ export type CreateEventInput = {
   location?: string;
   max_participants?: number;
   audience?: Audience;
+  language?: Language;
 };
