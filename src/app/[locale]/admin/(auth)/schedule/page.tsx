@@ -1,5 +1,5 @@
-export default function schedule() {
-  return (
-    <div>schedule</div>
-  )
+import CalendarPresenter from "@/presenter/admin/CalendarPresenter";
+
+export default function SchedulePage() {
+  return <CalendarPresenter />;
 }
