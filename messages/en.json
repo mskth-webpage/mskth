@@ -46,9 +46,21 @@
     "title": "Welcome to the Admin Dashboard",
     "description": "Manage MSKTH admin content, settings, and internal workflows from this dashboard.",
     "hint": "Your admin tools can be added here as cards, tables, or quick actions.",
-    "logout": "Log out"
+    "logout": "Log out",
+    "welcome": "Welcome to Admin Dashboard,",
+    "totalMembers": "Total members",
+    "totalTicketsSold": "Total ticket sold",
+    "ticketOut": "Ticket out",
+    "overviewCalendar": "Overview calendar",
+    "today": "Today",
+    "upcomingEvents": "Upcoming events",
+    "noUpcomingEvents": "No upcoming events",
+    "previousEvents": "Previous events",
+    "noPreviousEvents": "No previous events",
+    "joinedMembers": "Joined members"
   },
   "Sidebar": {
+    "dashboard": "Dashboard",
     "event": "Event",
     "boardmembers": "Boardmembers",
     "project": "Project",
@@ -69,6 +81,24 @@
       "groupLabel": "Group Label",
       "members": "Members"
     }
+  },
+  "AdminCalendar": {
+    "title": "Calendar",
+    "subtitle": "Overview of all scheduled events",
+    "addEvent": "Add Event",
+    "today": "Today",
+    "viewYear": "Year",
+    "viewMonth": "Month",
+    "viewWeek": "Week",
+    "viewDay": "Day",
+    "detailParticipants": "participants joined",
+    "contextMenuShow": "View details",
+    "contextMenuEdit": "Edit",
+    "contextMenuDelete": "Delete",
+    "deleteTitle": "Delete event",
+    "deleteDescription": "Are you sure you want to delete \"{title}\"? This action cannot be undone.",
+    "deleteCancel": "Cancel",
+    "deleteConfirm": "Delete"
   },
   "AdminTopbar": {
     "language": "Language",

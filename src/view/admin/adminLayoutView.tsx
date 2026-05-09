@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Sidebar from '@/view/admin/sidebarView';
 import Topbar from '@/components/admin/auth/Topbar';
+import SwrProvider from '@/components/admin/SwrProvider';
 import clsx from 'clsx';
 
 type Props = {
@@ -16,19 +17,24 @@ export default function AdminLayoutView({ children }: Props) {
   });
 
   return (
-    <div className="min-h-screen bg-background">
-      <Topbar onMenuToggle={() => setIsSidebarOpen((prev) => !prev)} />
+    <SwrProvider>
+      <div className="min-h-screen bg-background">
+        <Topbar
+          isSidebarOpen={isSidebarOpen}
+          onMenuToggle={() => setIsSidebarOpen((prev) => !prev)}
+        />
 
-      <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+        <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-      <main
-        className={clsx(
-          'pt-16 transition-[padding-left] duration-300 ease-in-out',
-          isSidebarOpen ? 'lg:pl-64' : 'lg:pl-20'
-        )}
-      >
-        {children}
-      </main>
-    </div>
+        <main
+          className={clsx(
+            'pt-16 transition-[padding-left] duration-300 ease-in-out',
+            isSidebarOpen ? 'lg:pl-64' : 'lg:pl-20'
+          )}
+        >
+          {children}
+        </main>
+      </div>
+    </SwrProvider>
   );
 }

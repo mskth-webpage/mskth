@@ -46,9 +46,21 @@
     "title": "Välkommen till adminpanelen",
     "description": "Hantera MSKTHs admininnehåll, inställningar och interna arbetsflöden från den här panelen.",
     "hint": "Dina adminverktyg kan läggas till här som kort, tabeller eller snabbåtgärder.",
-    "logout": "Logga ut"
+    "logout": "Logga ut",
+    "welcome": "Välkommen till adminpanelen,",
+    "totalMembers": "Totalt antal medlemmar",
+    "totalTicketsSold": "Totalt sålda biljetter",
+    "ticketOut": "Biljetter kvar",
+    "overviewCalendar": "Översiktskalender",
+    "today": "Idag",
+    "upcomingEvents": "Kommande evenemang",
+    "noUpcomingEvents": "Inga kommande evenemang",
+    "previousEvents": "Tidigare evenemang",
+    "noPreviousEvents": "Inga tidigare evenemang",
+    "joinedMembers": "Anmälda medlemmar"
   },
   "Sidebar": {
+    "dashboard": "Dashboard",
     "event": "Event",
     "boardmembers": "Styrelsemedlemmar",
     "project": "Projekt",
@@ -69,6 +81,24 @@
       "groupLabel": "Gruppetikett",
       "members": "Medlemmar"
     }
+  },
+  "AdminCalendar": {
+    "title": "Kalender",
+    "subtitle": "Översikt över alla schemalagda evenemang",
+    "addEvent": "Lägg till evenemang",
+    "today": "Idag",
+    "viewYear": "År",
+    "viewMonth": "Månad",
+    "viewWeek": "Vecka",
+    "viewDay": "Dag",
+    "detailParticipants": "deltagare anmälda",
+    "contextMenuShow": "Visa detaljer",
+    "contextMenuEdit": "Redigera",
+    "contextMenuDelete": "Radera",
+    "deleteTitle": "Radera evenemang",
+    "deleteDescription": "Är du säker på att du vill radera \"{title}\"? Denna åtgärd kan inte ångras.",
+    "deleteCancel": "Avbryt",
+    "deleteConfirm": "Radera"
   },
   "AdminTopbar": {
     "language": "Språk",
