@@ -14,7 +14,7 @@ export default function DashboardEventsView({ upcoming, previous, isLoading }: P
   const t = useTranslations("AdminDashboard");
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+    <div className="flex flex-col overflow-hidden rounded-xl border border-blue-200/70 bg-card shadow-[0_0_0_1px_rgba(59,130,246,0.08),0_4px_16px_rgba(59,130,246,0.1)]">
       <div className="px-5 py-5">
         <div className="space-y-8">
           <div>
