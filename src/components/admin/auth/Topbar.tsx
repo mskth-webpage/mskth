@@ -18,6 +18,7 @@ import { useTheme } from "next-themes";
 import ThemeToggleButton from "@/components/ThemeToggle";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import clsx from "clsx";
 
 type AppTopbarProps = {
   onMenuToggle?: () => void;
@@ -27,7 +28,7 @@ type AppTopbarProps = {
 /**
  * AppTopbar component — renders the fixed top navigation bar for the schools dashboard.
  */
-export default function AppTopbar({ onMenuToggle }: AppTopbarProps) {
+export default function AppTopbar({ onMenuToggle, isSidebarOpen = true }: AppTopbarProps) {
   const { theme, setTheme } = useTheme();
   const locale = useLocale();
   const tHome = useTranslations("Home");
@@ -79,7 +80,12 @@ export default function AppTopbar({ onMenuToggle }: AppTopbarProps) {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-16 border-b border-border bg-card flex items-center justify-between px-3 sm:px-5 md:px-6">
+    <nav
+      className={clsx(
+        "fixed top-0 left-0 right-0 z-50 flex h-16 items-center justify-between border-b border-border bg-card px-3 transition-[left] duration-300 ease-in-out sm:px-5 md:px-6",
+        isSidebarOpen ? "lg:left-64" : "lg:left-20",
+      )}
+    >
       {/* Left: Logo + Menu */}
       <div className="flex items-center gap-3">
         <Button
@@ -91,8 +97,8 @@ export default function AppTopbar({ onMenuToggle }: AppTopbarProps) {
         >
           <Menu className="h-5 w-5" />
         </Button>
-        <div className="flex h-12 items-center overflow-hidden [&_img]:w-14 [&_img]:sm:w-16">
-          <Logo />
+        <div className="flex h-12 items-center overflow-hidden lg:hidden [&_img]:w-14 [&_img]:sm:w-16">
+          <Logo variant="admin" />
         </div>
       </div>
 
