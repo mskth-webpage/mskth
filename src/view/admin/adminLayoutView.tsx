@@ -19,7 +19,10 @@ export default function AdminLayoutView({ children }: Props) {
   return (
     <SwrProvider>
       <div className="min-h-screen bg-background">
-        <Topbar onMenuToggle={() => setIsSidebarOpen((prev) => !prev)} />
+        <Topbar
+          isSidebarOpen={isSidebarOpen}
+          onMenuToggle={() => setIsSidebarOpen((prev) => !prev)}
+        />
 
         <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
