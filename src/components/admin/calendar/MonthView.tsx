@@ -79,7 +79,7 @@ export default function MonthView({ date, events, onSlotSelect, onEventContextMe
               <div
                 key={`empty-${i}`}
                 className={cn(
-                  "min-h-[110px] border-b border-r border-slate-200",
+                  "min-h-[130px] border-b border-r border-slate-200",
                   isWeekend(col) ? "bg-slate-50/70" : "bg-slate-50/30",
                 )}
               />
@@ -97,7 +97,7 @@ export default function MonthView({ date, events, onSlotSelect, onEventContextMe
               key={k}
               onClick={() => onSlotSelect(day)}
               className={cn(
-                "group min-h-[110px] border-b border-r border-slate-200 p-2 cursor-pointer transition-colors",
+                "group min-h-[130px] border-b border-r border-slate-200 p-2 cursor-pointer transition-colors",
                 todayCell ? "bg-primary/5" : "bg-white hover:bg-blue-50/50",
               )}
             >

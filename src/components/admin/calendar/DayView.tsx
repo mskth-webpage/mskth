@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import type { CalendarEvent } from "@/types/adminCalendar";
 
@@ -43,7 +43,29 @@ function eventPos(event: CalendarEvent): { top: number; height: number } | null 
   return { top, height: Math.max(bottom - top, 26) };
 }
 
+function useNow() {
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 60_000);
+    return () => clearInterval(id);
+  }, []);
+  return now;
+}
+
 export default function DayView({ date, events, onSlotSelect, onEventContextMenu }: Props) {
+  const now = useNow();
+
+  const isToday =
+    date.getDate() === now.getDate() &&
+    date.getMonth() === now.getMonth() &&
+    date.getFullYear() === now.getFullYear();
+
+  const nowTop = (() => {
+    const min = now.getHours() * 60 + now.getMinutes();
+    if (min <= START_MIN) return null;
+    return (min - START_MIN) * (PX_PER_HOUR / 60);
+  })();
+
   const dayEvents = useMemo(
     () =>
       events.filter((e) => {
@@ -58,7 +80,7 @@ export default function DayView({ date, events, onSlotSelect, onEventContextMenu
   );
 
   return (
-    <div className="overflow-y-auto" style={{ maxHeight: 600 }}>
+    <div className="overflow-y-auto" style={{ maxHeight: 720 }}>
       {/* Header */}
       <div className="sticky top-0 z-10 grid grid-cols-[4rem_1fr] border-b-2 border-blue-100 bg-gradient-to-b from-primary/10 to-primary/5">
         <div />
@@ -109,6 +131,17 @@ export default function DayView({ date, events, onSlotSelect, onEventContextMenu
               style={{ top: slot.index * PX_PER_SLOT }}
             />
           ))}
+
+          {/* Current time indicator */}
+          {isToday && nowTop !== null && (
+            <div
+              className="pointer-events-none absolute left-0 right-0 z-10 flex items-center"
+              style={{ top: nowTop }}
+            >
+              <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-red-500" />
+              <span className="h-px flex-1 bg-red-500" />
+            </div>
+          )}
 
           {dayEvents.map((event) => {
             const pos = eventPos(event);

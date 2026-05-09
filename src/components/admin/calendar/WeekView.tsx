@@ -80,7 +80,7 @@ export default function WeekView({ date, events, onSlotSelect, onEventContextMen
     d.getFullYear() === today.getFullYear();
 
   return (
-    <div className="overflow-y-auto" style={{ maxHeight: 600 }}>
+    <div className="overflow-y-auto" style={{ maxHeight: 720 }}>
       {/* Header */}
       <div className="sticky top-0 z-10 grid grid-cols-[4rem_repeat(7,1fr)] border-b-2 border-blue-100 bg-gradient-to-b from-primary/10 to-primary/5">
         <div />

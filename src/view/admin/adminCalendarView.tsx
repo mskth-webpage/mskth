@@ -75,8 +75,8 @@ export default function AdminCalendarView({
   };
 
   return (
-    <div className="p-6 lg:p-8">
-      <div className="rounded-xl border border-blue-200/70 bg-background shadow-[0_0_0_1px_rgba(59,130,246,0.08),0_4px_16px_rgba(59,130,246,0.1)] dark:bg-card">
+    <div className="px-4 py-6 lg:px-6 lg:py-8">
+      <div className="overflow-hidden rounded-xl border border-blue-200/70 bg-background shadow-[0_0_0_1px_rgba(59,130,246,0.08),0_4px_16px_rgba(59,130,246,0.1)] dark:bg-card">
         {/* Header */}
         <div className="flex flex-col gap-4 border-b border-border px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
