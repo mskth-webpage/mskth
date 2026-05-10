@@ -6,7 +6,7 @@ import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { Geist, Geist_Mono, Nanum_Myeongjo } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider"
-import "../globals.css";
+import "../globals.css"
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
