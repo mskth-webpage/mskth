@@ -85,6 +85,8 @@
     "statusDraft": "Utkast",
     "statusArchived": "Arkiverat",
     "options": "Alternativ",
+    "contextMenuArchive": "Arkivera projekt",
+    "contextMenuRestore": "Återställ som utkast",
     "noProjects": "Inga projekt tillgängliga",
     "project": {
       "name": "Projektnamn",

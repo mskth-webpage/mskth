@@ -85,6 +85,8 @@
     "statusDraft": "Draft",
     "statusArchived": "Archived",
     "options": "Options",
+    "contextMenuArchive": "Archive project",
+    "contextMenuRestore": "Restore to draft",
     "noProjects": "No projects available",
     "project": {
       "name": "Project name",

@@ -86,7 +86,7 @@ export default function AdminProjectsView({
     }
   };
 
-  const executePublishToggle = (project: Project, newStatus: "draft" | "published") => {
+  const executePublishToggle = (project: Project, newStatus: "draft" | "published" | "archived") => {
     if (onUpdateProject) {
       onUpdateProject(
         {
@@ -102,12 +102,14 @@ export default function AdminProjectsView({
     setContextMenu({ project, pos });
   };
 
-  const handleContextAction = (action: "show" | "edit" | "delete") => {
+  const handleContextAction = (action: "show" | "edit" | "delete" | "archive" | "unarchive") => {
     if (!contextMenu) return;
     const { project } = contextMenu;
     setContextMenu(null);
     if (action === "show") setDetailProject(project);
     else if (action === "edit") setEditingProject(project);
+    else if (action === "archive") executePublishToggle(project, "archived");
+    else if (action === "unarchive") executePublishToggle(project, "draft");
     else setDeleteProject(project);
   };
 

@@ -7,12 +7,13 @@ type Props = {
   project: Project;
   position: { x: number; y: number };
   onClose: () => void;
-  onAction: (action: "show" | "edit" | "delete") => void;
+  onAction: (action: "show" | "edit" | "delete" | "archive" | "unarchive") => void;
 };
 
-/** Floating menu anchored to a click position with show, edit, and delete actions for a project. */
+/** Floating menu anchored to a click position with show, edit, delete, and archive actions for a project. */
 export default function ProjectContextMenu({ project, position, onClose, onAction }: Props) {
   const t = useTranslations("AdminCalendar"); // Using same translations for context menu actions
+  const tProject = useTranslations("AdminProjects");
 
   return (
     <div
@@ -47,6 +48,21 @@ export default function ProjectContextMenu({ project, position, onClose, onActio
           >
             {t("contextMenuEdit")}
           </button>
+          {project.status === "archived" ? (
+            <button
+              className="block w-full px-3 py-1.5 text-left text-sm transition-colors hover:bg-accent"
+              onClick={() => onAction("unarchive")}
+            >
+              {tProject("contextMenuRestore")}
+            </button>
+          ) : (
+            <button
+              className="block w-full px-3 py-1.5 text-left text-sm transition-colors hover:bg-accent"
+              onClick={() => onAction("archive")}
+            >
+              {tProject("contextMenuArchive")}
+            </button>
+          )}
           <div className="my-1 border-t border-border" />
           <button
             className="block w-full px-3 py-1.5 text-left text-sm text-destructive transition-colors hover:bg-destructive/10"
