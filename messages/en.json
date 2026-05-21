@@ -71,9 +71,14 @@
   "AdminProjects": {
     "title": "Create next project",
     "titlePrevious": "Create previous project",
-    "addNew": "+ Add new",
+    "addNew": "Add new",
     "save": "Save",
     "publish": "Publish",
+    "publishConfirm": "Are you sure you want to publish this project?",
+    "unpublishConfirm": "Are you sure you want to unpublish this project?",
+    "publishAction": "Publish",
+    "unpublishAction": "Unpublish",
+    "cancelAction": "Cancel",
     "noProjects": "No projects available",
     "project": {
       "name": "Project name",

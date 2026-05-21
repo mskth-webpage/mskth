@@ -4,21 +4,12 @@ import { useEffect, useState, useCallback } from "react";
 import AdminProjectsView, {
   Project,
 } from "@/view/admin/project/AdminProjectsView";
-import { useTranslations } from "next-intl";
 import { createClient } from "@/utils/supabase/client";
 
-// Extension of Project to store the actual file so it can be uploaded during save
-type PendingProject = Project & { file: File | null };
-
 export default function AdminProjectsPresenter() {
-  const t = useTranslations("AdminProjects.project");
 
   const [nextProjects, setNextProjects] = useState<Project[]>([]);
   const [previousProjects, setPreviousProjects] = useState<Project[]>([]);
-
-  // Pending projects that are not yet saved to the database.
-  const [pendingNextProjects, setPendingNextProjects] = useState<PendingProject[]>([]);
-  const [pendingPreviousProjects, setPendingPreviousProjects] = useState<PendingProject[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -55,43 +46,62 @@ export default function AdminProjectsPresenter() {
     fetchProjects();
   }, [fetchProjects]);
 
-  // Mocks a real project ID for local usage before saving
-  const generateLocalId = () =>
-    `local-${Math.random().toString(36).substr(2, 9)}`;
-
-  const handleAddProject = (
+  const handleAddProject = async (
     projectData: Omit<Project, "id">,
     file: File | null,
   ) => {
-    // If there's an image, create a temporary local URL for preview
-    const tempImageUrl = file ? URL.createObjectURL(file) : undefined;
+    setIsLoading(true);
+    try {
+      let publicImageUrl = projectData.image_url;
+      const supabase = createClient();
 
-    // Create the full object mapping
-    const newProject: PendingProject = {
-      ...projectData,
-      id: generateLocalId(),
-      image_url: tempImageUrl,
-      status: projectData.status,
-      file,
-    };
+      if (file) {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
+        
+        const { error: uploadError } = await supabase.storage
+          .from('images')
+          .upload(`projects/${fileName}`, file, {
+            cacheControl: '3600',
+            upsert: false,
+          });
 
-    // Store in the correct pending array to be displayed immediately
-    if (newProject.status === "draft" || newProject.status === "published") {
-      setPendingNextProjects((prev) => [...prev, newProject]);
-    } else {
-      setPendingPreviousProjects((prev) => [...prev, newProject]);
+        if (uploadError) throw uploadError;
+
+        const { data } = supabase.storage
+          .from('images')
+          .getPublicUrl(`projects/${fileName}`);
+          
+        publicImageUrl = data.publicUrl;
+      }
+
+      const newProject = {
+        title: projectData.title,
+        description: projectData.description,
+        group_label: projectData.group_label,
+        members: projectData.members,
+        status: projectData.status,
+        image_url: publicImageUrl,
+      };
+
+      const response = await fetch("/api/auth/project", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ projects: [newProject] }),
+      });
+
+      if (!response.ok) throw new Error("Failed to add project");
+
+      await fetchProjects();
+    } catch (error) {
+      console.error(error);
+      alert("Erreur lors de la création");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleUpdateProject = async (project: Project, file: File | null) => {
-    if (String(project.id).startsWith("local-")) {
-      const updatePendingList = (list: PendingProject[]) => 
-        list.map((p) => (p.id === project.id ? { ...project, file: file || p.file } as PendingProject : p));
-      
-      setPendingNextProjects(updatePendingList);
-      setPendingPreviousProjects(updatePendingList);
-      return;
-    }
 
     setIsLoading(true);
     try {
@@ -146,13 +156,6 @@ export default function AdminProjectsPresenter() {
   };
 
   const handleDeleteProject = async (id: string | number) => {
-    if (!confirm("Are you sure you want to delete this project?")) return;
-
-    if (String(id).startsWith("local-")) {
-      setPendingNextProjects((prev) => prev.filter(p => p.id !== id));
-      setPendingPreviousProjects((prev) => prev.filter(p => p.id !== id));
-      return;
-    }
 
     setIsLoading(true);
     try {
@@ -171,86 +174,7 @@ export default function AdminProjectsPresenter() {
     }
   };
 
-  const handleSaveChanges = async (type: "next" | "previous", action: "save" | "publish") => {
-    const supabase = createClient();
-    const pendingList = type === "next" ? pendingNextProjects : pendingPreviousProjects;
-    
-    if (pendingList.length === 0) return;
 
-    setIsLoading(true);
-
-    try {
-      const preparedProjects = await Promise.all(
-        pendingList.map(async (p) => {
-          let publicImageUrl = p.image_url;
-
-          if (p.file) {
-            const fileExt = p.file.name.split('.').pop();
-            const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.${fileExt}`;
-            
-            const { error: uploadError } = await supabase.storage
-              .from('images')
-              .upload(`projects/${fileName}`, p.file, {
-                cacheControl: '3600',
-                upsert: false,
-              });
-
-            if (uploadError) throw uploadError;
-
-            const { data } = supabase.storage
-              .from('images')
-              .getPublicUrl(`projects/${fileName}`);
-              
-            publicImageUrl = data.publicUrl;
-          }
-
-          // Force "draft" on Save for active section. "publish" enforces visibility.
-          let finalStatus = p.status;
-          if (type === "next") {
-            finalStatus = action === "publish" ? "published" : "draft";
-          } else {
-            // For archived section, they should ideally be "archived" when saved.
-            // But if published, they get visible to front-end? We'll enforce archived if saved.
-            finalStatus = action === "publish" ? "published" : "archived";
-          }
-
-          return {
-            title: p.title,
-            description: p.description,
-            group_label: p.group_label,
-            members: p.members,
-            status: finalStatus,
-            image_url: publicImageUrl,   
-          };
-        })
-      );
-
-      const response = await fetch("/api/auth/project", {
-         method: "POST",
-         headers: {
-           "Content-Type": "application/json"
-         },
-         body: JSON.stringify({ projects: preparedProjects }),
-      });
-
-      if (!response.ok) {
-         throw new Error("Failed to save projects");
-      }
-
-      // Clear pending list
-      if (type === "next") setPendingNextProjects([]);
-      else setPendingPreviousProjects([]);
-      
-      // Call the API again to refresh the IDs correctly and have real db representations
-      await fetchProjects();
-
-    } catch (error) {
-      console.error(error);
-      alert("Erreur lors de la sauvegarde: Vérifie que ton bucket 'images' est bien en mode public.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   if (isLoading) {
     return (
@@ -260,16 +184,13 @@ export default function AdminProjectsPresenter() {
     );
   }
 
-  // Combine saved projects and un-saved pending ones directly in the view
   return (
     <AdminProjectsView
-      nextProjects={[...pendingNextProjects, ...nextProjects]}
-      previousProjects={[...pendingPreviousProjects, ...previousProjects]}
+      nextProjects={nextProjects}
+      previousProjects={previousProjects}
       onAddProject={handleAddProject}
       onUpdateProject={handleUpdateProject}
       onDeleteProject={handleDeleteProject}
-      onSave={(type) => handleSaveChanges(type, "save")}
-      onPublish={(type) => handleSaveChanges(type, "publish")}
     />
   );
 }

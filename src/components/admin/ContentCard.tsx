@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+const MSKTH_LOGO = `${process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "")}/storage/v1/object/public/images/MSkth.png`;
+
 const scallopStyle: React.CSSProperties = {
   WebkitMaskImage: `radial-gradient(circle at 10px 0, transparent 9px, black 10px)`,
   WebkitMaskSize: "20px 100%",
@@ -26,6 +28,9 @@ type ImageHeader = {
   type: "image";
   src: string | null;
   alt: string;
+  statusLabel?: string;
+  statusVariant?: "success" | "warning";
+  secondaryBadge?: { label: string; className: string };
 };
 
 export type MetaItem = {
@@ -93,17 +98,38 @@ export default function ContentCard({
         </div>
       )}
 
-      {header?.type === "image" && (
+      {header?.type === "image" && (() => {
+        const isDefault = !header.src || header.src.includes("MSkth.png");
+        return (
         <div className="relative h-40 w-full bg-muted">
-          {header.src ? (
-            <Image src={header.src} alt={header.alt} fill className="object-cover" />
-          ) : (
-            <div className="flex h-full items-center justify-center">
-              <div className="h-12 w-12 rounded-full bg-muted-foreground/10" />
+          <Image 
+            src={isDefault ? MSKTH_LOGO : header.src!} 
+            alt={header.alt} 
+            fill 
+            className={isDefault ? "object-contain p-4 opacity-40" : "object-cover"} 
+          />
+          {header.statusLabel && (
+            <div className="absolute top-3 right-3 flex flex-col items-end gap-1">
+              <span
+                className={cn(
+                  "rounded-full px-2.5 py-0.5 text-[11px] font-semibold backdrop-blur-sm",
+                  header.statusVariant === "success"
+                    ? "bg-success/90 text-success-foreground"
+                    : "bg-warning/90 text-warning-foreground",
+                )}
+              >
+                {header.statusLabel}
+              </span>
+              {header.secondaryBadge && (
+                <span className={cn("rounded-full px-2.5 py-0.5 text-[11px] font-semibold backdrop-blur-sm", header.secondaryBadge.className)}>
+                  {header.secondaryBadge.label}
+                </span>
+              )}
             </div>
           )}
         </div>
-      )}
+        );
+      })()}
 
       <div className="flex flex-1 flex-col gap-2 px-4 py-3">
         <p className="line-clamp-2 text-sm font-bold leading-snug text-foreground">{title}</p>

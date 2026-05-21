@@ -71,9 +71,14 @@
   "AdminProjects": {
     "title": "Skapa nästa projekt",
     "titlePrevious": "Skapa tidigare projekt",
-    "addNew": "+ Lägg till nytt",
+    "addNew": "Lägg till nytt",
     "save": "Spara",
     "publish": "Publicera",
+    "publishConfirm": "Är du säker på att du vill publicera det här projektet?",
+    "unpublishConfirm": "Är du säker på att du vill avpublicera det här projektet?",
+    "publishAction": "Publicera",
+    "unpublishAction": "Avpublicera",
+    "cancelAction": "Avbryt",
     "noProjects": "Inga projekt tillgängliga",
     "project": {
       "name": "Projektnamn",
