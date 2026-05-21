@@ -137,9 +137,9 @@ export default function ContentCard({
       })()}
 
       <div className="flex flex-1 flex-col gap-2 px-4 py-3">
-        <p className="line-clamp-2 text-sm font-bold leading-snug text-foreground">{title}</p>
+        <p className="line-clamp-2 text-sm font-bold leading-snug text-foreground break-words">{title}</p>
         {description && (
-          <p className="line-clamp-3 text-xs leading-relaxed text-muted-foreground">{description}</p>
+          <p className="line-clamp-3 text-xs leading-relaxed text-muted-foreground break-words">{description}</p>
         )}
         {meta && meta.length > 0 && (
           <div className="mt-auto space-y-1 pt-2">

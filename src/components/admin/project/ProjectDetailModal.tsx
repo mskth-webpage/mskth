@@ -52,7 +52,7 @@ export default function ProjectDetailModal({ project, onClose, onEdit, onDelete 
         </div>
 
         <div className="p-6">
-          <h2 className="text-xl font-bold text-foreground">{project.title}</h2>
+          <h2 className="text-xl font-bold text-foreground break-words">{project.title}</h2>
 
           <div className="mt-4 space-y-3">
             {/* Members */}
@@ -66,7 +66,7 @@ export default function ProjectDetailModal({ project, onClose, onEdit, onDelete 
             {/* Description */}
             {project.description && (
               <div className="mt-2 rounded-lg bg-muted/50 p-3">
-                <p className="text-sm leading-relaxed text-muted-foreground whitespace-pre-wrap">
+                <p className="text-sm leading-relaxed text-muted-foreground whitespace-pre-wrap break-words">
                   {project.description}
                 </p>
               </div>
