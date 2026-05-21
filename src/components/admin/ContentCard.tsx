@@ -20,7 +20,7 @@ type DateHeader = {
   type: "date";
   date: Date;
   statusLabel: string;
-  statusVariant: "success" | "warning";
+  statusVariant: "success" | "warning" | "muted";
   secondaryBadge?: { label: string; className: string };
 };
 
@@ -29,7 +29,7 @@ type ImageHeader = {
   src: string | null;
   alt: string;
   statusLabel?: string;
-  statusVariant?: "success" | "warning";
+  statusVariant?: "success" | "warning" | "muted";
   secondaryBadge?: { label: string; className: string };
 };
 
@@ -84,7 +84,9 @@ export default function ContentCard({
                 "rounded-full px-2.5 py-0.5 text-[11px] font-semibold",
                 header.statusVariant === "success"
                   ? "bg-success text-success-foreground"
-                  : "bg-warning text-warning-foreground",
+                  : header.statusVariant === "warning"
+                  ? "bg-warning text-warning-foreground"
+                  : "bg-muted text-muted-foreground border border-border/50",
               )}
             >
               {header.statusLabel}
@@ -115,7 +117,9 @@ export default function ContentCard({
                   "rounded-full px-2.5 py-0.5 text-[11px] font-semibold backdrop-blur-sm",
                   header.statusVariant === "success"
                     ? "bg-success/90 text-success-foreground"
-                    : "bg-warning/90 text-warning-foreground",
+                    : header.statusVariant === "warning"
+                    ? "bg-warning/90 text-warning-foreground"
+                    : "bg-background/80 text-muted-foreground border border-border/50",
                 )}
               >
                 {header.statusLabel}

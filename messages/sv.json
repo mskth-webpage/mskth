@@ -79,6 +79,10 @@
     "publishAction": "Publicera",
     "unpublishAction": "Avpublicera",
     "cancelAction": "Avbryt",
+    "statusPublished": "Publicerat",
+    "statusDraft": "Utkast",
+    "statusArchived": "Arkiverat",
+    "options": "Alternativ",
     "noProjects": "Inga projekt tillgängliga",
     "project": {
       "name": "Projektnamn",

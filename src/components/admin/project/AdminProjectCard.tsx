@@ -13,8 +13,9 @@ type Props = {
 };
 
 export default function AdminProjectCard({ project, onPublishToggle, onCardClick }: Props) {
-  const t = useTranslations("AdminUpcomingEvents");
+  const t = useTranslations("AdminProjects");
   const isPublished = project.status === "published";
+  const isArchived = project.status === "archived";
 
   const meta = [
     { 
@@ -29,8 +30,8 @@ export default function AdminProjectCard({ project, onPublishToggle, onCardClick
         type: "image",
         src: project.image_url || null,
         alt: project.title,
-        statusLabel: isPublished ? t("statusPublished") : t("statusDraft"),
-        statusVariant: isPublished ? "success" : "warning",
+        statusLabel: isArchived ? t("statusArchived") : isPublished ? t("statusPublished") : t("statusDraft"),
+        statusVariant: isArchived ? "muted" : isPublished ? "success" : "warning",
       }}
       title={project.title}
       description={project.description || undefined}

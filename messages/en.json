@@ -79,6 +79,10 @@
     "publishAction": "Publish",
     "unpublishAction": "Unpublish",
     "cancelAction": "Cancel",
+    "statusPublished": "Published",
+    "statusDraft": "Draft",
+    "statusArchived": "Archived",
+    "options": "Options",
     "noProjects": "No projects available",
     "project": {
       "name": "Project name",
