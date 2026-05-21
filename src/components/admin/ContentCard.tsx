@@ -107,7 +107,8 @@ export default function ContentCard({
           <Image 
             src={isDefault ? MSKTH_LOGO : header.src!} 
             alt={header.alt} 
-            fill 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={isDefault ? "object-contain p-4 opacity-40" : "object-cover"} 
           />
           {header.statusLabel && (

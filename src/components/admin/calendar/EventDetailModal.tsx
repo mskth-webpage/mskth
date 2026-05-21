@@ -55,6 +55,7 @@ export default function EventDetailModal({ event, onClose, onEdit, onDelete }: P
             src={isValidUrl(event.image_url) ? event.image_url : MSKTH_LOGO}
             alt={event.title}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={isValidUrl(event.image_url) ? "object-cover" : "object-contain p-6 opacity-40"}
           />
           <button

@@ -35,6 +35,7 @@ export default function ProjectDetailModal({ project, onClose, onEdit, onDelete 
             src={isDefault ? MSKTH_LOGO : project.image_url!}
             alt={project.title}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={isDefault ? "object-contain p-6 opacity-40" : "object-cover"}
           />
           <button
