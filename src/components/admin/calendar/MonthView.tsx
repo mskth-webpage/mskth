@@ -54,14 +54,14 @@ export default function MonthView({ date, events, onSlotSelect, onEventContextMe
   return (
     <div>
       {/* Weekday header */}
-      <div className="grid grid-cols-7 border-b-2 border-blue-100 bg-gradient-to-b from-primary/10 to-primary/5">
+      <div className="grid grid-cols-7 border-b-2 border-border bg-linear-to-b from-primary/10 to-primary/5">
         {WEEKDAYS.map((d, i) => (
           <div
             key={d}
             className={cn(
               "py-2.5 text-center text-[11px] font-semibold uppercase tracking-wider",
               isWeekend(i) ? "text-primary/50" : "text-primary/70",
-              i > 0 && "border-l border-blue-100/80",
+              i > 0 && "border-l border-border",
             )}
           >
             {d}
@@ -79,8 +79,8 @@ export default function MonthView({ date, events, onSlotSelect, onEventContextMe
               <div
                 key={`empty-${i}`}
                 className={cn(
-                  "min-h-[130px] border-b border-r border-slate-200",
-                  isWeekend(col) ? "bg-slate-50/70" : "bg-slate-50/30",
+                  "min-h-[130px] border-b border-r border-border",
+                  isWeekend(col) ? "bg-muted/50" : "bg-muted/20",
                 )}
               />
             );
@@ -97,8 +97,8 @@ export default function MonthView({ date, events, onSlotSelect, onEventContextMe
               key={k}
               onClick={() => onSlotSelect(day)}
               className={cn(
-                "group min-h-[130px] border-b border-r border-slate-200 p-2 cursor-pointer transition-colors",
-                todayCell ? "bg-primary/5" : "bg-white hover:bg-blue-50/50",
+                "group min-h-[130px] border-b border-r border-border p-2 cursor-pointer transition-colors",
+                todayCell ? "bg-primary/5" : "bg-card hover:bg-primary/5",
               )}
             >
               {/* Day number */}
@@ -108,7 +108,7 @@ export default function MonthView({ date, events, onSlotSelect, onEventContextMe
                     "inline-flex h-6 w-6 items-center justify-center rounded-full text-xs font-semibold transition-colors",
                     todayCell
                       ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-slate-500 group-hover:bg-primary/10 group-hover:text-primary",
+                      : "text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary",
                   )}
                 >
                   {day.getDate()}

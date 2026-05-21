@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Sidebar from '@/view/admin/sidebarView';
 import Topbar from '@/components/admin/auth/Topbar';
 import SwrProvider from '@/components/admin/SwrProvider';
@@ -11,10 +11,11 @@ type Props = {
 };
 
 export default function AdminLayoutView({ children }: Props) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
-    if (typeof window === 'undefined') return true;
-    return window.innerWidth >= 1024;
-  });
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  useEffect(() => {
+    setIsSidebarOpen(window.innerWidth >= 1024);
+  }, []);
 
   return (
     <SwrProvider>

@@ -46,6 +46,10 @@
     --color-blue-soft-200: var(--blue-soft-200);
     --color-blue-brand: var(--blue-brand);
     --color-neutral-black: var(--neutral-black);
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
   }
 
   :root {
@@ -86,13 +90,17 @@
     --blue-soft-2: oklch(0.472 0.148 232); /* #076bad */
     --blue-brand: oklch(0.252 0.088 258);  /* #1e325c */
     --neutral-black: oklch(0.18 0 0);
+    --success: oklch(0.952 0.052 155);           /* ~emerald-100 */
+    --success-foreground: oklch(0.467 0.144 151); /* ~emerald-700 */
+    --warning: oklch(0.961 0.063 84);            /* ~amber-100 */
+    --warning-foreground: oklch(0.555 0.163 73); /* ~amber-700 */
     --footer-gradient: linear-gradient(
       to bottom,
       var(--blue-soft-2) 0%,
       var(--neutral) 100%
     );
 
-    
+
   }
 
   .dark {
@@ -132,13 +140,17 @@
     --blue-soft-2: oklch(0.472 0.148 232); /* #076bad */
     --blue-brand: oklch(0.252 0.088 258);  /* #1e325c */
     --neutral-black: oklch(0.18 0 0);
+    --success: oklch(0.267 0.064 155);           /* dark success bg */
+    --success-foreground: oklch(0.792 0.115 151); /* light success text */
+    --warning: oklch(0.280 0.070 84);            /* dark warning bg */
+    --warning-foreground: oklch(0.847 0.109 73); /* light warning text */
     --footer-gradient: linear-gradient(
       to bottom,
       var(--blue-soft-2) 0%,
       var(--neutral) 100%
     );
 
-   
+
   }
 
   @layer base {
