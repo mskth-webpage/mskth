@@ -16,7 +16,7 @@ export default function AdminProjectsPresenter() {
   const fetchProjects = useCallback(async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/auth/project");
+      const response = await fetch("/api/admin/project");
       if (!response.ok) {
         throw new Error("Failed to fetch projects");
       }
@@ -73,6 +73,8 @@ export default function AdminProjectsPresenter() {
           .getPublicUrl(`projects/${fileName}`);
           
         publicImageUrl = data.publicUrl;
+      } else if (!publicImageUrl) {
+        publicImageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "")}/storage/v1/object/public/images/MSkth.png`;
       }
 
       const newProject = {
@@ -84,7 +86,7 @@ export default function AdminProjectsPresenter() {
         image_url: publicImageUrl,
       };
 
-      const response = await fetch("/api/auth/project", {
+      const response = await fetch("/api/admin/project", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ projects: [newProject] }),
@@ -126,6 +128,8 @@ export default function AdminProjectsPresenter() {
           .getPublicUrl(`projects/${fileName}`);
           
         publicImageUrl = data.publicUrl;
+      } else if (!publicImageUrl) {
+        publicImageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL?.replace(/\/$/, "")}/storage/v1/object/public/images/MSkth.png`;
       }
 
       const updatedProject = {
@@ -138,7 +142,7 @@ export default function AdminProjectsPresenter() {
         image_url: publicImageUrl,
       };
 
-      const response = await fetch("/api/auth/project", {
+      const response = await fetch("/api/admin/project", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ project: updatedProject }),
@@ -159,7 +163,7 @@ export default function AdminProjectsPresenter() {
 
     setIsLoading(true);
     try {
-      const response = await fetch(`/api/auth/project?id=${id}`, {
+      const response = await fetch(`/api/admin/project?id=${id}`, {
         method: "DELETE",
       });
 

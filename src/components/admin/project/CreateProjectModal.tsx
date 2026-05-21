@@ -54,6 +54,7 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
         group_label: groupLabel,
         members,
         status: initialValues.status,
+        image_url: imagePreview || "",
       }, imageFile);
     } else {
       if (!statusTarget) return;
@@ -63,6 +64,7 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
         group_label: groupLabel,
         members,
         status: statusTarget,
+        image_url: imagePreview || "",
       }, imageFile);
     }
   };
