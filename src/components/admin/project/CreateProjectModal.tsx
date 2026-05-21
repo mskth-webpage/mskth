@@ -126,7 +126,7 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.imageOptional")}</label>
+              <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.thumbnailLabel")}</label>
               <input
                 ref={fileRef}
                 type="file"

@@ -94,7 +94,7 @@
       "description": "Description",
       "groupLabel": "Group label",
       "members": "Members",
-      "imageOptional": "Image (Optional)",
+      "thumbnailLabel": "Thumbnail",
       "uploadImage": "Click to upload image"
     }
   },

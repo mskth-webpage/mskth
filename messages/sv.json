@@ -94,7 +94,7 @@
       "description": "Beskrivning",
       "groupLabel": "Gruppetikett",
       "members": "Medlemmar",
-      "imageOptional": "Bild (Valfritt)",
+      "thumbnailLabel": "Miniatyrbild",
       "uploadImage": "Klicka för att ladda upp bild"
     }
   },
