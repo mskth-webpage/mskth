@@ -77,7 +77,7 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
         onClick={(e) => e.stopPropagation()}
       >
         <p className="mb-3 text-lg font-semibold text-foreground">
-          {initialValues ? "Edit Project" : t("addNew")}
+          {initialValues ? t("editTitle") : t("addNew")}
         </p>
 
         {/* Ticket-shaped form */}
@@ -124,7 +124,7 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium text-muted-foreground">Image (Optional)</label>
+              <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.imageOptional")}</label>
               <input
                 ref={fileRef}
                 type="file"
@@ -150,7 +150,7 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
                   className="flex h-32 w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary"
                 >
                   <ImagePlus className="h-6 w-6" />
-                  <span className="text-xs">Click to upload image</span>
+                  <span className="text-xs">{t("project.uploadImage")}</span>
                 </button>
               )}
             </div>
@@ -164,10 +164,10 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
         {/* Actions outside ticket */}
         <div className="mt-4 flex justify-between">
           <Button onClick={handleSave} disabled={!title}>
-            Save
+            {t("save")}
           </Button>
           <Button variant="outline" onClick={onCancel}>
-            Cancel
+            {t("cancelAction")}
           </Button>
         </div>
       </div>

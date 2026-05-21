@@ -88,11 +88,14 @@
     "contextMenuArchive": "Arkivera projekt",
     "contextMenuRestore": "Återställ som utkast",
     "noProjects": "Inga projekt tillgängliga",
+    "editTitle": "Redigera projekt",
     "project": {
       "name": "Projektnamn",
       "description": "Beskrivning",
       "groupLabel": "Gruppetikett",
-      "members": "Medlemmar"
+      "members": "Medlemmar",
+      "imageOptional": "Bild (Valfritt)",
+      "uploadImage": "Klicka för att ladda upp bild"
     }
   },
   "AdminUpcomingEvents": {
