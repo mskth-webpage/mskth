@@ -68,6 +68,20 @@
     "calendar": "Calendar",
     "resources": "Resources"
   },
+  "AdminProjects": {
+    "title": "Create next project",
+    "titlePrevious": "Create previous project",
+    "addNew": "+ Add new",
+    "save": "Save",
+    "publish": "Publish",
+    "noProjects": "No projects available",
+    "project": {
+      "name": "Project name",
+      "description": "Description",
+      "groupLabel": "Group label",
+      "members": "Members"
+    }
+  },
   "AdminUpcomingEvents": {
     "title": "Create upcoming events",
     "addNew": "Add new",
