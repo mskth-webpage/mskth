@@ -69,8 +69,10 @@
     "resources": "Resources"
   },
   "AdminProjects": {
-    "title": "Create next project",
-    "titlePrevious": "Create previous project",
+    "title": "Manage Projects",
+    "tabActive": "Active",
+    "tabArchived": "Archived",
+    "tabSubtitle": "Projects",
     "addNew": "Add new",
     "save": "Save",
     "publish": "Publish",

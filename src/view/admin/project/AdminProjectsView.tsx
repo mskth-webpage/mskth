@@ -141,7 +141,7 @@ export default function AdminProjectsView({
       {/* Page header */}
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-foreground">
-          {activeTab === "next" ? t("title") : t("titlePrevious")}
+          {t("title")}
         </h1>
         <Button onClick={() => handleOpenCreateModal(activeTab === "next" ? "draft" : "archived")} className="gap-2">
           <Plus className="h-4 w-4" />
@@ -153,8 +153,8 @@ export default function AdminProjectsView({
         {/* Project group picker */}
         <div className="flex flex-wrap gap-4 border-b border-border p-6">
           <ProjectGroup
-            title="Next"
-            subtitle="Projects"
+            title={t("tabActive")}
+            subtitle={t("tabSubtitle")}
             projectCount={nextProjects.length}
             selected={activeTab === "next"}
             onClick={() => {
@@ -166,8 +166,8 @@ export default function AdminProjectsView({
             }}
           />
           <ProjectGroup
-            title="Previous"
-            subtitle="Projects"
+            title={t("tabArchived")}
+            subtitle={t("tabSubtitle")}
             projectCount={previousProjects.length}
             selected={activeTab === "previous"}
             onClick={() => {

@@ -69,8 +69,10 @@
     "resources": "Resurser"
   },
   "AdminProjects": {
-    "title": "Skapa nästa projekt",
-    "titlePrevious": "Skapa tidigare projekt",
+    "title": "Hantera projekt",
+    "tabActive": "Aktiva",
+    "tabArchived": "Arkiverade",
+    "tabSubtitle": "Projekt",
     "addNew": "Lägg till nytt",
     "save": "Spara",
     "publish": "Publicera",
