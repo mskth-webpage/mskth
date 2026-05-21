@@ -73,6 +73,7 @@
     "tabActive": "Active",
     "tabArchived": "Archived",
     "tabSubtitle": "Projects",
+    "tabSubtitleSingular": "Project",
     "addNew": "Add new",
     "save": "Save",
     "publish": "Publish",

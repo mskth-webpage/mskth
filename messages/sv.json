@@ -73,6 +73,7 @@
     "tabActive": "Aktiva",
     "tabArchived": "Arkiverade",
     "tabSubtitle": "Projekt",
+    "tabSubtitleSingular": "Projekt",
     "addNew": "Lägg till nytt",
     "save": "Spara",
     "publish": "Publicera",

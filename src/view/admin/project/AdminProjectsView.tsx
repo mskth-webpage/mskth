@@ -156,8 +156,7 @@ export default function AdminProjectsView({
         <div className="flex flex-wrap gap-4 border-b border-border p-6">
           <ProjectGroup
             title={t("tabActive")}
-            subtitle={t("tabSubtitle")}
-            projectCount={nextProjects.length}
+            countLabel={`${nextProjects.length} ${nextProjects.length === 1 ? t("tabSubtitleSingular").toLowerCase() : t("tabSubtitle").toLowerCase()}`}
             selected={activeTab === "next"}
             onClick={() => {
               setActiveTab("next");
@@ -169,8 +168,7 @@ export default function AdminProjectsView({
           />
           <ProjectGroup
             title={t("tabArchived")}
-            subtitle={t("tabSubtitle")}
-            projectCount={previousProjects.length}
+            countLabel={`${previousProjects.length} ${previousProjects.length === 1 ? t("tabSubtitleSingular").toLowerCase() : t("tabSubtitle").toLowerCase()}`}
             selected={activeTab === "previous"}
             onClick={() => {
               setActiveTab("previous");

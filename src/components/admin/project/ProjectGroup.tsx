@@ -4,14 +4,13 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   title: string;
-  subtitle: string;
-  projectCount: number;
+  countLabel: string;
   selected: boolean;
   onClick: () => void;
 };
 
 /** Clickable circle used to select which project group to display. */
-export default function ProjectGroup({ title, subtitle, projectCount, selected, onClick }: Props) {
+export default function ProjectGroup({ title, countLabel, selected, onClick }: Props) {
   return (
     <button
       onClick={onClick}
@@ -23,10 +22,7 @@ export default function ProjectGroup({ title, subtitle, projectCount, selected, 
       )}
     >
       <span className="text-sm font-bold leading-none">{title}</span>
-      <span className="mt-0.5 text-xs font-medium opacity-70">{subtitle}</span>
-      <span className="mt-1 text-[10px] opacity-60">
-        {projectCount} {projectCount === 1 ? "project" : "projects"}
-      </span>
+      <span className="mt-1 text-xs font-medium opacity-70">{countLabel}</span>
     </button>
   );
 }
