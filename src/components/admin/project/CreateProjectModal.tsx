@@ -34,7 +34,10 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
   const [groupLabel, setGroupLabel] = useState(initialValues?.group_label ?? "");
   const [members, setMembers] = useState(initialValues?.members ?? "");
   const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(initialValues?.image_url ?? null);
+  const initialImage = initialValues?.image_url && !initialValues.image_url.includes("MSkth.png") 
+    ? initialValues.image_url 
+    : null;
+  const [imagePreview, setImagePreview] = useState<string | null>(initialImage);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

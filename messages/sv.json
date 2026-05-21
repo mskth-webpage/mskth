@@ -87,6 +87,8 @@
     "options": "Alternativ",
     "contextMenuArchive": "Arkivera projekt",
     "contextMenuRestore": "Återställ som utkast",
+    "contextMenuEdit": "Redigera",
+    "contextMenuDelete": "Radera",
     "noProjects": "Inga projekt tillgängliga",
     "editTitle": "Redigera projekt",
     "project": {

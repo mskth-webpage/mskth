@@ -87,6 +87,8 @@
     "options": "Options",
     "contextMenuArchive": "Archive project",
     "contextMenuRestore": "Restore to draft",
+    "contextMenuEdit": "Edit",
+    "contextMenuDelete": "Delete",
     "noProjects": "No projects available",
     "editTitle": "Edit Project",
     "project": {
