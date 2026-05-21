@@ -143,7 +143,7 @@ export default function AdminProjectsPresenter() {
       };
 
       const response = await fetch("/api/admin/project", {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ project: updatedProject }),
       });

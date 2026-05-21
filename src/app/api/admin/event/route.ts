@@ -71,6 +71,13 @@ export async function PATCH(req: NextRequest) {
   const { id, ...fields } = await req.json();
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
+  // 1. Fetch the original event to see if the image changed
+  const { data: originalEvent } = await auth.supabase
+    .from("events")
+    .select("image_url")
+    .eq("id", id)
+    .single();
+
   const { error } = await auth.supabase
     .from("events")
     .update(fields)
@@ -79,6 +86,27 @@ export async function PATCH(req: NextRequest) {
   if (error) {
     console.error("[PATCH /api/admin/event]", error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  // 2. Clean up the old image from storage if it was changed
+  if (
+    originalEvent &&
+    originalEvent.image_url &&
+    fields.image_url !== undefined && // We are updating the image_url field
+    originalEvent.image_url !== fields.image_url &&
+    !originalEvent.image_url.includes("MSkth.png")
+  ) {
+    const urlParts = originalEvent.image_url.split('/public/images/');
+    if (urlParts.length === 2) {
+      const filePath = urlParts[1];
+      const { error: storageError } = await auth.supabase.storage
+        .from('images')
+        .remove([filePath]);
+        
+      if (storageError) {
+        console.error("Failed to delete old event image from storage:", storageError.message);
+      }
+    }
   }
 
   return NextResponse.json({ success: true });
@@ -93,8 +121,31 @@ export async function DELETE(req: NextRequest) {
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
 
+  // 1. Fetch the event first to get the image_url BEFORE deleting it
+  const { data: eventToDel } = await auth.supabase
+    .from("events")
+    .select("image_url")
+    .eq("id", Number(id))
+    .single();
+
+  // 2. Delete the event from the database
   const { error } = await auth.supabase.from("events").delete().eq("id", Number(id));
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  // 3. Delete the image from the storage bucket, ONLY IF it's not the default MSkth.png
+  if (eventToDel?.image_url && !eventToDel.image_url.includes("MSkth.png")) {
+    const urlParts = eventToDel.image_url.split('/public/images/');
+    if (urlParts.length === 2) {
+      const filePath = urlParts[1];
+      const { error: storageError } = await auth.supabase.storage
+        .from('images')
+        .remove([filePath]);
+        
+      if (storageError) {
+        console.error("Failed to delete event image from storage:", storageError.message);
+      }
+    }
+  }
 
   return NextResponse.json({ success: true });
 }
