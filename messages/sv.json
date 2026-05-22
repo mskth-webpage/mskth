@@ -106,6 +106,8 @@
     "eventTypeLabel": "Evenemangstyp",
     "eventTypeUpcoming": "Kommande",
     "eventTypePrevious": "Tidigare",
+    "registrationClosesLabel": "Anmälan stänger",
+    "optional": "valfritt",
     "saving": "Sparar…",
     "save": "Spara"
   },
@@ -158,19 +160,14 @@
     },
     "events": {
       "title": "Kommande evenemang",
-      "button": "Köp nu",
-      "card1": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      },
-      "card2": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      },
-      "card3": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      }
+      "viewDetails": "Visa detaljer",
+      "empty": "Inga kommande evenemang just nu.",
+      "audienceAll": "Öppet",
+      "audienceBrothers": "Bröder",
+      "audienceSisters": "Systrar",
+      "langEn": "Engelska",
+      "langSv": "Svenska",
+      "langBoth": "EN & SV"
     },
     "newsletter": {
       "title": "Gå med i vår gemenskap idag",
