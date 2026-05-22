@@ -103,8 +103,17 @@
     "uploadImage": "Klicka för att ladda upp bild",
     "startDateLabel": "Startdatum",
     "endDateLabel": "Slutdatum",
+    "eventTypeLabel": "Evenemangstyp",
+    "eventTypeUpcoming": "Kommande",
+    "eventTypePrevious": "Tidigare",
     "saving": "Sparar…",
     "save": "Spara"
+  },
+  "AdminPreviousEvents": {
+    "title": "Tidigare evenemang",
+    "addNew": "Lägg till ny",
+    "empty": "Inga tidigare evenemang hittades.",
+    "eventCount": "{count, plural, one {# evenemang} other {# evenemang}}"
   },
   "AdminCalendar": {
     "title": "Kalender",

@@ -4,16 +4,15 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 type Props = {
-  month: string;
+  year: number;
   eventCount: number;
   selected: boolean;
   onClick: () => void;
 };
 
-/** Clickable month circle used to filter events by month. Pass "Month YYYY" to show both lines, or just "Month" to hide the year line. */
-export default function MonthGroup({ month, eventCount, selected, onClick }: Props) {
-  const t = useTranslations("AdminUpcomingEvents");
-  const [monthName, year] = month.split(" ");
+/** Clickable year circle used to filter previous events by year. */
+export default function YearGroup({ year, eventCount, selected, onClick }: Props) {
+  const t = useTranslations("AdminPreviousEvents");
 
   return (
     <button
@@ -25,8 +24,7 @@ export default function MonthGroup({ month, eventCount, selected, onClick }: Pro
           : "border-primary/30 bg-card text-primary hover:border-primary hover:shadow-primary/20",
       )}
     >
-      <span className="text-sm font-bold leading-none">{monthName}</span>
-      {year && <span className="mt-0.5 text-xs font-medium opacity-70">{year}</span>}
+      <span className="text-lg font-bold leading-none">{year}</span>
       <span className="mt-1 text-[10px] opacity-60">{t("eventCount", { count: eventCount })}</span>
     </button>
   );
