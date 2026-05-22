@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import MonthGroup from "@/components/admin/event/MonthGroup";
 import TicketCard from "@/components/admin/event/TicketCard";
+import UpcomingEventsSkeleton from "@/components/admin/skeletons/UpcomingEventsSkeleton";
 import CreateEventModal from "@/components/admin/event/CreateEventModal";
 import CalendarContextMenu from "@/components/admin/calendar/CalendarContextMenu";
 import EventDetailModal from "@/components/admin/calendar/EventDetailModal";
@@ -107,7 +108,7 @@ export default function AdminUpcomingEventsView({
       </div>
 
       {isLoading ? (
-        <div className="h-64 animate-pulse rounded-2xl bg-muted/40" />
+        <UpcomingEventsSkeleton />
       ) : eventsByMonth.length === 0 ? (
         <div className="flex h-64 items-center justify-center rounded-2xl border-2 border-dashed border-border text-muted-foreground">
           {t("empty")}
