@@ -103,8 +103,17 @@
     "uploadImage": "Click to upload image",
     "startDateLabel": "Start date",
     "endDateLabel": "End date",
+    "eventTypeLabel": "Event type",
+    "eventTypeUpcoming": "Upcoming",
+    "eventTypePrevious": "Previous",
     "saving": "Saving…",
     "save": "Save"
+  },
+  "AdminPreviousEvents": {
+    "title": "Previous events",
+    "addNew": "Add new",
+    "empty": "No previous events found.",
+    "eventCount": "{count, plural, one {# event} other {# events}}"
   },
   "AdminCalendar": {
     "title": "Calendar",
