@@ -7,7 +7,7 @@ export default function OurStorySection() {
   const t = useTranslations("AboutUs.ourStory");
 
   return (
-    <section className="relative bg-blue-brand text-background pt-24 pb-40 overflow-hidden">
+    <section className="relative bg-blue-brand text-white pt-24 pb-40 overflow-hidden">
       {/* Desktop decorative images */}
       <Image
         src="/lightone.svg"
@@ -60,7 +60,7 @@ export default function OurStorySection() {
           {t("intro")}
         </p>
 
-        <p className="mx-auto mb-20 max-w-3xl font-serif text-base sm:text-lg leading-relaxed text-background/80">
+        <p className="mx-auto mb-20 max-w-3xl font-serif text-base sm:text-lg leading-relaxed text-white/80">
           {t("mission")}
         </p>
 
@@ -69,7 +69,7 @@ export default function OurStorySection() {
           {t("heading")}
         </h2>
 
-        <p className="mx-auto max-w-3xl font-serif text-base sm:text-lg leading-relaxed text-background/80">
+        <p className="mx-auto max-w-3xl font-serif text-base sm:text-lg leading-relaxed text-white/80">
           {t("story")}
         </p>
 
