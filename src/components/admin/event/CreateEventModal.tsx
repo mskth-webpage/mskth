@@ -51,6 +51,8 @@ export default function CreateEventModal({ initialValues, onSave, onCancel, defa
   const [startTime, setStartTime] = useState(initialValues?.start_at ? toLocalTime(initialValues.start_at) : "00:00");
   const [endDate, setEndDate] = useState(initialValues?.end_at ? toLocalDate(initialValues.end_at) : "");
   const [endTime, setEndTime] = useState(initialValues?.end_at ? toLocalTime(initialValues.end_at) : "00:00");
+  const [regClosesDate, setRegClosesDate] = useState(initialValues?.registration_closes_at ? toLocalDate(initialValues.registration_closes_at) : "");
+  const [regClosesTime, setRegClosesTime] = useState(initialValues?.registration_closes_at ? toLocalTime(initialValues.registration_closes_at) : "23:59");
 
   const minDate = eventType === "upcoming" ? todayStr : undefined;
   const maxDate = eventType === "previous" ? yesterdayStr : undefined;
@@ -59,6 +61,7 @@ export default function CreateEventModal({ initialValues, onSave, onCancel, defa
     setEventType(type);
     setStartDate("");
     setEndDate("");
+    setRegClosesDate("");
   };
   const [location, setLocation] = useState(initialValues?.location ?? "");
   const [maxParticipants, setMaxParticipants] = useState(initialValues?.max_participants?.toString() ?? "");
@@ -99,6 +102,9 @@ export default function CreateEventModal({ initialValues, onSave, onCancel, defa
         max_participants: maxParticipants ? Number(maxParticipants) : undefined,
         audience,
         language,
+        registration_closes_at: regClosesDate
+          ? new Date(`${regClosesDate}T${regClosesTime}`).toISOString()
+          : undefined,
       });
     } finally {
       setSaving(false);
@@ -257,6 +263,23 @@ export default function CreateEventModal({ initialValues, onSave, onCancel, defa
                   className="flex-1 rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary"
                 />
                 <TimePicker value={endTime} onChange={setEndTime} />
+              </div>
+            </div>
+
+            <div>
+              <label className="mb-1 block text-xs font-medium text-muted-foreground">
+                {t("registrationClosesLabel")} <span className="text-muted-foreground/60">({t("optional")})</span>
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="date"
+                  value={regClosesDate}
+                  min={minDate}
+                  max={startDate || maxDate}
+                  onChange={(e) => setRegClosesDate(e.target.value)}
+                  className="flex-1 rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary"
+                />
+                <TimePicker value={regClosesTime} onChange={setRegClosesTime} />
               </div>
             </div>
 
