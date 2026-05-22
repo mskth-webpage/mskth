@@ -12,19 +12,25 @@ export default function UpcomingEventsView() {
       <h2 className="text-center text-4xl font-serif font-semibold text-foreground mb-12">
         {t("events.title")}
       </h2>
-      <div className="flex items-center justify-center gap-6 px-4">
-      <Ticket
-          title={t("events.card1.title")}
-          description={t("events.card1.description")}
-        />
-        <Ticket
-          title={t("events.card2.title")}
-          description={t("events.card2.description")}
-        />
-        <Ticket
-          title={t("events.card3.title")}
-          description={t("events.card3.description")}
-        />
+      <div className="flex items-start gap-6 overflow-x-auto px-4 pb-2 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] sm:justify-center sm:overflow-x-visible">
+        <div className="shrink-0">
+          <Ticket
+            title={t("events.card1.title")}
+            description={t("events.card1.description")}
+          />
+        </div>
+        <div className="shrink-0">
+          <Ticket
+            title={t("events.card2.title")}
+            description={t("events.card2.description")}
+          />
+        </div>
+        <div className="shrink-0">
+          <Ticket
+            title={t("events.card3.title")}
+            description={t("events.card3.description")}
+          />
+        </div>
       </div>
 
       {/* Curved bottom edge */}
