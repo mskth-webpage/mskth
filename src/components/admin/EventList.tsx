@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import EventPreviewCard from "@/components/admin/EventPreviewCard";
+import EventPreviewCardSkeleton from "@/components/admin/skeletons/EventPreviewCardSkeleton";
 import type { EventPreview } from "@/types/adminDashboard";
 
 type Props = {
@@ -15,10 +16,7 @@ export default function EventList({ events, isLoading, emptyKey }: Props) {
     return (
       <div className="space-y-3">
         {Array.from({ length: 3 }).map((_, i) => (
-          <div
-            key={i}
-            className="h-[62px] animate-pulse rounded-xl border border-border bg-muted"
-          />
+          <EventPreviewCardSkeleton key={i} />
         ))}
       </div>
     );

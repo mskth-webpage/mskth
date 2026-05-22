@@ -45,7 +45,7 @@ export default function DashboardCalendarView() {
         {t("overviewCalendar")}
       </h2>
 
-      <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className="overflow-hidden rounded-xl border border-blue-200/70 bg-card shadow-[0_0_0_1px_rgba(59,130,246,0.08),0_4px_16px_rgba(59,130,246,0.1)]">
         <div className="flex flex-col lg:flex-row">
 
           {/* Today spotlight */}

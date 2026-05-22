@@ -15,6 +15,7 @@ type Props = {
   isSidebarOpen?: boolean;
   /** Optional override for where to redirect after logout */
   redirectTo?: string;
+  tone?: 'destructive' | 'inverse';
 };
 
 /**
@@ -25,6 +26,7 @@ export default function LogoutButton({
   className,
   isSidebarOpen = true,
   redirectTo,
+  tone = 'destructive',
 }: Props) {
   const t = useTranslations('AdminDashboard');
   const locale = useLocale();
@@ -49,6 +51,8 @@ export default function LogoutButton({
 
   // Sidebar variant
   if (asSidebarItem) {
+    const inverse = tone === 'inverse';
+
     return (
       <Button
         type="button"
@@ -60,19 +64,29 @@ export default function LogoutButton({
         onMouseLeave={() => setHover(false)}
         className={[
           'w-full justify-start gap-3 rounded-lg px-3 py-2 cursor-pointer mb-2',
-          'hover:bg-ring/40',
+          inverse
+            ? 'text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground'
+            : 'hover:bg-ring/40',
           className || '',
         ].join(' ')}
       >
         {isPending ? (
-          <Loader2 className="size-4.5 animate-spin text-destructive" />
+          <Loader2
+            className={`size-4.5 animate-spin ${
+              inverse ? 'text-current' : 'text-destructive'
+            }`}
+          />
         ) : (
-          <LogOut className="size-4.5 text-destructive" />
+          <LogOut
+            className={`size-4.5 ${inverse ? 'text-current' : 'text-destructive'}`}
+          />
         )}
         {/* Only show label when sidebar is open */}
         {isSidebarOpen && (
           <span
-            className={`text-[13px] font-medium text-destructive ${
+            className={`text-[13px] font-medium ${
+              inverse ? 'text-current' : 'text-destructive'
+            } ${
               hover ? 'underline' : ''
             }`}
           >

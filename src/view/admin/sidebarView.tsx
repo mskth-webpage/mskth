@@ -5,6 +5,7 @@ import { BookOpen, Calendar, LayoutDashboard, Loader2, SquareKanban, Users } fro
 import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import LogoutButton from '@/components/admin/auth/LogoutButton';
+import Logo from '@/components/Logo';
 import clsx from 'clsx';
 
 type Item = {
@@ -61,19 +62,34 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       {/* Sidebar */}
       <aside
         className={clsx(
-          'fixed top-16 left-0 z-50 border-r border-border bg-card transition-all duration-300 ease-in-out',
+          'fixed left-0 top-16 z-50 border-r border-primary-foreground/10 bg-primary transition-all duration-300 ease-in-out lg:top-0',
           'flex flex-col justify-between overflow-y-auto',
-          'h-[calc(100vh-4rem)]',
+          'h-[calc(100vh-4rem)] lg:h-screen',
           isOpen ? 'w-60 sm:w-64' : 'w-20',
           'lg:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         )}
       >
+        <div
+          className={clsx(
+            'hidden shrink-0 items-center justify-center lg:flex',
+            isOpen ? 'h-44 px-6 pt-8 pb-6' : 'h-24 px-2 py-4',
+          )}
+        >
+          <Logo
+            variant="admin"
+            badge
+            imageClassName={clsx(isOpen ? 'w-32 sm:w-32' : 'w-12 sm:w-12')}
+          />
+        </div>
+
         {/* Navigation */}
         <div
           className={clsx(
             'flex-1 overflow-y-auto',
-            'p-3 sm:p-4 space-y-1 sm:space-y-2'
+            isOpen
+              ? 'space-y-2 px-4 py-5'
+              : 'space-y-3 px-3 py-4'
           )}
         >
           {MAIN_ITEMS.map(({ icon: Icon, labelKey, href }) => {
@@ -86,19 +102,21 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 onClick={() => handleClick(href)}
                 disabled={isNavigating}
                 className={clsx(
-                  'flex items-center w-full rounded-md transition-colors',
-                  'text-sm sm:text-[13px] font-medium',
-                  'px-2.5 sm:px-3 py-2 sm:py-2.5 gap-2 sm:gap-3',
+                  'flex min-h-10 w-full items-center rounded-md transition-all duration-200 ease-out',
+                  'text-[14px] font-medium',
+                  'gap-3 px-3 py-2',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/40',
                   active
-                    ? 'bg-primary text-primary-foreground'
-                    : 'hover:bg-muted text-muted-foreground hover:text-foreground',
+                    ? 'bg-primary-foreground/15 text-primary-foreground'
+                    : 'text-primary-foreground/80 hover:bg-primary-foreground/10 hover:text-primary-foreground',
+                  isOpen ? 'justify-start' : 'justify-center',
                   isNavigating ? 'opacity-70' : ''
                 )}
               >
                 {pending ? (
-                  <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 animate-spin" />
+                  <Loader2 className="h-5 w-5 shrink-0 animate-spin" />
                 ) : (
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                  <Icon className={clsx('h-5 w-5 shrink-0', active ? 'text-primary-foreground' : 'opacity-90')} />
                 )}
                 {isOpen && <span className="truncate">{t(labelKey)}</span>}
               </button>
@@ -107,10 +125,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         </div>
 
         {/* Logout */}
-        <div className="p-3 sm:p-4 border-t border-border">
-          <LogoutButton asSidebarItem isSidebarOpen={isOpen} />
+        <div className={clsx('border-t border-primary-foreground/10', isOpen ? 'p-6' : 'p-3')}>
+          <LogoutButton asSidebarItem isSidebarOpen={isOpen} tone="inverse" />
         </div>
-
       </aside>
     </>
   );
