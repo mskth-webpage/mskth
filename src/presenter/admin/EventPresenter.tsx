@@ -3,12 +3,14 @@
 import { useCallback, useMemo, useState } from "react";
 import useSWR, { mutate } from "swr";
 import AdminUpcomingEventsView from "@/view/admin/adminUpcomingEventsView";
+import AdminPreviousEventsView from "@/view/admin/adminPreviousEventsView";
 import PublishConfirmDialog from "@/components/admin/event/PublishConfirmDialog";
 import type { AdminEvent, CreateEventInput } from "@/types/adminEvent";
-import { groupByMonth } from "@/lib/eventUtils";
+import { groupByMonth, groupByYear } from "@/lib/eventUtils";
 
 const today = new Date().toISOString().slice(0, 10);
 const SWR_KEY = `/api/admin/event?from=${today}`;
+const PREVIOUS_SWR_KEY = "/api/admin/event/previous";
 const fetcher = (url: string) =>
   fetch(url).then((r) => {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
@@ -21,7 +23,16 @@ export default function EventPresenter() {
     revalidateOnFocus: false,
   });
 
+  const { data: previousEvents = [], isLoading: isPreviousLoading } = useSWR<AdminEvent[]>(
+    PREVIOUS_SWR_KEY,
+    fetcher,
+    { revalidateOnFocus: false },
+  );
+
+  const eventsByYear = useMemo(() => groupByYear(previousEvents), [previousEvents]);
+
   const [isCreating, setIsCreating] = useState(false);
+  const [isCreatingPrevious, setIsCreatingPrevious] = useState(false);
   const [pendingPublishId, setPendingPublishId] = useState<number | null>(null);
   const [pendingUnpublishId, setPendingUnpublishId] = useState<number | null>(null);
   const [isDeletingId, setIsDeletingId] = useState<number | null>(null);
@@ -34,18 +45,28 @@ export default function EventPresenter() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(input),
     });
-    await mutate(SWR_KEY);
+    await Promise.all([mutate(SWR_KEY), mutate(PREVIOUS_SWR_KEY)]);
     setIsCreating(false);
   }, []);
 
+  const handleSavePrevious = useCallback(async (input: CreateEventInput) => {
+    await fetch(SWR_KEY, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(input),
+    });
+    await Promise.all([mutate(SWR_KEY), mutate(PREVIOUS_SWR_KEY)]);
+    setIsCreatingPrevious(false);
+  }, []);
+
   const handlePublishClick = useCallback((id: number) => {
-    const event = events.find((e) => e.id === id);
+    const event = [...events, ...previousEvents].find((e) => e.id === id);
     if (event?.status === "published") {
       setPendingUnpublishId(id);
     } else {
       setPendingPublishId(id);
     }
-  }, [events]);
+  }, [events, previousEvents]);
 
   const toggleStatus = useCallback(async (id: number, status: "published" | "draft") => {
     await fetch(SWR_KEY, {
@@ -53,7 +74,7 @@ export default function EventPresenter() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, status }),
     });
-    await mutate(SWR_KEY);
+    await Promise.all([mutate(SWR_KEY), mutate(PREVIOUS_SWR_KEY)]);
   }, []);
 
   const handleConfirmPublish = useCallback(async () => {
@@ -76,15 +97,16 @@ export default function EventPresenter() {
         location: input.location ?? null,
         max_participants: input.max_participants ?? null,
         audience: input.audience ?? null,
+        language: input.language ?? null,
       }),
     });
-    await mutate(SWR_KEY);
+    await Promise.all([mutate(SWR_KEY), mutate(PREVIOUS_SWR_KEY)]);
   }, []);
 
   const handleDelete = useCallback(async (id: number) => {
     setIsDeletingId(id);
     await fetch(`${SWR_KEY.split("?")[0]}?id=${id}`, { method: "DELETE" });
-    await mutate(SWR_KEY);
+    await Promise.all([mutate(SWR_KEY), mutate(PREVIOUS_SWR_KEY)]);
     setIsDeletingId(null);
   }, []);
 
@@ -101,6 +123,18 @@ export default function EventPresenter() {
         onDelete={handleDelete}
         isDeletingId={isDeletingId}
         isLoading={isLoading}
+      />
+      <AdminPreviousEventsView
+        eventsByYear={eventsByYear}
+        isLoading={isPreviousLoading}
+        isCreating={isCreatingPrevious}
+        onAddNew={() => setIsCreatingPrevious(true)}
+        onSave={handleSavePrevious}
+        onCancelCreate={() => setIsCreatingPrevious(false)}
+        onPublish={handlePublishClick}
+        onUpdate={handleUpdate}
+        onDelete={handleDelete}
+        isDeletingId={isDeletingId}
       />
       {pendingPublishId && (
         <PublishConfirmDialog
