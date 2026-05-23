@@ -6,7 +6,7 @@ export default function HomePageView() {
   const t = useTranslations("Hero-section");
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden mt-[167px]">
       <div className="max-w-6xl px-[62px]">
         <div className="flex flex-col">
           <div className="w-fit">
