@@ -93,6 +93,7 @@ export default function EventPresenter() {
         description: input.description,
         start_at: input.start_at,
         end_at: input.end_at,
+        registration_closes_at: input.registration_closes_at ?? null,
         image_url: input.image_url ?? null,
         location: input.location ?? null,
         max_participants: input.max_participants ?? null,

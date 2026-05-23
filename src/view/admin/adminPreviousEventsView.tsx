@@ -222,7 +222,7 @@ export default function AdminPreviousEventsView({
       {editingEvent && (
         <CreateEventModal
           initialValues={editingEvent}
-          onSave={(input) => onUpdate(editingEvent.id, input)}
+          onSave={async (input) => { await onUpdate(editingEvent.id, input); setEditingEvent(null); }}
           onCancel={() => setEditingEvent(null)}
         />
       )}

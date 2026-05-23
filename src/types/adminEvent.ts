@@ -7,6 +7,7 @@ export type AdminEvent = {
   description: string | null;
   start_at: string;
   end_at: string | null;
+  registration_closes_at: string | null;
   location: string | null;
   status: "draft" | "published" | null;
   image_url: string | null;
@@ -21,6 +22,7 @@ export type CreateEventInput = {
   description: string;
   start_at: string;
   end_at: string;
+  registration_closes_at?: string;
   image_url?: string;
   location?: string;
   max_participants?: number;

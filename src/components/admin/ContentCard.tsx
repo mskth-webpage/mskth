@@ -38,6 +38,7 @@ type Props = {
   title: string;
   description?: string;
   meta?: MetaItem[];
+  extra?: React.ReactNode;
   actions?: React.ReactNode;
   scallop?: boolean;
   onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
@@ -49,6 +50,7 @@ export default function ContentCard({
   title,
   description,
   meta,
+  extra,
   actions,
   scallop = false,
   onClick,
@@ -120,6 +122,7 @@ export default function ContentCard({
             ))}
           </div>
         )}
+        {extra && <div className="pt-2">{extra}</div>}
       </div>
 
       {actions && (

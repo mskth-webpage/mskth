@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
 
   const { data, error } = await auth.supabase
     .from("events")
-    .select("id, title, description, start_at, end_at, location, status, image_url, joined_count, language")
+    .select("id, title, description, start_at, end_at, registration_closes_at, location, status, image_url, joined_count, language")
     .gte("start_at", cutoff.toISOString())
     .order("start_at", { ascending: true });
 
@@ -51,8 +51,9 @@ export async function POST(req: NextRequest) {
       ...(body.max_participants ? { max_participants: body.max_participants } : {}),
       ...(body.audience ? { audience: body.audience } : {}),
       ...(body.language ? { language: body.language } : {}),
+      ...(body.registration_closes_at ? { registration_closes_at: body.registration_closes_at } : {}),
     })
-    .select("id, title, description, start_at, end_at, location, status, image_url, joined_count, language")
+    .select("id, title, description, start_at, end_at, registration_closes_at, location, status, image_url, joined_count, language")
     .single();
 
   if (error) {

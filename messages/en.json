@@ -106,6 +106,8 @@
     "eventTypeLabel": "Event type",
     "eventTypeUpcoming": "Upcoming",
     "eventTypePrevious": "Previous",
+    "registrationClosesLabel": "Registration closes",
+    "optional": "optional",
     "saving": "Saving…",
     "save": "Save"
   },
@@ -158,19 +160,14 @@
     },
     "events": {
       "title": "Upcoming events",
-      "button": "Buy now",
-      "card1": {
-        "title": "Title",
-        "description": "Short description"
-      },
-      "card2": {
-        "title": "Title",
-        "description": "Short description"
-      },
-      "card3": {
-        "title": "Title",
-        "description": "Short description"
-      }
+      "viewDetails": "View details",
+      "empty": "No upcoming events at the moment.",
+      "audienceAll": "Open",
+      "audienceBrothers": "Brothers",
+      "audienceSisters": "Sisters",
+      "langEn": "English",
+      "langSv": "Swedish",
+      "langBoth": "EN & SV"
     },
     "newsletter": {
       "title": "Join our community today",
