@@ -10,6 +10,7 @@ const fetcher = (url: string) =>
     return r.json();
   });
 
+/** Fetches mosque coordinates from the API and passes them to MosquesView for map rendering. */
 export default function MosquesPresenter() {
   const { data: mapMarkers = [] } = useSWR<Pick<Mosque, "id" | "name" | "latitude" | "longitude">[]>(
     "/api/mosques",
