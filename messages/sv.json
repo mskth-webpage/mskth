@@ -228,6 +228,23 @@
       "name": "EVENTNAMN"
     }
   },
+  "Mosques": {
+    "meta": {
+      "title": "Moskéer i Stockholm",
+      "description": "Hitta moskéer nära KTH och runt om i Stockholm."
+    },
+    "title": "Ny i Stockholm?",
+    "description": "Här är en lista över några moskéer i staden",
+    "mapTitle": "Moské karta",
+    "mapDescription": "Hitta din närmaste moské på kartan",
+    "metroStationLabel": "Tunnelbanestation",
+    "highlights": {
+      "closeToMainCampus": "Nära Huvudcampus",
+      "cityCenter": "Stadskärnan",
+      "southern": "Södra Stockholm",
+      "northern": "Norra Stockholm"
+    }
+  },
   "Collaboration": {
     "meta": {
       "title": "För företag",

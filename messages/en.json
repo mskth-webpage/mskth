@@ -228,6 +228,23 @@
       "name": "EVENTNAME"
     }
   },
+  "Mosques": {
+    "meta": {
+      "title": "Mosques in Stockholm",
+      "description": "Find mosques near KTH and around Stockholm."
+    },
+    "title": "New in Stockholm?",
+    "description": "Here is a list of some Mosques in the city",
+    "mapTitle": "Mosque Map",
+    "mapDescription": "Find your nearest Mosque by map",
+    "metroStationLabel": "Metro station",
+    "highlights": {
+      "closeToMainCampus": "Close to Main Campus",
+      "cityCenter": "City Center",
+      "southern": "Southern Stockholm",
+      "northern": "Northern Stockholm"
+    }
+  },
   "Collaboration": {
     "meta": {
       "title": "For Companies",
