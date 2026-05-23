@@ -7,19 +7,11 @@ import PublicEventCard from "@/components/PublicEventCard";
 import TicketCardSkeleton from "@/components/admin/skeletons/TicketCardSkeleton";
 import type { AdminEvent } from "@/types/adminEvent";
 
-/** Card width (340px) + gap (16px) — used to step exactly one card per arrow click. */
-const CARD_STEP = 356;
+const CARD_STEP = 356; // card width (340) + gap (16)
 
-type Props = {
-  events: AdminEvent[];
-  isLoading: boolean;
-};
+type Props = { events: AdminEvent[]; isLoading: boolean };
 
-/**
- * Horizontal scrollable upcoming-events section for the public home page.
- * Shows skeleton placeholders while loading, an empty state when no published
- * events exist, and a snapping card track with left/right navigation arrows otherwise.
- */
+/** Public home-page upcoming events section with horizontal scroll and live data. */
 export default function UpcomingEventsView({ events, isLoading }: Props) {
   const t = useTranslations("HomePage.events");
   const scrollRef = useRef<HTMLDivElement>(null);
