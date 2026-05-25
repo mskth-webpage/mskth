@@ -18,10 +18,14 @@ function toLocalTime(iso: string) {
   return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
 }
 
+type EventType = "upcoming" | "previous";
+
+
 type Props = {
   initialValues?: AdminEvent;
   onSave: (input: CreateEventInput) => Promise<void>;
   onCancel: () => void;
+  defaultType?: EventType;
 };
 
 const scallop: React.CSSProperties = {
@@ -35,15 +39,31 @@ const scallop: React.CSSProperties = {
   maskPosition: "top",
 };
 
+const todayStr = new Date().toISOString().slice(0, 10);
+const yesterdayStr = new Date(Date.now() - 86_400_000).toISOString().slice(0, 10);
+
 /** Modal form for creating or editing an event, styled as a ticket. Pass initialValues to pre-fill for editing. */
-export default function CreateEventModal({ initialValues, onSave, onCancel }: Props) {
+export default function CreateEventModal({ initialValues, onSave, onCancel, defaultType = "upcoming" }: Props) {
   const t = useTranslations("AdminUpcomingEvents");
+  const [eventType, setEventType] = useState<EventType>(defaultType);
   const [title, setTitle] = useState(initialValues?.title ?? "");
   const [description, setDescription] = useState(initialValues?.description ?? "");
   const [startDate, setStartDate] = useState(initialValues?.start_at ? toLocalDate(initialValues.start_at) : "");
   const [startTime, setStartTime] = useState(initialValues?.start_at ? toLocalTime(initialValues.start_at) : "00:00");
   const [endDate, setEndDate] = useState(initialValues?.end_at ? toLocalDate(initialValues.end_at) : "");
   const [endTime, setEndTime] = useState(initialValues?.end_at ? toLocalTime(initialValues.end_at) : "00:00");
+  const [regClosesDate, setRegClosesDate] = useState(initialValues?.registration_closes_at ? toLocalDate(initialValues.registration_closes_at) : "");
+  const [regClosesTime, setRegClosesTime] = useState(initialValues?.registration_closes_at ? toLocalTime(initialValues.registration_closes_at) : "23:59");
+
+  const minDate = eventType === "upcoming" ? todayStr : undefined;
+  const maxDate = eventType === "previous" ? yesterdayStr : undefined;
+
+  const handleTypeChange = (type: EventType) => {
+    setEventType(type);
+    setStartDate("");
+    setEndDate("");
+    setRegClosesDate("");
+  };
   const [location, setLocation] = useState(initialValues?.location ?? "");
   const [maxParticipants, setMaxParticipants] = useState(initialValues?.max_participants?.toString() ?? "");
   const [audience, setAudience] = useState<Audience>(initialValues?.audience ?? "all");
@@ -83,6 +103,9 @@ export default function CreateEventModal({ initialValues, onSave, onCancel }: Pr
         max_participants: maxParticipants ? Number(maxParticipants) : undefined,
         audience,
         language,
+        registration_closes_at: regClosesDate
+          ? new Date(`${regClosesDate}T${regClosesTime}`).toISOString()
+          : undefined,
       });
     } finally {
       setSaving(false);
@@ -103,6 +126,28 @@ export default function CreateEventModal({ initialValues, onSave, onCancel }: Pr
         {/* Ticket-shaped form */}
         <div className="bg-background" style={scallop}>
           <div className="space-y-3 px-5 pb-4 pt-6">
+            {!initialValues && (
+              <div>
+                <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("eventTypeLabel")}</label>
+                <div className="flex rounded border border-border overflow-hidden text-sm">
+                  {(["upcoming", "previous"] as EventType[]).map((type) => (
+                    <button
+                      key={type}
+                      type="button"
+                      onClick={() => handleTypeChange(type)}
+                      className={`flex-1 py-1.5 font-medium transition-colors ${
+                        eventType === type
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-background text-muted-foreground hover:bg-muted"
+                      }`}
+                    >
+                      {t(type === "upcoming" ? "eventTypeUpcoming" : "eventTypePrevious")}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div>
               <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("titleLabel")}</label>
               <input
@@ -198,6 +243,8 @@ export default function CreateEventModal({ initialValues, onSave, onCancel }: Pr
                 <input
                   type="date"
                   value={startDate}
+                  min={minDate}
+                  max={maxDate}
                   onChange={(e) => setStartDate(e.target.value)}
                   className="flex-1 rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary"
                 />
@@ -211,10 +258,29 @@ export default function CreateEventModal({ initialValues, onSave, onCancel }: Pr
                 <input
                   type="date"
                   value={endDate}
+                  min={minDate}
+                  max={maxDate}
                   onChange={(e) => setEndDate(e.target.value)}
                   className="flex-1 rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary"
                 />
                 <TimePicker value={endTime} onChange={setEndTime} />
+              </div>
+            </div>
+
+            <div>
+              <label className="mb-1 block text-xs font-medium text-muted-foreground">
+                {t("registrationClosesLabel")} <span className="text-muted-foreground/60">({t("optional")})</span>
+              </label>
+              <div className="flex gap-2">
+                <input
+                  type="date"
+                  value={regClosesDate}
+                  min={minDate}
+                  max={startDate || maxDate}
+                  onChange={(e) => setRegClosesDate(e.target.value)}
+                  className="flex-1 rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary"
+                />
+                <TimePicker value={regClosesTime} onChange={setRegClosesTime} />
               </div>
             </div>
 

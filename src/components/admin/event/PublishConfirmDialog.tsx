@@ -28,9 +28,9 @@ export default function PublishConfirmDialog({ variant, entityType = "event", on
         </p>
         <div className="mt-6 flex justify-center gap-4">
           <Button onClick={onConfirm}>
-            {variant === "publish" ? t("publish") : (t as any)("unpublishAction") || "Unpublish"}
+            {variant === "publish" ? ((t as any)("publishAction") || (t as any)("publish")) : ((t as any)("unpublishAction") || "Unpublish")}
           </Button>
-          <Button variant="outline" onClick={onCancel}>{(t as any)("cancelAction") || "Cancel"}</Button>
+          <Button variant="outline" onClick={onCancel}>{((t as any)("cancelAction") || "Cancel")}</Button>
         </div>
       </div>
     </div>

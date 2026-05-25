@@ -136,8 +136,19 @@
     "uploadImage": "Klicka för att ladda upp bild",
     "startDateLabel": "Startdatum",
     "endDateLabel": "Slutdatum",
+    "eventTypeLabel": "Evenemangstyp",
+    "eventTypeUpcoming": "Kommande",
+    "eventTypePrevious": "Tidigare",
+    "registrationClosesLabel": "Anmälan stänger",
+    "optional": "valfritt",
     "saving": "Sparar…",
     "save": "Spara"
+  },
+  "AdminPreviousEvents": {
+    "title": "Tidigare evenemang",
+    "addNew": "Lägg till ny",
+    "empty": "Inga tidigare evenemang hittades.",
+    "eventCount": "{count, plural, one {# evenemang} other {# evenemang}}"
   },
   "AdminCalendar": {
     "title": "Kalender",
@@ -182,19 +193,14 @@
     },
     "events": {
       "title": "Kommande evenemang",
-      "button": "Köp nu",
-      "card1": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      },
-      "card2": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      },
-      "card3": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      }
+      "viewDetails": "Visa detaljer",
+      "empty": "Inga kommande evenemang just nu.",
+      "audienceAll": "Öppet",
+      "audienceBrothers": "Bröder",
+      "audienceSisters": "Systrar",
+      "langEn": "Engelska",
+      "langSv": "Svenska",
+      "langBoth": "EN & SV"
     },
     "newsletter": {
       "title": "Gå med i vår gemenskap idag",
@@ -253,6 +259,23 @@
       "title": "FÖREGÅENDE EVENT",
       "description": "Kort beskrivning",
       "name": "EVENTNAMN"
+    }
+  },
+  "Mosques": {
+    "meta": {
+      "title": "Moskéer i Stockholm",
+      "description": "Hitta moskéer nära KTH och runt om i Stockholm."
+    },
+    "title": "Ny i Stockholm?",
+    "description": "Här är en lista över några moskéer i staden",
+    "mapTitle": "Moské karta",
+    "mapDescription": "Hitta din närmaste moské på kartan",
+    "metroStationLabel": "Tunnelbanestation",
+    "highlights": {
+      "closeToMainCampus": "Nära Huvudcampus",
+      "cityCenter": "Stadskärnan",
+      "southern": "Södra Stockholm",
+      "northern": "Norra Stockholm"
     }
   },
   "Collaboration": {

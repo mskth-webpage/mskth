@@ -13,3 +13,16 @@ export function groupByMonth(events: AdminEvent[]): { month: string; events: Adm
   }
   return Array.from(map.entries()).map(([month, events]) => ({ month, events }));
 }
+
+/** Groups a flat list of events into year buckets sorted newest first. */
+export function groupByYear(events: AdminEvent[]): { year: number; events: AdminEvent[] }[] {
+  const map = new Map<number, AdminEvent[]>();
+  for (const event of events) {
+    const year = new Date(event.start_at).getFullYear();
+    if (!map.has(year)) map.set(year, []);
+    map.get(year)!.push(event);
+  }
+  return Array.from(map.entries())
+    .map(([year, events]) => ({ year, events }))
+    .sort((a, b) => b.year - a.year);
+}

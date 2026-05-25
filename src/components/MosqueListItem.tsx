@@ -11,6 +11,7 @@ type MosqueListItemProps = {
   imageUrl?: string;
 };
 
+/** Displays a single mosque entry with a circular image, name, highlight badge, and metro station. */
 export default function MosqueListItem({
   name,
   highlight,
@@ -19,7 +20,7 @@ export default function MosqueListItem({
   imageUrl,
 }: MosqueListItemProps) {
   return (
-    <article className="mx-auto flex items-center gap-4">
+    <article className="w-full flex items-center gap-4">
       {/* Image */}
       <div className="relative h-[140px] w-[140px] overflow-hidden bg-muted rounded-full">
         {imageUrl ? (

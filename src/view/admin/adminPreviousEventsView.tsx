@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import YearGroup from "@/components/admin/event/YearGroup";
 import MonthGroup from "@/components/admin/event/MonthGroup";
+import PreviousEventsSkeleton from "@/components/admin/skeletons/PreviousEventsSkeleton";
 import TicketCard from "@/components/admin/event/TicketCard";
-import UpcomingEventsSkeleton from "@/components/admin/skeletons/UpcomingEventsSkeleton";
 import CreateEventModal from "@/components/admin/event/CreateEventModal";
 import CalendarContextMenu from "@/components/admin/calendar/CalendarContextMenu";
 import EventDetailModal from "@/components/admin/calendar/EventDetailModal";
@@ -14,10 +15,28 @@ import DeleteEventDialog from "@/components/admin/calendar/DeleteEventDialog";
 import type { AdminEvent, CreateEventInput } from "@/types/adminEvent";
 import type { CalendarEvent } from "@/types/adminCalendar";
 
-const CARD_STEP = 304; // w-72 (288) + gap-4 (16)
+const CARD_STEP = 304;
+
+type MonthBucket = { key: string; label: string; events: AdminEvent[] };
+
+function getMonthBuckets(events: AdminEvent[]): MonthBucket[] {
+  const map = new Map<string, AdminEvent[]>();
+  for (const event of events) {
+    const key = new Date(event.start_at).toLocaleDateString("en", {
+      month: "long",
+      year: "numeric",
+    });
+    if (!map.has(key)) map.set(key, []);
+    map.get(key)!.push(event);
+  }
+  return Array.from(map.entries())
+    .map(([key, events]) => ({ key, label: key.split(" ")[0], events }))
+    .sort((a, b) => new Date(b.events[0].start_at).getTime() - new Date(a.events[0].start_at).getTime());
+}
 
 type Props = {
-  eventsByMonth: { month: string; events: AdminEvent[] }[];
+  eventsByYear: { year: number; events: AdminEvent[] }[];
+  isLoading: boolean;
   isCreating: boolean;
   onAddNew: () => void;
   onSave: (input: CreateEventInput) => Promise<void>;
@@ -26,11 +45,11 @@ type Props = {
   onUpdate: (id: number, input: CreateEventInput) => Promise<void>;
   onDelete: (id: number) => Promise<void>;
   isDeletingId: number | null;
-  isLoading: boolean;
 };
 
-export default function AdminUpcomingEventsView({
-  eventsByMonth,
+export default function AdminPreviousEventsView({
+  eventsByYear,
+  isLoading,
   isCreating,
   onAddNew,
   onSave,
@@ -39,19 +58,25 @@ export default function AdminUpcomingEventsView({
   onUpdate,
   onDelete,
   isDeletingId,
-  isLoading,
 }: Props) {
-  const t = useTranslations("AdminUpcomingEvents");
+  const t = useTranslations("AdminPreviousEvents");
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const [selectedMonth, setSelectedMonth] = useState<string | null>(
-    eventsByMonth[0]?.month ?? null,
-  );
+  const [selectedYear, setSelectedYear] = useState<number | null>(eventsByYear[0]?.year ?? null);
+  const [selectedMonth, setSelectedMonth] = useState<string | null>(null);
+
+  const yearEvents = eventsByYear.find((g) => g.year === selectedYear)?.events ?? [];
+  const monthBuckets = getMonthBuckets(yearEvents);
 
   useEffect(() => {
-    if (!selectedMonth && eventsByMonth.length > 0)
-      setSelectedMonth(eventsByMonth[0].month);
-  }, [eventsByMonth]);
+    if (!selectedYear && eventsByYear.length > 0) setSelectedYear(eventsByYear[0].year);
+  }, [eventsByYear]);
+
+  useEffect(() => {
+    setSelectedMonth(monthBuckets[0]?.key ?? null);
+    scrollRef.current?.scrollTo({ left: 0 });
+  }, [selectedYear]);
+
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
   const [contextMenu, setContextMenu] = useState<{ event: AdminEvent; pos: { x: number; y: number } } | null>(null);
@@ -91,16 +116,14 @@ export default function AdminUpcomingEventsView({
     scrollRef.current?.scrollBy({ left: dir === "left" ? -CARD_STEP : CARD_STEP, behavior: "smooth" });
   };
 
-  const selectedEvents =
-    eventsByMonth.find((g) => g.month === selectedMonth)?.events ?? [];
+  const selectedEvents = monthBuckets.find((b) => b.key === selectedMonth)?.events ?? [];
 
   useEffect(() => { updateScrollButtons(); }, [selectedEvents]);
 
   return (
-    <div className="p-6 lg:p-8">
-      {/* Page header */}
+    <div className="px-6 pb-8 lg:px-8">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold text-foreground">{t("title")}</h1>
+        <h2 className="text-xl font-semibold text-foreground">{t("title")}</h2>
         <Button onClick={onAddNew} className="gap-2">
           <Plus className="h-4 w-4" />
           {t("addNew")}
@@ -108,23 +131,36 @@ export default function AdminUpcomingEventsView({
       </div>
 
       {isLoading ? (
-        <UpcomingEventsSkeleton />
-      ) : eventsByMonth.length === 0 ? (
+        <PreviousEventsSkeleton />
+      ) : eventsByYear.length === 0 ? (
         <div className="flex h-64 items-center justify-center rounded-2xl border-2 border-dashed border-border text-muted-foreground">
           {t("empty")}
         </div>
       ) : (
         <div className="rounded-2xl border border-border bg-card shadow-sm">
-          {/* Month circles row */}
+          {/* Year circles */}
           <div className="flex flex-wrap gap-4 border-b border-border p-6">
-            {eventsByMonth.map(({ month, events }) => (
-              <MonthGroup
-                key={month}
-                month={month}
+            {eventsByYear.map(({ year, events }) => (
+              <YearGroup
+                key={year}
+                year={year}
                 eventCount={events.length}
-                selected={selectedMonth === month}
+                selected={selectedYear === year}
+                onClick={() => setSelectedYear(year)}
+              />
+            ))}
+          </div>
+
+          {/* Month circles */}
+          <div className="flex flex-wrap gap-4 border-b border-border bg-muted/10 px-6 py-4">
+            {monthBuckets.map(({ key, label, events }) => (
+              <MonthGroup
+                key={key}
+                month={label}
+                eventCount={events.length}
+                selected={selectedMonth === key}
                 onClick={() => {
-                  setSelectedMonth(month);
+                  setSelectedMonth(key);
                   setTimeout(() => {
                     updateScrollButtons();
                     scrollRef.current?.scrollTo({ left: 0 });
@@ -134,13 +170,12 @@ export default function AdminUpcomingEventsView({
             ))}
           </div>
 
-          {/* Scrollable events row */}
+          {/* Scrollable event cards */}
           <div className="bg-muted/30 p-6">
             {selectedEvents.length === 0 ? (
               <p className="py-8 text-center text-sm text-muted-foreground">{t("empty")}</p>
             ) : (
               <div className="relative">
-                {/* Left arrow */}
                 <button
                   onClick={() => scroll("left")}
                   disabled={!canScrollLeft}
@@ -149,7 +184,6 @@ export default function AdminUpcomingEventsView({
                   <ChevronLeft className="h-4 w-4 text-foreground" />
                 </button>
 
-                {/* Cards track */}
                 <div
                   ref={scrollRef}
                   onScroll={updateScrollButtons}
@@ -168,7 +202,6 @@ export default function AdminUpcomingEventsView({
                   ))}
                 </div>
 
-                {/* Right arrow */}
                 <button
                   onClick={() => scroll("right")}
                   disabled={!canScrollRight}
@@ -182,8 +215,9 @@ export default function AdminUpcomingEventsView({
         </div>
       )}
 
-      {/* Modals */}
-      {isCreating && <CreateEventModal onSave={onSave} onCancel={onCancelCreate} />}
+      {isCreating && (
+        <CreateEventModal onSave={onSave} onCancel={onCancelCreate} defaultType="previous" />
+      )}
 
       {editingEvent && (
         <CreateEventModal

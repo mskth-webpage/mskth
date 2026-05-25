@@ -139,6 +139,55 @@
     "saving": "Saving…",
     "save": "Save"
   },
+  "AdminUpcomingEvents": {
+    "title": "Create upcoming events",
+    "addNew": "Add new",
+    "empty": "No events yet. Click \"Add new\" to create one.",
+    "publishConfirm": "Are you sure you want to publish this event?",
+    "unpublishConfirm": "Are you sure you want to unpublish this event?",
+    "publishAction": "Publish",
+    "unpublishAction": "Unpublish",
+    "cancelAction": "Cancel",
+    "statusPublished": "Published",
+    "statusDraft": "Draft",
+    "edit": "Edit",
+    "options": "Options",
+    "eventCount": "{count, plural, one {# event} other {# events}}",
+    "createTitle": "Create a new event",
+    "editTitle": "Edit event",
+    "titleLabel": "Title",
+    "descriptionLabel": "Description",
+    "locationLabel": "Location",
+    "maxParticipantsLabel": "Max participants",
+    "openForLabel": "Open for",
+    "audienceAll": "All",
+    "audienceBrothers": "Brothers",
+    "audienceSisters": "Sisters",
+    "languageLabel": "Language",
+    "languageEn": "English only",
+    "languageSv": "Swedish only",
+    "languageBoth": "EN & SV",
+    "langBadgeEn": "English only",
+    "langBadgeSv": "Swedish only",
+    "langBadgeBoth": "Both languages",
+    "thumbnailLabel": "Thumbnail",
+    "uploadImage": "Click to upload image",
+    "startDateLabel": "Start date",
+    "endDateLabel": "End date",
+    "eventTypeLabel": "Event type",
+    "eventTypeUpcoming": "Upcoming",
+    "eventTypePrevious": "Previous",
+    "registrationClosesLabel": "Registration closes",
+    "optional": "optional",
+    "saving": "Saving…",
+    "save": "Save"
+  },
+  "AdminPreviousEvents": {
+    "title": "Previous events",
+    "addNew": "Add new",
+    "empty": "No previous events found.",
+    "eventCount": "{count, plural, one {# event} other {# events}}"
+  },
   "AdminCalendar": {
     "title": "Calendar",
     "subtitle": "Overview of all scheduled events",
@@ -182,19 +231,14 @@
     },
     "events": {
       "title": "Upcoming events",
-      "button": "Buy now",
-      "card1": {
-        "title": "Title",
-        "description": "Short description"
-      },
-      "card2": {
-        "title": "Title",
-        "description": "Short description"
-      },
-      "card3": {
-        "title": "Title",
-        "description": "Short description"
-      }
+      "viewDetails": "View details",
+      "empty": "No upcoming events at the moment.",
+      "audienceAll": "Open",
+      "audienceBrothers": "Brothers",
+      "audienceSisters": "Sisters",
+      "langEn": "English",
+      "langSv": "Swedish",
+      "langBoth": "EN & SV"
     },
     "newsletter": {
       "title": "Join our community today",
@@ -252,6 +296,23 @@
       "title": "PREVIOUS EVENTS",
       "description": "Short description",
       "name": "EVENTNAME"
+    }
+  },
+  "Mosques": {
+    "meta": {
+      "title": "Mosques in Stockholm",
+      "description": "Find mosques near KTH and around Stockholm."
+    },
+    "title": "New in Stockholm?",
+    "description": "Here is a list of some Mosques in the city",
+    "mapTitle": "Mosque Map",
+    "mapDescription": "Find your nearest Mosque by map",
+    "metroStationLabel": "Metro station",
+    "highlights": {
+      "closeToMainCampus": "Close to Main Campus",
+      "cityCenter": "City Center",
+      "southern": "Southern Stockholm",
+      "northern": "Northern Stockholm"
     }
   },
   "Collaboration": {
