@@ -11,6 +11,7 @@ import CreateProjectModal from "@/components/admin/project/CreateProjectModal";
 import ProjectContextMenu from "@/components/admin/project/ProjectContextMenu";
 import ProjectDetailModal from "@/components/admin/project/ProjectDetailModal";
 import PublishConfirmDialog from "@/components/admin/event/PublishConfirmDialog";
+import AdminProjectsSkeleton from "@/components/admin/skeletons/AdminProjectsSkeleton";
 
 export type Project = {
   id: string;
@@ -28,6 +29,7 @@ type Props = {
   onAddProject: (project: Omit<Project, "id">, imageFile: File | null) => void;
   onUpdateProject?: (project: Project, imageFile: File | null) => void;
   onDeleteProject?: (id: string) => Promise<void> | void;
+  isLoading?: boolean;
 };
 
 const CARD_STEP = 304; // w-72 (288) + gap-4 (16)
@@ -38,6 +40,7 @@ export default function AdminProjectsView({
   onAddProject,
   onUpdateProject,
   onDeleteProject,
+  isLoading,
 }: Props) {
   const t = useTranslations("AdminProjects");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -151,8 +154,11 @@ export default function AdminProjectsView({
         </Button>
       </div>
 
-      <div className="rounded-2xl border border-border bg-card shadow-sm">
-        {/* Project group picker */}
+      {isLoading ? (
+        <AdminProjectsSkeleton />
+      ) : (
+        <div className="rounded-2xl border border-border bg-card shadow-sm">
+          {/* Project group picker */}
         <div className="flex flex-wrap gap-4 border-b border-border p-6">
           <ProjectGroup
             title={t("tabActive")}
@@ -225,6 +231,7 @@ export default function AdminProjectsView({
           )}
         </div>
       </div>
+      )}
 
       {isCreating && (
         <CreateProjectModal

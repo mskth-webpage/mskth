@@ -180,14 +180,6 @@ export default function AdminProjectsPresenter() {
 
 
 
-  if (isLoading) {
-    return (
-      <div className="flex h-full min-h-[500px] w-full items-center justify-center p-12 text-xl font-medium text-muted-foreground">
-        Loading projects...
-      </div>
-    );
-  }
-
   return (
     <AdminProjectsView
       nextProjects={nextProjects}
@@ -195,6 +187,7 @@ export default function AdminProjectsPresenter() {
       onAddProject={handleAddProject}
       onUpdateProject={handleUpdateProject}
       onDeleteProject={handleDeleteProject}
+      isLoading={isLoading}
     />
   );
 }
