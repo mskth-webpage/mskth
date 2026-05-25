@@ -1,56 +1,39 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useState } from "react";
+import useSWR, { mutate } from "swr";
 import AdminProjectsView, {
   Project,
 } from "@/view/admin/project/AdminProjectsView";
 import { createClient } from "@/utils/supabase/client";
 
+const SWR_KEY = "/api/admin/project";
+const fetcher = (url: string) =>
+  fetch(url).then((r) => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  });
+
 export default function AdminProjectsPresenter() {
+  const { data, isLoading, error } = useSWR<{ projects: Project[] }>(SWR_KEY, fetcher, {
+    revalidateOnFocus: false,
+  });
 
-  const [nextProjects, setNextProjects] = useState<Project[]>([]);
-  const [previousProjects, setPreviousProjects] = useState<Project[]>([]);
+  const nextProjects = data?.projects?.filter(
+    (p) => p.status === "draft" || p.status === "published"
+  ) || [];
 
-  const [isLoading, setIsLoading] = useState(true);
+  const previousProjects = data?.projects?.filter(
+    (p) => p.status === "archived"
+  ) || [];
 
-  const fetchProjects = useCallback(async () => {
-    setIsLoading(true);
-    try {
-      const response = await fetch("/api/admin/project");
-      if (!response.ok) {
-        throw new Error("Failed to fetch projects");
-      }
-      const data = await response.json();
-
-      if (data.projects) {
-        // Filtrer les projets actifs (draft ou published)
-        const next = data.projects.filter(
-          (p: Project) => p.status === "draft" || p.status === "published",
-        );
-        // Filtrer les projets passés (archived)
-        const previous = data.projects.filter(
-          (p: Project) => p.status === "archived",
-        );
-
-        setNextProjects(next);
-        setPreviousProjects(previous);
-      }
-    } catch (error) {
-      console.error("Error loading projects:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    fetchProjects();
-  }, [fetchProjects]);
+  const [isMutating, setIsMutating] = useState(false);
 
   const handleAddProject = async (
     projectData: Omit<Project, "id">,
     file: File | null,
   ) => {
-    setIsLoading(true);
+    setIsMutating(true);
     try {
       let publicImageUrl = projectData.image_url;
       const supabase = createClient();
@@ -94,18 +77,17 @@ export default function AdminProjectsPresenter() {
 
       if (!response.ok) throw new Error("Failed to add project");
 
-      await fetchProjects();
+      await mutate(SWR_KEY);
     } catch (error) {
       console.error(error);
       alert("Erreur lors de la création");
     } finally {
-      setIsLoading(false);
+      setIsMutating(false);
     }
   };
 
   const handleUpdateProject = async (project: Project, file: File | null) => {
-
-    setIsLoading(true);
+    setIsMutating(true);
     try {
       let publicImageUrl = project.image_url;
       const supabase = createClient();
@@ -150,18 +132,17 @@ export default function AdminProjectsPresenter() {
 
       if (!response.ok) throw new Error("Failed to update project");
 
-      await fetchProjects();
+      await mutate(SWR_KEY);
     } catch (error) {
       console.error(error);
       alert("Erreur lors de la mise à jour");
     } finally {
-      setIsLoading(false);
+      setIsMutating(false);
     }
   };
 
   const handleDeleteProject = async (id: string | number) => {
-
-    setIsLoading(true);
+    setIsMutating(true);
     try {
       const response = await fetch(`/api/admin/project?id=${id}`, {
         method: "DELETE",
@@ -169,12 +150,12 @@ export default function AdminProjectsPresenter() {
 
       if (!response.ok) throw new Error("Failed to delete project");
 
-      await fetchProjects();
+      await mutate(SWR_KEY);
     } catch (error) {
       console.error(error);
       alert("Erreur lors de la suppression");
     } finally {
-      setIsLoading(false);
+      setIsMutating(false);
     }
   };
 
@@ -187,7 +168,7 @@ export default function AdminProjectsPresenter() {
       onAddProject={handleAddProject}
       onUpdateProject={handleUpdateProject}
       onDeleteProject={handleDeleteProject}
-      isLoading={isLoading}
+      isLoading={isLoading || isMutating}
     />
   );
 }
