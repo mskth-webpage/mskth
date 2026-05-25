@@ -36,7 +36,6 @@ export default function AdminProjectCard({ project, onPublishToggle, onCardClick
       title={project.title}
       description={project.description || undefined}
       meta={meta}
-      scallop
       onClick={(e) => onCardClick(project, { x: e.clientX, y: e.clientY })}
       actions={
         <>

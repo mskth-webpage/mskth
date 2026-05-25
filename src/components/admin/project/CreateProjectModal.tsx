@@ -15,16 +15,6 @@ type Props = {
   onCancel: () => void;
 };
 
-const scallop: React.CSSProperties = {
-  WebkitMaskImage: `radial-gradient(circle at 10px 0, transparent 9px, black 10px)`,
-  WebkitMaskSize: "20px 100%",
-  WebkitMaskRepeat: "repeat-x",
-  WebkitMaskPosition: "top",
-  maskImage: `radial-gradient(circle at 10px 0, transparent 9px, black 10px)`,
-  maskSize: "20px 100%",
-  maskRepeat: "repeat-x",
-  maskPosition: "top",
-};
 
 export default function CreateProjectModal({ initialValues, statusTarget, onSave, onUpdate, onCancel }: Props) {
   const t = useTranslations("AdminProjects");
@@ -85,8 +75,8 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
           {initialValues ? t("editTitle") : t("addNew")}
         </p>
 
-        {/* Ticket-shaped form */}
-        <div className="bg-background" style={scallop}>
+        {/* Form container */}
+        <div className="rounded-xl overflow-hidden bg-background shadow-lg">
           <div className="space-y-3 px-5 pb-4 pt-6">
             <div>
               <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.name")}</label>

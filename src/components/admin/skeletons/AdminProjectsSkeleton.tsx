@@ -1,4 +1,4 @@
-import TicketCardSkeleton from "@/components/admin/skeletons/TicketCardSkeleton";
+import ProjectCardSkeleton from "@/components/admin/skeletons/ProjectCardSkeleton";
 
 function CircleSkeleton() {
   return <div className="h-24 w-24 animate-pulse rounded-full bg-muted" />;
@@ -19,7 +19,7 @@ export default function AdminProjectsSkeleton() {
       <div className="bg-muted/30 p-6">
         <div className="flex gap-4 overflow-hidden">
           {Array.from({ length: 3 }).map((_, i) => (
-            <TicketCardSkeleton key={i} />
+            <ProjectCardSkeleton key={i} />
           ))}
         </div>
       </div>
