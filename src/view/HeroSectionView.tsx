@@ -13,7 +13,7 @@ export default function HomePageView() {
             <h1 className="font-[Nanum_Myeongjo] text-[64px] leading-[0.9] tracking-[-0.0425em] font-bold text-[#1E2939]">
               {t("title")}
             </h1>
-            <h2 className="mt-[35px] font-[Nanum_Myeongjo] text-[64px] leading-[0.9] tracking-[-0.0425em] font-bold text-[#1E2939] text-center">
+            <h2 className="mt-[35px] font-[Nanum_Myeongjo] text-[64px] leading-[0.9] tracking-[-0.0425em] font-bold text-[#1E2939]">
               {t("subtitle")}
             </h2>
           </div>
