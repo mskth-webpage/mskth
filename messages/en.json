@@ -240,6 +240,10 @@
       "langSv": "Swedish",
       "langBoth": "EN & SV"
     },
+    "projects": {
+      "title": "Our Projects",
+      "empty": "No projects at the moment."
+    },
     "newsletter": {
       "title": "Join our community today",
       "namePlaceholder": "Enter your name...",

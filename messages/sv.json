@@ -202,6 +202,10 @@
       "langSv": "Svenska",
       "langBoth": "EN & SV"
     },
+    "projects": {
+      "title": "Våra projekt",
+      "empty": "Inga projekt för tillfället."
+    },
     "newsletter": {
       "title": "Gå med i vår gemenskap idag",
       "namePlaceholder": "Ange ditt namn...",
