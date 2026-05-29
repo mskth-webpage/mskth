@@ -63,8 +63,8 @@ export default function AdminProjectsPresenter() {
       const newProject = {
         title: projectData.title,
         description: projectData.description,
+        content: projectData.content,
         group_label: projectData.group_label,
-        members: projectData.members,
         status: projectData.status,
         image_url: publicImageUrl,
       };
@@ -118,8 +118,8 @@ export default function AdminProjectsPresenter() {
         id: project.id,
         title: project.title,
         description: project.description,
+        content: project.content,
         group_label: project.group_label,
-        members: project.members,
         status: project.status,
         image_url: publicImageUrl,
       };

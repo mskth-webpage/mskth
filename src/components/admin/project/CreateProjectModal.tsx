@@ -21,8 +21,8 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
   
   const [title, setTitle] = useState(initialValues?.title ?? "");
   const [description, setDescription] = useState(initialValues?.description ?? "");
-  const [groupLabel, setGroupLabel] = useState(initialValues?.group_label ?? "");
-  const [members, setMembers] = useState(initialValues?.members ?? "");
+  const [content, setContent] = useState(initialValues?.content ?? "");
+  const [groupLabel, setGroupLabel] = useState(initialValues?.group_label || "Executive");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const initialImage = initialValues?.image_url && !initialValues.image_url.includes("MSkth.png") 
     ? initialValues.image_url 
@@ -44,8 +44,8 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
         ...initialValues,
         title,
         description,
+        content,
         group_label: groupLabel,
-        members,
         status: initialValues.status,
         image_url: imagePreview || "",
       }, imageFile);
@@ -54,8 +54,8 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
       onSave({
         title,
         description,
+        content,
         group_label: groupLabel,
-        members,
         status: statusTarget,
         image_url: imagePreview || "",
       }, imageFile);
@@ -99,23 +99,29 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.groupLabel")}</label>
-              <input
-                type="text"
-                value={groupLabel}
-                onChange={(e) => setGroupLabel(e.target.value)}
-                className="w-full rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary"
+              <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.content")}</label>
+              <textarea
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                rows={6}
+                placeholder={t("project.contentPlaceholder")}
+                className="w-full resize-y rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary"
               />
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.members")}</label>
-              <input
-                type="text"
-                value={members}
-                onChange={(e) => setMembers(e.target.value)}
-                className="w-full rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary"
-              />
+              <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.groupLabel")}</label>
+              <select
+                value={groupLabel}
+                onChange={(e) => setGroupLabel(e.target.value)}
+                className="w-full rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary bg-background"
+              >
+                <option value="Executive">Executive</option>
+                <option value="Events">Events</option>
+                <option value="PR & Marketing">PR & Marketing</option>
+                <option value="Business & External Relations">Business & External Relations</option>
+                <option value="IT & Communications">IT & Communications</option>
+              </select>
             </div>
 
             <div>

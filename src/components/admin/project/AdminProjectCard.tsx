@@ -20,7 +20,7 @@ export default function AdminProjectCard({ project, onPublishToggle, onCardClick
   const meta = [
     { 
       icon: <Users className="h-3 w-3 shrink-0" />, 
-      label: `${project.group_label}: ${project.members}` 
+      label: project.group_label
     },
   ];
 

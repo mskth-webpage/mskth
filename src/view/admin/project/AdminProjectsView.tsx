@@ -17,8 +17,8 @@ export type Project = {
   id: string;
   title: string;
   description: string;
+  content?: string;
   group_label: string;
-  members: string;
   image_url?: string;
   status: "draft" | "published" | "archived";
 };

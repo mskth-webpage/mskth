@@ -95,8 +95,9 @@
     "project": {
       "name": "Projektnamn",
       "description": "Beskrivning",
+      "content": "Detaljerat innehåll",
+      "contentPlaceholder": "Skriv hela projektbeskrivningen här...",
       "groupLabel": "Gruppetikett",
-      "members": "Medlemmar",
       "thumbnailLabel": "Miniatyrbild",
       "uploadImage": "Klicka för att ladda upp bild"
     }

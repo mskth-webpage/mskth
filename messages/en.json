@@ -95,8 +95,9 @@
     "project": {
       "name": "Project name",
       "description": "Description",
+      "content": "Detailed Content",
+      "contentPlaceholder": "Write the full description of the project here...",
       "groupLabel": "Group label",
-      "members": "Members",
       "thumbnailLabel": "Thumbnail",
       "uploadImage": "Click to upload image"
     }

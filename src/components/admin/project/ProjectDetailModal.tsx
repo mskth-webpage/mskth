@@ -29,10 +29,10 @@ export default function ProjectDetailModal({ project, onClose, onEdit, onDelete 
       onClick={onClose}
     >
       <div
-        className="w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
+        className="w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-card shadow-2xl flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative h-48 w-full bg-muted">
+        <div className="relative h-48 w-full shrink-0 bg-muted">
           <Image
             src={isDefault ? MSKTH_LOGO : project.image_url!}
             alt={project.title}
@@ -51,7 +51,7 @@ export default function ProjectDetailModal({ project, onClose, onEdit, onDelete 
           </span>
         </div>
 
-        <div className="p-6">
+        <div className="p-6 overflow-y-auto flex-1">
           <h2 className="text-xl font-bold text-foreground break-words">{project.title}</h2>
 
           <div className="mt-4 space-y-3">
@@ -59,7 +59,7 @@ export default function ProjectDetailModal({ project, onClose, onEdit, onDelete 
             <div className="flex items-center gap-3">
               <Users className="h-4 w-4 shrink-0 text-primary" />
               <p className="text-sm text-foreground">
-                <span className="font-medium">{project.group_label}:</span> {project.members}
+                <span className="font-medium">{project.group_label}</span>
               </p>
             </div>
 
@@ -68,6 +68,18 @@ export default function ProjectDetailModal({ project, onClose, onEdit, onDelete 
               <div className="mt-2 rounded-lg bg-muted/50 p-3">
                 <p className="text-sm leading-relaxed text-muted-foreground whitespace-pre-wrap break-words">
                   {project.description}
+                </p>
+              </div>
+            )}
+
+            {/* Content */}
+            {project.content && (
+              <div className="mt-2 rounded-lg bg-muted/50 p-3">
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  Detailed Content
+                </h3>
+                <p className="text-sm leading-relaxed text-foreground whitespace-pre-wrap break-words">
+                  {project.content}
                 </p>
               </div>
             )}
