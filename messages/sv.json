@@ -68,6 +68,73 @@
     "calendar": "Kalender",
     "resources": "Resurser"
   },
+  "AdminUpcomingEvents": {
+    "title": "Skapa kommande evenemang",
+    "addNew": "Lägg till ny",
+    "empty": "Inga evenemang ännu. Klicka på \"Lägg till ny\" för att skapa ett.",
+    "publishConfirm": "Är du säker på att du vill publicera det här evenemanget?",
+    "unpublishConfirm": "Är du säker på att du vill avpublicera det här evenemanget?",
+    "publishAction": "Publicera",
+    "unpublishAction": "Avpublicera",
+    "cancelAction": "Avbryt",
+    "statusPublished": "Publicerat",
+    "statusDraft": "Utkast",
+    "edit": "Redigera",
+    "options": "Alternativ",
+    "eventCount": "{count, plural, one {# evenemang} other {# evenemang}}",
+    "createTitle": "Skapa ett nytt evenemang",
+    "editTitle": "Redigera evenemang",
+    "titleLabel": "Titel",
+    "descriptionLabel": "Beskrivning",
+    "locationLabel": "Plats",
+    "maxParticipantsLabel": "Max deltagare",
+    "openForLabel": "Öppen för",
+    "audienceAll": "Alla",
+    "audienceBrothers": "Bröder",
+    "audienceSisters": "Systrar",
+    "languageLabel": "Språk",
+    "languageEn": "Endast engelska",
+    "languageSv": "Endast svenska",
+    "languageBoth": "EN & SV",
+    "langBadgeEn": "Endast engelska",
+    "langBadgeSv": "Endast svenska",
+    "langBadgeBoth": "Båda språken",
+    "thumbnailLabel": "Miniatyrbild",
+    "uploadImage": "Klicka för att ladda upp bild",
+    "startDateLabel": "Startdatum",
+    "endDateLabel": "Slutdatum",
+    "eventTypeLabel": "Evenemangstyp",
+    "eventTypeUpcoming": "Kommande",
+    "eventTypePrevious": "Tidigare",
+    "registrationClosesLabel": "Anmälan stänger",
+    "optional": "valfritt",
+    "saving": "Sparar…",
+    "save": "Spara"
+  },
+  "AdminPreviousEvents": {
+    "title": "Tidigare evenemang",
+    "addNew": "Lägg till ny",
+    "empty": "Inga tidigare evenemang hittades.",
+    "eventCount": "{count, plural, one {# evenemang} other {# evenemang}}"
+  },
+  "AdminCalendar": {
+    "title": "Kalender",
+    "subtitle": "Översikt över alla schemalagda evenemang",
+    "addEvent": "Lägg till evenemang",
+    "today": "Idag",
+    "viewYear": "År",
+    "viewMonth": "Månad",
+    "viewWeek": "Vecka",
+    "viewDay": "Dag",
+    "detailParticipants": "deltagare anmälda",
+    "contextMenuShow": "Visa detaljer",
+    "contextMenuEdit": "Redigera",
+    "contextMenuDelete": "Radera",
+    "deleteTitle": "Radera evenemang",
+    "deleteDescription": "Är du säker på att du vill radera \"{title}\"? Denna åtgärd kan inte ångras.",
+    "deleteCancel": "Avbryt",
+    "deleteConfirm": "Radera"
+  },
   "AdminTopbar": {
     "language": "Språk",
     "appearanceTitle": "Utseende",
@@ -93,19 +160,14 @@
     },
     "events": {
       "title": "Kommande evenemang",
-      "button": "Köp nu",
-      "card1": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      },
-      "card2": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      },
-      "card3": {
-        "title": "Titel",
-        "description": "Kort beskrivning"
-      }
+      "viewDetails": "Visa detaljer",
+      "empty": "Inga kommande evenemang just nu.",
+      "audienceAll": "Öppet",
+      "audienceBrothers": "Bröder",
+      "audienceSisters": "Systrar",
+      "langEn": "Engelska",
+      "langSv": "Svenska",
+      "langBoth": "EN & SV"
     },
     "newsletter": {
       "title": "Gå med i vår gemenskap idag",
@@ -178,6 +240,23 @@
         "description": "Kort beskrivning",
         "img": "imgURL"
       }
+    }
+  },
+  "Mosques": {
+    "meta": {
+      "title": "Moskéer i Stockholm",
+      "description": "Hitta moskéer nära KTH och runt om i Stockholm."
+    },
+    "title": "Ny i Stockholm?",
+    "description": "Här är en lista över några moskéer i staden",
+    "mapTitle": "Moské karta",
+    "mapDescription": "Hitta din närmaste moské på kartan",
+    "metroStationLabel": "Tunnelbanestation",
+    "highlights": {
+      "closeToMainCampus": "Nära Huvudcampus",
+      "cityCenter": "Stadskärnan",
+      "southern": "Södra Stockholm",
+      "northern": "Norra Stockholm"
     }
   },
   "Collaboration": {

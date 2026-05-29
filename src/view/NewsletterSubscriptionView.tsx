@@ -37,13 +37,13 @@ export default function NewsletterSubscriptionView({
         <form
           ref={formRef}
           action={handleSubmit}
-          className="mx-auto mt-6 flex w-full max-w-130 items-stretch gap-2"
+          className="mx-auto mt-6 flex w-full max-w-130 flex-col overflow-hidden border border-border sm:flex-row"
         >
           <input
             type="text"
             name="name"
             placeholder={t("newsletter.namePlaceholder")}
-            className="h-11 w-full rounded-sm border border-border bg-(--blue-soft-1) px-4 text-[12px] text-foreground placeholder:text-foreground focus:outline-none"
+            className="h-11 w-full border-b border-border bg-(--blue-soft-1) px-4 text-[12px] text-foreground placeholder:text-foreground focus:outline-none sm:border-b-0 sm:border-r"
             aria-label={t("newsletter.nameAria")}
             required
           />
@@ -51,13 +51,13 @@ export default function NewsletterSubscriptionView({
             type="email"
             name="email"
             placeholder={t("newsletter.emailPlaceholder")}
-            className="h-11 w-full rounded-sm border border-border bg-(--blue-soft-1) px-4 text-[12px] text-foreground placeholder:text-foreground focus:outline-none"
+            className="h-11 w-full border-b border-border bg-(--blue-soft-1) px-4 text-[12px] text-foreground placeholder:text-foreground focus:outline-none sm:border-b-0 sm:border-r"
             aria-label={t("newsletter.emailAria")}
             required
           />
           <button
             type="submit"
-            className="h-11 rounded-sm border border-border bg-(--blue-soft-2) px-5 text-[11px] font-semibold uppercase tracking-wide text-foreground"
+            className="h-11 shrink-0 bg-(--blue-soft-1) px-5 text-[11px] font-semibold uppercase tracking-wide text-foreground"
           >
             {t("newsletter.button")}
           </button>

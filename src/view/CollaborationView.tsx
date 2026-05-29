@@ -74,9 +74,9 @@ export default function CollaborationView() {
         </div>
 
         <div className="mt-10 mx-auto max-w-[1043px] text-center">
-          <p className="font-brandSerif text-[16px] leading-[1.6] text-foreground sm:text-[20px] sm:leading-[1.6] lg:text-[40px] lg:leading-10">
+          <p className="font-brandSerif text-[16px] leading-[1.6] text-foreground sm:text-[20px] sm:leading-[1.6] lg:text-[28px] lg:leading-[1.4]">
             {t("contactIntro")}{" "}
-            <span className="font-semibold text-blue-brand">
+            <span className="font-semibold text-primary">
               {t("contactHighlight")}
             </span>{" "}
             {t("contactOutro")}
