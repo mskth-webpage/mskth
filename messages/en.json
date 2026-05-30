@@ -25,7 +25,194 @@
     "events": "Events",
     "collaboration": "Collaboration",
     "aboutus": "About Us",
-    "join": "Join Now"
+    "join": "Join Now",
+    "login": "Login"
+  },
+  "LoginPage": {
+    "eyebrow": "Admin access",
+    "title": "Sign in to your MSKTH admin account",
+    "description": "Use your email and password to access the MSKTH admin account.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "name@kth.se",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submit": "Sign in",
+    "submitting": "Signing in...",
+    "success": "Login successful. Redirecting...",
+    "invalidCredentials": "Invalid email or password.",
+    "genericError": "Something went wrong. Please try again."
+  },
+  "AdminDashboard": {
+    "title": "Welcome to the Admin Dashboard",
+    "description": "Manage MSKTH admin content, settings, and internal workflows from this dashboard.",
+    "hint": "Your admin tools can be added here as cards, tables, or quick actions.",
+    "logout": "Log out",
+    "welcome": "Welcome to Admin Dashboard,",
+    "totalMembers": "Total members",
+    "totalTicketsSold": "Total ticket sold",
+    "ticketOut": "Ticket out",
+    "overviewCalendar": "Overview calendar",
+    "today": "Today",
+    "upcomingEvents": "Upcoming events",
+    "noUpcomingEvents": "No upcoming events",
+    "previousEvents": "Previous events",
+    "noPreviousEvents": "No previous events",
+    "joinedMembers": "Joined members"
+  },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "event": "Event",
+    "boardmembers": "Boardmembers",
+    "project": "Project",
+    "userManagement": "User management",
+    "calendar": "Calendar",
+    "resources": "Resources"
+  },
+  "AdminProjects": {
+    "title": "Manage projects",
+    "tabActive": "Active",
+    "tabArchived": "Archived",
+    "tabSubtitle": "Projects",
+    "tabSubtitleSingular": "Project",
+    "addNew": "Add new",
+    "save": "Save",
+    "publish": "Publish",
+    "publishConfirm": "Are you sure you want to publish this project?",
+    "unpublishConfirm": "Are you sure you want to unpublish this project?",
+    "publishAction": "Publish",
+    "unpublishAction": "Unpublish",
+    "cancelAction": "Cancel",
+    "statusPublished": "Published",
+    "statusDraft": "Draft",
+    "statusArchived": "Archived",
+    "options": "Options",
+    "contextMenuArchive": "Archive project",
+    "contextMenuRestore": "Restore to draft",
+    "contextMenuEdit": "Edit",
+    "contextMenuDelete": "Delete",
+    "noProjects": "No projects available",
+    "editTitle": "Edit Project",
+    "project": {
+      "name": "Project name",
+      "description": "Description",
+      "content": "Detailed Content",
+      "contentPlaceholder": "Write the full description of the project here...",
+      "groupLabel": "Group label",
+      "thumbnailLabel": "Thumbnail",
+      "uploadImage": "Click to upload image"
+    }
+  },
+  "AdminUpcomingEvents": {
+    "title": "Create upcoming events",
+    "addNew": "Add new",
+    "empty": "No events yet. Click \"Add new\" to create one.",
+    "publishConfirm": "Are you sure you want to publish this event?",
+    "unpublishConfirm": "Are you sure you want to unpublish this event?",
+    "publishAction": "Publish",
+    "unpublishAction": "Unpublish",
+    "cancelAction": "Cancel",
+    "statusPublished": "Published",
+    "statusDraft": "Draft",
+    "edit": "Edit",
+    "options": "Options",
+    "eventCount": "{count, plural, one {# event} other {# events}}",
+    "createTitle": "Create a new event",
+    "editTitle": "Edit event",
+    "titleLabel": "Title",
+    "descriptionLabel": "Description",
+    "locationLabel": "Location",
+    "maxParticipantsLabel": "Max participants",
+    "openForLabel": "Open for",
+    "audienceAll": "All",
+    "audienceBrothers": "Brothers",
+    "audienceSisters": "Sisters",
+    "languageLabel": "Language",
+    "languageEn": "English only",
+    "languageSv": "Swedish only",
+    "languageBoth": "EN & SV",
+    "langBadgeEn": "English only",
+    "langBadgeSv": "Swedish only",
+    "langBadgeBoth": "Both languages",
+    "thumbnailLabel": "Thumbnail",
+    "uploadImage": "Click to upload image",
+    "startDateLabel": "Start date",
+    "endDateLabel": "End date",
+    "saving": "Saving…",
+    "save": "Save"
+  },
+  "AdminUpcomingEvents": {
+    "title": "Create upcoming events",
+    "addNew": "Add new",
+    "empty": "No events yet. Click \"Add new\" to create one.",
+    "publishConfirm": "Are you sure you want to publish this event?",
+    "unpublishConfirm": "Are you sure you want to unpublish this event?",
+    "publishAction": "Publish",
+    "unpublishAction": "Unpublish",
+    "cancelAction": "Cancel",
+    "statusPublished": "Published",
+    "statusDraft": "Draft",
+    "edit": "Edit",
+    "options": "Options",
+    "eventCount": "{count, plural, one {# event} other {# events}}",
+    "createTitle": "Create a new event",
+    "editTitle": "Edit event",
+    "titleLabel": "Title",
+    "descriptionLabel": "Description",
+    "locationLabel": "Location",
+    "maxParticipantsLabel": "Max participants",
+    "openForLabel": "Open for",
+    "audienceAll": "All",
+    "audienceBrothers": "Brothers",
+    "audienceSisters": "Sisters",
+    "languageLabel": "Language",
+    "languageEn": "English only",
+    "languageSv": "Swedish only",
+    "languageBoth": "EN & SV",
+    "langBadgeEn": "English only",
+    "langBadgeSv": "Swedish only",
+    "langBadgeBoth": "Both languages",
+    "thumbnailLabel": "Thumbnail",
+    "uploadImage": "Click to upload image",
+    "startDateLabel": "Start date",
+    "endDateLabel": "End date",
+    "eventTypeLabel": "Event type",
+    "eventTypeUpcoming": "Upcoming",
+    "eventTypePrevious": "Previous",
+    "registrationClosesLabel": "Registration closes",
+    "optional": "optional",
+    "saving": "Saving…",
+    "save": "Save"
+  },
+  "AdminPreviousEvents": {
+    "title": "Previous events",
+    "addNew": "Add new",
+    "empty": "No previous events found.",
+    "eventCount": "{count, plural, one {# event} other {# events}}"
+  },
+  "AdminCalendar": {
+    "title": "Calendar",
+    "subtitle": "Overview of all scheduled events",
+    "addEvent": "Add Event",
+    "today": "Today",
+    "viewYear": "Year",
+    "viewMonth": "Month",
+    "viewWeek": "Week",
+    "viewDay": "Day",
+    "detailParticipants": "participants joined",
+    "contextMenuShow": "View details",
+    "contextMenuEdit": "Edit",
+    "contextMenuDelete": "Delete",
+    "deleteTitle": "Delete event",
+    "deleteDescription": "Are you sure you want to delete \"{title}\"? This action cannot be undone.",
+    "deleteCancel": "Cancel",
+    "deleteConfirm": "Delete"
+  },
+  "AdminTopbar": {
+    "language": "Language",
+    "appearanceTitle": "Appearance",
+    "appearanceDescription": "Light or dark theme",
+    "switchToLightMode": "Switch to light mode",
+    "switchToDarkMode": "Switch to dark mode"
   },
   "Hero-section": {
     "title": "Welcome to MSKTH",
@@ -45,26 +232,29 @@
     },
     "events": {
       "title": "Upcoming events",
-      "button": "Buy now",
-      "card1": {
-        "title": "Title",
-        "description": "Short description"
-      },
-      "card2": {
-        "title": "Title",
-        "description": "Short description"
-      },
-      "card3": {
-        "title": "Title",
-        "description": "Short description"
-      }
+      "viewDetails": "View details",
+      "empty": "No upcoming events at the moment.",
+      "audienceAll": "Open",
+      "audienceBrothers": "Brothers",
+      "audienceSisters": "Sisters",
+      "langEn": "English",
+      "langSv": "Swedish",
+      "langBoth": "EN & SV"
+    },
+    "projects": {
+      "title": "Our Projects",
+      "empty": "No projects at the moment."
     },
     "newsletter": {
       "title": "Join our community today",
-      "placeholder": "Enter your mail...",
-      "aria": "Email address",
+      "namePlaceholder": "Enter your name...",
+      "nameAria": "Name",
+      "emailPlaceholder": "Enter your mail...",
+      "emailAria": "Email address",
       "button": "Subscribe",
-      "helper": "Join your monthly newsletter to be notified when upcoming events come!"
+      "helper": "Join your monthly newsletter to be notified when upcoming events come!",
+      "success": "Thanks! You successfully subscribed to the newsletter.",
+      "error": "Something went wrong. Please try again later."
     }
   },
   "AboutUs": {
@@ -74,7 +264,6 @@
     },
     "title": "About Us",
     "description": "A space to grow in faith, knowledge, and community.",
-    
     "ourStory": {
       "intro": "We strive to create a welcoming space where Muslim students can connect with each other, strengthen their relationship with God, and build lasting friendships on campus.",
       "mission": "At Muslim Students KTH (MSKTH), we aim to create a space at KTH where faith and knowledge meet. A space that allows Muslim students to grow spiritually, academically, and socially, where one can feel both grounded in belief and at home in community.",
@@ -82,11 +271,22 @@
       "story": "MSKTH was founded by students who saw a need for a supportive community where Muslim students could find strength and companionship in their daily life at university. Over time, what began as a few students meeting for prayer and discussion has grown into a vibrant association, a place for friendships, worship, learning, and service. Our journey continues with the same purpose: to be a trusted meeting point for all Muslim students at KTH."
     },
     "team": {
-      "heading": "Board members",
+      "heading": "BOARD MEMBERS",
       "member": {
-        "name": "Name Lastname",
+        "name": "Firstname Lastname",
         "role": "Role",
-        "email": "email@example.com"
+        "email": "email@mskth.se"
+      }
+    },
+    "projects": {
+      "heading": "MSKTH PROJECTS",
+      "labels": {
+        "project_group": "Project Group"
+      },
+      "project": {
+        "name": "Project Name",
+        "description": "Short description",
+        "project_members": "Group members"
       }
     }
   },
@@ -101,6 +301,23 @@
       "title": "PREVIOUS EVENTS",
       "description": "Short description",
       "name": "EVENTNAME"
+    }
+  },
+  "Mosques": {
+    "meta": {
+      "title": "Mosques in Stockholm",
+      "description": "Find mosques near KTH and around Stockholm."
+    },
+    "title": "New in Stockholm?",
+    "description": "Here is a list of some Mosques in the city",
+    "mapTitle": "Mosque Map",
+    "mapDescription": "Find your nearest Mosque by map",
+    "metroStationLabel": "Metro station",
+    "highlights": {
+      "closeToMainCampus": "Close to Main Campus",
+      "cityCenter": "City Center",
+      "southern": "Southern Stockholm",
+      "northern": "Northern Stockholm"
     }
   },
   "Collaboration": {

@@ -17,7 +17,7 @@ export default function Footer() {
           
           {/* LEFT COLUMN — QUICK LINKS */}
           <div className="text-left">
-            <h3 className="text-5xl md:text-4xl font-serif font-semibold tracking-wide mb-8 uppercase">
+            <h3 className="text-3xl md:text-4xl font-serif font-semibold tracking-wide mb-8 uppercase">
               {t("quick-links")}
             </h3>
 

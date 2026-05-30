@@ -4,34 +4,121 @@ import { useTranslations } from "next-intl";
 import AboutHeader from "@/components/AboutHeader";
 import OurStorySection from "@/components/OurStorySection";
 import TeamMemberCard from "@/components/TeamMemberCard";
+import PublicProjectCard from "@/components/PublicProjectCard";
+import type { Project } from "@/view/admin/project/AdminProjectsView";
 
-export default function AboutUsView() {
+type Props = {
+  projects: Project[];
+  isLoading: boolean;
+};
+
+export default function AboutUsView({ projects, isLoading }: Props) {
   const t = useTranslations("AboutUs");
   const teamT = useTranslations("AboutUs.team");
+  const projectT = useTranslations("AboutUs.projects");
 
   return (
     <>
       <main className="mx-auto max-w-[980px] px-5 pb-20 pt-10 sm:px-8 lg:pb-28 lg:pt-16">
-        <h1 className="font-serif text-[28px] font-semibold uppercase tracking-wide text-foreground sm:text-[32px] lg:text-[36px]">
-          {t("title")}
-        </h1>
-
         <AboutHeader title={t("title")} description={t("description")} />
       </main>
 
-      <OurStorySection />
+      <OurStorySection/>
 
-      {/* Team section – testing TeamMemberCard */}
+      {/* Team section */}
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
-        <h2 className="mb-10 font-serif text-3xl font-semibold text-foreground">
+        <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {teamT("heading")}
         </h2>
+
+        {/* 4x3 grid on large screen, 3x4 on medium and 10x1 on mobile, chenge to 2x5 if too big */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
 
         <TeamMemberCard
           name={teamT("member.name")}
           role={teamT("member.role")}
           email={teamT("member.email")}
         />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />   
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+
+        <TeamMemberCard
+          name={teamT("member.name")}
+          role={teamT("member.role")}
+          email={teamT("member.email")}
+        />
+             
+        </div>
+      </section>
+
+      {/* Project section */}
+      <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
+        <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
+          {projectT("heading")}
+        </h2>
+
+        {isLoading ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-r-transparent" />
+          </div>
+        ) : projects.length === 0 ? (
+          <p className="text-center py-8 text-muted-foreground">{projectT("empty")}</p>
+        ) : (
+          <div className="flex flex-wrap justify-center gap-8">
+            {projects.map((project) => (
+              <PublicProjectCard
+                key={project.id}
+                project={project}
+              />
+            ))}
+          </div>
+        )}
       </section>
     </>
   );

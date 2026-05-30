@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <header className="w-full bg-background z-40">
-      <div className="mx-auto max-w-[1800px] flex items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
+      <div className="flex w-full items-center justify-between px-4 sm:px-6 lg:px-10 py-3">
 
         {/* LOGO */}
         <div className="shrink-0">
@@ -65,6 +65,14 @@ export default function Navbar() {
         <div className="hidden md:flex shrink-0 items-center gap-4 ml-6">
           <Button
             asChild
+            variant="ghost"
+            className={`${noHoverButton} rounded-full px-5`}
+          >
+            <Link href="/admin/login">{t("login")}</Link>
+          </Button>
+
+          <Button
+            asChild
             variant="outline"
             className="rounded-full px-8 py-2 uppercase tracking-wide text-sm font-medium border-color-mskth-blue text-color-mskth-blue hover:bg-color-mskth-blue/10 transition-all duration-200"
           >
@@ -93,6 +101,13 @@ export default function Navbar() {
           <div className="flex flex-col space-y-3 text-lg">
             <Link
               className={mobileMenuLinkClasses}
+              href="/admin/login"
+              onClick={() => setOpen(false)}
+            >
+              {t("login")}
+            </Link>
+            <Link
+              className={mobileMenuLinkClasses}
               href="/events"
               onClick={() => setOpen(false)}
             >
@@ -107,7 +122,7 @@ export default function Navbar() {
             </Link>
             <Link
               className={mobileMenuLinkClasses}
-              href="/about"
+              href="/aboutus"
               onClick={() => setOpen(false)}
             >
               {t("aboutus")}
@@ -117,8 +132,8 @@ export default function Navbar() {
           <div className="pt-4 border-t flex items-center gap-4">
             <Button
               asChild
-              variant="ghost"
-              className="rounded-full pt-4 bg-color-mskth-blue hover:bg-color-mskth-blue/90 shadow transition-all"
+              variant="outline"
+              className="rounded-full px-6 uppercase tracking-wide text-sm font-medium border-color-mskth-blue text-color-mskth-blue hover:bg-color-mskth-blue/10 transition-all duration-200"
             >
               <Link href="/join">{t("join")}</Link>
             </Button>

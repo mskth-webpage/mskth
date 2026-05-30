@@ -4,16 +4,17 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { Geist, Geist_Mono, Nanum_Myeongjo } from "next/font/google";
+import { Montserrat, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider"
-import "../globals.css"
-import Footer from "@/components/Footer";
+import "../globals.css";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 // Fonts
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const geistMono = Geist_Mono({
@@ -21,11 +22,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const nanumMyeongjo = Nanum_Myeongjo({
-  variable: "--font-nanum-myeongjo",
-  subsets: ["latin"],
-  weight: ["400", "700", "800"],
-});
 
 // Static metadata (can be localized later if needed)
 export const metadata: Metadata = {
@@ -66,10 +62,8 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning={true}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${nanumMyeongjo.variable}`}
-      >
+    <html lang={locale} suppressHydrationWarning={true} className={`${montserrat.variable} ${geistMono.variable}`}>
+      <body>
         <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -77,11 +71,7 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-1 pt-2">{children}</main>
-            <Footer />
-          </div>
+          <main>{children}</main>      
         </NextIntlClientProvider>
         </ThemeProvider>
       </body>

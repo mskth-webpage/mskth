@@ -1,34 +1,86 @@
 "use client";
 
-import { useTranslations } from 'next-intl';
+import { useTranslations } from "next-intl";
+import { useState, useRef } from "react";
 
+type SubscriptionStatus = "idle" | "success" | "error";
 
-export default function NewsletterSubscriptionView() {
-    const t = useTranslations("HomePage");
+type NewsletterSubscriptionViewProps = {
+  addSubscription: (
+    formData: FormData,
+  ) => Promise<{ status: SubscriptionStatus }>;
+};
+
+export default function NewsletterSubscriptionView({
+  addSubscription,
+}: NewsletterSubscriptionViewProps) {
+  const t = useTranslations("HomePage");
+  const [status, setStatus] = useState<SubscriptionStatus>("idle");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  async function handleSubmit(formData: FormData) {
+    setStatus("idle");
+    const result = await addSubscription(formData);
+    setStatus(result.status);
+
+    if (result.status === "success" && formRef.current) {
+      formRef.current.reset();
+    }
+  }
+
   return (
     <section className="relative w-full bg-background">
-        <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 lg:py-20">
-            <h2 className="text-center font-serif text-[26px] font-semibold uppercase tracking-wide text-foreground sm:text-[32px]">
-            {t("newsletter.title")}
-            </h2>
-            <div className="mx-auto mt-6 flex w-full max-w-[520px] items-stretch overflow-hidden rounded-sm border border-border shadow-[0_6px_18px_rgba(15,63,116,0.08)]">
-            <input
-                type="email"
-                placeholder={t("newsletter.placeholder")}
-                className="h-11 w-full border-0 bg-(--blue-soft-1) px-4 text-[12px] text-foreground placeholder:text-foreground focus:outline-none"
-                aria-label={t("newsletter.aria")}
-            />
-            <button
-                type="button"
-                className="h-11 border-l border-border bg-(--blue-soft-2) px-5 text-[11px] font-semibold uppercase tracking-wide text-foreground"
-            >
-                {t("newsletter.button")}
-            </button>
-            </div>
-            <p className="mt-3 text-center text-[12px] text-foreground">
-            {t("newsletter.helper")}
+      <div className="mx-auto max-w-300 px-5 py-16 sm:px-8 lg:py-20">
+        <h2 className="text-center font-serif text-[26px] font-semibold uppercase tracking-wide text-foreground sm:text-[32px]">
+          {t("newsletter.title")}
+        </h2>
+        <form
+          ref={formRef}
+          action={handleSubmit}
+          className="mx-auto mt-6 flex w-full max-w-130 flex-col overflow-hidden border border-border sm:flex-row"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder={t("newsletter.namePlaceholder")}
+            className="h-11 w-full border-b border-border bg-(--blue-soft-1) px-4 text-[12px] text-foreground placeholder:text-foreground focus:outline-none sm:border-b-0 sm:border-r"
+            aria-label={t("newsletter.nameAria")}
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder={t("newsletter.emailPlaceholder")}
+            className="h-11 w-full border-b border-border bg-(--blue-soft-1) px-4 text-[12px] text-foreground placeholder:text-foreground focus:outline-none sm:border-b-0 sm:border-r"
+            aria-label={t("newsletter.emailAria")}
+            required
+          />
+          <button
+            type="submit"
+            className="h-11 shrink-0 bg-(--blue-soft-1) px-5 text-[11px] font-semibold uppercase tracking-wide text-foreground"
+          >
+            {t("newsletter.button")}
+          </button>
+        </form>
+
+        <div className="mt-4 min-h-5">
+          {status === "idle" && (
+            <p className="text-center text-[12px] text-foreground/80">
+              {t("newsletter.helper")}
             </p>
+          )}
+          {status === "success" && (
+            <p className="text-center text-[13px] font-medium text-foreground">
+              ✓ {t("newsletter.success")}
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-center text-[13px] font-medium text-foreground/80">
+              {t("newsletter.error")}
+            </p>
+          )}
         </div>
+      </div>
     </section>
-  )
+  );
 }

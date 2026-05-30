@@ -16,7 +16,7 @@ export default function TeamMemberCard({
   imageUrl,
 }: TeamMemberCardProps) {
   return (
-    <article className="w-[260px]">
+    <article className="mx-auto"> {/* Had to change from <article className="w-[260px]"> to <article className="mx-auto"> for centering purpose*/}
       {/* Image */}
       <div className="relative mb-6 h-[180px] w-[180px] overflow-hidden bg-muted rounded-tr-lg">
         {imageUrl ? (
