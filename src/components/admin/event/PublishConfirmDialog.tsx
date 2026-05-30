@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 
 type Props = {
   variant: "publish" | "unpublish";
+  entityType?: "event" | "project";
   onConfirm: () => void;
   onCancel: () => void;
 };
 
-/** Confirmation dialog shown before publishing or unpublishing an event. */
-export default function PublishConfirmDialog({ variant, onConfirm, onCancel }: Props) {
-  const t = useTranslations("AdminUpcomingEvents");
+/** Confirmation dialog shown before publishing or unpublishing an entity. */
+export default function PublishConfirmDialog({ variant, entityType = "event", onConfirm, onCancel }: Props) {
+  const t = useTranslations(entityType === "event" ? "AdminUpcomingEvents" : "AdminProjects");
 
   return (
     <div
@@ -27,9 +28,9 @@ export default function PublishConfirmDialog({ variant, onConfirm, onCancel }: P
         </p>
         <div className="mt-6 flex justify-center gap-4">
           <Button onClick={onConfirm}>
-            {variant === "publish" ? t("publishAction") : t("unpublishAction")}
+            {variant === "publish" ? ((t as any)("publishAction") || (t as any)("publish")) : ((t as any)("unpublishAction") || "Unpublish")}
           </Button>
-          <Button variant="outline" onClick={onCancel}>{t("cancelAction")}</Button>
+          <Button variant="outline" onClick={onCancel}>{((t as any)("cancelAction") || "Cancel")}</Button>
         </div>
       </div>
     </div>

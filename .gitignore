@@ -54,5 +54,7 @@ yarn.lock
 # editor directories and files
 .idea
 .vscode
+.agents
+skills-lock.json
 *.suo
 *.codex

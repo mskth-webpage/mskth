@@ -19,7 +19,7 @@ export default function ProjectCard({
   imageUrl,
 }: ProjectCardProps) {
   return (
-    <article className="mx-auto">
+    <article className="mx-auto max-w-[180px]">
       {/* Image */}
       <div className="relative mb-6 h-[180px] w-[180px] overflow-hidden bg-muted rounded-tr-lg">
         {imageUrl ? (
@@ -27,6 +27,7 @@ export default function ProjectCard({
             src={imageUrl}
             alt={name}
             fill
+            sizes="180px"
             className="object-cover"
           />
         ) : (
@@ -36,16 +37,16 @@ export default function ProjectCard({
 
       {/* Text */}
       <div className="text-left">
-        <h3 className="font-serif text-xl font-semibold text-foreground">
+        <h3 className="font-serif text-xl font-semibold text-foreground line-clamp-2 break-words">
           {name}
         </h3>
 
-        <p className="mt-1 text-sm text-muted-foreground">
+        <p className="mt-1 text-sm text-muted-foreground line-clamp-3 break-words">
           {description}
         </p>
 
-        <p className="mt-1 text-sm text-muted-foreground">
-          {project_group_label}: {project_members}
+        <p className="mt-1 text-sm text-muted-foreground line-clamp-2 break-words">
+          <span className="font-medium">{project_group_label}:</span> {project_members}
         </p>
       </div>
     </article>
