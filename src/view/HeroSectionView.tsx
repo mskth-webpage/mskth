@@ -6,18 +6,18 @@ export default function HomePageView() {
   const t = useTranslations("Hero-section");
 
   return (
-    <section className="relative overflow-hidden">
-     <div className="max-w-6xl px-5 sm:px-8 lg:pl-18 lg:pr-6 pt-2 pb-2">
-        <div className="py-12 sm:py-16 lg:py-10">
-          <div className="space-y-2">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-blue-brand leading-tight">
+    <section className="relative overflow-hidden mt-[167px]">
+      <div className="max-w-6xl px-[62px]">
+        <div className="flex flex-col">
+          <div className="w-fit">
+            <h1 className="font-[Nanum_Myeongjo] text-[64px] leading-[0.9] tracking-[-0.0425em] font-bold text-[#1E2939]">
               {t("title")}
             </h1>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold mt-2 leading-tight">
+            <h2 className="mt-[35px] font-[Nanum_Myeongjo] text-[64px] leading-[0.9] tracking-[-0.0425em] font-bold text-[#1E2939]">
               {t("subtitle")}
-            </h1>
+            </h2>
           </div>
-          <p className="mt-4 max-w-[520px] text-[14px] leading-[1.8] text-muted-foreground sm:text-[15px]">
+          <p className="mt-[35px] max-w-[643px] font-[Nanum_Myeongjo] text-[24px] leading-[40px] font-normal text-black">
             {t("description")}
           </p>
         </div>

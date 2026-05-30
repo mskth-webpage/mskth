@@ -20,6 +20,7 @@ function toLocalTime(iso: string) {
 
 type EventType = "upcoming" | "previous";
 
+
 type Props = {
   initialValues?: AdminEvent;
   onSave: (input: CreateEventInput) => Promise<void>;
@@ -215,7 +216,7 @@ export default function CreateEventModal({ initialValues, onSave, onCancel, defa
               />
               {imagePreview ? (
                 <div className="relative h-32 w-full overflow-hidden rounded-lg border border-border">
-                  <Image src={imagePreview} alt="preview" fill className="object-cover" />
+                  <Image src={imagePreview} alt="preview" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
                   <button
                     type="button"
                     onClick={() => { setImageFile(null); setImagePreview(null); }}
