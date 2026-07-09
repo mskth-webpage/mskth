@@ -280,6 +280,7 @@
     },
     "projects": {
       "heading": "MSKTH PROJECTS",
+      "empty": "No projects are available right now.",
       "labels": {
         "project_group": "Project Group"
       },

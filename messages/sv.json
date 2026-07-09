@@ -243,6 +243,7 @@
     },
     "projects": {
       "heading": "MSKTH PROJEKT",
+      "empty": "Inga projekt är tillgängliga just nu.",
       "labels": {
         "project_group": "Projektgrupp"
       },
