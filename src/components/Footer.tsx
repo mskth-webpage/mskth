@@ -11,37 +11,36 @@ export default function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className="w-full mt-20">
-      <div className="w-full bg-footer-gradient pt-12 pb-16">
-        <div className="max-w-[1800px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
-          
+    <footer className="w-full mt-14 md:mt-20">
+      <div className="w-full bg-footer-gradient py-10 md:py-14 lg:py-16">
+        <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-start gap-10 px-6 sm:px-8 md:grid-cols-2 md:gap-12 lg:px-12 xl:px-16">
           {/* LEFT COLUMN — QUICK LINKS */}
           <div className="text-left">
-            <h3 className="text-3xl md:text-4xl font-serif font-semibold tracking-wide mb-8 uppercase">
+            <h3 className="mb-5 font-serif text-xl font-semibold uppercase tracking-wide sm:text-2xl md:mb-7 md:text-3xl lg:text-[34px]">
               {t("quick-links")}
             </h3>
 
-            <div className="grid grid-cols-2 gap-6 text-base">
-              <ul className="space-y-3">
-                <li className="hover:text-primary">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-4 text-sm sm:grid-cols-2 sm:text-base md:gap-x-10">
+              <ul className="space-y-2.5 md:space-y-3">
+                <li className="transition-colors hover:text-primary">
                   <Link href="/events">{t("links.link2")}</Link>
                 </li>
-                <li className="hover:text-primary">
+                <li className="transition-colors hover:text-primary">
                   <Link href="/aboutus">{t("links.link3")}</Link>
                 </li>
-                <li className="hover:text-primary">
+                <li className="transition-colors hover:text-primary">
                   <Link href="/faq">{t("links.link5")}</Link>
                 </li>
               </ul>
 
-              <ul className="space-y-3">
-                <li className="hover:text-primary">
+              <ul className="space-y-2.5 md:space-y-3">
+                <li className="transition-colors hover:text-primary">
                   <Link href="/collaboration">{t("policies.link1")}</Link>
                 </li>
-                <li className="hover:text-primary">
+                <li className="transition-colors hover:text-primary">
                   <Link href="/prayer-times">{t("policies.link4")}</Link>
                 </li>
-                <li className="hover:text-primary">
+                <li className="transition-colors hover:text-primary">
                   <Link href="/mosques">{t("policies.link2")}</Link>
                 </li>
               </ul>
@@ -49,23 +48,23 @@ export default function Footer() {
           </div>
 
           {/* RIGHT COLUMN — STAY CONNECTED */}
-          <div className="text-center md:text-right">
-            <h3 className="text-3xl md:text-3xl font-serif font-semibold tracking-wide mb-6 uppercase">
+          <div className="text-left md:text-right">
+            <h3 className="mb-5 font-serif text-xl font-semibold uppercase tracking-wide sm:text-2xl md:mb-7 md:text-3xl lg:text-[34px]">
               {t("message")}
             </h3>
 
-            <div className="space-y-4 text-base">
+            <div className="space-y-4 text-sm sm:text-base">
               <p>
                 <Link
                   href="mailto:muslimstudentskth@gmail.com"
                   target="_blank"
-                  className="underline hover:text-primary"
+                  className="underline transition-colors hover:text-primary"
                 >
                   muslimstudentskth@gmail.com
                 </Link>
               </p>
 
-              <div className="flex justify-center md:justify-end gap-4 mt-2">
+              <div className="mt-3 flex justify-start gap-4 md:justify-end">
                 <SocialLinks showTitle={false} />
               </div>
             </div>
