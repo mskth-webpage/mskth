@@ -1,12 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import { Button } from '@/components/ui/button';
 
 type TeamMemberCardProps = {
   name: string;
   role: string;
   email: string;
   imageUrl?: string;
+
+  // Admin props, only visible to admins
+  isAdmin?: boolean,
+  onEdit?: () => void;
+  onDelete?: () => void;
 };
 
 export default function TeamMemberCard({
@@ -14,10 +20,13 @@ export default function TeamMemberCard({
   role,
   email,
   imageUrl,
-}: TeamMemberCardProps) {
+  isAdmin = false, // by default
+  onEdit,
+  onDelete,
+}: TeamMemberCardProps) {  
   return (
-    <article className="mx-auto"> {/* Had to change from <article className="w-[260px]"> to <article className="mx-auto"> for centering purpose*/}
-      {/* Image */}
+    <article className="mx-auto">
+      {/* Image or display text "No Image" */}
       <div className="relative mb-6 h-[180px] w-[180px] overflow-hidden bg-muted rounded-tr-lg">
         {imageUrl ? (
           <Image
@@ -27,7 +36,11 @@ export default function TeamMemberCard({
             className="object-cover"
           />
         ) : (
-          <div className="h-full w-full bg-muted" />
+          <div className="flex h-full w-full items-center justify-center">
+            <span className="text-2xl font-bold text-muted-foreground">
+              No Image
+            </span>
+          </div>
         )}
       </div>
 
@@ -45,6 +58,19 @@ export default function TeamMemberCard({
           {email}
         </p>
       </div>
+
+      {/* On admin page */}
+      {isAdmin && (
+        <div className="mt-3 flex gap-2 space-y-2">
+          {onEdit && (
+            <Button variant="secondary" onClick={onEdit}>Edit</Button>
+          )}
+
+          {onDelete && (
+            <Button variant="destructive" onClick={onDelete}>Delete</Button>
+          )}          
+        </div>
+      )}
     </article>
   );
 }

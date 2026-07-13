@@ -142,6 +142,18 @@
     "switchToLightMode": "Switch to light mode",
     "switchToDarkMode": "Switch to dark mode"
   },
+  "AdminBoardMembersView": {
+    "title": "Board Members",
+    "description": "Edit board members",
+    "addNew": "Add new",
+    "empty": "Nothing to show. May be an error in database.",
+    "save": "Save",
+    "cancel": "Cancel changes",
+    "publishing": "Publishing...",
+    "publish": "Publish", 
+    "createTitle": "Create new board member card",
+    "editTitle": "Edit board member card"
+  },
   "Hero-section": {
     "title": "Welcome to MSKTH",
     "subtitle": "Your Community Awaits",

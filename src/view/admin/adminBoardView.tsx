@@ -1,0 +1,157 @@
+'use client';
+
+import { useState } from 'react';
+import { Plus } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { Button } from '@/components/ui/button';
+import BoardMemberCard from '@/components/TeamMemberCard';
+import BoardMemberFormModal from '@/components/admin/boardmember/BoardMemberFormModal';
+//import DeleteBoardMemberDialog from "@/components/admin/boardmember/DeleteBoardMemberDialog";
+//import PublishBoardMembersDialog from '@/components/admin/boardmember/PublishBoardMembersDialog';
+
+import type {
+  AdminBoardMember,
+  BoardMemberFormInput,
+} from '@/types/adminBoardMembers';
+
+type Props = {
+  boardMembers: AdminBoardMember[];
+  isLoading: boolean;
+  isPublishing: boolean;
+  hasDraft: boolean;
+  onCreate: (input: BoardMemberFormInput) => void;
+  onEdit: (
+    id: AdminBoardMember["id"],
+    input: BoardMemberFormInput
+  ) => void;
+  onDelete: (id: AdminBoardMember["id"]) => void;
+  onCancelChanges: () => void;
+  onPublish: () => void;
+};
+
+export default function AdminBoardView({
+  boardMembers,
+  isLoading,
+  isPublishing,
+  hasDraft,
+  onCreate,
+  onEdit,
+  onDelete,
+  onCancelChanges,
+  onPublish,
+}: Props) {
+  const t = useTranslations('AdminBoardMembersView');
+
+//  const [isPublishDialogOpen, setIsPublishDialogOpen] = useState(false);
+
+/*  const handlePublishConfirm = () => {
+    onPublish();
+    setIsPublishDialogOpen(false);
+  };
+  */
+
+  const [isCreating, setIsCreating] = useState(false);
+  const [editingMember, setEditingMember] = useState<AdminBoardMember | null>(null);
+
+  return (
+    <div className="p-6 lg:p-8">
+
+      {/* Header */}
+      
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 className="text-2xl font-semibold text-foreground">
+            {t('title')}
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {t('description')}
+          </p>
+        </div>
+
+        <Button onClick={() => setIsCreating(true)} className="gap-2 self-start sm:self-auto">
+          <Plus className="h-4 w-4" />
+          {t('addNew')}
+        </Button>
+      </div>
+
+      {/* Grid */}
+
+      <section className="rounded-2xl border border-border bg-card shadow-sm">
+        <div className="bg-muted/30 p-4 sm:p-6">
+          {isLoading ? (
+            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="h-72 animate-pulse rounded-xl bg-muted"
+                />
+              ))}
+            </div>
+          ) : boardMembers.length === 0 ? (
+            <div className="flex h-64 items-center justify-center rounded-2xl border-2 border-dashed border-border text-center text-sm text-muted-foreground">
+              {t('empty')}
+            </div>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {boardMembers.map((member) => (
+                <BoardMemberCard
+                  key={member.id}
+                  name={member.name}
+                  role={member.role}
+                  email={member.email}
+                  imageUrl={member.image_url ?? undefined}
+                  isAdmin={true}
+                  onEdit={() => setEditingMember(member)}
+                  onDelete={() => onDelete(member.id)}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center justify-between border-t border-border p-4 sm:p-6">
+          <Button
+            type="button"
+            variant="outline"             
+            className="text-destructive hover:bg-destructive/10 hover:text-destructive"
+            disabled={!hasDraft}
+            onClick={onCancelChanges}
+          >
+            {t('cancel')}
+          </Button>
+
+          <Button
+            type="button"
+            variant={hasDraft ? 'default' : 'secondary'}
+            disabled={!hasDraft || isPublishing}
+            onClick={onPublish}
+            //onClick={() => setIsPublishDialogOpen(true)}
+          >
+            {isPublishing ? t('publishing') : t('publish')}
+          </Button>
+        </div>
+      </section>
+
+      {/* Create */}
+
+      {isCreating && ( <BoardMemberFormModal
+        onSave={(values) => {
+          onCreate(values);
+          setIsCreating(false); }}
+        onCancel={() => setIsCreating(false)}/>
+        )}
+
+      {/* Edit */}
+
+      {editingMember && (<BoardMemberFormModal
+        initialValues={editingMember}
+        onSave={(values) => {
+          onEdit(editingMember.id,values);
+          setEditingMember(null); }}
+        onCancel={() => setEditingMember(null)}/>
+        )}
+
+    </div>
+  );
+
+}

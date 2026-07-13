@@ -1,6 +1,5 @@
+import BoardMemberPresenter from "@/presenter/admin/BoardMemberPresenter";
 
-export default function boardmember() {
-  return (
-    <div>boardmember</div>
-  )
+export default function BoardMemberPage() {
+  return <BoardMemberPresenter />;
 }

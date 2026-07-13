@@ -142,6 +142,18 @@
     "switchToLightMode": "Byt till ljust läge",
     "switchToDarkMode": "Byt till mörkt läge"
   },
+  "AdminBoardMembersView": {
+    "title": "Styrelsemedlemmar",
+    "description": "Redigera styrelsemedlemmar",
+    "addNew": "Lägg till",
+    "empty": "Inget att visa. Kan vara ett fel i databasen.",
+    "save": "Spara",
+    "cancel": "Ångra ändringar",
+    "publishing": "Publicerar...",
+    "publish": "Publicera", 
+    "createTitle": "Skapa nytt styrelsemedlem kort",
+    "editTitle": "Redigera styrelsemedlem kort"
+  },
   "Hero-section": {
     "title": "Välkommen till MSKTH",
     "subtitle": "Din gemenskap väntar",
