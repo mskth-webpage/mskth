@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { ImagePlus, X } from "lucide-react";
 
 import type {
   AdminBoardMember,
@@ -27,7 +29,16 @@ export default function CreateBoardMemberModal({
   const [name, setName] = useState(initialValues?.name ?? "");
   const [role, setRole] = useState(initialValues?.role ?? "");
   const [email, setEmail] = useState(initialValues?.email ?? "");
-  const [imageUrl, setImageUrl] = useState(initialValues?.image_url ?? "");
+
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(initialValues?.image_url ?? null);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] ?? null;
+    setImageFile(file);
+    setImagePreview(file ? URL.createObjectURL(file) : null);
+  };
   
   const maxOrder = initialValues ? memberCount : memberCount + 1; // For defaulting last order for new member, and setting a max order when editing  
   const [displayOrder, setDisplayOrder] = useState((initialValues?.display_order ?? maxOrder).toString());
@@ -52,14 +63,39 @@ export default function CreateBoardMemberModal({
     return Object.keys(newErrors).length === 0;
   }
 
-  function handleSave() {
-    if (!validate()) {return;}
+  async function handleSave() {
+    if (!validate()) return;
+
+    let image_url: string | null = null;
+
+    if (imageFile) {
+      const form = new FormData();
+      form.append("file", imageFile);
+      form.append("bucket", "board_members");
+
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        body: form,
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        setErrors({image: json.error ?? "Image upload failed",});
+        return;
+      }
+
+      image_url = json.url;
+
+    } else if (imagePreview) {
+      image_url = imagePreview;
+    }
 
     onSave({
       name: name.trim(),
       role: role.trim(),
       email: email.trim(),
-      image_url: imageUrl.trim() || null,
+      image_url,
       display_order: Number(displayOrder),
     });
   }
@@ -96,12 +132,28 @@ export default function CreateBoardMemberModal({
             />
           </Field>
 
-          {/* Image, behöver fixas */}
-          <Field label="Image URL (optional)">
-            <input value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-              className="w-full rounded border border-border px-3 py-2 text-sm outline-none focus:border-primary"
-            />
+          {/* Image */}
+          <Field label="Image (optional)" error={errors.image}>
+            <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImageChange}/>
+
+            {imagePreview ? (
+              <div className="relative h-40 w-full overflow-hidden rounded-lg border border-border">
+                <Image src={imagePreview} alt="preview" fill className="object-cover"/>
+
+                <button type="button" 
+                  onClick={() => {setImageFile(null); setImagePreview(null); }} 
+                  className="absolute right-1.5 top-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-foreground/50 text-background hover:bg-foreground/70">
+                  <X className="h-3 w-3" />
+                </button>
+              </div>
+            ) : (
+              <button type="button" 
+                onClick={() => fileRef.current?.click()}
+                className="flex h-40 w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary">
+                <ImagePlus className="h-6 w-6" />
+                <span className="text-xs">Upload image</span>
+              </button>
+            )}
           </Field>
 
           {/* Order */}
