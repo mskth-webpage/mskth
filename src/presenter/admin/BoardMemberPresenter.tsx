@@ -5,7 +5,7 @@ import useSWR, { mutate } from "swr";
 import AdminBoardView from "@/view/admin/adminBoardView";
 import type {
   AdminBoardMember,
-  BoardMemberFormInput,
+  BoardMemberModalInput,
 } from "@/types/adminBoardMembers";
 
 const SWR_KEY = "/api/admin/boardmembers";
@@ -24,6 +24,8 @@ export default function BoardMemberPresenter() {
   const storageKey = useMemo(() => "admin-boardmembers-draft", []);
 
   const [members, setMembers] = useState<AdminBoardMember[]>([]);
+  const memberCount = members.length;
+  
   const [hasDraft, setHasDraft] = useState(false);
   const [isPublishing, startTransition] = useTransition();
 
@@ -72,17 +74,19 @@ export default function BoardMemberPresenter() {
     return normalizeOrder(sorted);
   }
 
-  function handleCreate(input: BoardMemberFormInput) {
+  function handleCreate(input: BoardMemberModalInput) {
     const newMember: AdminBoardMember = {
       id: `temp-${crypto.randomUUID()}`,
       ...input,
     };
-    saveDraft(normalizeOrder([...members, newMember,]));
+    
+    const updatedMemberList = [...members, newMember];
+    saveDraft(moveMember(updatedMemberList, newMember.id, input.display_order));
   }
 
   function handleEdit(
     id: AdminBoardMember["id"],
-    input: BoardMemberFormInput
+    input: BoardMemberModalInput
   ) {
     const updated = members.map((member) =>
       member.id === id ? {...member, ...input,} : member
@@ -112,6 +116,7 @@ export default function BoardMemberPresenter() {
 
   async function handleCancelChanges() {
     localStorage.removeItem(storageKey);
+    setMembers(dbMembers);
     setHasDraft(false);
     await mutate(SWR_KEY);
   }
@@ -119,6 +124,7 @@ export default function BoardMemberPresenter() {
   return (
     <AdminBoardView
       boardMembers={members}
+      memberCount={memberCount}
       isLoading={isLoading}
       isPublishing={isPublishing}
       hasDraft={hasDraft}

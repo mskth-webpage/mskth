@@ -7,7 +7,7 @@ export type AdminBoardMember = {
   display_order: number;
 };
 
-export type BoardMemberFormInput = {
+export type BoardMemberModalInput = {
   name: string;
   role: string;
   email: string;

@@ -5,24 +5,25 @@ import { Plus } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import BoardMemberCard from '@/components/TeamMemberCard';
-import BoardMemberFormModal from '@/components/admin/boardmember/BoardMemberFormModal';
+import CreateBoardMemberModal from '@/components/admin/boardmember/CreateBoardMemberModal';
 //import DeleteBoardMemberDialog from "@/components/admin/boardmember/DeleteBoardMemberDialog";
 //import PublishBoardMembersDialog from '@/components/admin/boardmember/PublishBoardMembersDialog';
 
 import type {
   AdminBoardMember,
-  BoardMemberFormInput,
+  BoardMemberModalInput,
 } from '@/types/adminBoardMembers';
 
 type Props = {
   boardMembers: AdminBoardMember[];
+  memberCount: number;
   isLoading: boolean;
   isPublishing: boolean;
   hasDraft: boolean;
-  onCreate: (input: BoardMemberFormInput) => void;
+  onCreate: (input: BoardMemberModalInput) => void;
   onEdit: (
     id: AdminBoardMember["id"],
-    input: BoardMemberFormInput
+    input: BoardMemberModalInput
   ) => void;
   onDelete: (id: AdminBoardMember["id"]) => void;
   onCancelChanges: () => void;
@@ -31,6 +32,7 @@ type Props = {
 
 export default function AdminBoardView({
   boardMembers,
+  memberCount,
   isLoading,
   isPublishing,
   hasDraft,
@@ -68,6 +70,8 @@ export default function AdminBoardView({
           </p>
         </div>
 
+        {/* Add new button */}
+
         <Button onClick={() => setIsCreating(true)} className="gap-2 self-start sm:self-auto">
           <Plus className="h-4 w-4" />
           {t('addNew')}
@@ -79,7 +83,7 @@ export default function AdminBoardView({
       <section className="rounded-2xl border border-border bg-card shadow-sm">
         <div className="bg-muted/30 p-4 sm:p-6">
           {isLoading ? (
-            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"> 
               {Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={index}
@@ -113,7 +117,7 @@ export default function AdminBoardView({
           <Button
             type="button"
             variant="outline"             
-            className="text-destructive hover:bg-destructive/10 hover:text-destructive"
+            className={hasDraft ? "hover:bg-destructive/10 hover:text-destructive" : "text-muted-foreground"}
             disabled={!hasDraft}
             onClick={onCancelChanges}
           >
@@ -127,24 +131,26 @@ export default function AdminBoardView({
             onClick={onPublish}
             //onClick={() => setIsPublishDialogOpen(true)}
           >
-            {isPublishing ? t('publishing') : t('publish')}
+            {isPublishing ? t('publishing') : t('publish')} {/** onödigt???? */}
           </Button>
         </div>
       </section>
 
-      {/* Create */}
+      {/* Creating new member */}
 
-      {isCreating && ( <BoardMemberFormModal
+      {isCreating && ( <CreateBoardMemberModal
+        memberCount={memberCount}
         onSave={(values) => {
           onCreate(values);
           setIsCreating(false); }}
         onCancel={() => setIsCreating(false)}/>
         )}
 
-      {/* Edit */}
+      {/* Editing existing member */}
 
-      {editingMember && (<BoardMemberFormModal
+      {editingMember && (<CreateBoardMemberModal
         initialValues={editingMember}
+        memberCount={memberCount}
         onSave={(values) => {
           onEdit(editingMember.id,values);
           setEditingMember(null); }}
@@ -153,5 +159,4 @@ export default function AdminBoardView({
 
     </div>
   );
-
 }
