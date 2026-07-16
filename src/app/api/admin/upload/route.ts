@@ -12,10 +12,14 @@ export async function POST(req: NextRequest) {
 
   const form = await req.formData();
   const file = form.get("file") as File | null;
+  const bucket = form.get("bucket")?.toString() ?? "events"; // default events, but allows upload to other buckets as well
+  const allowedBuckets = ["events", "board_members", "projects"];
+
   if (!file) return NextResponse.json({ error: "No file provided" }, { status: 400 });
+  if (!allowedBuckets.includes(bucket)) {return NextResponse.json({ error: "Error" }, { status: 400 });}  // Wrong bucket, cryptic for security
 
   const ext = file.name.split(".").pop();
-  const path = `events/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+  const path = `${bucket}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
 
   const { error } = await supabase.storage
     .from("images")
