@@ -30,7 +30,6 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
           {teamT("heading")}
         </h2>
 
-        {/* 4x3 grid on large screen, 3x4 on medium and 10x1 on mobile, chenge to 2x5 if too big */}
           {isLoading ? (
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"> 
               {Array.from({ length: 6 }).map((_, index) => (
