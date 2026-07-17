@@ -5,6 +5,7 @@ export type PublicBoardMember = {
   email: string;
   image_url: string | null;
 };
+
 export type AdminBoardMember = {
   id: number | `temp-${string}`;
   name: string;

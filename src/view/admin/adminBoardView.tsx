@@ -6,8 +6,6 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import BoardMemberCard from '@/components/TeamMemberCard';
 import CreateBoardMemberModal from '@/components/admin/boardmember/CreateBoardMemberModal';
-//import DeleteBoardMemberDialog from "@/components/admin/boardmember/DeleteBoardMemberDialog";
-//import PublishBoardMembersDialog from '@/components/admin/boardmember/PublishBoardMembersDialog';
 
 import type {
   AdminBoardMember,
@@ -43,14 +41,6 @@ export default function AdminBoardView({
   onPublish,
 }: Props) {
   const t = useTranslations('AdminBoardMembersView');
-
-//  const [isPublishDialogOpen, setIsPublishDialogOpen] = useState(false);
-
-/*  const handlePublishConfirm = () => {
-    onPublish();
-    setIsPublishDialogOpen(false);
-  };
-  */
 
   const [isCreating, setIsCreating] = useState(false);
   const [editingMember, setEditingMember] = useState<AdminBoardMember | null>(null);
@@ -93,7 +83,7 @@ export default function AdminBoardView({
               {t('empty')}
             </div>
           ) : (
-            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"> 
               {boardMembers.map((member) => (
                 <BoardMemberCard
                   key={member.id}
@@ -126,7 +116,6 @@ export default function AdminBoardView({
             variant={hasDraft ? 'default' : 'secondary'}
             disabled={!hasDraft || isPublishing}
             onClick={onPublish}
-            //onClick={() => setIsPublishDialogOpen(true)}
           >
             {isPublishing ? t('publishing') : t('publish')}
           </Button>

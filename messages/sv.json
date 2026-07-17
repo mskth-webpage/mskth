@@ -230,7 +230,8 @@
       "story": "MSKTH grundades av studenter som såg ett behov av en stödjande gemenskap där muslimska studenter kunde finna styrka och gemenskap i sin vardag på universitetet. Med tiden har det som började som ett fåtal studenter som möttes för bön och samtal vuxit till en levande förening – en plats för vänskap, tillbedjan, lärande och engagemang. Vår resa fortsätter med samma syfte: att vara en trygg mötesplats för alla muslimska studenter på KTH."
     },
     "team": {
-      "heading": "STYRELSEN"
+      "heading": "STYRELSEN",
+      "error": "Fel i databas. Vänligen kontakta info@mskth.se."
     },
     "projects": {
       "heading": "MSKTH PROJEKT",

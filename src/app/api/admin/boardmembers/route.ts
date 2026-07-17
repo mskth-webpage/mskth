@@ -82,7 +82,7 @@ export async function PUT(request: Request) {
       .from("board_members")
       .select("image_url")
       .in("id", idsToDelete);
-
+    
     if (imageFetchError) {
       return NextResponse.json({ error: imageFetchError.message }, { status: 500 });
     }

@@ -40,9 +40,9 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
               ))}
             </div>
           ) : error ? (
-          <p className="text-center text-muted-foreground">Error in database. Please contact info@mskth.se.</p>
+          <p className="text-center text-muted-foreground">{teamT('error')}</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
               {boardMembers.map((member) => (
                 <TeamMemberCard
                   key={member.id} 
