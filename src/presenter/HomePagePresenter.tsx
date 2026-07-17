@@ -1,9 +1,10 @@
 "use client";
 
-import useSWR from "swr";
+import CommunitySectionView from '@/view/CommunitySectionView';
 import HeroSectionView from "@/view/HeroSectionView";
 import NewsletterSubscriptionView from "@/view/NewsletterSubscriptionView";
 import UpcomingEventsView from "@/view/UpcomingEventsView";
+import useSWR from "swr";
 import type { AdminEvent } from "@/types/adminEvent";
 
 const fetcher = (url: string) =>
@@ -37,9 +38,8 @@ export default function HomePagePresenter() {
 
   return (
     <>
-      <div>
-        <HeroSectionView />
-      </div>
+      <HeroSectionView />
+      <CommunitySectionView />
       <UpcomingEventsView events={events} isLoading={isLoading} />
       <NewsletterSubscriptionView addSubscription={addSubscription} />
     </>

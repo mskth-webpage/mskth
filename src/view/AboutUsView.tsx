@@ -3,16 +3,19 @@ import { useTranslations } from "next-intl";
 import AboutHeader from "@/components/AboutHeader";
 import OurStorySection from "@/components/OurStorySection";
 import TeamMemberCard from "@/components/TeamMemberCard";
-import ProjectCard from "@/components/ProjectCard";
+import PublicProjectCard from "@/components/PublicProjectCard";
 import type {PublicBoardMember} from '@/types/adminBoardMembers';
+import type { Project } from "@/view/admin/project/AdminProjectsView";
 
 type Props = {
   boardMembers: PublicBoardMember[];
-  isLoading: boolean;
-  error?: Error;
-}
+  isLoadingBoard: boolean;
+  boardError?: Error;
+  projects: Project[];
+  isLoadingProjects: boolean;
+};
 
-export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
+export default function AboutUsView({ boardMembers, isLoadingBoard, boardError, projects, isLoadingProjects }: Props) {
   const t = useTranslations("AboutUs");
   const teamT = useTranslations("AboutUs.team");
   const projectT = useTranslations("AboutUs.projects");
@@ -30,13 +33,13 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
           {teamT("heading")}
         </h2>
 
-          {isLoading ? (
+          {isLoadingBoard ? (
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"> 
               {Array.from({ length: 6 }).map((_, index) => (
                 <div key={index} className="h-72 animate-pulse rounded-xl bg-muted"/>
               ))}
             </div>
-          ) : error ? (
+          ) : boardError ? (
           <p className="text-center text-muted-foreground">{teamT('error')}</p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
@@ -58,27 +61,22 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
         <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {projectT("heading")}
         </h2>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-8 justify-items-center">
-          <ProjectCard
-            name={projectT("project.name")}
-            description={projectT("project.description")}
-            project_group_label={projectT("labels.project_group")}
-            project_members={projectT("project.project_members")}
-          />
-          <ProjectCard
-            name={projectT("project.name")}
-            description={projectT("project.description")}
-            project_group_label={projectT("labels.project_group")}
-            project_members={projectT("project.project_members")}
-          />
-          <ProjectCard
-            name={projectT("project.name")}
-            description={projectT("project.description")}
-            project_group_label={projectT("labels.project_group")}
-            project_members={projectT("project.project_members")}
-          />
-        </div>
+        {isLoadingProjects ? (
+          <div className="flex items-center justify-center py-12">
+            <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-r-transparent" />
+          </div>
+        ) : projects.length === 0 ? (
+          <p className="text-center py-8 text-muted-foreground">{projectT("empty")}</p>
+        ) : (
+          <div className="flex flex-wrap justify-center gap-8">
+            {projects.map((project) => (
+              <PublicProjectCard
+                key={project.id}
+                project={project}
+              />
+            ))}
+          </div>
+        )}
       </section>
     </>
   );

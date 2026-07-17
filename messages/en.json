@@ -68,6 +68,78 @@
     "calendar": "Calendar",
     "resources": "Resources"
   },
+  "AdminProjects": {
+    "title": "Manage projects",
+    "tabActive": "Active",
+    "tabArchived": "Archived",
+    "tabSubtitle": "Projects",
+    "tabSubtitleSingular": "Project",
+    "addNew": "Add new",
+    "save": "Save",
+    "publish": "Publish",
+    "publishConfirm": "Are you sure you want to publish this project?",
+    "unpublishConfirm": "Are you sure you want to unpublish this project?",
+    "publishAction": "Publish",
+    "unpublishAction": "Unpublish",
+    "cancelAction": "Cancel",
+    "statusPublished": "Published",
+    "statusDraft": "Draft",
+    "statusArchived": "Archived",
+    "options": "Options",
+    "contextMenuArchive": "Archive project",
+    "contextMenuRestore": "Restore to draft",
+    "contextMenuEdit": "Edit",
+    "contextMenuDelete": "Delete",
+    "noProjects": "No projects available",
+    "editTitle": "Edit Project",
+    "project": {
+      "name": "Project name",
+      "description": "Description",
+      "content": "Detailed Content",
+      "contentPlaceholder": "Write the full description of the project here...",
+      "groupLabel": "Group label",
+      "thumbnailLabel": "Thumbnail",
+      "uploadImage": "Click to upload image"
+    }
+  },
+  "AdminUpcomingEvents": {
+    "title": "Create upcoming events",
+    "addNew": "Add new",
+    "empty": "No events yet. Click \"Add new\" to create one.",
+    "publishConfirm": "Are you sure you want to publish this event?",
+    "unpublishConfirm": "Are you sure you want to unpublish this event?",
+    "publishAction": "Publish",
+    "unpublishAction": "Unpublish",
+    "cancelAction": "Cancel",
+    "statusPublished": "Published",
+    "statusDraft": "Draft",
+    "edit": "Edit",
+    "options": "Options",
+    "eventCount": "{count, plural, one {# event} other {# events}}",
+    "createTitle": "Create a new event",
+    "editTitle": "Edit event",
+    "titleLabel": "Title",
+    "descriptionLabel": "Description",
+    "locationLabel": "Location",
+    "maxParticipantsLabel": "Max participants",
+    "openForLabel": "Open for",
+    "audienceAll": "All",
+    "audienceBrothers": "Brothers",
+    "audienceSisters": "Sisters",
+    "languageLabel": "Language",
+    "languageEn": "English only",
+    "languageSv": "Swedish only",
+    "languageBoth": "EN & SV",
+    "langBadgeEn": "English only",
+    "langBadgeSv": "Swedish only",
+    "langBadgeBoth": "Both languages",
+    "thumbnailLabel": "Thumbnail",
+    "uploadImage": "Click to upload image",
+    "startDateLabel": "Start date",
+    "endDateLabel": "End date",
+    "saving": "Saving…",
+    "save": "Save"
+  },
   "AdminUpcomingEvents": {
     "title": "Create upcoming events",
     "addNew": "Add new",
@@ -203,6 +275,10 @@
       "langSv": "Swedish",
       "langBoth": "EN & SV"
     },
+    "projects": {
+      "title": "Our Projects",
+      "empty": "No projects at the moment."
+    },
     "newsletter": {
       "title": "Join our community today",
       "namePlaceholder": "Enter your name...",
@@ -222,7 +298,6 @@
     },
     "title": "About Us",
     "description": "A space to grow in faith, knowledge, and community.",
-    
     "ourStory": {
       "intro": "We strive to create a welcoming space where Muslim students can connect with each other, strengthen their relationship with God, and build lasting friendships on campus.",
       "mission": "At Muslim Students KTH (MSKTH), we aim to create a space at KTH where faith and knowledge meet. A space that allows Muslim students to grow spiritually, academically, and socially, where one can feel both grounded in belief and at home in community.",
@@ -235,6 +310,7 @@
     },
     "projects": {
       "heading": "MSKTH PROJECTS",
+      "empty": "No projects are available right now.",
       "labels": {
         "project_group": "Project Group"
       },

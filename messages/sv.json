@@ -68,6 +68,40 @@
     "calendar": "Kalender",
     "resources": "Resurser"
   },
+  "AdminProjects": {
+    "title": "Hantera projekt",
+    "tabActive": "Aktiva",
+    "tabArchived": "Arkiverade",
+    "tabSubtitle": "Projekt",
+    "tabSubtitleSingular": "Projekt",
+    "addNew": "Lägg till nytt",
+    "save": "Spara",
+    "publish": "Publicera",
+    "publishConfirm": "Är du säker på att du vill publicera det här projektet?",
+    "unpublishConfirm": "Är du säker på att du vill avpublicera det här projektet?",
+    "publishAction": "Publicera",
+    "unpublishAction": "Avpublicera",
+    "cancelAction": "Avbryt",
+    "statusPublished": "Publicerat",
+    "statusDraft": "Utkast",
+    "statusArchived": "Arkiverat",
+    "options": "Alternativ",
+    "contextMenuArchive": "Arkivera projekt",
+    "contextMenuRestore": "Återställ som utkast",
+    "contextMenuEdit": "Redigera",
+    "contextMenuDelete": "Radera",
+    "noProjects": "Inga projekt tillgängliga",
+    "editTitle": "Redigera projekt",
+    "project": {
+      "name": "Projektnamn",
+      "description": "Beskrivning",
+      "content": "Detaljerat innehåll",
+      "contentPlaceholder": "Skriv hela projektbeskrivningen här...",
+      "groupLabel": "Gruppetikett",
+      "thumbnailLabel": "Miniatyrbild",
+      "uploadImage": "Klicka för att ladda upp bild"
+    }
+  },
   "AdminUpcomingEvents": {
     "title": "Skapa kommande evenemang",
     "addNew": "Lägg till ny",
@@ -203,6 +237,10 @@
       "langSv": "Svenska",
       "langBoth": "EN & SV"
     },
+    "projects": {
+      "title": "Våra projekt",
+      "empty": "Inga projekt för tillfället."
+    },
     "newsletter": {
       "title": "Gå med i vår gemenskap idag",
       "namePlaceholder": "Ange ditt namn...",
@@ -235,6 +273,7 @@
     },
     "projects": {
       "heading": "MSKTH PROJEKT",
+      "empty": "Inga projekt är tillgängliga just nu.",
       "labels": {
         "project_group": "Projektgrupp"
       },

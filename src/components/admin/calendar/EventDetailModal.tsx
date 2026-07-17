@@ -55,6 +55,7 @@ export default function EventDetailModal({ event, onClose, onEdit, onDelete }: P
             src={isValidUrl(event.image_url) ? event.image_url : MSKTH_LOGO}
             alt={event.title}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={isValidUrl(event.image_url) ? "object-cover" : "object-contain p-6 opacity-40"}
           />
           <button
@@ -72,7 +73,7 @@ export default function EventDetailModal({ event, onClose, onEdit, onDelete }: P
 
         {/* Body */}
         <div className="p-6">
-          <h2 className="text-xl font-bold text-foreground">{event.title}</h2>
+          <h2 className="text-xl font-bold text-foreground break-words">{event.title}</h2>
 
           <div className="mt-4 space-y-3">
             {/* Date & time */}
@@ -108,7 +109,7 @@ export default function EventDetailModal({ event, onClose, onEdit, onDelete }: P
             {/* Description */}
             {event.description && (
               <div className="mt-2 rounded-lg bg-muted/50 p-3">
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-sm leading-relaxed text-muted-foreground break-words whitespace-pre-wrap">
                   {event.description}
                 </p>
               </div>

@@ -58,11 +58,13 @@ export default function SocialLinks({ showTitle = true }: Props) {
           className="
             inline-flex items-center justify-center
             text-blue-brand
-            hover:opacity-70 
-            transition
+            transition-colors
+            hover:text-color-mskth-blue
+            dark:text-blue-200
+            dark:hover:text-white
           "
         >
-          <Icon className="w-7 h-7" />
+          <Icon className="h-6 w-6 sm:h-7 sm:w-7" />
         </Link>
       ))}
     </div>

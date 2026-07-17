@@ -3,6 +3,7 @@
 import useSWR from "swr";
 import AboutUsView from '@/view/AboutUsView';
 import type { PublicBoardMember } from "@/types/adminBoardMembers";
+import type { Project } from "@/view/admin/project/AdminProjectsView";
 
 const fetcher = (url: string) =>
   fetch(url).then((r) => {
@@ -10,17 +11,18 @@ const fetcher = (url: string) =>
     return r.json();
   });
 
-
 export default function AboutUsPresenter() {
-  const { data, isLoading, error } = useSWR<PublicBoardMember[]>(
+  const { data: boardMembers, isLoading: isLoadingBoard, error: boardError } = useSWR<PublicBoardMember[]>(
     "/api/about_us", fetcher);
+  const { data: projects = [], isLoading: isLoadingProjects } = useSWR<Project[]>("/api/projects", fetcher);
 
   return (
     <AboutUsView 
-    boardMembers={data ?? []} 
-    isLoading={isLoading}
-    error={error}
+      boardMembers={boardMembers ?? []} 
+      isLoadingBoard={isLoadingBoard}
+      boardError={boardError}
+      projects={projects}
+      isLoadingProjects={isLoadingProjects}
     />
   );
 }
-
