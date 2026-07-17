@@ -49,6 +49,7 @@ next-env.d.ts
 
 # package locks
 package-lock.json
+skills-lock.json
 yarn.lock
 
 # editor directories and files
@@ -56,3 +57,4 @@ yarn.lock
 .vscode
 *.suo
 *.codex
+.agents
