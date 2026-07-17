@@ -1,5 +1,4 @@
 "use client";
-
 import { useTranslations } from "next-intl";
 import AboutHeader from "@/components/AboutHeader";
 import OurStorySection from "@/components/OurStorySection";
@@ -17,16 +16,15 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
   const t = useTranslations("AboutUs");
   const teamT = useTranslations("AboutUs.team");
   const projectT = useTranslations("AboutUs.projects");
-
   return (
     <>
       <main className="mx-auto max-w-[980px] px-5 pb-20 pt-10 sm:px-8 lg:pb-28 lg:pt-16">
         <AboutHeader title={t("title")} description={t("description")} />
       </main>
-
       <OurStorySection/>
 
       {/* Team section */}
+
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
         <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {teamT("heading")}
@@ -56,11 +54,12 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
       </section>
 
       {/* Project section */}
+
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
         <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {projectT("heading")}
         </h2>
-
+        
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-8 justify-items-center">
           <ProjectCard
             name={projectT("project.name")}
