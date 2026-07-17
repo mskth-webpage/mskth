@@ -147,12 +147,34 @@
     "description": "Edit board members",
     "addNew": "Add new",
     "empty": "Nothing to show. May be an error in database.",
-    "save": "Save",
     "cancel": "Cancel changes",
-    "publishing": "Publishing...",
     "publish": "Publish", 
-    "createTitle": "Create new board member card",
-    "editTitle": "Edit board member card"
+    "publishing": "Publishing..."
+  },
+  "TeamMemberCard": {
+    "noImage": "No Image",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "BoardMemberModal": {
+    "noNameError": "Name is required",
+    "noRoleError": "Role is required",
+    "noEmailError": "Email is required",
+    "invalidEmailError": "Invalid email. Must be of type [role]@mskth.se",
+    "noDisplayOrderError": "Display order is required",
+    "maxDisplayOrderMessage": "Max order is",
+    "invalidDisplayOrderError": "Display order must be at least 1",
+    "modalEditMemberTitle": "Edit board member",
+    "modalCreateNewMemberTitle": "Create board member",
+    "name": "Name",
+    "role": "Role",
+    "email": "Email",
+    "image": "Image (optional)",
+    "displayOrder": "Display order",
+    "uploadImage": "Upload image",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving..."
   },
   "Hero-section": {
     "title": "Welcome to MSKTH",
@@ -208,12 +230,7 @@
       "story": "MSKTH was founded by students who saw a need for a supportive community where Muslim students could find strength and companionship in their daily life at university. Over time, what began as a few students meeting for prayer and discussion has grown into a vibrant association, a place for friendships, worship, learning, and service. Our journey continues with the same purpose: to be a trusted meeting point for all Muslim students at KTH."
     },
     "team": {
-      "heading": "BOARD MEMBERS",
-      "member": {
-        "name": "Firstname Lastname",
-        "role": "Role",
-        "email": "email@mskth.se"
-      }
+      "heading": "BOARD MEMBERS"
     },
     "projects": {
       "heading": "MSKTH PROJECTS",

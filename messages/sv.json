@@ -147,12 +147,34 @@
     "description": "Redigera styrelsemedlemmar",
     "addNew": "Lägg till",
     "empty": "Inget att visa. Kan vara ett fel i databasen.",
-    "save": "Spara",
     "cancel": "Ångra ändringar",
-    "publishing": "Publicerar...",
     "publish": "Publicera", 
-    "createTitle": "Skapa nytt styrelsemedlem kort",
-    "editTitle": "Redigera styrelsemedlem kort"
+    "publishing": "Publicerar..."
+  },
+  "TeamMemberCard": {
+    "noImage": "Ingen Bild",
+    "edit": "Redigera",
+    "delete": "Radera"
+  },
+  "BoardMemberModal": {
+    "noNameError": "Name krävs",
+    "noRoleError": "Roll krävs",
+    "noEmailError": "Email krävs",
+    "invalidEmailError": "Ogiltig mejladress. Måste vara i formatet [role]@mskth.se",
+    "noDisplayOrderError": "Ordningsföljd krävs",
+    "maxDisplayOrderMessage": "Maximal ordningsföljd är",
+    "invalidDisplayOrderError": "Ordningsföljden kan inte understiga 1",
+    "modalEditMemberTitle": "Redigera styrelsemedlem",
+    "modalCreateNewMemberTitle": "Skapa styrelsemedlem",
+    "name": "Namn",
+    "role": "Roll",
+    "email": "Email",
+    "image": "Bild (valfritt)",
+    "displayOrder": "Ordningsföljd",
+    "uploadImage": "Ladda upp bild",
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "saving": "Sparar..."
   },
   "Hero-section": {
     "title": "Välkommen till MSKTH",
@@ -208,12 +230,7 @@
       "story": "MSKTH grundades av studenter som såg ett behov av en stödjande gemenskap där muslimska studenter kunde finna styrka och gemenskap i sin vardag på universitetet. Med tiden har det som började som ett fåtal studenter som möttes för bön och samtal vuxit till en levande förening – en plats för vänskap, tillbedjan, lärande och engagemang. Vår resa fortsätter med samma syfte: att vara en trygg mötesplats för alla muslimska studenter på KTH."
     },
     "team": {
-      "heading": "STYRELSEN",
-      "member": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@mskth.se"      
-      }
+      "heading": "STYRELSEN"
     },
     "projects": {
       "heading": "MSKTH PROJEKT",

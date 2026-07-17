@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Button } from '@/components/ui/button';
+import { useTranslations } from "next-intl";
 
 type TeamMemberCardProps = {
   name: string;
@@ -24,6 +25,8 @@ export default function TeamMemberCard({
   onEdit,
   onDelete,
 }: TeamMemberCardProps) {  
+  const t = useTranslations("TeamMemberCard");
+
   return (
     <article className="mx-auto">
       {/* Image or display text "No Image" */}
@@ -37,38 +40,26 @@ export default function TeamMemberCard({
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center">
-            <span className="text-2xl font-bold text-muted-foreground">
-              No Image
-            </span>
+            <span className="text-2xl font-bold text-muted-foreground">{t('noImage')}</span>
           </div>
         )}
       </div>
 
       {/* Text */}
       <div className="text-left">
-        <h3 className="font-serif text-xl font-semibold text-foreground">
-          {name}
-        </h3>
+        <h3 className="font-serif text-xl font-semibold text-foreground">{name}</h3>
 
-        <p className="mt-1 text-sm text-muted-foreground">
-          {role}
-        </p>
+        <p className="mt-1 text-sm text-muted-foreground">{role}</p>
 
-        <p className="mt-1 text-sm text-muted-foreground">
-          {email}
-        </p>
+        <p className="mt-1 text-sm text-muted-foreground">{email}</p>
       </div>
 
       {/* On admin page */}
       {isAdmin && (
         <div className="mt-3 flex gap-2 space-y-2">
-          {onEdit && (
-            <Button variant="secondary" onClick={onEdit}>Edit</Button>
-          )}
+          {onEdit && (<Button variant="secondary" onClick={onEdit}>{t('edit')}</Button>)}
 
-          {onDelete && (
-            <Button variant="destructive" onClick={onDelete}>Delete</Button>
-          )}          
+          {onDelete && (<Button variant="destructive" onClick={onDelete}>{t('delete')}</Button>)}          
         </div>
       )}
     </article>

@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ImagePlus, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import type {
   AdminBoardMember,
@@ -25,6 +26,7 @@ export default function CreateBoardMemberModal({
   onSave,
   onCancel,
 }: Props) {
+  const t = useTranslations("BoardMemberModal");
 
   const [name, setName] = useState(initialValues?.name ?? "");
   const [role, setRole] = useState(initialValues?.role ?? "");
@@ -44,20 +46,21 @@ export default function CreateBoardMemberModal({
   const [displayOrder, setDisplayOrder] = useState((initialValues?.display_order ?? maxOrder).toString());
   const [orderMessage, setOrderMessage] = useState("");
   
+  const [isSaving, setIsSaving] = useState(false);
   const [errors, setErrors] = useState<Record<string,string>>({});
 
   function validate() {
     const newErrors: Record<string,string> = {};
 
-    if (!name.trim()) {newErrors.name = "Name is required";} // translate
-    if (!role.trim()) {newErrors.role = "Role is required";}
-    if (!email.trim()) {newErrors.email = "Email is required";}
+    if (!name.trim()) {newErrors.name = t('noNameError');}
+    if (!role.trim()) {newErrors.role = t('noRoleError');}
+    if (!email.trim()) {newErrors.email = t('noEmailError');}
     
     // Check if board email is valid: ends with @mskth.se
-    if (email && !/^[^\s@]+@mskth\.se$/.test(email)) {newErrors.email = "Invalid email. Must be of type [role]@mskth.se";}
+    if (email && !/^[^\s@]+@mskth\.se$/.test(email)) {newErrors.email = t('invalidEmailError');}
 
-    if (!displayOrder) {newErrors.displayOrder = "Display order is required";}
-    if (displayOrder && Number(displayOrder) < 1) {newErrors.displayOrder = "Display order must be at least 1";} 
+    if (!displayOrder) {newErrors.displayOrder = t('noDisplayOrderError');}
+    if (displayOrder && Number(displayOrder) < 1) {newErrors.displayOrder = t('invalidDisplayOrderError');} 
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -66,38 +69,44 @@ export default function CreateBoardMemberModal({
   async function handleSave() {
     if (!validate()) return;
 
+    setIsSaving(true);
+
     let image_url: string | null = null;
 
-    if (imageFile) {
-      const form = new FormData();
-      form.append("file", imageFile);
-      form.append("bucket", "board_members");
+    try{
+      if (imageFile) {
+        const form = new FormData();
+        form.append("file", imageFile);
+        form.append("bucket", "board_members");
 
-      const res = await fetch("/api/admin/upload", {
-        method: "POST",
-        body: form,
-      });
+        const res = await fetch("/api/admin/upload", {
+          method: "POST",
+          body: form,
+        });
 
-      const json = await res.json();
+        const json = await res.json();
 
-      if (!res.ok) {
-        setErrors({image: json.error ?? "Image upload failed",});
-        return;
+        if (!res.ok) {
+          setErrors({image: json.error ?? "Image upload failed",});
+          return;
+        }
+
+        image_url = json.url;
+
+      } else if (imagePreview) {
+        image_url = imagePreview;
       }
 
-      image_url = json.url;
-
-    } else if (imagePreview) {
-      image_url = imagePreview;
+      onSave({
+        name: name.trim(),
+        role: role.trim(),
+        email: email.trim(),
+        image_url,
+        display_order: Number(displayOrder),
+      });
+    } finally {
+      setIsSaving(false);
     }
-
-    onSave({
-      name: name.trim(),
-      role: role.trim(),
-      email: email.trim(),
-      image_url,
-      display_order: Number(displayOrder),
-    });
   }
 
   return (
@@ -106,10 +115,10 @@ export default function CreateBoardMemberModal({
         
         <div className="p-6 space-y-4">
 
-          <h2 className="text-xl font-semibold"> {initialValues ? "Edit board member" : "Create board member"} </h2>
+          <h2 className="text-xl font-semibold"> {initialValues ? t('modalEditMemberTitle') : t('modalCreateNewMemberTitle')} </h2>
 
           {/* Name */}
-          <Field label="Name" error={errors.name}>
+          <Field label={t('name')} error={errors.name}>
             <input value={name} 
               onChange={(e) => setName(e.target.value)}
               className={inputClass(!!errors.name)}
@@ -117,7 +126,7 @@ export default function CreateBoardMemberModal({
           </Field>
 
           {/* Role */}
-          <Field label="Role" error={errors.role}>
+          <Field label={t('role')} error={errors.role}>
             <input value={role}
               onChange={(e) => setRole(e.target.value)}
               className={inputClass(!!errors.role)}
@@ -125,7 +134,7 @@ export default function CreateBoardMemberModal({
           </Field>
 
           {/* Email */}
-          <Field label="Email" error={errors.email}>
+          <Field label={t('email')} error={errors.email}>
             <input type="email" value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={inputClass(!!errors.email)}
@@ -133,7 +142,7 @@ export default function CreateBoardMemberModal({
           </Field>
 
           {/* Image */}
-          <Field label="Image (optional)" error={errors.image}>
+          <Field label={t('image')} error={errors.image}>
             <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImageChange}/>
 
             {imagePreview ? (
@@ -151,18 +160,18 @@ export default function CreateBoardMemberModal({
                 onClick={() => fileRef.current?.click()}
                 className="flex h-40 w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-border text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary">
                 <ImagePlus className="h-6 w-6" />
-                <span className="text-xs">Upload image</span>
+                <span className="text-xs">{t('uploadImage')}</span>
               </button>
             )}
           </Field>
 
           {/* Order */}
-          <Field label="Display order" error={errors.displayOrder}>
+          <Field label={t('displayOrder')} error={errors.displayOrder}>
             <input type="number" min={1} max={maxOrder} value={displayOrder}
               onChange={(e) => {
                 if (Number(e.target.value) > maxOrder) {
                   setDisplayOrder(maxOrder.toString());  // automatically change display of higher order to max
-                  setOrderMessage(`Max order is ${maxOrder}`);          
+                  setOrderMessage(`${t('maxDisplayOrderMessage')} ${maxOrder}`);         
                 } else {
                   setDisplayOrder(e.target.value)
                 }
@@ -179,8 +188,10 @@ export default function CreateBoardMemberModal({
 
         {/* Buttons */}
         <div className="flex justify-end gap-3 border-t border-border p-4">
-          <Button variant="outline" className="hover:bg-destructive/10 hover:text-destructive" onClick={onCancel}>Cancel</Button>  {/** add translate */}
-          <Button onClick={handleSave}>Save</Button> {/** add translate */}
+          <Button variant="outline" className="hover:bg-destructive/10 hover:text-destructive" onClick={onCancel}>{t('cancel')}</Button>
+          <Button onClick={handleSave} disabled={isSaving}> 
+            {isSaving ? t('saving') : t('save')} 
+          </Button>
         </div>
 
       </div>

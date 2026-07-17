@@ -85,10 +85,7 @@ export default function AdminBoardView({
           {isLoading ? (
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"> 
               {Array.from({ length: 6 }).map((_, index) => (
-                <div
-                  key={index}
-                  className="h-72 animate-pulse rounded-xl bg-muted"
-                />
+                <div key={index} className="h-72 animate-pulse rounded-xl bg-muted"/>
               ))}
             </div>
           ) : boardMembers.length === 0 ? (
@@ -131,7 +128,7 @@ export default function AdminBoardView({
             onClick={onPublish}
             //onClick={() => setIsPublishDialogOpen(true)}
           >
-            {isPublishing ? t('publishing') : t('publish')} {/** onödigt???? */}
+            {isPublishing ? t('publishing') : t('publish')}
           </Button>
         </div>
       </section>
