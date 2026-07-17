@@ -358,5 +358,37 @@
     "contactHighlight": "samarbeta",
     "contactOutro": "med oss, kontakta oss på",
     "email": "muslimstudentkth@gmail.com"
+  },
+  "AdminProjectGroupView": {
+    "title": "Projektgrupper",
+    "description": "Hantera projektgrupper tillgängliga för projekt.",
+    "addNew": "Lägg till ny",
+    "empty": "Inga projektgrupper hittades.",
+    "cancel": "Avbryt",
+    "publish": "Publicera",
+    "publishing": "Publicerar..."
+  },
+  "ProjectGroupModal": {
+    "noNameError": "Namn krävs",
+    "invalidEmailError": "Ogiltigt e-postformat",
+    "noDisplayOrderError": "Visningsordning krävs",
+    "invalidDisplayOrderError": "Ogiltig visningsordning",
+    "modalEditTitle": "Redigera Projektgrupp",
+    "modalCreateNewTitle": "Skapa Projektgrupp",
+    "name": "Namn",
+    "description": "Beskrivning",
+    "contactEmail": "Kontakt e-post (valfritt)",
+    "image": "Bild (valfritt)",
+    "displayOrder": "Visningsordning",
+    "uploadImage": "Ladda upp bild",
+    "maxDisplayOrderMessage": "Max order är",
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "saving": "Sparar..."
+  },
+  "ProjectGroupCard": {
+    "noImage": "Ingen bild",
+    "edit": "Redigera",
+    "delete": "Radera"
   }
 }

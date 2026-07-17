@@ -395,5 +395,37 @@
     "contactHighlight": "collaborating",
     "contactOutro": "with us, contact us on",
     "email": "muslimstudentkth@gmail.com"
+  },
+  "AdminProjectGroupView": {
+    "title": "Project Groups",
+    "description": "Manage project groups available for projects.",
+    "addNew": "Add new",
+    "empty": "No project groups found.",
+    "cancel": "Cancel changes",
+    "publish": "Publish",
+    "publishing": "Publishing..."
+  },
+  "ProjectGroupModal": {
+    "noNameError": "Name is required",
+    "invalidEmailError": "Invalid email format",
+    "noDisplayOrderError": "Display order is required",
+    "invalidDisplayOrderError": "Invalid display order",
+    "modalEditTitle": "Edit Project Group",
+    "modalCreateNewTitle": "Create Project Group",
+    "name": "Name",
+    "description": "Description",
+    "contactEmail": "Contact Email (optional)",
+    "image": "Image (optional)",
+    "displayOrder": "Display order",
+    "uploadImage": "Upload image",
+    "maxDisplayOrderMessage": "Max order is",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving..."
+  },
+  "ProjectGroupCard": {
+    "noImage": "No Image",
+    "edit": "Edit",
+    "delete": "Delete"
   }
 }
