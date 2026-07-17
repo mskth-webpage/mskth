@@ -1,102 +1,57 @@
 "use client";
-
 import { useTranslations } from "next-intl";
 import AboutHeader from "@/components/AboutHeader";
 import OurStorySection from "@/components/OurStorySection";
 import TeamMemberCard from "@/components/TeamMemberCard";
 import ProjectCard from "@/components/ProjectCard";
-
-export default function AboutUsView() {
+import type {PublicBoardMember} from '@/types/adminBoardMembers';
+type Props = {
+  boardMembers: PublicBoardMember[];
+  isLoading: boolean;
+  error?: Error;
+}
+export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
   const t = useTranslations("AboutUs");
   const teamT = useTranslations("AboutUs.team");
   const projectT = useTranslations("AboutUs.projects");
-
   return (
     <>
       <main className="mx-auto max-w-[980px] px-5 pb-20 pt-10 sm:px-8 lg:pb-28 lg:pt-16">
         <AboutHeader title={t("title")} description={t("description")} />
       </main>
-
       <OurStorySection/>
-
       {/* Team section */}
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
         <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {teamT("heading")}
         </h2>
-
         {/* 4x3 grid on large screen, 3x4 on medium and 10x1 on mobile, chenge to 2x5 if too big */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 justify-items-center">
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />   
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-
-        <TeamMemberCard
-          name={teamT("member.name")}
-          role={teamT("member.role")}
-          email={teamT("member.email")}
-        />
-             
-        </div>
+          {isLoading ? (
+            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"> 
+              {Array.from({ length: 6 }).map((_, index) => (
+                <div key={index} className="h-72 animate-pulse rounded-xl bg-muted"/>
+              ))}
+            </div>
+          ) : error ? (
+          <p className="text-center text-muted-foreground">{teamT('error')}</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+              {boardMembers.map((member) => (
+                <TeamMemberCard
+                  key={member.id} 
+                  name={member.name}
+                  role={member.role}
+                  email={member.email}
+                  imageUrl={member.image_url ?? undefined}
+                /> ))}
+            </div>
+          )}
       </section>
-
       {/* Project section */}
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
         <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {projectT("heading")}
         </h2>
-
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-8 justify-items-center">
           <ProjectCard
             name={projectT("project.name")}
