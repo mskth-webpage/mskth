@@ -77,7 +77,7 @@ export default function CreateBoardMemberModal({
       if (imageFile) {
         const form = new FormData();
         form.append("file", imageFile);
-        form.append("bucket", "board_members");
+        form.append("folder", "board_members");
 
         const res = await fetch("/api/admin/upload", {
           method: "POST",

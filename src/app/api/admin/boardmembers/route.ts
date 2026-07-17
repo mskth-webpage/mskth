@@ -27,9 +27,10 @@ export async function GET() {
     .select("id, name, role, email, image_url, display_order")
     .order("display_order", { ascending: true });
 
-  console.log("Data:", data); // ta bort
-  console.log("Error:", error);
-
+  // Debugging
+  //console.log("Data:", data);
+  //console.log("Error:", error);
+  
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -75,6 +76,31 @@ export async function PUT(request: Request) {
 
   const idsToDelete = [...existingIds].filter((id) => !idsInLocalStorage.has(id));
   if (idsToDelete.length > 0) {
+
+    // Delete image from database. Note that previous images and draft images can still persist and needs to be manually deleted in Supabase.
+    const { data: membersToDelete, error: imageFetchError } = await supabase
+      .from("board_members")
+      .select("image_url")
+      .in("id", idsToDelete);
+
+    if (imageFetchError) {
+      return NextResponse.json({ error: imageFetchError.message }, { status: 500 });
+    }
+
+    const paths = membersToDelete
+      .map((member) => {
+        if (!member.image_url) return null;
+        return member.image_url.split("/images/")[1];
+      })
+      .filter(Boolean) as string[];
+
+    if (paths.length > 0) {
+      await supabase.storage
+        .from("images")
+        .remove(paths);
+    }
+
+    // Delete the rest
     const { error: deleteError } = await supabase
       .from("board_members")
       .delete()
