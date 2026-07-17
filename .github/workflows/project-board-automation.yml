@@ -15,11 +15,14 @@ jobs:
     name: "Move to Review"
     runs-on: ubuntu-latest
     if: github.event.action == 'review_requested'
+    env:
+      PROJECT_TOKEN: ${{ secrets.PROJECT_TOKEN }}
     steps:
       - name: Move linked issues to Review
+        if: env.PROJECT_TOKEN != ''
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.PROJECT_TOKEN }}
+          github-token: ${{ env.PROJECT_TOKEN }}
           script: |
             const org = process.env.ORGANIZATION;
             const projectNumber = parseInt(process.env.PROJECT_NUMBER);
@@ -118,6 +121,9 @@ jobs:
                 console.log('Failed to move issue #' + issueNumber + ': ' + error.message);
               }
             }
+      - name: Skip move to review when token is unavailable
+        if: env.PROJECT_TOKEN == ''
+        run: echo "PROJECT_TOKEN is not available for this run; skipping project board update."
 
   move-to-done:
     name: "Move to Done"
@@ -126,11 +132,14 @@ jobs:
       github.event.action == 'closed' &&
       github.event.pull_request.merged == true &&
       github.event.pull_request.base.ref == 'dev'
+    env:
+      PROJECT_TOKEN: ${{ secrets.PROJECT_TOKEN }}
     steps:
       - name: Move linked issues to Done
+        if: env.PROJECT_TOKEN != ''
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.PROJECT_TOKEN }}
+          github-token: ${{ env.PROJECT_TOKEN }}
           script: |
             const org = process.env.ORGANIZATION;
             const projectNumber = parseInt(process.env.PROJECT_NUMBER);
@@ -289,3 +298,6 @@ jobs:
                 console.log('Failed to move issue #' + issueNumber + ': ' + error.message);
               }
             }
+      - name: Skip move to done when token is unavailable
+        if: env.PROJECT_TOKEN == ''
+        run: echo "PROJECT_TOKEN is not available for this run; skipping project board update."
