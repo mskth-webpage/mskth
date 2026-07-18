@@ -282,6 +282,9 @@
         "description": "Kort beskrivning av projekt",
         "project_members": "Gruppmedlemmar"
       }
+    },
+    "projectGroups": {
+      "heading": "PROJEKTGRUPPER"
     }
   },
   "Events": {

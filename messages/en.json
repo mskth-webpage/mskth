@@ -319,6 +319,9 @@
         "description": "Short description",
         "project_members": "Group members"
       }
+    },
+    "projectGroups": {
+      "heading": "PROJECT GROUPS"
     }
   },
   "Events": {
