@@ -24,20 +24,36 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="w-full bg-background z-40">
+    <header className="relative z-40 w-full bg-background">
       <div className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-4 py-3 sm:px-6 lg:px-10">
         {/* LOGO */}
-        <div className="justify-self-start shrink-0">
+        <div className="shrink-0 justify-self-start">
           <Logo />
         </div>
 
         {/* DESKTOP NAVIGATION */}
-        <nav className="hidden md:flex justify-self-center">
-          <div className="flex items-center gap-2 rounded-full border bg-background/95 px-4 py-2 shadow-sm backdrop-blur-md lg:gap-3 lg:px-6">
+        <nav className="pointer-events-none fixed left-1/2 top-5 z-50 hidden -translate-x-1/2 md:flex">
+          <div
+            className="
+              pointer-events-auto
+              flex items-center
+              gap-1
+              rounded-full
+              bg-white/30
+              px-5 py-2.5
+              backdrop-blur-sm
+              backdrop-saturate-150
+              dark:border-white/10
+              dark:bg-black/20
+              lg:gap-2
+              lg:px-7
+              mt-2
+            "
+          >
             <Button
               asChild
               variant="ghost"
-              className={`${noHoverButton} h-9 rounded-full px-3 text-sm ${
+              className={`${noHoverButton} h-10 rounded-full px-4 text-base ${
                 pathname === "/events" ? "font-semibold" : ""
               }`}
             >
@@ -47,7 +63,7 @@ export default function Navbar() {
             <Button
               asChild
               variant="ghost"
-              className={`${noHoverButton} h-9 rounded-full px-3 text-sm ${
+              className={`${noHoverButton} h-10 rounded-full px-4 text-base ${
                 pathname === "/collaboration" ? "font-semibold" : ""
               }`}
             >
@@ -57,7 +73,7 @@ export default function Navbar() {
             <Button
               asChild
               variant="ghost"
-              className={`${noHoverButton} h-9 rounded-full px-3 text-sm ${
+              className={`${noHoverButton} h-10 rounded-full px-4 text-base ${
                 pathname === "/aboutus" ? "font-semibold" : ""
               }`}
             >
@@ -66,8 +82,10 @@ export default function Navbar() {
           </div>
         </nav>
 
+        <div className="hidden md:block" />
+
         {/* ACTIONS DESKTOP */}
-        <div className="hidden md:flex justify-self-end shrink-0 items-center gap-2 lg:gap-3">
+        <div className="hidden shrink-0 items-center gap-2 justify-self-end md:flex lg:gap-3">
           <Button
             asChild
             variant="ghost"
@@ -79,7 +97,7 @@ export default function Navbar() {
           <Button
             asChild
             variant="outline"
-            className="h-9 rounded-full border-color-mskth-blue px-5 text-sm font-medium uppercase tracking-wide text-color-mskth-blue transition-all duration-200 hover:bg-color-mskth-blue/10 lg:px-6"
+            className="h-9 rounded-full border-color-mskth-blue px-5 text-sm font-medium uppercase tracking-wide text-color-mskth-blue transition-all duration-200 hover:-translate-y-0.5 hover:border-color-mskth-blue hover:bg-color-mskth-blue hover:text-black hover:shadow-md active:translate-y-0 lg:px-6"
           >
             <Link href="/join">{t("join")}</Link>
           </Button>
@@ -91,9 +109,11 @@ export default function Navbar() {
 
         {/* MOBILE MENU BUTTON */}
         <button
-          className="md:hidden col-start-3 justify-self-end flex items-center"
-          onClick={() => setOpen(!open)}
+          type="button"
+          className="col-start-3 flex items-center justify-self-end md:hidden"
+          onClick={() => setOpen((previous) => !previous)}
           aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
         >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -101,7 +121,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU DROPDOWN */}
       {open && (
-        <div className="md:hidden border-t bg-background px-5 py-5 space-y-5">
+        <div className="space-y-5 border-t bg-background px-5 py-5 md:hidden">
           <div className="flex flex-col space-y-3 text-base">
             <Link
               className={mobileMenuLinkClasses}
