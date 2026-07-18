@@ -21,7 +21,7 @@ export default function AboutUsView({ boardMembers, isLoadingBoard, boardError, 
   const projectT = useTranslations("AboutUs.projects");
   return (
     <>
-      <main className="mx-auto max-w-[980px] px-5 pb-20 pt-10 sm:px-8 lg:pb-28 lg:pt-16">
+      <main className="mx-auto max-w-[980px] px-5 pb-12 pt-4 sm:px-8 lg:pb-16 lg:pt-6">
         <AboutHeader title={t("title")} description={t("description")} />
       </main>
       <OurStorySection/>

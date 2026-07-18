@@ -42,7 +42,7 @@ export default function PreviousEvent({ events, isLoading }: Props) {
   const selectedEvents = months.find((month) => month.key === selectedMonth)?.events ?? [];
 
   return (
-    <section className="mx-auto flex w-full max-w-6xl flex-col items-center px-4 pb-20 pt-5 text-center sm:px-8 sm:pb-28 sm:pt-10">
+    <section className="mx-auto flex w-full max-w-[1400px] flex-col items-center px-4 pb-20 pt-5 text-center sm:px-8 sm:pb-28 sm:pt-10">
       <h2 className="font-serif text-xl font-medium uppercase sm:text-3xl lg:text-4xl">
         {t("previous.title")}
       </h2>
