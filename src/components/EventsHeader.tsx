@@ -17,7 +17,7 @@ export default function EventsHeader({ title, description }: EventsHeaderProps) 
         aria-hidden
         width={86}
         height={170}
-        className="absolute left-[8%] top-[53%] z-0 h-auto w-10 -rotate-[22deg] sm:w-16 lg:left-[18%] lg:w-20"
+        className="absolute left-[8%] top-[53%] z-0 h-auto w-10 -rotate-22 sm:w-16 lg:left-[18%] lg:w-20"
       />
 
       <Image
@@ -35,7 +35,7 @@ export default function EventsHeader({ title, description }: EventsHeaderProps) 
         aria-hidden
         width={60}
         height={118}
-        className="absolute left-1/2 top-[70%] z-0 h-auto w-9 -translate-x-1/2 rotate-[13deg] sm:w-12 lg:w-14"
+        className="absolute left-1/2 top-[70%] z-0 h-auto w-9 -translate-x-1/2 rotate-13 sm:w-12 lg:w-14"
       />
 
       {/* Text */}
