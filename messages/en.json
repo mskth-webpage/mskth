@@ -327,10 +327,21 @@
       "description": "Explore upcoming MSKTH events and stay connected with the community."
     },
     "title": "Events",
-    "description": "Short description",
+    "description": "Discover upcoming events, revisit previous events, and be part of the MSKTH community.",
+    "upcoming": {
+      "title": "Upcoming Events",
+      "august": "August",
+      "september": "September",
+      "cardTitle": "Title",
+      "cardDescription": "Short description",
+      "button": "Buy now",
+      "empty": "No upcoming events at the moment."
+    },
     "previous": {
       "title": "PREVIOUS EVENTS",
-      "description": "Short description",
+      "description": "Explore our previous events and revisit moments from the MSKTH community.",
+      "empty": "No previous events found.",
+      "eventCount": "{count, plural, one {# event} other {# events}}",
       "card1": {
         "name": "EVENTNAME",
         "description": "Short description",

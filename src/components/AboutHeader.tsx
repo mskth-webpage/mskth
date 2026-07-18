@@ -7,7 +7,7 @@ type AboutHeaderProps = {
 
 export default function AboutHeader({ title, description }: AboutHeaderProps) {
     return (
-        <section className="w-full bg-background text-center py-24">
+        <section className="w-full bg-background py-12 text-center">
         <h1 className="font-serif text-4xl font-semibold tracking-wide text-foreground">
           {title.toUpperCase()}
         </h1>
