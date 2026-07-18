@@ -2,21 +2,35 @@
 
 import EventsHeader from "@/components/EventsHeader";
 import PreviousEvent from "@/components/PreviousEvent";
+import UpcomingEventsView from "@/view/UpcomingEventsView";
 import { useTranslations } from "next-intl";
+import type { AdminEvent } from "@/types/adminEvent";
 
-export default function EventsView() {
+type Props = {
+  events: AdminEvent[];
+  isLoading: boolean;
+  previousEvents: AdminEvent[];
+  isLoadingPrevious: boolean;
+};
+
+export default function EventsView({
+  events,
+  isLoading,
+  previousEvents,
+  isLoadingPrevious,
+}: Props) {
   const t = useTranslations("Events");
 
   return (
-    <>
-      <main className="mx-auto max-w-[980px] px-5 pb-20 pt-10 sm:px-8 lg:pb-28 lg:pt-16">
-            <EventsHeader
+    <main className="overflow-hidden">
+      <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+        <EventsHeader
           title={t("title")}
           description={t("description")}
         />
-      </main>
-      <PreviousEvent/>
-    </>
+      </div>
+      <UpcomingEventsView events={events} isLoading={isLoading} />
+      <PreviousEvent events={previousEvents} isLoading={isLoadingPrevious} />
+    </main>
   );
 }
-

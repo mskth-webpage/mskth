@@ -291,9 +291,20 @@
     },
     "title": "Evenemang",
     "description": "Kort beskrivning",
+    "upcoming": {
+      "title": "Kommande event",
+      "august": "Augusti",
+      "september": "September",
+      "cardTitle": "Titel",
+      "cardDescription": "Kort beskrivning",
+      "button": "Köp nu",
+      "empty": "Det finns inga kommande event just nu."
+    },
     "previous": {
       "title": "FÖREGÅENDE EVENT",
-      "description": "Kort beskrivning",
+      "description": "Utforska våra tidigare event och återupplev stunder från MSKTH-gemenskapen.",
+      "empty": "Inga tidigare event hittades.",
+      "eventCount": "{count, plural, one {# event} other {# event}}",
       "card1": {
         "name": "EVENTNAMN",
         "description": "Kort beskrivning",
