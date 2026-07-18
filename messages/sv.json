@@ -176,6 +176,40 @@
     "switchToLightMode": "Byt till ljust läge",
     "switchToDarkMode": "Byt till mörkt läge"
   },
+  "AdminBoardMembersView": {
+    "title": "Styrelsemedlemmar",
+    "description": "Redigera styrelsemedlemmar",
+    "addNew": "Lägg till",
+    "empty": "Inget att visa. Kan vara ett fel i databasen.",
+    "cancel": "Ångra ändringar",
+    "publish": "Publicera", 
+    "publishing": "Publicerar..."
+  },
+  "TeamMemberCard": {
+    "noImage": "Ingen Bild",
+    "edit": "Redigera",
+    "delete": "Radera"
+  },
+  "BoardMemberModal": {
+    "noNameError": "Name krävs",
+    "noRoleError": "Roll krävs",
+    "noEmailError": "Email krävs",
+    "invalidEmailError": "Ogiltig mejladress. Måste vara i formatet [role]@mskth.se",
+    "noDisplayOrderError": "Ordningsföljd krävs",
+    "maxDisplayOrderMessage": "Maximal ordningsföljd är",
+    "invalidDisplayOrderError": "Ordningsföljden kan inte understiga 1",
+    "modalEditMemberTitle": "Redigera styrelsemedlem",
+    "modalCreateNewMemberTitle": "Skapa styrelsemedlem",
+    "name": "Namn",
+    "role": "Roll",
+    "email": "Email",
+    "image": "Bild (valfritt)",
+    "displayOrder": "Ordningsföljd",
+    "uploadImage": "Ladda upp bild",
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "saving": "Sparar..."
+  },
   "Hero-section": {
     "title": "Välkommen till MSKTH",
     "subtitle": "Din gemenskap väntar",
@@ -235,11 +269,7 @@
     },
     "team": {
       "heading": "STYRELSEN",
-      "member": {
-        "name": "Förnamn Efternamn",
-        "role": "Roll",
-        "email": "epost@mskth.se"      
-      }
+      "error": "Fel i databas. Vänligen kontakta info@mskth.se."
     },
     "projects": {
       "heading": "MSKTH PROJEKT",
@@ -260,10 +290,21 @@
       "description": "Upptäck kommande MSKTH-evenemang och håll kontakten med gemenskapen."
     },
     "title": "Evenemang",
-    "description": "Kort beskrivning",
+    "description": "Upptäck kommande event, återupplev tidigare event och bli en del av MSKTH-gemenskapen.",
+    "upcoming": {
+      "title": "Kommande event",
+      "august": "Augusti",
+      "september": "September",
+      "cardTitle": "Titel",
+      "cardDescription": "Kort beskrivning",
+      "button": "Köp nu",
+      "empty": "Det finns inga kommande event just nu."
+    },
     "previous": {
       "title": "FÖREGÅENDE EVENT",
-      "description": "Kort beskrivning",
+      "description": "Utforska våra tidigare event och återupplev stunder från MSKTH-gemenskapen.",
+      "empty": "Inga tidigare event hittades.",
+      "eventCount": "{count, plural, one {# event} other {# event}}",
       "card1": {
         "name": "EVENTNAMN",
         "description": "Kort beskrivning",
@@ -328,5 +369,37 @@
     "contactHighlight": "samarbeta",
     "contactOutro": "med oss, kontakta oss på",
     "email": "muslimstudentkth@gmail.com"
+  },
+  "AdminProjectGroupView": {
+    "title": "Projektgrupper",
+    "description": "Hantera projektgrupper tillgängliga för projekt.",
+    "addNew": "Lägg till ny",
+    "empty": "Inga projektgrupper hittades.",
+    "cancel": "Avbryt",
+    "publish": "Publicera",
+    "publishing": "Publicerar..."
+  },
+  "ProjectGroupModal": {
+    "noNameError": "Namn krävs",
+    "invalidEmailError": "Ogiltigt e-postformat",
+    "noDisplayOrderError": "Visningsordning krävs",
+    "invalidDisplayOrderError": "Ogiltig visningsordning",
+    "modalEditTitle": "Redigera Projektgrupp",
+    "modalCreateNewTitle": "Skapa Projektgrupp",
+    "name": "Namn",
+    "description": "Beskrivning",
+    "contactEmail": "Kontakt e-post (valfritt)",
+    "image": "Bild (valfritt)",
+    "displayOrder": "Visningsordning",
+    "uploadImage": "Ladda upp bild",
+    "maxDisplayOrderMessage": "Max order är",
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "saving": "Sparar..."
+  },
+  "ProjectGroupCard": {
+    "noImage": "Ingen bild",
+    "edit": "Redigera",
+    "delete": "Radera"
   }
 }

@@ -6,6 +6,10 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/view/admin/project/AdminProjectsView";
+import useSWR from "swr";
+import type { AdminProjectGroup } from "@/types/projectGroups";
+
+const fetcher = (url: string) => fetch(url).then(r => r.json());
 
 type Props = {
   initialValues?: Project | null;
@@ -22,7 +26,9 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
   const [title, setTitle] = useState(initialValues?.title ?? "");
   const [description, setDescription] = useState(initialValues?.description ?? "");
   const [content, setContent] = useState(initialValues?.content ?? "");
-  const [groupLabel, setGroupLabel] = useState(initialValues?.group_label || "Executive");
+  const [groupLabel, setGroupLabel] = useState(initialValues?.group_label || "");
+  
+  const { data: projectGroups = [] } = useSWR<AdminProjectGroup[]>("/api/admin/project_groups", fetcher);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const initialImage = initialValues?.image_url && !initialValues.image_url.includes("MSkth.png") 
     ? initialValues.image_url 
@@ -39,13 +45,15 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
   const handleSave = () => {
     if (!title) return;
     
+    const finalGroupLabel = groupLabel || (projectGroups.length > 0 ? projectGroups[0].name : "Executive");
+
     if (initialValues) {
       onUpdate({
         ...initialValues,
         title,
         description,
         content,
-        group_label: groupLabel,
+        group_label: finalGroupLabel,
         status: initialValues.status,
         image_url: imagePreview || "",
       }, imageFile);
@@ -55,7 +63,7 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
         title,
         description,
         content,
-        group_label: groupLabel,
+        group_label: finalGroupLabel,
         status: statusTarget,
         image_url: imagePreview || "",
       }, imageFile);
@@ -112,15 +120,14 @@ export default function CreateProjectModal({ initialValues, statusTarget, onSave
             <div>
               <label className="mb-1 block text-xs font-medium text-muted-foreground">{t("project.groupLabel")}</label>
               <select
-                value={groupLabel}
+                value={groupLabel || (projectGroups.length > 0 ? projectGroups[0].name : "")}
                 onChange={(e) => setGroupLabel(e.target.value)}
                 className="w-full rounded border border-border px-2 py-1.5 text-sm outline-none focus:border-primary bg-background"
               >
-                <option value="Executive">Executive</option>
-                <option value="Events">Events</option>
-                <option value="PR & Marketing">PR & Marketing</option>
-                <option value="Business & External Relations">Business & External Relations</option>
-                <option value="IT & Communications">IT & Communications</option>
+                {projectGroups.map((group) => (
+                  <option key={group.id} value={group.name}>{group.name}</option>
+                ))}
+                {projectGroups.length === 0 && <option value={groupLabel}>{groupLabel}</option>}
               </select>
             </div>
 

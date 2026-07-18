@@ -5,7 +5,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-1 pt-14">{children}</main>
+      <main className="flex-1 pt-4">{children}</main>
       <Footer /> 
     </div>
   );
