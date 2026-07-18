@@ -1,6 +1,13 @@
+import BoardMemberPresenter from "@/presenter/admin/BoardMemberPresenter";
+import ProjectGroupPresenter from "@/presenter/admin/ProjectGroupPresenter";
 
-export default function boardmember() {
+export default function BoardMemberPage() {
   return (
-    <div>boardmember</div>
-  )
+    <>
+      <BoardMemberPresenter />
+      <div className="mt-8">
+        <ProjectGroupPresenter />
+      </div>
+    </>
+  );
 }

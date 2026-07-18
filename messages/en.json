@@ -214,6 +214,40 @@
     "switchToLightMode": "Switch to light mode",
     "switchToDarkMode": "Switch to dark mode"
   },
+  "AdminBoardMembersView": {
+    "title": "Board Members",
+    "description": "Edit board members",
+    "addNew": "Add new",
+    "empty": "Nothing to show. May be an error in database.",
+    "cancel": "Cancel changes",
+    "publish": "Publish", 
+    "publishing": "Publishing..."
+  },
+  "TeamMemberCard": {
+    "noImage": "No Image",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "BoardMemberModal": {
+    "noNameError": "Name is required",
+    "noRoleError": "Role is required",
+    "noEmailError": "Email is required",
+    "invalidEmailError": "Invalid email. Must be of type [role]@mskth.se",
+    "noDisplayOrderError": "Display order is required",
+    "maxDisplayOrderMessage": "Max order is",
+    "invalidDisplayOrderError": "Display order must be at least 1",
+    "modalEditMemberTitle": "Edit board member",
+    "modalCreateNewMemberTitle": "Create board member",
+    "name": "Name",
+    "role": "Role",
+    "email": "Email",
+    "image": "Image (optional)",
+    "displayOrder": "Display order",
+    "uploadImage": "Upload image",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving..."
+  },
   "Hero-section": {
     "title": "Welcome to MSKTH",
     "subtitle": "Your Community Awaits",
@@ -272,14 +306,11 @@
     },
     "team": {
       "heading": "BOARD MEMBERS",
-      "member": {
-        "name": "Firstname Lastname",
-        "role": "Role",
-        "email": "email@mskth.se"
-      }
+      "error": "Error in database. Please contact info@mskth.se."
     },
     "projects": {
       "heading": "MSKTH PROJECTS",
+      "empty": "No projects are available right now.",
       "labels": {
         "project_group": "Project Group"
       },
@@ -364,5 +395,37 @@
     "contactHighlight": "collaborating",
     "contactOutro": "with us, contact us on",
     "email": "muslimstudentkth@gmail.com"
+  },
+  "AdminProjectGroupView": {
+    "title": "Project Groups",
+    "description": "Manage project groups available for projects.",
+    "addNew": "Add new",
+    "empty": "No project groups found.",
+    "cancel": "Cancel changes",
+    "publish": "Publish",
+    "publishing": "Publishing..."
+  },
+  "ProjectGroupModal": {
+    "noNameError": "Name is required",
+    "invalidEmailError": "Invalid email format",
+    "noDisplayOrderError": "Display order is required",
+    "invalidDisplayOrderError": "Invalid display order",
+    "modalEditTitle": "Edit Project Group",
+    "modalCreateNewTitle": "Create Project Group",
+    "name": "Name",
+    "description": "Description",
+    "contactEmail": "Contact Email (optional)",
+    "image": "Image (optional)",
+    "displayOrder": "Display order",
+    "uploadImage": "Upload image",
+    "maxDisplayOrderMessage": "Max order is",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving..."
+  },
+  "ProjectGroupCard": {
+    "noImage": "No Image",
+    "edit": "Edit",
+    "delete": "Delete"
   }
 }
