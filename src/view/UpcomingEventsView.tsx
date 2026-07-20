@@ -47,61 +47,62 @@ export default function UpcomingEventsView({
   };
 
   return (
-    <section className="relative w-full bg-upcomingevent-section pt-20 pb-36 text-neutral-black">
-      <h2 className="mb-14 text-center font-serif text-4xl font-semibold text-neutral-black">
-        {t("title")}
-      </h2>
+    <section className="relative w-full bg-upcomingevent-section pb-36 pt-20 text-neutral-black">
+      <div className="mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-[62px]">
+        <h2 className="mb-14 text-center font-serif text-4xl font-semibold text-neutral-black">
+          {t("title")}
+        </h2>
 
-      {/* Outer wrapper */}
-      <div className="relative mx-auto max-w-6xl px-12">
-        {isLoading ? (
-          <div className="flex justify-center gap-6 overflow-hidden">
-            {Array.from({ length: 3 }).map((_, i) => (
-              <TicketCardSkeleton key={i} />
-            ))}
-          </div>
-        ) : events.length === 0 ? (
-          <p className="py-8 text-center text-sm text-neutral-black/70">
-            {t("empty")}
-          </p>
-        ) : (
-          <>
-            {/* Left arrow */}
-            <button
-              type="button"
-              onClick={() => scroll("left")}
-              disabled={!canScrollLeft}
-              aria-label="Scroll events left"
-              className="absolute left-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card shadow-md transition-opacity disabled:pointer-events-none disabled:opacity-0"
-            >
-              <ChevronLeft className="h-4 w-4 text-foreground" />
-            </button>
-
-            {/* Scrollable track */}
-            <div
-              ref={scrollRef}
-              onScroll={updateScrollButtons}
-              className="flex snap-x snap-mandatory justify-center gap-6 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {events.map((event) => (
-                <div key={event.id} className="shrink-0 snap-start">
-                  <PublicEventCard event={event} />
-                </div>
+        <div className="relative px-8 sm:px-12">
+          {isLoading ? (
+            <div className="flex justify-center gap-6 overflow-hidden">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <TicketCardSkeleton key={i} />
               ))}
             </div>
+          ) : events.length === 0 ? (
+            <p className="py-8 text-center text-sm text-neutral-black/70">
+              {t("empty")}
+            </p>
+          ) : (
+            <>
+              {/* Left arrow */}
+              <button
+                type="button"
+                onClick={() => scroll("left")}
+                disabled={!canScrollLeft}
+                aria-label="Scroll events left"
+                className="absolute left-0 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card shadow-md transition-opacity disabled:pointer-events-none disabled:opacity-0"
+              >
+                <ChevronLeft className="h-4 w-4 text-foreground" />
+              </button>
 
-            {/* Right arrow */}
-            <button
-              type="button"
-              onClick={() => scroll("right")}
-              disabled={!canScrollRight}
-              aria-label="Scroll events right"
-              className="absolute right-2 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card shadow-md transition-opacity disabled:pointer-events-none disabled:opacity-0"
-            >
-              <ChevronRight className="h-4 w-4 text-foreground" />
-            </button>
-          </>
-        )}
+              {/* Scrollable track */}
+              <div
+                ref={scrollRef}
+                onScroll={updateScrollButtons}
+                className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                {events.map((event) => (
+                  <div key={event.id} className="shrink-0 snap-start">
+                    <PublicEventCard event={event} />
+                  </div>
+                ))}
+              </div>
+
+              {/* Right arrow */}
+              <button
+                type="button"
+                onClick={() => scroll("right")}
+                disabled={!canScrollRight}
+                aria-label="Scroll events right"
+                className="absolute right-0 top-1/2 z-10 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card shadow-md transition-opacity disabled:pointer-events-none disabled:opacity-0"
+              >
+                <ChevronRight className="h-4 w-4 text-foreground" />
+              </button>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Curved bottom edge */}

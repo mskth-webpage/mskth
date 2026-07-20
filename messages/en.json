@@ -18,6 +18,7 @@
       "link4": "Prayer Times",
       "link2": "Mosques"
     },
+    "boardLogin": "Board access",
     "reserved": "All rights reserved."
   },
   "Navbar": {
@@ -25,8 +26,7 @@
     "events": "Events",
     "collaboration": "Collaboration",
     "aboutus": "About Us",
-    "join": "Join Now",
-    "login": "Login"
+    "join": "Join Now"
   },
   "LoginPage": {
     "eyebrow": "Admin access",
@@ -220,7 +220,7 @@
     "addNew": "Add new",
     "empty": "Nothing to show. May be an error in database.",
     "cancel": "Cancel changes",
-    "publish": "Publish", 
+    "publish": "Publish",
     "publishing": "Publishing..."
   },
   "TeamMemberCard": {

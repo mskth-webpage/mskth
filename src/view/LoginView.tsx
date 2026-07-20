@@ -42,7 +42,7 @@ export default function LoginView({
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-color-mskth-blue">
             {t("eyebrow")}
           </p>
-          <h1 className="font-serif text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="font-serif text-4xl font-bold tracking-tight text-foreground sm:text-5xl sm:leading-[1.1]">
             {t("title")}
           </h1>
           <p className="text-base leading-7 text-muted-foreground sm:text-lg">

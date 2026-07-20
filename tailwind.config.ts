@@ -18,8 +18,8 @@ const config: Config = {
       },
       // ✨ Brand Fonts (Archivo + Nanum)
       fontFamily: {
-        brandSans: ["var(--font-brand-sans)", "sans-serif"],
-        brandSerif: ["var(--font-brand-serif)", "serif"],
+        brandSans: ["var(--font-montserrat)", "sans-serif"],
+        brandSerif: ["var(--font-montserrat)", "sans-serif"],
       },
     },
   },
