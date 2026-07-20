@@ -18,6 +18,7 @@
       "link4": "Bönetider",
       "link2": "Moskéer"
     },
+    "boardLogin": "Styrelseinloggning",
     "reserved": "Alla rättigheter förbehålls."
   },
   "Navbar": {
@@ -25,8 +26,7 @@
     "events": "Evenemang",
     "collaboration": "Samarbete",
     "aboutus": "Om oss",
-    "join": "Gå med",
-    "login": "Logga in"
+    "join": "Gå med"
   },
   "LoginPage": {
     "eyebrow": "Admininloggning",
@@ -182,7 +182,7 @@
     "addNew": "Lägg till",
     "empty": "Inget att visa. Kan vara ett fel i databasen.",
     "cancel": "Ångra ändringar",
-    "publish": "Publicera", 
+    "publish": "Publicera",
     "publishing": "Publicerar..."
   },
   "TeamMemberCard": {

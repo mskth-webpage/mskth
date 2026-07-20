@@ -83,7 +83,7 @@ export default function CollaborationView() {
         </div>
 
         <div className="mx-auto mt-10 max-w-[1043px] text-center">
-          <p className="font-brandSerif text-[16px] leading-[1.6] text-foreground sm:text-[20px] sm:leading-[1.6] lg:text-[28px] lg:leading-[1.4]">
+          <p className="font-sans text-[16px] leading-[1.6] text-foreground sm:text-[20px] sm:leading-[1.6] lg:text-[28px] lg:leading-[1.4]">
             {t("contactIntro")}{" "}
             <span className="font-semibold text-primary">
               {t("contactHighlight")}
@@ -92,7 +92,7 @@ export default function CollaborationView() {
           </p>
 
           <a
-            className="mt-2 inline-block font-brandSerif text-[16px] font-semibold leading-[1.6] text-foreground underline decoration-[1.75px] underline-offset-4 sm:text-[20px] sm:leading-[1.6] lg:text-[24px] lg:leading-[1.4]"
+            className="mt-2 inline-block font-sans text-[16px] font-semibold leading-[1.6] text-foreground underline decoration-[1.75px] underline-offset-4 sm:text-[20px] sm:leading-[1.6] lg:text-[24px] lg:leading-[1.4]"
             href={`mailto:${t("email")}`}
           >
             {t("email")}

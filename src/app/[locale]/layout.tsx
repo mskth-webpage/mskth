@@ -1,32 +1,32 @@
 import type { Metadata } from "next";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { setRequestLocale } from "next-intl/server";
-import { routing } from "@/i18n/routing";
 import { Montserrat, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider"
+
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { routing } from "@/i18n/routing";
+
 import "../globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 
 // Fonts
 const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
-
 
 // Static metadata (can be localized later if needed)
 export const metadata: Metadata = {
   title: "MSKTH",
-  description: "Mskth, a muslim student community at KTH",
+  description: "MSKTH, a Muslim student community at KTH",
   icons: {
     icon: [
       { url: "/logo.svg", type: "image/svg+xml" },
@@ -60,17 +60,21 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning={true} className={`${montserrat.variable} ${geistMono.variable}`}>
-      <body>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${montserrat.variable} ${geistMono.variable}`}
+    >
+      <body className={montserrat.className}>
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-        <NextIntlClientProvider messages={messages} locale={locale}>
-          <main>{children}</main>      
-        </NextIntlClientProvider>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <NextIntlClientProvider messages={messages} locale={locale}>
+            <main>{children}</main>
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

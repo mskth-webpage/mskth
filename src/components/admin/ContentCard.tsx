@@ -74,7 +74,7 @@ export default function ContentCard({
       {header?.type === "date" && (
         <div className="flex items-center justify-between bg-primary/10 px-4 py-3">
           <div className="text-center leading-none">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-primary/60">
+            <p className="text-[10px] font-semibold uppercase tracking-widest text-primary/60 mt-4">
               {header.date.toLocaleDateString("en", { month: "short" })}
             </p>
             <p className="text-2xl font-bold text-primary">{header.date.getDate()}</p>
