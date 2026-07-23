@@ -3,6 +3,7 @@
 import EventsHeader from "@/components/EventsHeader";
 import PreviousEvent from "@/components/PreviousEvent";
 import UpcomingEventsView from "@/view/UpcomingEventsView";
+import GalleryPresenter from "@/presenter/GalleryPresenter";
 import { useTranslations } from "next-intl";
 import type { AdminEvent } from "@/types/adminEvent";
 
@@ -29,8 +30,18 @@ export default function EventsView({
           description={t("description")}
         />
       </div>
-      <UpcomingEventsView events={events} isLoading={isLoading} />
-      <PreviousEvent events={previousEvents} isLoading={isLoadingPrevious} />
+
+      <UpcomingEventsView
+        events={events}
+        isLoading={isLoading}
+      />
+
+      <PreviousEvent
+        events={previousEvents}
+        isLoading={isLoadingPrevious}
+      />
+
+      <GalleryPresenter />
     </main>
   );
 }
