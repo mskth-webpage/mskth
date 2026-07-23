@@ -7,7 +7,7 @@ export default function HomePageView() {
 
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto w-full max-w-6xl px-6 pb-20 pt-24 sm:px-10 sm:pb-24 sm:pt-32 lg:px-[62px] lg:pb-32 lg:pt-[167px]">
+      <div className="mx-auto w-full max-w-6xl px-6 pb-20 pt-4 sm:px-10 sm:pb-24 lg:px-[62px] lg:pb-32 lg:pt-14">
         <div className="flex max-w-[900px] flex-col">
           <div className="w-full">
             <h1 className="font-sans text-[40px] font-bold leading-[0.98] tracking-[-0.0425em] text-foreground sm:text-[52px] lg:text-[64px]">

@@ -44,29 +44,19 @@ export default function EventsHeader({
             aria-hidden="true"
             className="ticket-dot ticket-dot-three absolute right-[16%] top-[2%] h-3 w-3 rounded-full bg-upcomingevent-section sm:h-4 sm:w-4"
           />
-
           {/* Back-left ticket */}
-          <div className="ticket ticket-back-left absolute left-1/2 top-1/2 z-10 h-[170px] w-[86px] sm:h-[222px] sm:w-[112px] lg:h-[249px] lg:w-[126px]">
-            <div
-              aria-hidden="true"
-              className="ticket-shape opacity-70"
-            />
+          <div className="ticket ticket-back-left absolute left-1/2 top-1/2 z-10 h-[170px] w-[86px] text-[#4f9ac4] sm:h-[222px] sm:w-[112px] lg:h-[249px] lg:w-[126px]">
+            <div aria-hidden="true" className="ticket-shape" />
           </div>
 
           {/* Back-right ticket */}
-          <div className="ticket ticket-back-right absolute left-1/2 top-1/2 z-20 h-[170px] w-[86px] sm:h-[222px] sm:w-[112px] lg:h-[249px] lg:w-[126px]">
-            <div
-              aria-hidden="true"
-              className="ticket-shape opacity-85"
-            />
+          <div className="ticket ticket-back-right absolute left-1/2 top-1/2 z-20 h-[170px] w-[86px] text-[#007bc2] sm:h-[222px] sm:w-[112px] lg:h-[249px] lg:w-[126px]">
+            <div aria-hidden="true" className="ticket-shape" />
           </div>
 
           {/* Front ticket */}
-          <div className="ticket ticket-front absolute left-1/2 top-1/2 z-30 h-[190px] w-[96px] drop-shadow-[0_16px_24px_rgba(7,107,173,0.2)] sm:h-[261px] sm:w-[132px] lg:h-[293px] lg:w-[148px]">
-            <div
-              aria-hidden="true"
-              className="ticket-shape absolute inset-0"
-            />
+          <div className="ticket ticket-front absolute left-1/2 top-1/2 z-30 h-[190px] w-[96px] text-upcomingevent-section drop-shadow-[0_16px_24px_rgba(7,107,173,0.2)] sm:h-[261px] sm:w-[132px] lg:h-[293px] lg:w-[148px]">
+            <div aria-hidden="true" className="ticket-shape absolute inset-0" />
 
             <span
               aria-hidden="true"
