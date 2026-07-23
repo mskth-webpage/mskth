@@ -69,7 +69,7 @@ export default function Footer() {
 
                   <span
                     aria-hidden="true"
-                    className="absolute -bottom-1 left-0 h-px w-0 bg-foreground transition-all duration-200 group-hover:w-full"
+                    className="absolute -bottom-1 left-0 h-px w-0 bg-foreground transition-all duration-200"
                   />
                 </span>
               </Link>

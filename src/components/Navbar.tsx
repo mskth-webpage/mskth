@@ -73,7 +73,7 @@ export default function Navbar() {
           <Button
             asChild
             variant="outline"
-            className="h-9 rounded-full border-color-mskth-blue px-5 text-sm font-medium uppercase tracking-wide text-color-mskth-blue transition-all duration-200 hover:-translate-y-0.5 hover:border-color-mskth-blue hover:bg-color-mskth-blue hover:text-black hover:shadow-md active:translate-y-0 lg:px-6"
+            className="h-9 rounded-full border border-blue-200/70 !bg-transparent px-5 text-sm font-medium uppercase tracking-wide text-foreground shadow-[0_0_0_1px_rgba(59,130,246,0.08),0_4px_16px_rgba(59,130,246,0.1)] transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300/80 hover:!bg-primary hover:text-primary-foreground hover:shadow-[0_0_0_1px_rgba(59,130,246,0.15),0_4px_20px_rgba(59,130,246,0.18)] active:translate-y-0 dark:border-blue-400/30 dark:!bg-transparent dark:text-foreground dark:hover:!bg-primary dark:hover:text-primary-foreground lg:px-6"
           >
             <Link href="/join">{t("join")}</Link>
           </Button>
@@ -82,11 +82,10 @@ export default function Navbar() {
 
           <ThemeToggleButton theme={theme} setTheme={setTheme} />
         </div>
-
         {/* Mobile menu button */}
         <button
           type="button"
-          className="col-start-3 flex items-center justify-self-end md:hidden"
+          className="col-start-3 flex items-center justify-self-end text-foreground md:hidden"
           onClick={() => setOpen((previous) => !previous)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -128,7 +127,7 @@ export default function Navbar() {
             <Button
               asChild
               variant="outline"
-              className="rounded-full border-color-mskth-blue px-6 text-sm font-medium uppercase tracking-wide text-color-mskth-blue transition-all duration-200 hover:bg-color-mskth-blue/10"
+              className="rounded-full border-primary bg-transparent px-6 text-sm font-medium uppercase tracking-wide text-foreground transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground dark:border-primary dark:text-foreground dark:hover:bg-primary dark:hover:text-primary-foreground"
             >
               <Link href="/join" onClick={() => setOpen(false)}>
                 {t("join")}

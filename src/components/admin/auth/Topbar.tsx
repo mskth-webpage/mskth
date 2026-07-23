@@ -28,7 +28,8 @@ type AppTopbarProps = {
 /**
  * AppTopbar component — renders the fixed top navigation bar for the schools dashboard.
  */
-export default function AppTopbar({ onMenuToggle, isSidebarOpen = true }: AppTopbarProps) {
+export default function AppTopbar({
+  onMenuToggle, isSidebarOpen = true, }: AppTopbarProps) {
   const { theme, setTheme } = useTheme();
   const locale = useLocale();
   const tHome = useTranslations("Home");
@@ -50,10 +51,7 @@ export default function AppTopbar({ onMenuToggle, isSidebarOpen = true }: AppTop
 
       const metadata = user.user_metadata ?? {};
       const metadataName =
-        metadata.full_name ??
-        metadata.name ??
-        metadata.display_name ??
-        null;
+        metadata.full_name ?? metadata.name ?? metadata.display_name ?? null;
 
       setDisplayName(metadataName || user.email || "User");
       setEmail(user.email ?? null);
@@ -104,7 +102,7 @@ export default function AppTopbar({ onMenuToggle, isSidebarOpen = true }: AppTop
 
       {/* Right: user menu */}
       <div className="flex items-center gap-2">
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-10 rounded-full px-3">
               <div className="flex items-center gap-2">
@@ -115,7 +113,9 @@ export default function AppTopbar({ onMenuToggle, isSidebarOpen = true }: AppTop
                   </AvatarFallback>
                 </Avatar>
                 <div className="hidden sm:block text-left leading-tight">
-                  <div className="max-w-40 truncate text-sm font-medium">{displayName}</div>
+                  <div className="max-w-40 truncate text-sm font-medium">
+                    {displayName}
+                  </div>
                 </div>
               </div>
             </Button>
