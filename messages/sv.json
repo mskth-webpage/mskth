@@ -18,6 +18,7 @@
       "link4": "Bönetider",
       "link2": "Moskéer"
     },
+    "boardLogin": "Styrelseinloggning",
     "reserved": "Alla rättigheter förbehålls."
   },
   "Navbar": {
@@ -25,8 +26,7 @@
     "events": "Evenemang",
     "collaboration": "Samarbete",
     "aboutus": "Om oss",
-    "join": "Gå med",
-    "login": "Logga in"
+    "join": "Gå med"
   },
   "LoginPage": {
     "eyebrow": "Admininloggning",
@@ -151,6 +151,48 @@
     "empty": "Inga tidigare evenemang hittades.",
     "eventCount": "{count, plural, one {# evenemang} other {# evenemang}}"
   },
+  "AdminGallery": {
+    "title": "Evenemangsgalleri",
+    "description": "Hantera årliga bilder och videor från MSKTH:s aktiviteter och evenemang.",
+    "addNew": "Lägg till media",
+    "empty": "Inga bilder eller videor har lagts till ännu.",
+    "emptyYear": "Inga filer har lagts till för det här året.",
+    "mediaCount": "{count, plural, one {# fil} other {# filer}}",
+    "createTitle": "Lägg till i galleriet",
+    "yearLabel": "År",
+    "mediaLabel": "Bilder och videor",
+    "uploadMedia": "Klicka för att ladda upp bilder eller videor",
+    "supportedFormats": "JPG, PNG, WEBP, GIF, MP4 och WEBM",
+    "save": "Spara",
+    "saving": "Sparar…",
+    "cancel": "Avbryt",
+    "deleteTitle": "Ta bort media",
+    "deleteDescription": "Är du säker på att du vill ta bort filen från galleriet?",
+    "deleteConfirm": "Ta bort",
+    "deleteCancel": "Avbryt",
+    "reordering": "Sparar ordning…",
+    "invalidFilesIgnored": "Några filer ignorerades eftersom de inte var bilder eller videor.",
+    "saveError": "Det gick inte att spara filerna.",
+    "selectedFileCount": "{count, plural, one {# vald fil} other {# valda filer}}",
+    "dragInstruction": "Dra i handtaget för att ändra ordningen",
+    "removeSelectedMedia": "Ta bort vald fil",
+    "dragToReorder": "Dra i handtaget för att ändra ordningen",
+    "video": "Video",
+    "image": "Bild",
+    "imageLabel": "Galleribild",
+    "videoLabel": "Gallerivideo",
+    "publish": "Publicera",
+    "unpublish": "Avpublicera",
+    "dropMedia": "Släpp filerna här",
+    "unsupportedFiles": "Några filer ignorerades eftersom de inte var bilder eller videor.",
+    "uploadFailed": "Det gick inte att ladda upp filerna.",
+    "uploadSuccessTitle": "Uppladdningen är klar",
+    "uploadSuccessDescription": "{count, plural, one {# fil lades till} other {# filer lades till}} för {year}.",
+    "addMore": "Lägg till fler",
+    "done": "Klar",
+    "selectedFiles": "{count, plural, one {# vald fil} other {# valda filer}}",
+    "publishFailed": "Det gick inte att ändra publiceringsstatus."
+  },
   "AdminCalendar": {
     "title": "Kalender",
     "subtitle": "Översikt över alla schemalagda evenemang",
@@ -182,7 +224,7 @@
     "addNew": "Lägg till",
     "empty": "Inget att visa. Kan vara ett fel i databasen.",
     "cancel": "Ångra ändringar",
-    "publish": "Publicera", 
+    "publish": "Publicera",
     "publishing": "Publicerar..."
   },
   "TeamMemberCard": {
@@ -282,6 +324,9 @@
         "description": "Kort beskrivning av projekt",
         "project_members": "Gruppmedlemmar"
       }
+    },
+    "projectGroups": {
+      "heading": "PROJEKTGRUPPER"
     }
   },
   "Events": {
@@ -301,7 +346,7 @@
       "empty": "Det finns inga kommande event just nu."
     },
     "previous": {
-      "title": "FÖREGÅENDE EVENT",
+      "title": "FÖREGÅENDE EVENTS",
       "description": "Utforska våra tidigare event och återupplev stunder från MSKTH-gemenskapen.",
       "empty": "Inga tidigare event hittades.",
       "eventCount": "{count, plural, one {# event} other {# event}}",
@@ -321,6 +366,14 @@
         "img": "imgURL"
       }
     }
+  },
+  "Gallery": {
+    "title": "FÖREGÅENDE EVENTS 2",
+    "description": "Utforska bilder och videor från våra evenemang, aktiviteter och vår gemenskap.",
+    "emptyTitle": "Galleriet är tomt",
+    "emptyDescription": "Bilder och videor från våra aktiviteter kommer att visas här.",
+    "emptyYear": "Inga bilder eller videor har lagts till för det här året.",
+    "mediaCount": "{count, plural, one {# fil} other {# filer}}"
   },
   "Mosques": {
     "meta": {
@@ -398,7 +451,10 @@
     "saving": "Sparar..."
   },
   "PrayerTimes": {
-    "meta": { "title": "Bönetider", "description": "Dagliga bönetider från Stockholms moské." },
+    "meta": {
+      "title": "Bönetider",
+      "description": "Dagliga bönetider från Stockholms moské."
+    },
     "eyebrow": "Stockholms moské",
     "title": "Bönetider",
     "description": "Planera dagen kring de fem dagliga bönerna. Tiderna följer tidtabellen som används av Stockholms moské.",
@@ -416,7 +472,14 @@
     "previousDay": "Föregående dag",
     "nextDay": "Nästa dag",
     "backToToday": "Tillbaka till idag",
-    "prayers": { "Fajr": "Fajr", "Sunrise": "Soluppgång", "Dhuhr": "Dhuhr", "Asr": "Asr", "Maghrib": "Maghrib", "Isha": "Isha" },
+    "prayers": {
+      "Fajr": "Fajr",
+      "Sunrise": "Soluppgång",
+      "Dhuhr": "Dhuhr",
+      "Asr": "Asr",
+      "Maghrib": "Maghrib",
+      "Isha": "Isha"
+    },
     "errorTitle": "Bönetiderna är tillfälligt otillgängliga",
     "errorDescription": "Försök igen om en stund eller välj ett annat datum.",
     "disclaimer": "Baserat på Stockholms tidtabell som publiceras av Stockholms moské via Muslim Pro. Församlingens bönetider kan skilja sig."

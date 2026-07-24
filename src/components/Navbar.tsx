@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Logo from "./Logo";
-import { Button } from "./ui/button";
-import { Link, usePathname } from "../i18n/navigation";
+import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
-import LocaleSwitcher from "./LocaleSwitcher";
 
-import { Menu, X } from "lucide-react";
+import { Link, usePathname } from "../i18n/navigation";
+import Logo from "./Logo";
+import LocaleSwitcher from "./LocaleSwitcher";
 import ThemeToggleButton from "./ThemeToggle";
+import { Button } from "./ui/button";
 
 const mobileMenuLinkClasses =
   "block rounded-md px-1 py-1 text-foreground hover:bg-transparent hover:text-foreground focus-visible:outline-none focus-visible:ring-0 transition-none";
@@ -26,30 +26,14 @@ export default function Navbar() {
   return (
     <header className="relative z-40 w-full bg-background">
       <div className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center px-4 py-3 sm:px-6 lg:px-10">
-        {/* LOGO */}
+        {/* Logo */}
         <div className="shrink-0 justify-self-start">
           <Logo />
         </div>
 
-        {/* DESKTOP NAVIGATION */}
+        {/* Desktop navigation */}
         <nav className="pointer-events-none fixed left-1/2 top-5 z-50 hidden -translate-x-1/2 md:flex">
-          <div
-            className="
-              pointer-events-auto
-              flex items-center
-              gap-1
-              rounded-full
-              bg-white/30
-              px-5 py-2.5
-              backdrop-blur-sm
-              backdrop-saturate-150
-              dark:border-white/10
-              dark:bg-black/20
-              lg:gap-2
-              lg:px-7
-              mt-2
-            "
-          >
+          <div className="pointer-events-auto mt-2 flex items-center gap-1 rounded-full bg-white/30 px-5 py-2.5 backdrop-blur-sm backdrop-saturate-150 dark:border-white/10 dark:bg-black/20 lg:gap-2 lg:px-7">
             <Button
               asChild
               variant="ghost"
@@ -84,20 +68,12 @@ export default function Navbar() {
 
         <div className="hidden md:block" />
 
-        {/* ACTIONS DESKTOP */}
+        {/* Desktop actions */}
         <div className="hidden shrink-0 items-center gap-2 justify-self-end md:flex lg:gap-3">
           <Button
             asChild
-            variant="ghost"
-            className={`${noHoverButton} h-9 rounded-full px-3 text-sm lg:px-4`}
-          >
-            <Link href="/admin/login">{t("login")}</Link>
-          </Button>
-
-          <Button
-            asChild
             variant="outline"
-            className="h-9 rounded-full border-color-mskth-blue px-5 text-sm font-medium uppercase tracking-wide text-color-mskth-blue transition-all duration-200 hover:-translate-y-0.5 hover:border-color-mskth-blue hover:bg-color-mskth-blue hover:text-black hover:shadow-md active:translate-y-0 lg:px-6"
+            className="h-9 rounded-full border border-blue-200/70 !bg-transparent px-5 text-sm font-medium uppercase tracking-wide text-foreground shadow-[0_0_0_1px_rgba(59,130,246,0.08),0_4px_16px_rgba(59,130,246,0.1)] transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-300/80 hover:!bg-primary hover:text-primary-foreground hover:shadow-[0_0_0_1px_rgba(59,130,246,0.15),0_4px_20px_rgba(59,130,246,0.18)] active:translate-y-0 dark:border-blue-400/30 dark:!bg-transparent dark:text-foreground dark:hover:!bg-primary dark:hover:text-primary-foreground lg:px-6"
           >
             <Link href="/join">{t("join")}</Link>
           </Button>
@@ -106,11 +82,10 @@ export default function Navbar() {
 
           <ThemeToggleButton theme={theme} setTheme={setTheme} />
         </div>
-
-        {/* MOBILE MENU BUTTON */}
+        {/* Mobile menu button */}
         <button
           type="button"
-          className="col-start-3 flex items-center justify-self-end md:hidden"
+          className="col-start-3 flex items-center justify-self-end text-foreground md:hidden"
           onClick={() => setOpen((previous) => !previous)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -119,18 +94,10 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE MENU DROPDOWN */}
+      {/* Mobile menu */}
       {open && (
         <div className="space-y-5 border-t bg-background px-5 py-5 md:hidden">
-          <div className="flex flex-col space-y-3 text-base">
-            <Link
-              className={mobileMenuLinkClasses}
-              href="/admin/login"
-              onClick={() => setOpen(false)}
-            >
-              {t("login")}
-            </Link>
-
+          <nav className="flex flex-col space-y-3 text-base">
             <Link
               className={mobileMenuLinkClasses}
               href="/events"
@@ -154,15 +121,17 @@ export default function Navbar() {
             >
               {t("aboutus")}
             </Link>
-          </div>
+          </nav>
 
           <div className="flex flex-wrap items-center gap-3 border-t pt-4">
             <Button
               asChild
               variant="outline"
-              className="rounded-full border-color-mskth-blue px-6 text-sm font-medium uppercase tracking-wide text-color-mskth-blue transition-all duration-200 hover:bg-color-mskth-blue/10"
+              className="rounded-full border-primary bg-transparent px-6 text-sm font-medium uppercase tracking-wide text-foreground transition-all duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground dark:border-primary dark:text-foreground dark:hover:bg-primary dark:hover:text-primary-foreground"
             >
-              <Link href="/join">{t("join")}</Link>
+              <Link href="/join" onClick={() => setOpen(false)}>
+                {t("join")}
+              </Link>
             </Button>
 
             <LocaleSwitcher />

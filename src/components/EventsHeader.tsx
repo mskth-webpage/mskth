@@ -1,51 +1,72 @@
 "use client";
 
-import Image from "next/image";
-
 type EventsHeaderProps = {
   title: string;
   description: string;
 };
 
-export default function EventsHeader({ title, description }: EventsHeaderProps) {
+export default function EventsHeader({
+  title,
+  description,
+}: EventsHeaderProps) {
   return (
-    <section className="relative flex min-h-[300px] flex-col items-center justify-start pt-10 text-center sm:min-h-[380px] sm:pt-16 lg:min-h-[420px] lg:pt-20">
-      {/* Decorations */}
-      <Image
-        src="/ticket-blue.svg"
-        alt=""
-        aria-hidden
-        width={86}
-        height={170}
-        className="absolute left-[8%] top-[53%] z-0 h-auto w-10 -rotate-22 sm:w-16 lg:left-[18%] lg:w-20"
-      />
-
-      <Image
-        src="/ticket-blue.svg"
-        alt=""
-        aria-hidden
-        width={70}
-        height={138}
-        className="absolute right-[8%] top-[50%] z-0 h-auto w-9 rotate-[7deg] sm:w-14 lg:right-[18%] lg:w-16"
-      />
-
-      <Image
-        src="/ticket-blue.svg"
-        alt=""
-        aria-hidden
-        width={60}
-        height={118}
-        className="absolute left-1/2 top-[70%] z-0 h-auto w-9 -translate-x-1/2 rotate-13 sm:w-12 lg:w-14"
-      />
-
+    <section className="relative mb-16 flex min-h-[460px] flex-col items-center px-6 pb-20 pt-10 text-center sm:min-h-[560px] sm:pb-24 sm:pt-16 lg:min-h-[620px] lg:pt-20">
       {/* Text */}
-      <h1 className="relative z-10 font-serif text-2xl font-medium uppercase sm:text-4xl">
+      <h1 className="relative z-20 font-serif text-2xl font-medium uppercase text-foreground sm:text-4xl">
         {title}
       </h1>
 
-      <p className="relative z-10 mt-2 font-serif text-xs text-foreground/70 sm:mt-4 sm:text-sm">
+      <p className="relative z-20 mt-2 max-w-2xl font-serif text-xs leading-relaxed text-foreground/70 sm:mt-4 sm:text-sm">
         {description}
       </p>
+
+      {/* Animated ticket composition */}
+      <div className="ticket-scene relative mt-12 h-70 w-75 sm:mt-16 sm:h-92.5 sm:w-105 lg:h-102.5 lg:w-117.5">
+        <div className="absolute left-1/2 top-[56%] h-55 w-65 -translate-x-1/2 -translate-y-1/2 sm:h-75 sm:w-90 lg:h-85 lg:w-102.5">
+          {/* Organic background */}
+          <div
+            aria-hidden="true"
+            className="ticket-blob absolute inset-0 rounded-[48%_52%_45%_55%/52%_44%_56%_48%] bg-upcomingevent-section/10"
+          />
+
+          {/* Decorative dots */}
+          <span
+            aria-hidden="true"
+            className="ticket-dot ticket-dot-one absolute -left-[5%] bottom-[12%] h-4 w-4 rounded-full bg-upcomingevent-section sm:h-5 sm:w-5"
+          />
+
+          <span
+            aria-hidden="true"
+            className="ticket-dot ticket-dot-two absolute -right-[4%] bottom-[19%] h-5 w-5 rounded-full bg-upcomingevent-section/70 sm:h-7 sm:w-7"
+          />
+
+          <span
+            aria-hidden="true"
+            className="ticket-dot ticket-dot-three absolute right-[16%] top-[2%] h-3 w-3 rounded-full bg-upcomingevent-section sm:h-4 sm:w-4"
+          />
+          {/* Back-left ticket */}
+          <div className="ticket ticket-back-left absolute left-1/2 top-1/2 z-10 h-[170px] w-[86px] text-[#4f9ac4] sm:h-[222px] sm:w-[112px] lg:h-[249px] lg:w-[126px]">
+            <div aria-hidden="true" className="ticket-shape" />
+          </div>
+
+          {/* Back-right ticket */}
+          <div className="ticket ticket-back-right absolute left-1/2 top-1/2 z-20 h-[170px] w-[86px] text-[#007bc2] sm:h-[222px] sm:w-[112px] lg:h-[249px] lg:w-[126px]">
+            <div aria-hidden="true" className="ticket-shape" />
+          </div>
+
+          {/* Front ticket */}
+          <div className="ticket ticket-front absolute left-1/2 top-1/2 z-30 h-[190px] w-[96px] text-upcomingevent-section drop-shadow-[0_16px_24px_rgba(7,107,173,0.2)] sm:h-[261px] sm:w-[132px] lg:h-[293px] lg:w-[148px]">
+            <div aria-hidden="true" className="ticket-shape absolute inset-0" />
+
+            <span
+              aria-hidden="true"
+              className="absolute left-1/2 top-[36%] z-10 -translate-x-1/2 -translate-y-1/2 font-sans text-[13px] font-bold uppercase tracking-[0.12em] text-white sm:text-[18px] lg:text-[21px]"
+            >
+              Grab your tickets!
+            </span>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

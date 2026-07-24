@@ -18,6 +18,7 @@
       "link4": "Prayer Times",
       "link2": "Mosques"
     },
+    "boardLogin": "Board access",
     "reserved": "All rights reserved."
   },
   "Navbar": {
@@ -25,8 +26,7 @@
     "events": "Events",
     "collaboration": "Collaboration",
     "aboutus": "About Us",
-    "join": "Join Now",
-    "login": "Login"
+    "join": "Join Now"
   },
   "LoginPage": {
     "eyebrow": "Admin access",
@@ -189,6 +189,48 @@
     "empty": "No previous events found.",
     "eventCount": "{count, plural, one {# event} other {# events}}"
   },
+  "AdminGallery": {
+    "title": "Event gallery",
+    "description": "Manage yearly images and videos from MSKTH activities and events.",
+    "addNew": "Add media",
+    "empty": "No images or videos have been added yet.",
+    "emptyYear": "No media has been added for this year.",
+    "mediaCount": "{count, plural, one {# file} other {# files}}",
+    "createTitle": "Add gallery media",
+    "yearLabel": "Year",
+    "mediaLabel": "Images and videos",
+    "uploadMedia": "Click to upload images or videos",
+    "supportedFormats": "JPG, PNG, WEBP, GIF, MP4 and WEBM",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "deleteTitle": "Remove media",
+    "deleteDescription": "Are you sure you want to remove this file from the gallery?",
+    "deleteConfirm": "Remove",
+    "deleteCancel": "Cancel",
+    "reordering": "Saving order…",
+    "invalidFilesIgnored": "Some files were ignored because they were not images or videos.",
+    "saveError": "The files could not be saved.",
+    "selectedFileCount": "{count, plural, one {# selected file} other {# selected files}}",
+    "dragInstruction": "Drag the handle to change the order",
+    "removeSelectedMedia": "Remove selected file",
+    "dragToReorder": "Drag the handle to change the order",
+    "video": "Video",
+    "image": "Image",
+    "imageLabel": "Gallery image",
+    "videoLabel": "Gallery video",
+    "publish": "Publish",
+    "unpublish": "Unpublish",
+    "dropMedia": "Drop the files here",
+    "unsupportedFiles": "Some files were ignored because they were not images or videos.",
+    "uploadFailed": "The files could not be uploaded.",
+    "uploadSuccessTitle": "Upload complete",
+    "uploadSuccessDescription": "{count, plural, one {# file was added} other {# files were added}} to {year}.",
+    "addMore": "Add more",
+    "done": "Done",
+    "selectedFiles": "{count, plural, one {# selected file} other {# selected files}}",
+    "publishFailed": "The publication status could not be changed."
+  },
   "AdminCalendar": {
     "title": "Calendar",
     "subtitle": "Overview of all scheduled events",
@@ -220,7 +262,7 @@
     "addNew": "Add new",
     "empty": "Nothing to show. May be an error in database.",
     "cancel": "Cancel changes",
-    "publish": "Publish", 
+    "publish": "Publish",
     "publishing": "Publishing..."
   },
   "TeamMemberCard": {
@@ -319,6 +361,9 @@
         "description": "Short description",
         "project_members": "Group members"
       }
+    },
+    "projectGroups": {
+      "heading": "PROJECT GROUPS"
     }
   },
   "Events": {
@@ -358,6 +403,14 @@
         "img": "imgURL"
       }
     }
+  },
+  "Gallery": {
+    "title": "PREVIOUS EVENTS 2",
+    "description": "Explore photos and videos from our events, activities and community.",
+    "emptyTitle": "The gallery is empty",
+    "emptyDescription": "Photos and videos from our activities will appear here.",
+    "emptyYear": "No photos or videos have been added for this year.",
+    "mediaCount": "{count, plural, one {# file} other {# files}}"
   },
   "Mosques": {
     "meta": {
@@ -435,7 +488,10 @@
     "saving": "Saving..."
   },
   "PrayerTimes": {
-    "meta": { "title": "Prayer Times", "description": "Daily prayer times from Stockholm Mosque." },
+    "meta": {
+      "title": "Prayer Times",
+      "description": "Daily prayer times from Stockholm Mosque."
+    },
     "eyebrow": "Stockholm Mosque",
     "title": "Prayer Times",
     "description": "Plan your day around the five daily prayers. Times follow the timetable used by Stockholm Mosque.",
@@ -453,7 +509,14 @@
     "previousDay": "Previous day",
     "nextDay": "Next day",
     "backToToday": "Back to today",
-    "prayers": { "Fajr": "Fajr", "Sunrise": "Sunrise", "Dhuhr": "Dhuhr", "Asr": "Asr", "Maghrib": "Maghrib", "Isha": "Isha" },
+    "prayers": {
+      "Fajr": "Fajr",
+      "Sunrise": "Sunrise",
+      "Dhuhr": "Dhuhr",
+      "Asr": "Asr",
+      "Maghrib": "Maghrib",
+      "Isha": "Isha"
+    },
     "errorTitle": "Prayer times are temporarily unavailable",
     "errorDescription": "Please try again in a moment or choose another date.",
     "disclaimer": "Based on the Stockholm timetable published by Stockholm Mosque through Muslim Pro. Congregational prayer times may differ."
