@@ -30,7 +30,6 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
           {teamT("heading")}
         </h2>
 
-        {/* 4x3 grid on large screen, 3x4 on medium and 10x1 on mobile, chenge to 2x5 if too big */}
           {isLoading ? (
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"> 
               {Array.from({ length: 6 }).map((_, index) => (
@@ -45,9 +44,12 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
                 <TeamMemberCard
                   key={member.id} 
                   name={member.name}
-                  role={member.role}
+                  role_eng={member.role_eng}
+                  role_sv={member.role_sv}
                   email={member.email}
                   imageUrl={member.image_url ?? undefined}
+                  story_eng={member.story_eng ?? undefined}
+                  story_sv={member.story_sv ?? undefined}
                 /> ))}
             </div>
           )}
@@ -59,7 +61,7 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
         <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
           {projectT("heading")}
         </h2>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-8 justify-items-center">
           <ProjectCard
             name={projectT("project.name")}

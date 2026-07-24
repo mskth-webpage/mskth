@@ -29,8 +29,11 @@ export default function CreateBoardMemberModal({
   const t = useTranslations("BoardMemberModal");
 
   const [name, setName] = useState(initialValues?.name ?? "");
-  const [role, setRole] = useState(initialValues?.role ?? "");
+  const [role_eng, setRoleEng] = useState(initialValues?.role_eng ?? "");
+  const [role_sv, setRoleSv] = useState(initialValues?.role_sv ?? "");
   const [email, setEmail] = useState(initialValues?.email ?? "");
+  const [story_eng, setStoryEng] = useState(initialValues?.story_eng ?? "");
+  const [story_sv, setStorySv] = useState(initialValues?.story_sv ?? "");
 
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(initialValues?.image_url ?? null);
@@ -53,7 +56,8 @@ export default function CreateBoardMemberModal({
     const newErrors: Record<string,string> = {};
 
     if (!name.trim()) {newErrors.name = t('noNameError');}
-    if (!role.trim()) {newErrors.role = t('noRoleError');}
+    if (!role_eng.trim()) {newErrors.role_eng = t('noRoleErrorEng');}
+    if (!role_sv.trim()) {newErrors.role_sv = t('noRoleErrorSv');}
     if (!email.trim()) {newErrors.email = t('noEmailError');}
     
     // Check if board email is valid: ends with @mskth.se
@@ -99,10 +103,13 @@ export default function CreateBoardMemberModal({
 
       onSave({
         name: name.trim(),
-        role: role.trim(),
+        role_eng: role_eng.trim(),
+        role_sv: role_sv.trim(),
         email: email.trim(),
         image_url,
         display_order: Number(displayOrder),
+        story_eng: (story_eng ?? "").trim(), // avoid null exception
+        story_sv: (story_sv ?? "").trim(),
       });
     } finally {
       setIsSaving(false);
@@ -126,10 +133,17 @@ export default function CreateBoardMemberModal({
           </Field>
 
           {/* Role */}
-          <Field label={t('role')} error={errors.role}>
-            <input value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className={inputClass(!!errors.role)}
+          <Field label={t('roleEng')} error={errors.role_eng}>
+            <input value={role_eng}
+              onChange={(e) => setRoleEng(e.target.value)}
+              className={inputClass(!!errors.role_eng)}
+            />
+          </Field>
+
+          <Field label={t('roleSv')} error={errors.role_sv}>
+            <input value={role_sv}
+              onChange={(e) => setRoleSv(e.target.value)}
+              className={inputClass(!!errors.role_sv)}
             />
           </Field>
 
@@ -183,6 +197,8 @@ export default function CreateBoardMemberModal({
               <p className="mt-1 text-xs text-muted-foreground">{orderMessage}</p>
             )}
           </Field>
+
+          {/* My story section */}
 
         </div>
 

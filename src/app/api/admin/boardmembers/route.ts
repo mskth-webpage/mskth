@@ -24,7 +24,7 @@ export async function GET() {
   
   const { data, error } = await supabase
     .from("board_members")
-    .select("id, name, role, email, image_url, display_order")
+    .select("id, name, role_eng, role_sv, email, image_url, display_order, story_eng, story_sv")
     .order("display_order", { ascending: true });
 
   // Debugging
@@ -122,10 +122,13 @@ export async function PUT(request: Request) {
         .from("board_members")
         .update({  
           name: member.name,
-          role: member.role,
+          role_eng: member.role_eng,
+          role_sv: member.role_sv,
           email: member.email,
           image_url: member.image_url,
           display_order: member.display_order,
+          story_eng: member.story_eng,
+          story_sv: member.story_sv,
         })
         .eq("id", member.id);        
         
@@ -146,10 +149,13 @@ export async function PUT(request: Request) {
       .insert(
         newDraftMembers.map((member) => ({ // supabase automatically assigns IDs
           name: member.name,
-          role: member.role,
+          role_eng: member.role_eng,
+          role_sv: member.role_sv,
           email: member.email,
           image_url: member.image_url,
           display_order: member.display_order,
+          story_eng: member.story_eng,
+          story_sv: member.story_sv,
         }))
       );
 

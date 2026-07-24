@@ -88,9 +88,12 @@ export default function AdminBoardView({
                 <BoardMemberCard
                   key={member.id}
                   name={member.name}
-                  role={member.role}
+                  role_eng={member.role_eng}
+                  role_sv={member.role_sv}
                   email={member.email}
                   imageUrl={member.image_url ?? undefined}
+                  story_eng={member.story_eng ?? undefined}
+                  story_sv={member.story_sv ?? undefined}
                   isAdmin={true}
                   onEdit={() => setEditingMember(member)}
                   onDelete={() => onDelete(member.id)}
