@@ -118,9 +118,8 @@ export default function CreateBoardMemberModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-muted-foreground/50 backdrop-blur-sm p-4">
-      <div className="w-full max-w-md rounded-xl bg-background shadow-lg border border-border">
-        
-        <div className="p-6 space-y-4">
+      <div className="w-full max-w-md max-h-[90vh] flex flex-col rounded-xl bg-background shadow-lg border border-border">
+        <div className="overflow-y-auto p-6 space-y-4">
 
           <h2 className="text-xl font-semibold"> {initialValues ? t('modalEditMemberTitle') : t('modalCreateNewMemberTitle')} </h2>
 
@@ -198,12 +197,24 @@ export default function CreateBoardMemberModal({
             )}
           </Field>
 
-          {/* My story section 
-          
-          TO EDIT 
-          
-          */}
+          {/* My story section */}
+          <Field label={t('myStoryEng')}>
+            <textarea 
+              value={story_eng}
+              onChange={(e) => setStoryEng(e.target.value)}
+              rows={2}
+              className={inputClass(false)}
+            />
+          </Field>
 
+          <Field label={t('myStorySv')}>
+            <textarea 
+              value={story_sv}
+              onChange={(e) => setStorySv(e.target.value)}
+              rows={2}
+              className={inputClass(false)}
+            />
+          </Field>
         </div>
 
         {/* Buttons */}
