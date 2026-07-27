@@ -35,7 +35,7 @@ export default function TeamMemberCard({
   const locale = useLocale();
 
   return (
-    <article className="mx-auto">
+    <article className="mx-auto w-[180px]">
       {/* Image or display text "No Image" */}
       <div className="relative mb-6 h-[180px] w-[180px] overflow-hidden bg-muted rounded-tr-lg">
         {imageUrl ? (
@@ -61,25 +61,26 @@ export default function TeamMemberCard({
         <p className="mt-1 text-sm text-muted-foreground">{email}</p>
       </div>
 
-      {/* On admin page, KOLLA OM FUNKAR */}
+      {/* On admin page */}
       {isAdmin && (
         <>
-        <div className="mt-1 text-sm text-muted-foreground">
+        {/* Display my story section in both languages if it exists */}
+        <div className="text-sm text-muted-foreground">
           {story_eng && (
-            <p className="line-clamp-2">
+            <p className="mt-1 line-clamp-2">
               <span className="font-medium text-foreground">My story: </span>{" "}
               {story_eng}
             </p>
           )}
-
           {story_sv && (
-            <p className="line-clamp-2">
+            <p className="mt-1 line-clamp-2">
               <span className="font-medium text-foreground">Min historia: </span>{" "}
               {story_sv}
             </p>
           )}
         </div>
 
+        {/* Edit and delete buttons */}
         <div className="mt-3 flex gap-2 space-y-2">
           {onEdit && (<Button variant="secondary" onClick={onEdit}>{t('edit')}</Button>)}
 
