@@ -198,7 +198,11 @@ export default function CreateBoardMemberModal({
             )}
           </Field>
 
-          {/* My story section */}
+          {/* My story section 
+          
+          TO EDIT 
+          
+          */}
 
         </div>
 

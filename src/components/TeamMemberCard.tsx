@@ -61,7 +61,7 @@ export default function TeamMemberCard({
         <p className="mt-1 text-sm text-muted-foreground">{email}</p>
       </div>
 
-      {/* On admin page */}
+      {/* On admin page, KOLLA OM FUNKAR */}
       {isAdmin && (
         <>
         <div className="mt-1 text-sm text-muted-foreground">
