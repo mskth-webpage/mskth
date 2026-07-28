@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Button } from '@/components/ui/button';
 import { useTranslations, useLocale } from "next-intl";
+import { BookOpen } from "lucide-react";
 
 type TeamMemberCardProps = {
   name: string;
@@ -59,14 +60,16 @@ export default function TeamMemberCard({
 
         {!isAdmin && hasStory && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/40 group-hover:opacity-100">
-          <span className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-black shadow-md">{t('pressToReadStory')}</span>
+          <span className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-black shadow-md">
+              <BookOpen className="h-4 w-4" />{t('pressToReadStory')}
+            </span>
         </div>
       )}
       </div>
 
       {/* Text */}
       <div className="text-left">
-        <h3 className="font-serif text-xl font-semibold text-foreground">{name}</h3>
+        <h3 className={`font-serif text-xl font-semibold ${!isAdmin && hasStory ? "group-hover:text-black" : ""}`}>{name}</h3>
 
         <p className="mt-1 text-sm text-muted-foreground"> {locale === "sv" ? role_sv : role_eng} </p>
 
