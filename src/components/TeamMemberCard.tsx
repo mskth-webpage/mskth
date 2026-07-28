@@ -12,6 +12,7 @@ type TeamMemberCardProps = {
   imageUrl?: string;
   story_eng?: string;
   story_sv?: string;
+  onOpenStory?: () => void; // only visible to users
 
   // Admin props, only visible to admins
   isAdmin?: boolean,
@@ -27,15 +28,20 @@ export default function TeamMemberCard({
   imageUrl,
   story_eng,
   story_sv,
+  onOpenStory,
   isAdmin = false, // by default
   onEdit,
   onDelete,
 }: TeamMemberCardProps) {  
   const t = useTranslations("TeamMemberCard");
   const locale = useLocale();
+  const hasStory = locale === "sv" ? !!story_sv : !!story_eng;
 
   return (
-    <article className="mx-auto w-[180px]">
+    <article 
+      className={`group mx-auto w-[200px] p-[10px] transition-all duration-200 ${!isAdmin && hasStory ? "cursor-pointer hover:-translate-y-1 hover:shadow-lg hover:bg-white hover:rounded-2xl" : ""}`}
+      onClick={!isAdmin && hasStory ? onOpenStory : undefined}> {/* Display my story if card is clicked. Only works for normal users, not admins.*/}
+
       {/* Image or display text "No Image" */}
       <div className="relative mb-6 h-[180px] w-[180px] overflow-hidden bg-muted rounded-tr-lg">
         {imageUrl ? (
@@ -50,6 +56,12 @@ export default function TeamMemberCard({
             <span className="text-2xl font-bold text-muted-foreground">{t('noImage')}</span>
           </div>
         )}
+
+        {!isAdmin && hasStory && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/40 group-hover:opacity-100">
+          <span className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-black shadow-md"> Tryck mig {t("readStory")}</span>
+        </div>
+      )}
       </div>
 
       {/* Text */}

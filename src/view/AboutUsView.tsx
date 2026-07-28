@@ -1,8 +1,10 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
 import AboutHeader from "@/components/AboutHeader";
 import OurStorySection from "@/components/OurStorySection";
 import TeamMemberCard from "@/components/TeamMemberCard";
+import MyStoryCard from "@/components/MyStoryCard";
 import ProjectCard from "@/components/ProjectCard";
 import type {PublicBoardMember} from '@/types/adminBoardMembers';
 
@@ -16,6 +18,10 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
   const t = useTranslations("AboutUs");
   const teamT = useTranslations("AboutUs.team");
   const projectT = useTranslations("AboutUs.projects");
+  const locale = useLocale();
+
+  const [selectedMember, setSelectedStoryMember] = useState<PublicBoardMember | null>(null);
+
   return (
     <>
       <main className="mx-auto max-w-[980px] px-5 pb-20 pt-10 sm:px-8 lg:pb-28 lg:pt-16">
@@ -23,7 +29,7 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
       </main>
       <OurStorySection/>
 
-      {/* Team section */}
+      {/* Board member section */}
 
       <section className="mx-auto max-w-[980px] px-5 pb-24 sm:px-8">
         <h2 className="mb-10 text-center font-serif text-3xl font-semibold text-foreground">
@@ -50,10 +56,22 @@ export default function AboutUsView({ boardMembers, isLoading, error }: Props) {
                   imageUrl={member.image_url ?? undefined}
                   story_eng={member.story_eng ?? undefined}
                   story_sv={member.story_sv ?? undefined}
+                  onOpenStory={() => setSelectedStoryMember(member)}
                 /> ))}
             </div>
           )}
       </section>
+
+      {/* Opening my story card if it exists (handled by component itself) */}
+      {selectedMember && (
+        <MyStoryCard
+          imageUrl={selectedMember.image_url ?? undefined}
+          name={selectedMember.name}
+          role={locale === "sv" ? selectedMember.role_sv : selectedMember.role_eng}
+          story={(locale === "sv" ? selectedMember.story_sv : selectedMember.story_eng) ?? undefined}
+          onClose={() => setSelectedStoryMember(null)}
+        />
+      )}
 
       {/* Project section */}
 
