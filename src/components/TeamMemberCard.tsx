@@ -59,7 +59,7 @@ export default function TeamMemberCard({
 
         {!isAdmin && hasStory && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/40 group-hover:opacity-100">
-          <span className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-black shadow-md"> Tryck mig {t("readStory")}</span>
+          <span className="rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-black shadow-md">{t('pressToReadStory')}</span>
         </div>
       )}
       </div>

@@ -153,12 +153,14 @@
   },
   "TeamMemberCard": {
     "noImage": "Ingen Bild",
+    "pressToReadStory": "Tryck mig",
     "edit": "Redigera",
     "delete": "Radera"
   },
   "BoardMemberModal": {
     "noNameError": "Name krävs",
-    "noRoleError": "Roll krävs",
+    "noRoleErrorEng": "Roll krävs",
+    "noRoleErrorSv": "Roll krävs",
     "noEmailError": "Email krävs",
     "invalidEmailError": "Ogiltig mejladress. Måste vara i formatet [role]@mskth.se",
     "noDisplayOrderError": "Ordningsföljd krävs",
@@ -167,11 +169,14 @@
     "modalEditMemberTitle": "Redigera styrelsemedlem",
     "modalCreateNewMemberTitle": "Skapa styrelsemedlem",
     "name": "Namn",
-    "role": "Roll",
+    "roleEng": "Roll (engelska)",
+    "roleSv": "Roll (svenska)",
     "email": "Email",
     "image": "Bild (valfritt)",
     "displayOrder": "Ordningsföljd",
     "uploadImage": "Ladda upp bild",
+    "myStoryEng": "Din historia (engelska)",
+    "myStorySv": "Din historia (svenska)",
     "cancel": "Avbryt",
     "save": "Spara",
     "saving": "Sparar..."
