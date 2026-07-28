@@ -149,7 +149,12 @@
     "empty": "Nothing to show. May be an error in database.",
     "cancel": "Cancel changes",
     "publish": "Publish", 
-    "publishing": "Publishing..."
+    "publishing": "Publishing...",
+    "publishConfirm": "Are you sure you want to publish changes?",
+    "publishAction": "Publish",
+    "cancelAction": "Cancel",
+    "deleteConfirm": "Are you sure you want to delete board member",
+    "deleteAction": "Delete"
   },
   "TeamMemberCard": {
     "noImage": "No Image",

@@ -6,6 +6,8 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import BoardMemberCard from '@/components/TeamMemberCard';
 import CreateBoardMemberModal from '@/components/admin/boardmember/CreateBoardMemberModal';
+import DeleteMemberConfirmDialog from "@/components/admin/boardmember/DeleteMemberConfirmDialog";
+import PublishConfirmDialog from "@/components/admin/boardmember/PublishConfirmDialog";
 
 import type {
   AdminBoardMember,
@@ -44,6 +46,8 @@ export default function AdminBoardView({
 
   const [isCreating, setIsCreating] = useState(false);
   const [editingMember, setEditingMember] = useState<AdminBoardMember | null>(null);
+  const [deleteMember, setDeleteMember] = useState<AdminBoardMember | null>(null);
+  const [showPublishConfirm, setShowPublishConfirm] = useState(false);
 
   return (
     <div className="p-6 lg:p-8">
@@ -96,7 +100,7 @@ export default function AdminBoardView({
                   story_sv={member.story_sv ?? undefined}
                   isAdmin={true}
                   onEdit={() => setEditingMember(member)}
-                  onDelete={() => onDelete(member.id)}
+                  onDelete={() => setDeleteMember(member)}
                 />
               ))}
             </div>
@@ -118,7 +122,7 @@ export default function AdminBoardView({
             type="button"
             variant={hasDraft ? 'default' : 'secondary'}
             disabled={!hasDraft || isPublishing}
-            onClick={onPublish}
+            onClick={() => setShowPublishConfirm(true)}
           >
             {isPublishing ? t('publishing') : t('publish')}
           </Button>
@@ -145,6 +149,23 @@ export default function AdminBoardView({
           setEditingMember(null); }}
         onCancel={() => setEditingMember(null)}/>
         )}
+
+    {/* Confirmation dialogues */}
+    
+     {deleteMember && (<DeleteMemberConfirmDialog
+        memberName={deleteMember.name}
+        onCancel={() => setDeleteMember(null)}
+        onConfirm={() => {
+          onDelete(deleteMember.id);
+          setDeleteMember(null);}}/>
+      )}
+
+      {showPublishConfirm && (<PublishConfirmDialog
+        onCancel={() => setShowPublishConfirm(false)}
+        onConfirm={() => {
+          onPublish();
+          setShowPublishConfirm(false);}}/>
+      )}
 
     </div>
   );

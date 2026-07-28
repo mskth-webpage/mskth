@@ -149,7 +149,12 @@
     "empty": "Inget att visa. Kan vara ett fel i databasen.",
     "cancel": "Ångra ändringar",
     "publish": "Publicera", 
-    "publishing": "Publicerar..."
+    "publishing": "Publicerar...",
+    "publishConfirm": "Är du säker på att du vill publicera dina ändringar?",
+    "publishAction": "Publicera",
+    "cancelAction": "Avbryt",
+    "deleteConfirm": "Är du säker på att du vill radera styrelsemedlemmen",
+    "deleteAction": "Radera"
   },
   "TeamMemberCard": {
     "noImage": "Ingen Bild",
